@@ -1,0 +1,52 @@
+/* brand.css — Zoltan Gero (C2C Blue)
+   The token bridge. Copy into every project next to FRAME.md and load it AFTER any
+   registry block's own stylesheet. This is what turns a stock registry block into ours.
+   Rules: BLOCKS.md · atoms: FRAME.md · motion: MOTION.md · language: DESIGN.md          */
+
+:root {
+  /* ---- our palette, recovered from the C2C / Expansion Pack videos ---- */
+  --zg-ground:   #eef3f7;                    /* cool light blue-grey, radial lift to white top-centre */
+  --zg-blue:     #1a73e8;                    /* lead colour: emphasis, numerals, kickers, bars */
+  --zg-navy:     #0e2038;                    /* display + body type */
+  --zg-green:    #34a853;                    /* ONE emphasis or CTA per scene, never more */
+  --zg-muted:    #5b6b86;                    /* subtitles, captions, secondary lines */
+  --zg-grid:     rgba(26,115,232,0.09);      /* the drifting background grid */
+  --zg-surface:  rgba(26,115,232,0.04);      /* tinted card fill */
+  --zg-border:   rgba(26,115,232,0.20);      /* card + divider border */
+
+  /* ---- the bridge: registry components read these ---- */
+  --hf-bg:            var(--zg-ground);
+  --hf-fg:            var(--zg-navy);
+  --hf-text:          var(--zg-navy);
+  --hf-text-muted:    var(--zg-muted);
+  --hf-accent:        var(--zg-blue);
+  --hf-accent-2:      var(--zg-green);
+  --hf-primary:       var(--zg-blue);
+  --hf-secondary:     var(--zg-green);
+  --hf-surface:       var(--zg-surface);
+  --hf-card-bg:       var(--zg-surface);
+  --hf-border:        var(--zg-border);
+  --hf-grid:          var(--zg-grid);
+  --hf-positive:      var(--zg-green);
+  --hf-negative:      #dc2626;
+
+  --hf-font-display:  "Inter", sans-serif;
+  --hf-font-body:     "Inter", sans-serif;
+  --hf-font-mono:     "Inter", sans-serif;
+
+  --hf-radius:        12px;
+  --hf-radius-pill:   100px;
+  --hf-radius-sm:     10px;
+  --hf-shadow:        none;                  /* this pack has no shadows */
+}
+
+/* ---- hard bans, enforced in CSS so a stray block cannot reintroduce them ---- */
+/* NO ORANGE. The accent is green. Recorded 2026-07-30, re-confirmed 2026-08-16. */
+[style*="#E85A1F"], [style*="#e85a1f"],
+[style*="#ff6b35"], [style*="#f97316"], [style*="orange"] {
+  color: var(--zg-blue) !important;
+  background-color: transparent !important;
+}
+
+/* No gradients, no glows — minimalist over garish. */
+.hf-gradient, [class*="gradient"] { background-image: none !important; }

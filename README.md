@@ -10,8 +10,8 @@ Never invent a palette, font, or layout in a project. Copy from here.
 
 | Channel | Folder | Frame pack | Character |
 |---|---|---|---|
-| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **Creative Mode Navy** | Warm cream paper #EFE9D9, 4px ink borders, hard offset shadows (zero blur), Archivo Black uppercase 0.92 lh. Accents: navy #1B3A6B + green (dark, cream type) / yellow (hot, ink type). Approved by Zoltan 2026-08-15. |
-| VoxFlow (Máté workflow) | `voxflow/` | **C2C Blue** | Cool blue-grey ground #eef3f7, lead blue #1a73e8, navy text #0e2038, single green accent #34a853, Inter-only. The recovered Comment-to-Client / Expansion Pack palette. Adopted 2026-08-16. |
+| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **C2C Blue** | The recovered Comment-to-Client / Expansion Pack look: ground #eef3f7, lead blue #1a73e8, navy text #0e2038, ONE green accent #34a853 per scene, Inter-only, no orange, no shadows. |
+| VoxFlow (Máté workflow) | `voxflow/` | **Blue Professional** | As delivered: warm cream #fdfae7, single saturated cobalt #1e2bfa, Space Grotesk display + Inter body, soft tinted cards, no shadows. |
 
 ## Files in each channel folder
 
@@ -19,6 +19,8 @@ Never invent a palette, font, or layout in a project. Copy from here.
 - `frame-showcase.html` — visual reference. Open in a browser to see the atoms.
 - `CHANNEL.md` — channel binding: voice, avatar, aspect, output paths.
 - `BRIEF.template.md` — copied to a new project as `BRIEF.md`, then filled from the approved script.
+- `DESIGN.md` — the channel design language: scene archetypes, motion vocabulary, the AVOID list.
+- `brand.css` — the token bridge that re-skins any registry block to this channel. Copy into every project.
 
 ## Motion
 

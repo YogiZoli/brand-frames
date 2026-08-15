@@ -24,36 +24,28 @@ npx hyperframes lint && npx hyperframes check
 
 A block that still contains a stock hex after step 2 has not been adopted. It has been pasted.
 
+## Where each file lives
+
+| File | Scope | Path |
+|---|---|---|
+| `BLOCKS.md` (this file) | shared — the block set and the workflow | `_frames/BLOCKS.md` |
+| `MOTION.md` | shared — frame-independent by design, one motion system for every channel | `_frames/MOTION.md` |
+| `brand.css` | **per channel** — the token bridge that re-skins every block | `_frames/<channel>/brand.css` |
+| `FRAME.md` · `DESIGN.md` | per channel — atoms and design language | `_frames/<channel>/` |
+
+`MOTION.md` deliberately does **not** live in a channel folder: the whole point is that the same
+motion system runs on any frame pack. `brand.css` is the opposite — it is the one file that
+carries the channel's colour into a stock block.
+
 ## The token bridge
 
-Every project gets `brand.css`, loaded after the block's own styles. Registry blocks are
-token-driven, so remapping the variables re-skins the block without touching its logic.
+Every project gets its channel's `brand.css`, loaded **after** the block's own stylesheet.
+Registry blocks are token-driven, so remapping the variables re-skins the block without touching
+its logic. See `_frames/zoltan-gero/brand.css` (C2C Blue) and `_frames/voxflow/brand.css`
+(Blue Professional) for the live versions — those files are the source, not this excerpt.
 
-```css
-/* brand.css — our face, over any registry block */
-:root {
-  /* our palette (Zoltan Gero — C2C Blue) */
-  --zg-ground:  #eef3f7;
-  --zg-blue:    #1a73e8;
-  --zg-navy:    #0e2038;
-  --zg-green:   #34a853;   /* ONE per scene */
-  --zg-muted:   #5b6b86;
-  --zg-grid:    rgba(26,115,232,0.09);
-
-  /* the bridge: registry components read these */
-  --hf-bg: var(--zg-ground);
-  --hf-fg: var(--zg-navy);
-  --hf-accent: var(--zg-blue);
-  --hf-accent-2: var(--zg-green);
-  --hf-muted: var(--zg-muted);
-  --hf-border: rgba(26,115,232,0.20);
-  --hf-surface: rgba(26,115,232,0.04);
-  --hf-font-display: "Inter", sans-serif;
-  --hf-font-body: "Inter", sans-serif;
-  --hf-font-mono: "Inter", sans-serif;
-  --hf-radius: 12px;
-}
-```
+The Zoltan Gero bridge also enforces two hard bans in CSS itself, so a stray block cannot
+reintroduce them: **no orange** (any orange hex is forced back to blue) and **no gradients**.
 
 **Confirm the real variable names per block** — read what `hyperframes add` wrote before assuming.
 Where a block hard-codes a hex instead of a variable, replace the hex and note it here so the next

@@ -1,0 +1,40 @@
+/* brand.css — VoxFlow (Blue Professional, exactly as delivered)
+   The token bridge. Copy into every VoxFlow project next to FRAME.md and load it AFTER any
+   registry block's own stylesheet.  Rules: ../BLOCKS.md · motion: ../MOTION.md              */
+
+:root {
+  /* ---- Blue Professional palette — do not alter ---- */
+  --vf-bg:        #fdfae7;                   /* warm cream canvas */
+  --vf-primary:   #1e2bfa;                   /* the single saturated cobalt */
+  --vf-text:      #111111;
+  --vf-muted:     #6b6b6b;
+  --vf-light:     #9a9a9a;
+  --vf-surface:   rgba(30,43,250,0.04);
+  --vf-border:    rgba(30,43,250,0.20);
+  --vf-accent-lt: rgba(30,43,250,0.08);
+  --vf-positive:  #059669;
+  --vf-negative:  #dc2626;
+
+  /* ---- the bridge ---- */
+  --hf-bg:           var(--vf-bg);
+  --hf-fg:           var(--vf-text);
+  --hf-text:         var(--vf-text);
+  --hf-text-muted:   var(--vf-muted);
+  --hf-accent:       var(--vf-primary);
+  --hf-accent-2:     var(--vf-primary);      /* cobalt is the ONLY accent in this pack */
+  --hf-primary:      var(--vf-primary);
+  --hf-surface:      var(--vf-surface);
+  --hf-card-bg:      var(--vf-surface);
+  --hf-border:       var(--vf-border);
+  --hf-positive:     var(--vf-positive);
+  --hf-negative:     var(--vf-negative);
+
+  --hf-font-display: "Space Grotesk", sans-serif;
+  --hf-font-body:    "Inter", sans-serif;
+  --hf-font-mono:    "Space Grotesk", monospace;
+
+  --hf-radius:       14px;
+  --hf-radius-pill:  100px;
+  --hf-radius-sm:    10px;
+  --hf-shadow:       none;                   /* soft tinted cards, NO shadows */
+}

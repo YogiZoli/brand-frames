@@ -1,14 +1,14 @@
-/* brand.css — Zoltan Gero (C2C Blue)
+﻿/* brand.css — Zoltan Gero (C2C Blue)
    The token bridge. Copy into every project next to FRAME.md and load it AFTER any
    registry block's own stylesheet. This is what turns a stock registry block into ours.
    Rules: BLOCKS.md · atoms: FRAME.md · motion: MOTION.md · language: DESIGN.md          */
 
 :root {
   /* ---- our palette, recovered from the C2C / Expansion Pack videos ---- */
-  --zg-ground:   #eef3f7;                    /* cool light blue-grey, radial lift to white top-centre */
+  --zg-ground:   #e8eef5;                    /* cool light blue-grey, radial lift to white top-centre */
   --zg-blue:     #1a73e8;                    /* lead colour: emphasis, numerals, kickers, bars */
-  --zg-navy:     #0e2038;                    /* display + body type */
-  --zg-green:    #34a853;                    /* ONE emphasis or CTA per scene, never more */
+  --zg-navy:     #111d2e;                    /* display + body type */
+  --zg-green:    #22a75a;                    /* ONE emphasis or CTA per scene, never more */
   --zg-muted:    #5b6b86;                    /* subtitles, captions, secondary lines */
   --zg-grid:     rgba(26,115,232,0.09);      /* the drifting background grid */
   --zg-surface:  rgba(26,115,232,0.04);      /* tinted card fill */
@@ -34,10 +34,10 @@
   --hf-font-body:     "Inter", sans-serif;
   --hf-font-mono:     "Inter", sans-serif;
 
-  --hf-radius:        12px;
+  --hf-radius:        16px;
   --hf-radius-pill:   100px;
   --hf-radius-sm:     10px;
-  --hf-shadow:        none;                  /* this pack has no shadows */
+  --hf-shadow:        0 18px 44px rgba(17,29,46,0.10);  /* soft card shadow - this pack DOES use them */
 }
 
 /* ---- hard bans, enforced in CSS so a stray block cannot reintroduce them ---- */

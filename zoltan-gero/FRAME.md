@@ -1,170 +1,187 @@
 ---
-version: 1.0
-name: C2C Blue — Frame (video / frame layer) · Zoltan Gero
+version: 2.0
+name: C2C — Frame (video / frame layer) · Zoltan Gero
 description: >
-  The Comment-to-Client / Expansion Pack look, rebuilt from the reference footage on 2026-08-16.
-  NOT a re-skin of Blue Professional — that pack is quiet and corporate; this one is bright,
-  centred and kinetic. A near-white cool ground with soft blurred pastel blooms, thin grey corner
-  crop marks as permanent chrome, one huge centred Inter 800 statement per frame with exactly ONE
-  word in blue or green, solid rounded bars with soft shadows, and white cards for UI mocks.
+  The Comment-to-Client look, rebuilt 2026-08-16 from frames of the two local reference renders
+  (C2C_style_demo.mp4 and C2C_motion_demo.mp4). Calm, bright, product-grade. A pale blue-grey
+  gradient ground, generous air, and white cards with soft shadows carrying real UI. Headings are
+  SENTENCE CASE and restrained in size; blue is the lead, green is the payoff, and a hand-drawn
+  green ellipse or underline is the signature annotation. No orange, no dark scenes, no outlines.
   Motion is out of scope — see ../MOTION.md.
 unit: the frame — 1920×1080 primary; 9:16 and 1:1 documented
 principle: atoms are sacred · composition is free · numbers come from the script
 
 colors:
-  bg:          "#eef3f7"   # cool near-white; lifts almost to white at centre
-  bg-white:    "#fbfdfe"   # the centre of the radial lift
-  blue:        "#1a73e8"   # lead — emphasis words, kickers, the COLD bar, links
-  blue-deep:   "#1557b0"   # pressed/darker states only
-  navy:        "#0e2038"   # display type and the HOT bar
-  green:       "#34a853"   # the single accent — ONE per frame
-  muted:       "#5b6b86"   # sub-lines, captions, secondary labels
-  card:        "#ffffff"   # UI mock cards
-  bloom-blue:  "rgba(26,115,232,0.14)"
-  bloom-green: "rgba(52,168,83,0.12)"
-  crop-mark:   "rgba(91,107,134,0.34)"
-  shadow-soft: "0 8px 28px rgba(14,32,56,0.10)"
-  shadow-bar:  "0 6px 18px rgba(14,32,56,0.14)"
+  bg-top:      "#f7fafc"   # near-white, top-left of the ground gradient
+  bg:          "#e8eef5"   # pale blue-grey, the body of the ground
+  bg-tint:     "rgba(52,168,83,0.05)"   # faint green lift, top-left only
+  blue:        "#1a73e8"   # lead — headings on cards, icons, the primary bar, links
+  blue-soft:   "rgba(26,115,232,0.10)"  # active nav pill, tinted insets
+  green:       "#22a75a"   # the payoff — positive values, the hand-drawn annotation, ✓
+  navy:        "#111d2e"   # display and card headings
+  label:       "#8a94a6"   # micro-labels and axis text
+  muted:       "#5b6b86"   # sub-lines and body
+  card:        "#ffffff"
+  red:         "#dc2626"   # ✗ only, never as an accent
+  shadow-card: "0 18px 44px rgba(17,29,46,0.10)"
+  shadow-chip: "0 6px 16px rgba(17,29,46,0.10)"
 
 radii:
-  bar:    "10px"
-  card:   "12px"
-  chip:   "8px"
+  card:   "16px"
+  tile:   "12px"
+  input:  "8px"
   pill:   "100px"
   circle: "50%"
 
 typography:
-  # Inter only. 400 / 600 / 700 / 800. Never another family.
-  kicker:     { fontFamily: "Inter", px: 44, weight: 800, tracking: "0.18em", upper: true, color: "blue" }
-  hero:       { fontFamily: "Inter", px: 130, weight: 800, lineHeight: 1.02, tracking: "-0.02em", color: "navy" }
-  hero-sm:    { fontFamily: "Inter", px: 92,  weight: 800, lineHeight: 1.05, tracking: "-0.02em", color: "navy" }
-  statement:  { fontFamily: "Inter", px: 72,  weight: 700, lineHeight: 1.15, color: "navy" }
-  subtitle:   { fontFamily: "Inter", px: 52,  weight: 600, lineHeight: 1.3,  color: "muted" }
-  body:       { fontFamily: "Inter", px: 34,  weight: 400, lineHeight: 1.5,  color: "muted" }
-  bar-label:  { fontFamily: "Inter", px: 46,  weight: 800, upper: true, color: "card" }
-  bar-note:   { fontFamily: "Inter", px: 30,  weight: 500, color: "card" }
-  card-label: { fontFamily: "Inter", px: 22,  weight: 600, tracking: "0.06em", upper: true, color: "muted" }
-  card-value: { fontFamily: "Inter", px: 30,  weight: 500, color: "navy" }
-  chip:       { fontFamily: "Inter", px: 30,  weight: 700, color: "card" }
+  # Inter only — 400 / 500 / 600 / 700. Never another family.
+  kicker:      { fontFamily: "Inter", px: 30, weight: 700, tracking: "0.16em", upper: true, color: "blue" }
+  micro-label: { fontFamily: "Inter", px: 20, weight: 600, tracking: "0.14em", upper: true, color: "label" }
+  hero:        { fontFamily: "Inter", px: 92, weight: 700, lineHeight: 1.12, tracking: "-0.02em", color: "navy", case: "sentence" }
+  hero-sm:     { fontFamily: "Inter", px: 68, weight: 700, lineHeight: 1.15, color: "navy", case: "sentence" }
+  card-title:  { fontFamily: "Inter", px: 34, weight: 700, color: "navy" }
+  card-lead:   { fontFamily: "Inter", px: 34, weight: 700, color: "blue" }
+  stat-value:  { fontFamily: "Inter", px: 40, weight: 700, color: "navy" }
+  stat-accent: { fontFamily: "Inter", px: 40, weight: 700, color: "blue" }
+  value:       { fontFamily: "Inter", px: 26, weight: 600, color: "navy" }
+  value-green: { fontFamily: "Inter", px: 26, weight: 700, color: "green" }
+  body:        { fontFamily: "Inter", px: 24, weight: 400, lineHeight: 1.5, color: "muted" }
 
 spacing:
-  safe:        "140px"     # NOTHING crosses this line, ever
-  crop-inset:  "56px"      # the corner marks sit here
-  stack-gap:   "36px"
-  bar-gap:     "22px"
+  safe:      "140px"   # nothing crosses this line, ever
+  card-pad:  "36px"
+  stack-gap: "28px"
 ---
 
-# C2C Blue — Frame
+# C2C — Frame
 
-## What this pack is, and what it is not
+## What this is
 
-Rebuilt on 2026-08-16 from frames of the Expansion Pack render — the look Zoltán asked to have
-back. An earlier attempt re-based *Blue Professional* onto these hex values and it read as the
-same pack in a new colour, because the bones were wrong. **Blue Professional is a quiet corporate
-system of tinted cards; C2C is bright, centred and kinetic.** The palette was never the difference.
+Rebuilt from the reference renders themselves, not from a description. Two earlier attempts
+missed: one re-skinned Blue Professional (right colours, wrong bones), one over-corrected into
+huge uppercase display type. **The real C2C is calm and product-grade.** Its authority comes from
+looking like real software on a quiet ground, not from shouting.
 
-Five things carry the identity, in order of importance:
+Five things carry the identity:
 
-1. **A soft, luminous ground** — near-white in the centre, cool blue-grey at the edges, with two
-   or three large, heavily blurred pastel blooms drifting behind everything. It is never flat.
-2. **Corner crop marks** — thin grey L-brackets in all four corners, present on every frame.
-   This is the permanent chrome and the thing that crosses every scene boundary.
-3. **One huge centred statement per frame**, Inter 800, navy — with **exactly one word** in blue
-   or green. Never two emphasised words, never a whole emphasised sentence.
-4. **A blue kicker above it** — uppercase, wide tracking, bold, small.
-5. **Solid rounded bars and white cards with soft shadows.** This pack *does* use shadows, softly.
-   It has no outlines, no ink borders, no hard offsets.
+1. **A pale blue-grey ground with a very soft light**, near-white toward the top-left, with the
+   faintest green lift there. Never flat, never dark, never busy.
+2. **White cards with a generous soft shadow** — 16px radius, no border — carrying *real* UI:
+   dashboards, lead cards, forms, result tiles. This is the workhorse component.
+3. **Sentence-case headings, restrained in size.** `Turn viewers into real leads`, not
+   `TURN VIEWERS INTO REAL LEADS`.
+4. **Blue leads, green pays off.** Blue for the subject, the icon, the primary bar. Green for the
+   result — a positive value, `Warm to Hot`, `Client`, a ✓, the growing bar that wins.
+5. **A hand-drawn green ellipse or underline** around the key phrase. This is the signature
+   annotation and the one informal mark in the system.
 
 ## The ground
 
 ```css
 background:
-  radial-gradient(58% 46% at 50% 34%, #fbfdfe 0%, #eef3f7 62%),
-  #eef3f7;
+  radial-gradient(52% 44% at 22% 12%, rgba(52,168,83,0.05) 0%, transparent 60%),
+  linear-gradient(158deg, #f7fafc 0%, #eef3f8 46%, #e8eef5 100%);
 ```
 
-Over it, two or three blurred blooms — `filter: blur(90px)`, 30–46cqw across, one
-`bloom-blue`, one `bloom-green`, optionally a third blue at low opacity. They drift slowly and
-never stop (see `../MOTION.md`, rule 1). No hard-edged shape ever touches the background.
-
-**Never a dark scene.** This is a bright channel, always.
-
-## Corner crop marks — the permanent chrome
-
-Four L-shaped brackets, `crop-mark` colour, 2px stroke, arms ~64px, inset `crop-inset` (56px) from
-each corner. They appear once at the start of the film and **never leave**. Nothing else is
-permanent chrome — no topbar, no footer, no counter. The marks alone say "this is one film".
-
-## Typography — Inter only
-
-Sentence case for sentences. **Keywords always caps:** YES · GUIDE · ACTION · TRIGGER · BUY.
-**Never the word "CRM" on screen.**
-
-**KEEP THE TITLE SMALL — 130px hero, 92px secondary.** Recorded 2026-07-30 ("still too big at
-150px+") and again 2026-08-15 on a test build ("kilóg és túl nagy"). This is the channel's single
-most repeated defect. A headline that reaches the safe margin is already too big; step down.
-
-**Emphasis: exactly ONE word per sentence.** Blue for an idea (`COLD EMAIL`, `CLIENT`), green for
-an action or a payoff (`ACTION`, `NOTHING`). Solid colour only — never gradient-clipped, because
-per-letter animation splits the text into spans and a clipped gradient goes invisible.
-
-Kickers must be **clearly readable** — 44px, 800, 0.18em tracking, blue. Earlier versions were too
-small.
-
-Sub-lines are muted navy at 52px and **must never overlap or slide onto another element.**
+Nothing hard-edged ever touches it. It drifts almost imperceptibly and never fully stops
+(`../MOTION.md`, rule 1). **Never a dark scene.**
 
 ## Components
 
-**bar** — a solid rounded rectangle, `radii.bar`, `shadow-bar`, label left in white 800, note right
-in white 500. Used for the funnel: **COLD widest (blue) · WARM middle (green) · HOT narrowest
-(navy)**. Bars are centred as a stack, each narrower than the one above.
+**card** — white, `radii.card`, `shadow-card`, **no border**, `card-pad` inside. The container for
+everything that is "the product".
 
-**card** — white, `radii.card`, `shadow-soft`, no border. Holds UI mocks: a small blue square +
-`GoHighLevel · Contact Details` label, then field rows (uppercase muted label above a bordered
-input), and a green primary button. **Any dashboard brand name is "GoHighLevel", never "Studio",**
-and a dashboard is never allowed to overflow the frame.
+**dashboard mock** — a card split into a left rail and a body. Rail: a small blue rounded-square
+logo chip + wordmark, then nav rows; the active row is a `blue-soft` pill with blue text. Body: a
+title, then a row of stat tiles — each tile a `micro-label` over a `stat-value`; a positive
+delta uses `stat-accent` blue. **The brand name in any dashboard is "GoHighLevel", never "Studio"**
+(the reference renders say Studio — that was corrected afterwards). A dashboard never overflows
+the frame.
 
-**chip** — near-black rounded rectangle, white 700 text, `radii.chip`. The `Comment` chip is the
-canonical one; it is the origin point that connectors draw from.
+**inset panel** — inside a card, a 1.5px blue-bordered box on `blue-soft`, with a small green
+status dot, a `micro-label`, a bold name and a grey quote line. This is the "new comment" object.
 
-**connector** — a 2px curved SVG path that draws on, blue on one branch and green on the other.
-Used for the `Comment → GUIDE / ACTION` split.
+**lead card** — a circular blue avatar with white initials, name in `card-title`, role in `body`,
+an `ACTIVE LEAD` pill top-right (`blue-soft` fill, blue text), and beneath it two labelled columns:
+`micro-label` over `value`, where the temperature value is `value-green`.
 
-**arrow** — a green horizontal arrow between two words (`COMMENT → CLIENT`), drawn, never faded in.
+**speech chip** — a green rounded chip with white 600 text and `shadow-chip`, used for a viewer's
+line (`"How can I sign up?"`). It pops in near the card it belongs to.
 
-**ring** — a thin green circle drawn around a word to mark it, hand-annotation style.
+**form card** — `card-lead` blue heading, a grey sub-line, then rows of `micro-label` over an
+input: white, 1.5px `#e3e9f0` border, `radii.input`. Text types in character by character.
+The primary button is **green**, full width, white 600 text.
+
+**icon tile** — a white rounded square (`radii.tile`, `shadow-chip`) with a blue glyph, and a
+`micro-label` centred beneath it. Two tiles connected by a drawing line is the canonical
+"comment → revenue" pair; the second tile's glyph turns green.
+
+**icon node** — a thin 2px circle (blue, or green once it resolves) with a glyph inside and a bold
+label under it. Three of these in a row is the `Creator · YouTuber · Agency` set.
+
+**result tile** — a white square card with a large ✗ (`red`) or ✓ (`green`) and an uppercase label
+beneath. Always shown as a pair, negative left, positive right.
+
+**bar pair** — two rounded bars side by side under a kicker: blue `Ad revenue` and green
+`Real leads`, each with a bold value above (`0x` → `1x`, `0` → `100x`) that counts up as the bar
+grows. The green one wins, visibly.
+
+**line chart** — thin `label`-coloured axes, a 3px blue stroke that draws left to right, and a
+green dot that lands at the end. No fill, no grid.
+
+**progress rail** — a thin horizontal line with labelled stops: `Comment` → `Conversation` →
+`Client`, a blue dot travelling along it, the final label in green.
+
+**annotation** — a hand-drawn green ellipse, underline or swoosh that draws over the key phrase.
+2–3px, slightly irregular, deliberately imperfect. **One per frame, never two.**
+
+## Typography
+
+**Sentence case for headings.** Uppercase is only for kickers, micro-labels and result-tile labels.
+Keywords stay caps when they are literal keywords: YES · GUIDE · ACTION · TRIGGER · BUY.
+**Never the word "CRM" on screen.**
+
+**Keep the hero at 92px, secondary at 68px.** Recorded 2026-07-30 ("still too big at 150px+") and
+again 2026-08-15. This is the channel's most repeated defect. In this pack the type is *smaller*
+than instinct says, because the white cards and the air do the work.
+
+**Emphasis: exactly one word or phrase per frame** — the green annotation, or a single green value.
+Never a whole emphasised sentence. Solid colour only; never gradient-clipped, because per-letter
+animation splits text into spans and a clipped gradient goes invisible.
 
 ## Layout
 
-**Centre-weighted, always.** Kicker above, hero centred, sub-line below. Bars and cards centre as
-a group. Left-alignment is the exception, not the default.
+Centre-weighted. Kicker above, heading centred, the card or diagram beneath. Cards sit at roughly
+45–65% of frame width — they are objects on a surface, not full-bleed panels.
 
-**Safe margin 140px on every side.** No element may cross it — not a bar, not a badge, not a
-shadow. `BARGROW` badges must stay centred over their bar and must never collide with the kicker
-(recorded defect, 2026-07-30): keep bars shorter and add top spacing.
-
-**One idea per frame.** No clutter. If a frame needs two ideas, it needs to be two frames — and
-per `DESIGN.md` the pace wants roughly 4× more frames than feels natural anyway.
+**Safe margin 140px on every side**, shadows included. One idea per frame; if it needs two, it is
+two frames, and `DESIGN.md` wants roughly 4× more frames than feels natural anyway.
 
 ## Do / Don't
 
-**Do:** one centred statement · one emphasised word · a blue kicker · a soft luminous ground ·
-crop marks on every frame · solid bars with soft shadows · white cards for UI · generous air.
+**Do:** a quiet luminous ground · white cards with soft shadows · real UI · sentence-case headings ·
+blue leads, green pays off · one hand-drawn green annotation · micro-labels in tracked uppercase
+grey · generous air.
 
-**Don't:** dark scenes · garish overload · oversized titles · anything touching the edges ·
-whole-sentence emphasis · **orange, anywhere** · gradients on type · hard outlines or ink borders ·
-the word "CRM" · dashes ("-") in the script or VO · a static hub-and-spoke diagram.
+**Don't:** **orange, anywhere** · dark scenes · garish overload · oversized headings · anything
+touching the edges · whole-sentence emphasis · outlines or ink borders · hard offset shadows ·
+gradients on type · the word "CRM" · the word "Studio" in a dashboard · dashes ("-") in the script
+or VO · a static hub-and-spoke diagram.
 
 ## ⚠️ No external Google Fonts `<link>`
 
 On this machine the Google Fonts stylesheet never fires its load event and `check` / `render` hang
 with a navigation timeout. Diagnosed in the C2C project, hit again 2026-08-15. Declare
-`font-family: "Inter", sans-serif` and add **no** `<link>` and **no** `@import` — the HyperFrames
-compiler injects Inter locally from its own cache.
+`font-family: "Inter", sans-serif` and add **no** `<link>` and **no** `@import` — the compiler
+injects Inter locally from its own cache.
 
 ## Companions
 
-`DESIGN.md` — scene archetypes, the motion vocabulary and its registry blocks, the AVOID list.
+`DESIGN.md` — scene archetypes, motion vocabulary and its registry blocks, the AVOID list.
 `brand.css` — the token bridge that re-skins any registry block to this pack.
 `../MOTION.md` — the motion system, frame-independent.
 `../BLOCKS.md` — which registry blocks we adopt, and how.
+
+**Reference frames:** `C2C_style_demo.mp4` and `C2C_motion_demo.mp4` in
+`Documents\Claude\Projects\C2C — Comment-To-Client\`. When in doubt, pull frames from these two
+with ffmpeg and look — they are the ground truth for this pack.

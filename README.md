@@ -20,6 +20,12 @@ Never invent a palette, font, or layout in a project. Copy from here.
 - `CHANNEL.md` — channel binding: voice, avatar, aspect, output paths.
 - `BRIEF.template.md` — copied to a new project as `BRIEF.md`, then filled from the approved script.
 
+## Motion
+
+`MOTION.md` (this folder) is the companion to `FRAME.md` and is **frame-independent** —
+it applies unchanged to whichever design is chosen. `FRAME.md` says how a video looks;
+`MOTION.md` says how it moves. Copy both into every new project.
+
 ## Rule
 
 > Atoms are sacred · composition is free · numbers come from the script.

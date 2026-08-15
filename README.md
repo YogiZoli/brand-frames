@@ -33,3 +33,25 @@ all future videos inherit it.
 `../_DEPRECATED_exp-v9/` — the hand-built engine. **Never read, never use, never copy from.**
 All motion comes from the official HeyGen skills (`/hyperframes-animation`) and the
 registry (`hyperframes add`).
+
+## The three laws (full guide in Drive)
+
+**Canonical guide:** "★ VIDEO PIPELINE — Canonical Guide" in Drive/YT_Flywheel
+https://docs.google.com/document/d/1gzF-bkUKmzc_UlIc2x9VqSYa93t74Aas-7o97hMnd-s
+
+1. **Never build an engine.** Official HeyGen HyperFrames skills + registry only.
+   `npx hyperframes catalog` before writing any custom code.
+2. **Never invent design.** FRAME.md is the palette, type ramp, spacing, components.
+3. **Never render to find out whether it works.** `check` + `snapshot` + `preview`
+   answer that in seconds, for free.
+
+## The chain
+
+```
+title → script → audio → BUILD → lint → check → snapshot + preview  ★GATE★
+      → render ONCE → ffmpeg avatar composite → publish <URL>
+```
+
+Studio, the CLI and the agent share the same project files — Studio edits save to disk
+automatically and the next render picks them up. Never edit the same file in Studio and
+via the agent at the same time.

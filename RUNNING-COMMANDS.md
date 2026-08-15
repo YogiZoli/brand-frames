@@ -49,7 +49,7 @@ Zoltán will come back to the chat. That is the trigger, not a timer.
 | ffmpeg audio mix | under 1 minute |
 | `hyperframes check` | 20–60 seconds |
 | `hyperframes snapshot`, 8 frames | 1–2 minutes |
-| **`hyperframes render`** | **~2.5 minutes per minute of finished video** — a 9-minute video is roughly 22 minutes |
+| **`hyperframes render`** | **~3.5 minutes per minute of finished video** on this machine — a 9-minute video is roughly 32 minutes. Measured 2026-08-15: 9m22s rendered in 31m58s (16,875 frames, 3 workers, Intel UHD 620). The docs' "2.5×" figure assumes faster hardware; quote the measured number. |
 | ffmpeg avatar compositing | 2–5 minutes |
 | **Claude writing a composition** (own working time) | 10–15 minutes |
 | **Claude writing a full script** (own working time) | 5–10 minutes |

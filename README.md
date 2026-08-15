@@ -1,5 +1,10 @@
 # _frames — canonical design system per channel
 
+**Git remote:** https://github.com/YogiZoli/brand-frames (private)
+Clone anywhere: `git clone https://github.com/YogiZoli/brand-frames.git`
+After changing a FRAME.md here, commit and push — every machine and every Claude
+session inherits it.
+
 **This folder is the single source of truth for how every video looks.**
 Never invent a palette, font, or layout in a project. Copy from here.
 

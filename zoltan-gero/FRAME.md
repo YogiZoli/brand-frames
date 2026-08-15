@@ -1,369 +1,170 @@
-﻿---
-version: alpha
-name: C2C Blue — Frame (video / frame layer)
+---
+version: 1.0
+name: C2C Blue — Frame (video / frame layer) · Zoltan Gero
 description: >
-  Video-first companion to C2C Blue's design.md. The unit is the frame (1920×1080). Atoms
-  are identical and sacred — the warm cream canvas, a single saturated cobalt (#1a73e8) as the only
-  accent, the three-step gray text ladder, Inter (display/numerals/chrome) + Inter (body),
-  soft cobalt-tinted cards (4% fill / 20% border / 10–14px radius) with NO shadows, pill chrome, and
-  the cobalt progress bar. Composition + frame scale rewritten. Motion out of scope.
+  The Comment-to-Client / Expansion Pack look, rebuilt from the reference footage on 2026-08-16.
+  NOT a re-skin of Blue Professional — that pack is quiet and corporate; this one is bright,
+  centred and kinetic. A near-white cool ground with soft blurred pastel blooms, thin grey corner
+  crop marks as permanent chrome, one huge centred Inter 800 statement per frame with exactly ONE
+  word in blue or green, solid rounded bars with soft shadows, and white cards for UI mocks.
+  Motion is out of scope — see ../MOTION.md.
 unit: the frame — 1920×1080 primary; 9:16 and 1:1 documented
 principle: atoms are sacred · composition is free · numbers come from the script
 
 colors:
-  bg: "#eef3f7"
-  primary: "#1a73e8"
-  text: "#0e2038"
-  text-muted: "#5b6b86"
-  text-light: "#8a97ad"
-  accent-light: "rgba(26,115,232,0.08)"
-  accent-medium: "rgba(26,115,232,0.15)"
-  border: "rgba(26,115,232,0.2)"
-  card-bg: "rgba(26,115,232,0.04)"
-  positive: "#34a853"
-  negative: "#dc2626"
+  bg:          "#eef3f7"   # cool near-white; lifts almost to white at centre
+  bg-white:    "#fbfdfe"   # the centre of the radial lift
+  blue:        "#1a73e8"   # lead — emphasis words, kickers, the COLD bar, links
+  blue-deep:   "#1557b0"   # pressed/darker states only
+  navy:        "#0e2038"   # display type and the HOT bar
+  green:       "#34a853"   # the single accent — ONE per frame
+  muted:       "#5b6b86"   # sub-lines, captions, secondary labels
+  card:        "#ffffff"   # UI mock cards
+  bloom-blue:  "rgba(26,115,232,0.14)"
+  bloom-green: "rgba(52,168,83,0.12)"
+  crop-mark:   "rgba(91,107,134,0.34)"
+  shadow-soft: "0 8px 28px rgba(14,32,56,0.10)"
+  shadow-bar:  "0 6px 18px rgba(14,32,56,0.14)"
 
 radii:
-  pill: "100px"
-  card-lg: "14px"
-  card-md: "12px"
-  card-sm: "10px"
-  bar: "6px"
+  bar:    "10px"
+  card:   "12px"
+  chip:   "8px"
+  pill:   "100px"
   circle: "50%"
 
 typography:
-  # — reading ramp (Inter body + Inter chrome) —
-  body:    { fontFamily: "Inter", cqw: 0.85, weight: 400, lineHeight: 1.6, color: "text-muted" }
-  h4-eyebrow:{ fontFamily: "Inter", cqw: 0.8, weight: 600, tracking: "0.08em", upper: true, color: "primary" }
-  tag:     { fontFamily: "Inter", px: 12, weight: 500, color: "primary" }
-  counter: { fontFamily: "Inter", px: 13, weight: 500, tracking: "0.05em", color: "text-muted" }
-  # — display / numerical ramp (Inter, near-black headings / cobalt numerals) —
-  h3:      { fontFamily: "Inter", cqw: 1.25, weight: 500, lineHeight: 1.3, tracking: "-0.02em", color: "text" }
-  stat-num:{ fontFamily: "Inter", cqw: 1.9, weight: 700, lineHeight: 1.0, color: "primary" }
-  blockquote:{ fontFamily: "Inter", cqw: 2.4, weight: 500, lineHeight: 1.35, color: "text" }
-  h2:      { fontFamily: "Inter", cqw: 2.6, weight: 600, lineHeight: 1.1, tracking: "-0.02em", color: "text" }
-  metric-value:{ fontFamily: "Inter", cqw: 3.0, weight: 700, lineHeight: 1.0, color: "primary" }
-  h1:      { fontFamily: "Inter", cqw: 4.2, weight: 700, lineHeight: 1.08, tracking: "-0.02em", color: "text" }
-  quote-mark:{ fontFamily: "Inter", cqw: 8.0, weight: 700, lineHeight: 0.5, color: "primary", opacity: 0.15 }
+  # Inter only. 400 / 600 / 700 / 800. Never another family.
+  kicker:     { fontFamily: "Inter", px: 44, weight: 800, tracking: "0.18em", upper: true, color: "blue" }
+  hero:       { fontFamily: "Inter", px: 130, weight: 800, lineHeight: 1.02, tracking: "-0.02em", color: "navy" }
+  hero-sm:    { fontFamily: "Inter", px: 92,  weight: 800, lineHeight: 1.05, tracking: "-0.02em", color: "navy" }
+  statement:  { fontFamily: "Inter", px: 72,  weight: 700, lineHeight: 1.15, color: "navy" }
+  subtitle:   { fontFamily: "Inter", px: 52,  weight: 600, lineHeight: 1.3,  color: "muted" }
+  body:       { fontFamily: "Inter", px: 34,  weight: 400, lineHeight: 1.5,  color: "muted" }
+  bar-label:  { fontFamily: "Inter", px: 46,  weight: 800, upper: true, color: "card" }
+  bar-note:   { fontFamily: "Inter", px: 30,  weight: 500, color: "card" }
+  card-label: { fontFamily: "Inter", px: 22,  weight: 600, tracking: "0.06em", upper: true, color: "muted" }
+  card-value: { fontFamily: "Inter", px: 30,  weight: 500, color: "navy" }
+  chip:       { fontFamily: "Inter", px: 30,  weight: 700, color: "card" }
 
 spacing:
-  pad-x: "5cqw"
-  pad-y-top: "5cqw"
-  gap-cards: "1.4cqw"
-  accent-line: "60px × 4px"
-
-components:
-  card-tinted:
-    backgroundColor: "{colors.card-bg}"
-    border: "1.5px solid {colors.border}"
-    rounded: "{radii.card-lg}"
-    shadow: "none"
-    description: "Universal content card. Never solid-colored, never opaque-bordered, NO shadow."
-  metric-card:
-    backgroundColor: "{colors.card-bg}"
-    border: "1.5px solid {colors.border}"
-    rounded: "{radii.card-lg}"
-    typography: "{typography.metric-value} ({colors.primary}) + {typography.metric-label} + {typography.metric-desc}"
-    description: "+ optional inline ↑/↓ change chip ({colors.positive}/{colors.negative} text, no fill)."
-  tag-pill:
-    backgroundColor: "{colors.accent-light}"
-    textColor: "{colors.primary}"
-    rounded: "{radii.pill}"
-    typography: "{typography.tag}"
-    description: "Top-right of the slide-header."
-  cta-button:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.bg}"
-    rounded: "{radii.pill}"
-    typography: "Inter 600"
-    shadow: "soft cobalt on hover only — the system's only shadow"
-    description: "The one solid element."
-  accent-line:
-    backgroundColor: "{colors.primary}"
-    size: "60×4, 2px radius"
-    description: "Above cover titles / eyebrow separators."
-  bar-track:
-    backgroundColor: "{colors.accent-light}"
-    fill: "{colors.primary} (display:block so width resolves)"
-    rounded: "{radii.bar}"
-    description: "28px track; fill carries the value."
-  step-circle:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.bg}"
-    rounded: "50%"
-    size: "56px"
-    description: "Sequential steps fade opacity 1.0→0.85→0.7→0.55."
-  split-highlight:
-    backgroundColor: "{colors.accent-light}"
-    borderLeft: "4px solid {colors.primary}"
-    rounded: "{radii.card-md}"
-    description: "Inline pull-quote callout."
-  slide-header:
-    typography: "{typography.h4-eyebrow} (cobalt) left, tag-pill right; {typography.h2} below"
-    description: "Top band of every content frame."
-  atmosphere:
-    elements: "clipped diagonal cobalt-tint panel, 3×3 cobalt dot grid, concentric closing rings"
-    description: "Cover/closing only. Never on content frames."
-  progress-bar:
-    backgroundColor: "{colors.primary}"
-    size: "3px tall, bottom edge, width grows with index"
-    description: "Persistent progress strip."
+  safe:        "140px"     # NOTHING crosses this line, ever
+  crop-inset:  "56px"      # the corner marks sit here
+  stack-gap:   "36px"
+  bar-gap:     "22px"
 ---
 
-# C2C Blue — Frame (video / frame layer)
+# C2C Blue — Frame
 
-## Overview
+## What this pack is, and what it is not
 
-C2C Blue at frame scale is a **consulting-grade system: restraint with one strong
-commitment.** A warm cream canvas and a single saturated cobalt that carries every accent —
-eyebrow, metric, CTA, chart fill, progress bar. No secondary brand color, no pastels, just cream,
-cobalt, and a tight ladder of grays. The register is investment-research / McKinsey briefing:
-measured, data-dense without crowding, executive-readable at distance.
+Rebuilt on 2026-08-16 from frames of the Expansion Pack render — the look Zoltán asked to have
+back. An earlier attempt re-based *Blue Professional* onto these hex values and it read as the
+same pack in a new colour, because the bones were wrong. **Blue Professional is a quiet corporate
+system of tinted cards; C2C is bright, centred and kinetic.** The palette was never the difference.
 
-The voice is two faces in fixed roles: **Inter** (display, every numeral, all chrome —
-eyebrows uppercase 0.08em) and **Inter** (body, muted gray, line 1.6). Headlines are near-black;
-cobalt is reserved for accent moments. Depth is **soft and tinted** — 4% cobalt card fills with 20%
-cobalt borders and 10–14px radii — never shadowed. The lack of harsh shadows is the premium signal.
+Five things carry the identity, in order of importance:
 
-**Key characteristics at frame scale:**
-- **Warm cream ground** on every frame; **single cobalt** as the only accent.
-- **Inter** (display/numerals/chrome) + **Inter** (body) — near-black headlines, cobalt numerals.
-- **Tinted cards** — cobalt 4% fill, cobalt 20% 1.5px border, 10–14px radius, **no shadow**.
-- **Pill chrome** (100px) — tag pills + the one solid cobalt CTA; cobalt **progress bar**.
-- **Soft rounded corners everywhere** (no square corners save the progress bar).
-- **Atmosphere** (diagonal panel, dot grid, concentric rings) on cover/closing only.
+1. **A soft, luminous ground** — near-white in the centre, cool blue-grey at the edges, with two
+   or three large, heavily blurred pastel blooms drifting behind everything. It is never flat.
+2. **Corner crop marks** — thin grey L-brackets in all four corners, present on every frame.
+   This is the permanent chrome and the thing that crosses every scene boundary.
+3. **One huge centred statement per frame**, Inter 800, navy — with **exactly one word** in blue
+   or green. Never two emphasised words, never a whole emphasised sentence.
+4. **A blue kicker above it** — uppercase, wide tracking, bold, small.
+5. **Solid rounded bars and white cards with soft shadows.** This pack *does* use shadows, softly.
+   It has no outlines, no ink borders, no hard offsets.
 
-## The Frame
+## The ground
 
-### Frame Craft Bar
-Three eyeball tests gate every frame before any structural check:
-- **Squint** — one **near-black headline or cobalt numeral** dominates at 3–6× its neighbor.
-- **Silence** — content frames read **balanced, not crowded**; the **dashboard is the one dense exception**.
-- **Restraint** — a **single cobalt accent** carries everything; headlines stay near-black (never cobalt); no shadows (tinted cards do the lift); positive/negative inline-text only.
-- **Reference** — aim at an **investment-research / McKinsey quarterly briefing**; failure looks like a **heavy-outlined, multi-color dashboard**.
+```css
+background:
+  radial-gradient(58% 46% at 50% 34%, #fbfdfe 0%, #eef3f7 62%),
+  #eef3f7;
+```
 
-- **Primary:** 1920×1080 (16:9). Display authored in **`cqw`** (`px ÷ 1920 × 100 = cqw`).
-- **Vertical:** 1080×1920 (9:16). **Square:** 1080×1080 (1:1).
-- **Safe area:** `pad-x` 5cqw; bottom reserves room for the counter + progress bar.
+Over it, two or three blurred blooms — `filter: blur(90px)`, 30–46cqw across, one
+`bloom-blue`, one `bloom-green`, optionally a third blue at low opacity. They drift slowly and
+never stop (see `../MOTION.md`, rule 1). No hard-edged shape ever touches the background.
 
-**The container law (load-bearing).** Every frame ground sets `container-type: size`; ALL
-frame-relative units are `cqw`/`cqh` against it — never `vw`. Card radii stay px (10–14px); the
-pill radius stays 100px; borders stay 1–1.5px.
+**Never a dark scene.** This is a bright channel, always.
 
-## Colors
+## Corner crop marks — the permanent chrome
 
-Tokens identical to the source. `{colors.bg}` cream is the universal ground; `{colors.primary}`
-cobalt is the **only** accent — every eyebrow, numeral, CTA, chart fill, progress bar, and the 4px
-highlight left-rule. Headlines are `{colors.text}` near-black (never cobalt); body is
-`{colors.text-muted}`; tertiary is `{colors.text-light}`. Cards fill `{colors.card-bg}` (4%) with
-`{colors.border}` (20%) borders. `{colors.positive}`/`{colors.negative}` appear **only inline** on
-directional change chips — never as fills. **No second accent color.**
+Four L-shaped brackets, `crop-mark` colour, 2px stroke, arms ~64px, inset `crop-inset` (56px) from
+each corner. They appear once at the start of the film and **never leave**. Nothing else is
+permanent chrome — no topbar, no footer, no counter. The marks alone say "this is one film".
 
-## Typography
+## Typography — Inter only
 
-Two ramps. The **reading ramp** (Inter body 0.85cqw muted; Inter eyebrow uppercase 0.08em
-cobalt) carries copy + chrome; the **display/numerical ramp** (Inter `h3` 1.25cqw → `h1`
-4.2cqw near-black; numerals `stat-num`/`metric-value` in cobalt) carries headings and figures.
+Sentence case for sentences. **Keywords always caps:** YES · GUIDE · ACTION · TRIGGER · BUY.
+**Never the word "CRM" on screen.**
 
-- **Legibility floor:** any load-bearing line ≥ **1.4cqw**; px chrome (tag/counter) is colophon only.
-- **Fit-to-measure:** size the headline to its length. Cap the block at **≤ 78cqw**; ≤3 words → `h1`; 4–6 → `h2`; 7+ → `h3`. Cobalt numerals scale `metric-value`→`stat-num` by card size.
-- **Headlines near-black, −0.02em**; **eyebrows cobalt, uppercase, 0.08em**; **numerals cobalt 600–700**; **body Inter 400 muted, line 1.6**. No italic, no uppercase body, no cobalt headline.
+**KEEP THE TITLE SMALL — 130px hero, 92px secondary.** Recorded 2026-07-30 ("still too big at
+150px+") and again 2026-08-15 on a test build ("kilóg és túl nagy"). This is the channel's single
+most repeated defect. A headline that reaches the safe margin is already too big; step down.
 
-## Depth & Surface
+**Emphasis: exactly ONE word per sentence.** Blue for an idea (`COLD EMAIL`, `CLIENT`), green for
+an action or a payoff (`ACTION`, `NOTHING`). Solid colour only — never gradient-clipped, because
+per-letter animation splits the text into spans and a clipped gradient goes invisible.
 
-Soft and tinted — never offset. Depth from:
-- **Tinted cards** — 4% cobalt fill + 20% cobalt 1.5px border + 10–14px radius reads as lifted without offset.
-- **Border-left accent** — the 4px cobalt rule on split-highlight blocks pulls a callout forward.
-- **Rounded corners** — the 10–14px radius is part of the softness; square corners break it.
+Kickers must be **clearly readable** — 44px, 800, 0.18em tracking, blue. Earlier versions were too
+small.
 
-**Ceiling:** zero box-shadow on content (the only shadow is a soft cobalt CTA *hover*); no opaque cobalt borders; no harsh outlines.
-
-## Shapes
-
-- **100px** — tag pills, CTA, nav buttons (pill chrome).
-- **14/12/10px** — cards by size (large metric / standard stat / detail + mini).
-- **6px** — bar tracks + fills. **50%** — step circles, nav circles, dots, closing rings.
-- **0** — only the progress bar. No square-cornered content.
+Sub-lines are muted navy at 52px and **must never overlap or slide onto another element.**
 
 ## Components
 
-- **card-tinted / metric-card** — the universal soft-tint content cards (no shadow).
-- **tag-pill / cta-button / accent-line** — the cobalt pill chrome + the one solid CTA + the 60×4 rule.
-- **bar-track / step-circle / split-highlight** — cobalt data + sequence + callout patterns.
-- **slide-header** (eyebrow + tag pill) — the structural rhythm; **atmosphere** (diagonal/dots/rings) on cover/closing only; **progress-bar** on every frame.
+**bar** — a solid rounded rectangle, `radii.bar`, `shadow-bar`, label left in white 800, note right
+in white 500. Used for the funnel: **COLD widest (blue) · WARM middle (green) · HOT narrowest
+(navy)**. Bars are centred as a stack, each narrower than the one above.
 
-## Frame Treatments
+**card** — white, `radii.card`, `shadow-soft`, no border. Holds UI mocks: a small blue square +
+`GoHighLevel · Contact Details` label, then field rows (uppercase muted label above a bordered
+input), and a green primary button. **Any dashboard brand name is "GoHighLevel", never "Studio",**
+and a dashboard is never allowed to overflow the frame.
 
-> Recipe: ground · container · composes · focal · chrome · accent · silence · Fixed/Free · density.
-> Atmosphere only on cover/closing; content frames carry the slide-header rhythm.
+**chip** — near-black rounded rectangle, white 700 text, `radii.chip`. The `Comment` chip is the
+canonical one; it is the origin point that connectors draw from.
 
-### 1 · Cover  (identity · move: diagonal accent · left)
-**Ground** cream + the clipped diagonal cobalt-tint panel (right ~36%) + a 3×3 cobalt dot grid.
-**Composes** accent-line, meta, h1, body sub. **Focal** a 2-line Inter `h1` near-black, left,
-under a cobalt accent-line + meta. **Chrome** counter + progress bar. **Accent** the cobalt line +
-diagonal panel. **Silence** the diagonal panel holds the right third. **Fixed** near-black h1, cobalt
-accents, atmosphere here only. **Free** title, meta. **Density** low.
+**connector** — a 2px curved SVG path that draws on, blue on one branch and green on the other.
+Used for the `Comment → GUIDE / ACTION` split.
 
-### 2 · Dashboard  (data · move: 3-up metric grid · the dense frame)
-**Ground** cream, `pad-x`. **Composes** slide-header (eyebrow + tag-pill), h2, 3× metric/tinted card.
-**Focal** a row of tinted cards — cobalt `metric-value` + Inter label + muted desc + optional
-green/red change chip. **Chrome** eyebrow left, tag-pill right; progress bar. **Accent** the cobalt
-numerals. **Silence** tight — the density exception. **Fixed** 4% tint cards, 20% borders, no shadow,
-cobalt numerals. **Free** figures (from script), labels. **Density** dense-exception.
+**arrow** — a green horizontal arrow between two words (`COMMENT → CLIENT`), drawn, never faded in.
 
-### 3 · Bar Ranking  (data · move: cobalt bars · left)
-**Ground** cream, `pad-x`. **Composes** eyebrow, h2, bar-track rows. **Focal** 3–5 labeled
-cobalt-fill bars on cobalt-8% tracks with cobalt percentages. **Chrome** eyebrow; progress bar.
-**Accent** the cobalt fills + figures. **Silence** moderate. **Fixed** 6px tracks, cobalt fills.
-**Free** rows, values (from script). **Density** standard.
-
-### 4 · Pull Quote  (quote · move: concentric rings · centered)
-**Ground** cream, centered, with faint concentric closing-rings behind. **Composes** quote-mark,
-blockquote, cite. **Focal** a Inter `blockquote` near-black under a 15%-opacity cobalt
-quote-mark; an uppercase cobalt-muted cite beneath. **Accent** the faint rings + quote-mark. **Silence**
-~55%. **Fixed** near-black quote, soft rings. **Free** quote, cite. **Density** low.
-
-### 5 · Split + Highlight  (content · move: asymmetric split · left)
-**Ground** cream, two columns. **Composes** eyebrow, h2, body, split-highlight block. **Focal** an
-Inter body column beside a cobalt-8% highlight block (4px cobalt left rule) carrying an inline pull
-quote. **Accent** the highlight's left rule. **Silence** generous gutter. **Fixed** tinted highlight,
-4px cobalt rule. **Free** body, callout. **Density** standard.
-
-### 6 · Closing / CTA  (closer · move: centered rings + CTA)
-**Ground** cream + concentric closing-rings. **Composes** accent-line, h1, body, cta-button. **Focal**
-a Inter `h1` near-black, centered, with the one solid cobalt `cta-button` pill below. **Accent**
-the CTA + rings. **Silence** ~60%. **Fixed** one CTA, near-black h1, soft rings. **Free** sign-off, CTA
-label. **Density** low.
-
-## Composition Rules
-
-### Do
-- Start every frame on **warm cream**; let **cobalt carry every accent** (eyebrow, numeral, CTA, bar, progress).
-- Set headlines **near-black, −0.02em**; eyebrows **cobalt uppercase 0.08em**; numerals **cobalt 600–700**.
-- Use **tinted cards** (4% fill, 20% border, 10–14px radius, no shadow); body Inter 400 muted, line 1.6.
-- Keep all chrome **pill-shaped (100px)**; one solid cobalt CTA per closing frame.
-- Reserve **atmosphere** (diagonal panel, dots, rings) for cover/closing; content frames keep the slide-header rhythm.
-- Lean left on cover/dashboard/split, centered on quote/closer.
-
-### Don't
-- No second accent color; no cobalt headlines.
-- No drop shadows on content (only the soft cobalt CTA hover); no opaque cobalt borders.
-- No square corners (save the progress bar); no font substitutes; no uppercase body.
-- Don't use the green/red change chips as general accents — directional comparisons only.
-- Don't fill space with heavier borders — add substance; don't blow a headline edge-to-edge.
-
-## Aspect-Ratio Behavior
-
-| Treatment | 16:9 | 9:16 | 1:1 |
-|---|---|---|---|
-| Cover | title left, diagonal right | title top, diagonal band below | title upper, dots corner |
-| Dashboard | 3 cards across | 3 stacked | 2×2 |
-| Bar Ranking | 3–5 bars | 3–5 bars (tighter) | 3 bars |
-| Pull Quote | centered, rings behind | centered, taller | centered |
-| Split + Highlight | side-by-side | stacked | stacked |
-| Closing / CTA | centered + CTA | centered + CTA | centered + CTA |
-
-`pad-x` holds on the short edge; re-step display above the 1.4cqw floor. The diagonal cover panel
-becomes a top/bottom band on 9:16. Numerals stay Latin Arabic digits in CJK builds.
-
-## Approved Entities
-
-No real customers, logos, or vendors are defined in the source — render any such mark as a
-placeholder. Figures, metrics, and quotes are content; the system supplies cream + cobalt + grays.
-
-## Numerals & Claims (hard rule)
-
-Never invent figures, financials, percentages, or dates at frame scale. Render slots as `— figure —`,
-`{metric}`, `+NN%`, `↑ —`. Metric cards, bar values, and stat cells especially carry placeholders
-until the script supplies them. Directional chips require a real comparison from the script.
-
-## Pre-Render Self-Audit
-
-- **Squint** — one near-black headline or cobalt numeral dominates per frame.
-- **Silence** — content frames balanced, not crowded; only the dashboard runs dense.
-- **Single accent** — cobalt only; headlines near-black; positive/negative inline only.
-- **Type** — Inter headings −0.02em near-black, cobalt eyebrows 0.08em + numerals; Inter body muted line 1.6; ≥1.4cqw floor.
-- **Depth** — tinted cards (no shadow), soft rounded corners, 20% cobalt borders; no square content corners.
-- **Anchor** — left on cover/dashboard/split, centered on quote/closer; atmosphere on cover/closing only.
-- **Fabrication** — every numeral traces to the script, else placeholder.
-
-## Known Gaps
-
-- **Motion intentionally out of scope.** frame.md specifies composition only; the source's 500ms translateX transitions + bar-fill animations are deck mechanics.
-- **Inter + Inter via Google Fonts.** CJK pairing (Noto Sans SC 700 display / Noto Serif SC 400 body) carries over; the eyebrow's uppercase+tracking signal weakens in CJK — pair it with the accent-line.
-- **9:16 / 1:1 are guidance**; verify the floor and that the diagonal panel reflows to a band.
-- Diagonal panel (clip-path), dot grid, concentric rings, and bars are CSS-only; no external imagery is required.
-
-
----
-
-# ZOLTAN GERO OVERRIDES — recovered from the C2C / Expansion Pack videos (2026-08-16)
-
-This pack is Blue Professional re-based onto the **exact palette of the Comment-to-Client and
-Expansion Pack videos** — the look Zoltán named as the one he wants back. The rules below were
-recovered from that project's design notes and **override the Blue Professional defaults above**
-wherever they disagree.
-
-## Palette — exact values
-
-| Token | Value | Role |
-|---|---|---|
-| ground | `#eef3f7` | cool light blue-grey, with a soft radial lift to white near top-centre |
-| blue (lead) | `#1a73e8` | the lead colour — emphasis, numerals, kickers, bars |
-| navy (text) | `#0e2038` | display and body type |
-| green (accent) | `#34a853` | **ONE emphasis or CTA per scene, never more** |
-| muted text | `#5b6b86` | subtitles, captions, secondary lines |
-| grid | `rgba(26,115,232,0.09)` | the drifting background grid |
-
-## 🚫 NO ORANGE. Ever.
-
-Recorded 2026-07-30 and re-confirmed: **the accent is GREEN, not orange. Zoltán dislikes orange.**
-This overrides every older note and every imported frame pack that ships an orange accent — including
-Creative Mode's hard-shadow orange. If a registry block arrives with orange in it, re-skin it to
-blue or green before it goes anywhere near a composition.
-
-## Typography — Inter only, 600 / 700 / 800
-
-Sentence case for sentences; **keywords always caps**: YES · GUIDE · ACTION · TRIGGER · BUY.
-**Never the word "CRM" on screen** — platform-independent public copy.
-
-| Role | Size @1920 | Weight | Notes |
-|---|---|---|---|
-| Kicker (top label) | 40–48px | 800 | blue, uppercase, letter-spacing ~8px. Must be clearly readable — earlier versions were too small |
-| Title / hero | **128–132px max** | 800 | navy or blue, **solid colour** — never gradient-clip while animating per letter |
-| Secondary title | 92px | 800 | |
-| Subtitle / bottom caption | 48–56px | 600–700 | muted navy. **Must never overlap or slide onto another element** |
-| Body | 28–34px | 400–600 | muted navy |
-
-**KEEP THE TITLE SMALL.** Recorded twice now — 2026-07-30 ("still too big at 150px+") and again
-2026-08-15 on the Navy test ("kilóg és túl nagy"). When in doubt, step the ramp down. A headline
-that fills the frame edge-to-edge is the single most repeated defect on this channel.
-
-**Emphasis: exactly ONE word per sentence, bold + blue.** Never a whole emphasised sentence.
-Green is reserved for the single CTA accent.
+**ring** — a thin green circle drawn around a word to mark it, hand-annotation style.
 
 ## Layout
 
-**Generous padding — nothing touches the edges.** Keep at least ~140px of safe margin on all sides;
-no element may reach the frame edge. One idea per scene, centre-weighted, no clutter.
+**Centre-weighted, always.** Kicker above, hero centred, sub-line below. Bars and cards centre as
+a group. Left-alignment is the exception, not the default.
 
-## ⚠️ NO EXTERNAL GOOGLE FONTS `<link>` IN THE COMPOSITION
+**Safe margin 140px on every side.** No element may cross it — not a bar, not a badge, not a
+shadow. `BARGROW` badges must stay centred over their bar and must never collide with the kicker
+(recorded defect, 2026-07-30): keep bars shorter and add top spacing.
 
-On this machine and network the Google Fonts stylesheet **never fires its load event**, and
-`check` and `render` hang with a navigation timeout. This was diagnosed in the C2C project and hit
-again on 2026-08-15. The HyperFrames compiler injects Inter locally from its own cache
-(`~/.cache/hyperframes/fonts`), so the look is identical without the link.
+**One idea per frame.** No clutter. If a frame needs two ideas, it needs to be two frames — and
+per `DESIGN.md` the pace wants roughly 4× more frames than feels natural anyway.
 
-**Declare `font-family: "Inter", sans-serif` and add no `<link>` and no `@import`.**
-Inter is on the compiler's auto-resolved list; exotic families are not, which is why this pack is
-Inter-only.
+## Do / Don't
 
-## Motion — see `_frames/MOTION.md`
+**Do:** one centred statement · one emphasised word · a blue kicker · a soft luminous ground ·
+crop marks on every frame · solid bars with soft shadows · white cards for UI · generous air.
 
-`MOTION.md` is frame-independent and applies unchanged. Two notes specific to this pack, recovered
-from the same source and consistent with it:
+**Don't:** dark scenes · garish overload · oversized titles · anything touching the edges ·
+whole-sentence emphasis · **orange, anywhere** · gradients on type · hard outlines or ink borders ·
+the word "CRM" · dashes ("-") in the script or VO · a static hub-and-spoke diagram.
 
-- **Pace: roughly 4× more scenes than feels natural.** Many short, punchy scenes; never linger.
-  This is the same instruction as MOTION.md's density target, written by the same person, twice.
-- **Minimalist over garish.** Clean, restrained, purposeful motion — the benchmark is the
-  minimalist "Comment" pill animation, not a particle storm. Dense does not mean loud.
+## ⚠️ No external Google Fonts `<link>`
+
+On this machine the Google Fonts stylesheet never fires its load event and `check` / `render` hang
+with a navigation timeout. Diagnosed in the C2C project, hit again 2026-08-15. Declare
+`font-family: "Inter", sans-serif` and add **no** `<link>` and **no** `@import` — the HyperFrames
+compiler injects Inter locally from its own cache.
+
+## Companions
+
+`DESIGN.md` — scene archetypes, the motion vocabulary and its registry blocks, the AVOID list.
+`brand.css` — the token bridge that re-skins any registry block to this pack.
+`../MOTION.md` — the motion system, frame-independent.
+`../BLOCKS.md` — which registry blocks we adopt, and how.

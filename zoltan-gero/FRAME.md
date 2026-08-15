@@ -1,12 +1,11 @@
----
+﻿---
 version: 3.0
 name: C2C Ownership — Frame (video / frame layer) · Zoltan Gero
 description: >
   Rebuilt 2026-08-16 from the HeyGen reference render "Comment-to-Client: The Ownership Formula",
   which Zoltán named as the best of everything we have made. Light near-white ground with a faint
   grid, sentence-case Inter headings, blue as the lead and GREEN as the accent (the reference used
-  orange; Zoltán dislikes orange, so every orange role becomes green). Sanctioned dark scenes for
-  product and data moments. Thin drawn line charts, tilted 3D device cards, building tables,
+  orange; Zoltán dislikes orange, so every orange role becomes green). 100% light ground, zero dark scenes. Thin drawn line charts, tilted 3D device cards, building tables,
   annotation rings, and an app-style end card. Motion is out of scope — see ../MOTION.md.
 unit: the frame — 1920×1080 primary; 9:16 and 1:1 documented
 principle: atoms are sacred · composition is free · numbers come from the script
@@ -15,13 +14,9 @@ colors:
   bg:          "#f4f7fa"   # light ground, faint grid texture over it
   bg-white:    "#fdfefe"
   grid:        "rgba(26,115,232,0.05)"
-  dark:        "#080c14"   # sanctioned dark scene ground
-  dark-navy:   "#0d1b33"   # dark scene with a blue lift
   blue:        "#1a73e8"   # LEAD — headings, wordmark, icons, primary bar, links
   green:       "#22a75a"   # ACCENT — replaces the reference's orange, everywhere
-  green-glow:  "rgba(34,167,90,0.45)"
-  cyan:        "#22d3ee"   # line charts on dark grounds ONLY
-  navy:        "#111d2e"   # display type on light
+    navy:        "#111d2e"   # display type on light
   label:       "#8a94a6"   # micro-labels, axis text, tracked caps
   muted:       "#5b6b86"
   card:        "#ffffff"
@@ -42,7 +37,7 @@ typography:
   kicker:      { fontFamily: "Inter", px: 26, weight: 700, tracking: "0.22em", upper: true, color: "label" }
   hero:        { fontFamily: "Inter", px: 96,  weight: 700, lineHeight: 1.12, tracking: "-0.02em", color: "navy", case: "sentence" }
   hero-caps:   { fontFamily: "Inter", px: 104, weight: 800, tracking: "0.01em", upper: true, color: "blue" }
-  burn-word:   { fontFamily: "Inter", px: 132, weight: 800, upper: true, color: "green" }
+  display-word:   { fontFamily: "Inter", px: 132, weight: 800, upper: true, color: "green" }
   card-title:  { fontFamily: "Inter", px: 34,  weight: 700, color: "navy" }
   wordmark:    { fontFamily: "Inter", px: 62,  weight: 700, color: "blue" }
   domain:      { fontFamily: "Inter", px: 30,  weight: 600, color: "blue" }
@@ -74,22 +69,26 @@ Blue leads. Green accents. That is the whole colour system.
 `rgba(26,115,232,0.05)`, and a soft near-white lift toward the centre. Objects float on it with
 soft shadows.
 
-**Dark is sanctioned** — this is the correction to the older "never a dark scene" rule. The
-reference uses near-black `#080c14` and blue-lifted `#0d1b33` deliberately, for exactly two jobs:
+**100% LIGHT. Zero dark scenes. No exceptions.** Decided 2026-08-16.
 
-1. **Product moments** — tilted 3D device or dashboard cards with a blue glow behind them.
-2. **Data moments** — a thin cyan line drawing across the frame, and a burn-word title over it.
+The HeyGen reference uses two near-black scenes for its product and data moments. **We do not.**
+Zoltán's instruction is explicit: the ground stays light everywhere, from the first frame to the
+last. What we take from the reference is its **motion**, not its darkness.
 
-A dark scene is an event, not a mood. Two or three in a nine-minute film, never a run of them.
-The film opens light and **closes light**.
+The two jobs those dark scenes did are handled on the light ground instead:
+
+- **Product moments** — tilted device cards keep their perspective and depth, but sit on the light
+  ground with a soft blue-tinted shadow instead of a glow on black.
+- **Data moments** — the line chart draws in **blue** with a green end dot on the light ground.
+  Cyan is not part of this palette; it only existed to survive a black background.
+- **The burn word** loses its bloom and becomes a solid green word at display scale. Emphasis
+  comes from size and colour, not from glow.
 
 ## Components
 
 **card** — white, `radii.card`, `shadow-card`, no border. The workhorse.
 
-**tilted device stack** *(dark scenes)* — two cards in perspective, rotated ~8–12°, offset in
-depth: a narrow sidebar card behind, a wide `Contact Details` card in front, blue radial glow
-behind both. **The dashboard brand is "GoHighLevel", never "Studio".**
+**tilted device stack** - two cards in perspective, rotated 8-12 degrees, offset in depth: a narrow sidebar card behind, a wide Contact Details card in front, on the LIGHT ground with a soft blue-tinted shadow beneath.
 
 **list card** — a card with a 4px blue left rule, a `card-title`, then rows separated by hairlines.
 **One row is highlighted**: green 1.5px border, faint green fill, and a small green `PRIORITY`
@@ -113,12 +112,9 @@ first, green second, green wins.
 
 **line chart, light** — thin `label` axes, 3px blue stroke drawing left to right, green end dot.
 
-**line chart, dark** — no axes but a vertical tracked caps label, a 3px **cyan** stroke drawing
-across a near-black frame, then the burn-word title lands over it and the line turns green and
-crashes. `REAL-TIME FEED` in tiny tracked caps, top right.
+**line chart, dramatic** - a vertical tracked-caps label at the left, a 3px BLUE stroke drawing across the LIGHT frame, then the display word lands beside it and the line turns green. REAL-TIME FEED in tiny tracked caps, top right.
 
-**burn word** — one word at `burn-word` scale in green with a soft `green-glow` bloom. **Exactly
-one per film**, on a dark ground, for the single biggest idea (`OWN`, `ALGORITHM CHANGE`).
+**display word** - one word at display scale in solid green. Exactly ONE per film, on the light ground, for the single biggest idea. No glow, no bloom - size and colour carry it.
 
 **building table** — a white card, header row in `micro-label`, then rows that arrive one by one:
 avatar initials chip, name, email in `label`, and a green `Verified` pill. A green `VERIFIED ASSET`
@@ -176,10 +172,10 @@ width. **Safe margin 140px on every side**, shadows included. One idea per frame
 ## Do / Don't
 
 **Do:** light ground with a faint grid · white cards with soft shadows · real UI · sentence-case
-headings · blue leads, green accents · one annotation per frame · one burn word per film ·
-sanctioned dark scenes for product and data · a light end card with a green CTA.
+headings · blue leads, green accents · one annotation per frame · one display word per film ·
+a light end card with a green CTA · a light ground on every single frame.
 
-**Don't:** **orange, anywhere** · a run of dark scenes · a dark ending · garish overload ·
+**Don't:** **orange, anywhere** · ANY dark scene, ever · cyan · garish overload ·
 oversized headings · anything touching the edges · whole-sentence emphasis · outlines or ink
 borders · gradients on type · "CRM" · "Studio" in a dashboard · dashes ("-") in the script or VO ·
 a static hub-and-spoke diagram · a circular mask on the avatar.

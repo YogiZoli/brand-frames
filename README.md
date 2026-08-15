@@ -45,9 +45,16 @@ registry (`hyperframes add`).
 **Canonical guide:** "★ VIDEO PIPELINE — Canonical Guide" in Drive/YT_Flywheel
 https://docs.google.com/document/d/1gzF-bkUKmzc_UlIc2x9VqSYa93t74Aas-7o97hMnd-s
 
-1. **Never build an engine.** Official HeyGen HyperFrames skills + registry only.
-   `npx hyperframes catalog` before writing any custom code.
-2. **Never invent design.** FRAME.md is the palette, type ramp, spacing, components.
+1. **Never build an ENGINE.** Rendering, build scripts, the motion runtime, the CLI — always the
+   official HeyGen HyperFrames. `npx hyperframes catalog` before writing any custom code.
+   **This law is about the engine ONLY.**
+2. **DO build our own DESIGN framework — on top of an existing one, never from zero.**
+   Corrected 2026-08-16. The design layer is ours: palette, type, components, and our own
+   **re-skinned registry blocks** (`BLOCKS.md`). We start from a shipped HeyGen frame pack
+   (Creative Mode, Blue Professional, …) and re-base it onto our palette. Registry blocks are
+   **adopted and re-skinned to our tokens** — overriding their design tokens is the whole point,
+   not a violation. What stays forbidden is inventing a look per video: within a video,
+   `FRAME.md` is law.
 3. **Never render to find out whether it works.** `check` + `snapshot` + `preview`
    answer that in seconds, for free.
 

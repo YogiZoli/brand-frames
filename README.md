@@ -1,4 +1,4 @@
-# _frames — canonical design system per channel
+﻿# _frames — canonical design system per channel
 
 **Git remote:** https://github.com/YogiZoli/brand-frames (private)
 Clone anywhere: `git clone https://github.com/YogiZoli/brand-frames.git`
@@ -10,8 +10,8 @@ Never invent a palette, font, or layout in a project. Copy from here.
 
 | Channel | Folder | Frame pack | Character |
 |---|---|---|---|
-| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **Creative Mode Navy** | Warm cream paper, 4px ink borders, hard offset shadows (zero blur), Archivo Black uppercase 0.92 lh + JetBrains Mono + Space Grotesk. Accents: navy · green (dark, cream type) / orange · yellow (hot, ink type). Adopted 2026-08-15, replacing Capsule — the old pack is archived in `_archive/capsule/`. |
-| VoxFlow (Máté workflow) | `voxflow/` | **Blue Professional** | Corporate parchment + cobalt primary, Space Grotesk display, Inter body |
+| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **Creative Mode Navy** | Warm cream paper #EFE9D9, 4px ink borders, hard offset shadows (zero blur), Archivo Black uppercase 0.92 lh. Accents: navy #1B3A6B + green (dark, cream type) / yellow (hot, ink type). Approved by Zoltan 2026-08-15. |
+| VoxFlow (Máté workflow) | `voxflow/` | **C2C Blue** | Cool blue-grey ground #eef3f7, lead blue #1a73e8, navy text #0e2038, single green accent #34a853, Inter-only. The recovered Comment-to-Client / Expansion Pack palette. Adopted 2026-08-16. |
 
 ## Files in each channel folder
 

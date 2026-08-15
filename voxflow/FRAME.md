@@ -1,26 +1,26 @@
----
+﻿---
 version: alpha
-name: Blue Professional — Frame (video / frame layer)
+name: C2C Blue — Frame (video / frame layer)
 description: >
-  Video-first companion to Blue Professional's design.md. The unit is the frame (1920×1080). Atoms
-  are identical and sacred — the warm cream canvas, a single saturated cobalt (#1e2bfa) as the only
-  accent, the three-step gray text ladder, Space Grotesk (display/numerals/chrome) + Inter (body),
+  Video-first companion to C2C Blue's design.md. The unit is the frame (1920×1080). Atoms
+  are identical and sacred — the warm cream canvas, a single saturated cobalt (#1a73e8) as the only
+  accent, the three-step gray text ladder, Inter (display/numerals/chrome) + Inter (body),
   soft cobalt-tinted cards (4% fill / 20% border / 10–14px radius) with NO shadows, pill chrome, and
   the cobalt progress bar. Composition + frame scale rewritten. Motion out of scope.
 unit: the frame — 1920×1080 primary; 9:16 and 1:1 documented
 principle: atoms are sacred · composition is free · numbers come from the script
 
 colors:
-  bg: "#fdfae7"
-  primary: "#1e2bfa"
-  text: "#111111"
-  text-muted: "#6b6b6b"
-  text-light: "#9a9a9a"
-  accent-light: "rgba(30,43,250,0.08)"
-  accent-medium: "rgba(30,43,250,0.15)"
-  border: "rgba(30,43,250,0.2)"
-  card-bg: "rgba(30,43,250,0.04)"
-  positive: "#059669"
+  bg: "#eef3f7"
+  primary: "#1a73e8"
+  text: "#0e2038"
+  text-muted: "#5b6b86"
+  text-light: "#8a97ad"
+  accent-light: "rgba(26,115,232,0.08)"
+  accent-medium: "rgba(26,115,232,0.15)"
+  border: "rgba(26,115,232,0.2)"
+  card-bg: "rgba(26,115,232,0.04)"
+  positive: "#34a853"
   negative: "#dc2626"
 
 radii:
@@ -32,19 +32,19 @@ radii:
   circle: "50%"
 
 typography:
-  # — reading ramp (Inter body + Space Grotesk chrome) —
+  # — reading ramp (Inter body + Inter chrome) —
   body:    { fontFamily: "Inter", cqw: 0.85, weight: 400, lineHeight: 1.6, color: "text-muted" }
-  h4-eyebrow:{ fontFamily: "Space Grotesk", cqw: 0.8, weight: 600, tracking: "0.08em", upper: true, color: "primary" }
-  tag:     { fontFamily: "Space Grotesk", px: 12, weight: 500, color: "primary" }
-  counter: { fontFamily: "Space Grotesk", px: 13, weight: 500, tracking: "0.05em", color: "text-muted" }
-  # — display / numerical ramp (Space Grotesk, near-black headings / cobalt numerals) —
-  h3:      { fontFamily: "Space Grotesk", cqw: 1.25, weight: 500, lineHeight: 1.3, tracking: "-0.02em", color: "text" }
-  stat-num:{ fontFamily: "Space Grotesk", cqw: 1.9, weight: 700, lineHeight: 1.0, color: "primary" }
-  blockquote:{ fontFamily: "Space Grotesk", cqw: 2.4, weight: 500, lineHeight: 1.35, color: "text" }
-  h2:      { fontFamily: "Space Grotesk", cqw: 2.6, weight: 600, lineHeight: 1.1, tracking: "-0.02em", color: "text" }
-  metric-value:{ fontFamily: "Space Grotesk", cqw: 3.0, weight: 700, lineHeight: 1.0, color: "primary" }
-  h1:      { fontFamily: "Space Grotesk", cqw: 4.2, weight: 700, lineHeight: 1.08, tracking: "-0.02em", color: "text" }
-  quote-mark:{ fontFamily: "Space Grotesk", cqw: 8.0, weight: 700, lineHeight: 0.5, color: "primary", opacity: 0.15 }
+  h4-eyebrow:{ fontFamily: "Inter", cqw: 0.8, weight: 600, tracking: "0.08em", upper: true, color: "primary" }
+  tag:     { fontFamily: "Inter", px: 12, weight: 500, color: "primary" }
+  counter: { fontFamily: "Inter", px: 13, weight: 500, tracking: "0.05em", color: "text-muted" }
+  # — display / numerical ramp (Inter, near-black headings / cobalt numerals) —
+  h3:      { fontFamily: "Inter", cqw: 1.25, weight: 500, lineHeight: 1.3, tracking: "-0.02em", color: "text" }
+  stat-num:{ fontFamily: "Inter", cqw: 1.9, weight: 700, lineHeight: 1.0, color: "primary" }
+  blockquote:{ fontFamily: "Inter", cqw: 2.4, weight: 500, lineHeight: 1.35, color: "text" }
+  h2:      { fontFamily: "Inter", cqw: 2.6, weight: 600, lineHeight: 1.1, tracking: "-0.02em", color: "text" }
+  metric-value:{ fontFamily: "Inter", cqw: 3.0, weight: 700, lineHeight: 1.0, color: "primary" }
+  h1:      { fontFamily: "Inter", cqw: 4.2, weight: 700, lineHeight: 1.08, tracking: "-0.02em", color: "text" }
+  quote-mark:{ fontFamily: "Inter", cqw: 8.0, weight: 700, lineHeight: 0.5, color: "primary", opacity: 0.15 }
 
 spacing:
   pad-x: "5cqw"
@@ -75,7 +75,7 @@ components:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.bg}"
     rounded: "{radii.pill}"
-    typography: "Space Grotesk 600"
+    typography: "Inter 600"
     shadow: "soft cobalt on hover only — the system's only shadow"
     description: "The one solid element."
   accent-line:
@@ -110,24 +110,24 @@ components:
     description: "Persistent progress strip."
 ---
 
-# Blue Professional — Frame (video / frame layer)
+# C2C Blue — Frame (video / frame layer)
 
 ## Overview
 
-Blue Professional at frame scale is a **consulting-grade system: restraint with one strong
+C2C Blue at frame scale is a **consulting-grade system: restraint with one strong
 commitment.** A warm cream canvas and a single saturated cobalt that carries every accent —
 eyebrow, metric, CTA, chart fill, progress bar. No secondary brand color, no pastels, just cream,
 cobalt, and a tight ladder of grays. The register is investment-research / McKinsey briefing:
 measured, data-dense without crowding, executive-readable at distance.
 
-The voice is two faces in fixed roles: **Space Grotesk** (display, every numeral, all chrome —
+The voice is two faces in fixed roles: **Inter** (display, every numeral, all chrome —
 eyebrows uppercase 0.08em) and **Inter** (body, muted gray, line 1.6). Headlines are near-black;
 cobalt is reserved for accent moments. Depth is **soft and tinted** — 4% cobalt card fills with 20%
 cobalt borders and 10–14px radii — never shadowed. The lack of harsh shadows is the premium signal.
 
 **Key characteristics at frame scale:**
 - **Warm cream ground** on every frame; **single cobalt** as the only accent.
-- **Space Grotesk** (display/numerals/chrome) + **Inter** (body) — near-black headlines, cobalt numerals.
+- **Inter** (display/numerals/chrome) + **Inter** (body) — near-black headlines, cobalt numerals.
 - **Tinted cards** — cobalt 4% fill, cobalt 20% 1.5px border, 10–14px radius, **no shadow**.
 - **Pill chrome** (100px) — tag pills + the one solid cobalt CTA; cobalt **progress bar**.
 - **Soft rounded corners everywhere** (no square corners save the progress bar).
@@ -161,8 +161,8 @@ directional change chips — never as fills. **No second accent color.**
 
 ## Typography
 
-Two ramps. The **reading ramp** (Inter body 0.85cqw muted; Space Grotesk eyebrow uppercase 0.08em
-cobalt) carries copy + chrome; the **display/numerical ramp** (Space Grotesk `h3` 1.25cqw → `h1`
+Two ramps. The **reading ramp** (Inter body 0.85cqw muted; Inter eyebrow uppercase 0.08em
+cobalt) carries copy + chrome; the **display/numerical ramp** (Inter `h3` 1.25cqw → `h1`
 4.2cqw near-black; numerals `stat-num`/`metric-value` in cobalt) carries headings and figures.
 
 - **Legibility floor:** any load-bearing line ≥ **1.4cqw**; px chrome (tag/counter) is colophon only.
@@ -199,7 +199,7 @@ Soft and tinted — never offset. Depth from:
 
 ### 1 · Cover  (identity · move: diagonal accent · left)
 **Ground** cream + the clipped diagonal cobalt-tint panel (right ~36%) + a 3×3 cobalt dot grid.
-**Composes** accent-line, meta, h1, body sub. **Focal** a 2-line Space Grotesk `h1` near-black, left,
+**Composes** accent-line, meta, h1, body sub. **Focal** a 2-line Inter `h1` near-black, left,
 under a cobalt accent-line + meta. **Chrome** counter + progress bar. **Accent** the cobalt line +
 diagonal panel. **Silence** the diagonal panel holds the right third. **Fixed** near-black h1, cobalt
 accents, atmosphere here only. **Free** title, meta. **Density** low.
@@ -219,7 +219,7 @@ cobalt-fill bars on cobalt-8% tracks with cobalt percentages. **Chrome** eyebrow
 
 ### 4 · Pull Quote  (quote · move: concentric rings · centered)
 **Ground** cream, centered, with faint concentric closing-rings behind. **Composes** quote-mark,
-blockquote, cite. **Focal** a Space Grotesk `blockquote` near-black under a 15%-opacity cobalt
+blockquote, cite. **Focal** a Inter `blockquote` near-black under a 15%-opacity cobalt
 quote-mark; an uppercase cobalt-muted cite beneath. **Accent** the faint rings + quote-mark. **Silence**
 ~55%. **Fixed** near-black quote, soft rings. **Free** quote, cite. **Density** low.
 
@@ -231,7 +231,7 @@ quote. **Accent** the highlight's left rule. **Silence** generous gutter. **Fixe
 
 ### 6 · Closing / CTA  (closer · move: centered rings + CTA)
 **Ground** cream + concentric closing-rings. **Composes** accent-line, h1, body, cta-button. **Focal**
-a Space Grotesk `h1` near-black, centered, with the one solid cobalt `cta-button` pill below. **Accent**
+a Inter `h1` near-black, centered, with the one solid cobalt `cta-button` pill below. **Accent**
 the CTA + rings. **Silence** ~60%. **Fixed** one CTA, near-black h1, soft rings. **Free** sign-off, CTA
 label. **Density** low.
 
@@ -282,7 +282,7 @@ until the script supplies them. Directional chips require a real comparison from
 - **Squint** — one near-black headline or cobalt numeral dominates per frame.
 - **Silence** — content frames balanced, not crowded; only the dashboard runs dense.
 - **Single accent** — cobalt only; headlines near-black; positive/negative inline only.
-- **Type** — Space Grotesk headings −0.02em near-black, cobalt eyebrows 0.08em + numerals; Inter body muted line 1.6; ≥1.4cqw floor.
+- **Type** — Inter headings −0.02em near-black, cobalt eyebrows 0.08em + numerals; Inter body muted line 1.6; ≥1.4cqw floor.
 - **Depth** — tinted cards (no shadow), soft rounded corners, 20% cobalt borders; no square content corners.
 - **Anchor** — left on cover/dashboard/split, centered on quote/closer; atmosphere on cover/closing only.
 - **Fabrication** — every numeral traces to the script, else placeholder.
@@ -290,6 +290,80 @@ until the script supplies them. Directional chips require a real comparison from
 ## Known Gaps
 
 - **Motion intentionally out of scope.** frame.md specifies composition only; the source's 500ms translateX transitions + bar-fill animations are deck mechanics.
-- **Space Grotesk + Inter via Google Fonts.** CJK pairing (Noto Sans SC 700 display / Noto Serif SC 400 body) carries over; the eyebrow's uppercase+tracking signal weakens in CJK — pair it with the accent-line.
+- **Inter + Inter via Google Fonts.** CJK pairing (Noto Sans SC 700 display / Noto Serif SC 400 body) carries over; the eyebrow's uppercase+tracking signal weakens in CJK — pair it with the accent-line.
 - **9:16 / 1:1 are guidance**; verify the floor and that the diagonal panel reflows to a band.
 - Diagonal panel (clip-path), dot grid, concentric rings, and bars are CSS-only; no external imagery is required.
+
+
+---
+
+# ZOLTAN GERO OVERRIDES — recovered from the C2C / Expansion Pack videos (2026-08-16)
+
+This pack is Blue Professional re-based onto the **exact palette of the Comment-to-Client and
+Expansion Pack videos** — the look Zoltán named as the one he wants back. The rules below were
+recovered from that project's design notes and **override the Blue Professional defaults above**
+wherever they disagree.
+
+## Palette — exact values
+
+| Token | Value | Role |
+|---|---|---|
+| ground | `#eef3f7` | cool light blue-grey, with a soft radial lift to white near top-centre |
+| blue (lead) | `#1a73e8` | the lead colour — emphasis, numerals, kickers, bars |
+| navy (text) | `#0e2038` | display and body type |
+| green (accent) | `#34a853` | **ONE emphasis or CTA per scene, never more** |
+| muted text | `#5b6b86` | subtitles, captions, secondary lines |
+| grid | `rgba(26,115,232,0.09)` | the drifting background grid |
+
+## 🚫 NO ORANGE. Ever.
+
+Recorded 2026-07-30 and re-confirmed: **the accent is GREEN, not orange. Zoltán dislikes orange.**
+This overrides every older note and every imported frame pack that ships an orange accent — including
+Creative Mode's hard-shadow orange. If a registry block arrives with orange in it, re-skin it to
+blue or green before it goes anywhere near a composition.
+
+## Typography — Inter only, 600 / 700 / 800
+
+Sentence case for sentences; **keywords always caps**: YES · GUIDE · ACTION · TRIGGER · BUY.
+**Never the word "CRM" on screen** — platform-independent public copy.
+
+| Role | Size @1920 | Weight | Notes |
+|---|---|---|---|
+| Kicker (top label) | 40–48px | 800 | blue, uppercase, letter-spacing ~8px. Must be clearly readable — earlier versions were too small |
+| Title / hero | **128–132px max** | 800 | navy or blue, **solid colour** — never gradient-clip while animating per letter |
+| Secondary title | 92px | 800 | |
+| Subtitle / bottom caption | 48–56px | 600–700 | muted navy. **Must never overlap or slide onto another element** |
+| Body | 28–34px | 400–600 | muted navy |
+
+**KEEP THE TITLE SMALL.** Recorded twice now — 2026-07-30 ("still too big at 150px+") and again
+2026-08-15 on the Navy test ("kilóg és túl nagy"). When in doubt, step the ramp down. A headline
+that fills the frame edge-to-edge is the single most repeated defect on this channel.
+
+**Emphasis: exactly ONE word per sentence, bold + blue.** Never a whole emphasised sentence.
+Green is reserved for the single CTA accent.
+
+## Layout
+
+**Generous padding — nothing touches the edges.** Keep at least ~140px of safe margin on all sides;
+no element may reach the frame edge. One idea per scene, centre-weighted, no clutter.
+
+## ⚠️ NO EXTERNAL GOOGLE FONTS `<link>` IN THE COMPOSITION
+
+On this machine and network the Google Fonts stylesheet **never fires its load event**, and
+`check` and `render` hang with a navigation timeout. This was diagnosed in the C2C project and hit
+again on 2026-08-15. The HyperFrames compiler injects Inter locally from its own cache
+(`~/.cache/hyperframes/fonts`), so the look is identical without the link.
+
+**Declare `font-family: "Inter", sans-serif` and add no `<link>` and no `@import`.**
+Inter is on the compiler's auto-resolved list; exotic families are not, which is why this pack is
+Inter-only.
+
+## Motion — see `_frames/MOTION.md`
+
+`MOTION.md` is frame-independent and applies unchanged. Two notes specific to this pack, recovered
+from the same source and consistent with it:
+
+- **Pace: roughly 4× more scenes than feels natural.** Many short, punchy scenes; never linger.
+  This is the same instruction as MOTION.md's density target, written by the same person, twice.
+- **Minimalist over garish.** Clean, restrained, purposeful motion — the benchmark is the
+  minimalist "Comment" pill animation, not a particle storm. Dense does not mean loud.

@@ -19,7 +19,7 @@ colors:
   green-dark: "#136636"
   navy: "#1B3A6B"        # replaces Creative Mode's pink — DARK accent, always takes cream type
   navy-dark: "#12294D"
-  orange: "#E85A1F"
+  green-bright: "#34A853"
   yellow: "#F5C518"
 
 typography:
@@ -55,7 +55,7 @@ components:
     shadow: "none"
     description: "Mono topbar (section label left + 999px ink-stroked pill right) + meta footer (descriptor left + NN • NN counter right, 0.5cqw ink dot divider). Present on most frames."
   stat-cell:
-    backgroundColor: "{colors.green} · {colors.navy} · {colors.orange} · {colors.cream}"
+    backgroundColor: "{colors.green} · {colors.navy} · {colors.green-bright} · {colors.cream}"
     textColor: "{colors.cream} on accent · {colors.ink} on cream"
     border: "0.4cqw solid {colors.ink}"
     rounded: "0"
@@ -77,7 +77,7 @@ components:
     border: "0.4cqw solid {colors.ink}"
     rounded: "0"
     typography: "{typography.marker}"
-    shadow: "1.25cqw 1.25cqw 0 {colors.orange}, 1.25cqw 1.25cqw 0 0.2cqw {colors.ink}"
+    shadow: "1.25cqw 1.25cqw 0 {colors.green-bright}, 1.25cqw 1.25cqw 0 0.2cqw {colors.ink}"
     description: "The one hard-offset featured callout per frame."
   kicker-block:
     backgroundColor: "{colors.ink}"
@@ -142,7 +142,7 @@ ground reserved for a single closing plate, the hard shadow spent on one feature
 **Key characteristics at frame scale:**
 - **Cream ground** (`{colors.cream}`) on nearly every frame; `{colors.green}` reserved for the closing plate.
 - **0.4cqw (4px @1920) ink borders** on every structural element; 0.3cqw internal rules.
-- **Hard offset shadow** (≈1.25cqw, orange+ink) on one featured block per frame — never blurred.
+- **Hard offset shadow** (≈1.25cqw, green-bright+ink) on one featured block per frame — never blurred.
 - **Archivo Black uppercase**, 0.92 line-height, always; sentence-case Archivo Black does not exist.
 - **Two or three accents per frame**, never all four; collisions are the design.
 - **One pill chip** (999px) per frame as the sole rounded element.
@@ -169,8 +169,8 @@ in the display ramp is `cqw`.
 ## Colors
 
 Tokens identical to the source. At frame scale: `{colors.cream}` is the **ground**, `{colors.ink}`
-is borders + type, and the four accents (`green` / `navy` / `orange` / `yellow`) are **flat fills
-rationed two-to-three per frame.** `{colors.orange}` is also the hard-shadow color. `{colors.green}`
+is borders + type, and the four accents (`green` / `navy` / `green-bright` / `yellow`) are **flat fills
+rationed two-to-three per frame.** `{colors.green-bright}` is also the hard-shadow color. `{colors.green}`
 doubles as the single closing-plate ground — its rarity is the impact. Never introduce a fifth
 accent; never use pure white; never gradient.
 
@@ -181,14 +181,21 @@ carried ink type. **Navy is a dark accent and carries cream type.** Two families
 
 | Accent | Type on it | Role |
 |---|---|---|
-| `navy` · `green` | **`{colors.cream}`** | dark grounds — authority, the close, the featured marker |
-| `orange` · `yellow` | **`{colors.ink}`** | hot grounds — ink-on-fire, annotation, the hard shadow |
+| `navy` #1B3A6B · `green` #1F8A4C | **`{colors.cream}`** | dark grounds — authority, the close, the featured marker |
+| `green-bright` #34A853 · `yellow` #F5C518 | **`{colors.ink}`** | hot grounds — annotation, and the hard offset shadow |
+
+**No orange anywhere.** Decided 2026-08-16, confirming a note from 2026-07-30: Zoltán dislikes
+orange. Creative Mode's stock hard-shadow orange `#E85A1F` is replaced throughout by
+`green-bright` `#34A853` — the same green as the C2C videos. The signature hard offset shadow is
+therefore green-on-ink, and the palette runs cool: two deep colours that take cream type, two
+bright ones that take ink type. Never reintroduce orange, in a frame pack or in a re-skinned
+registry block.
 
 Applying ink type on navy fails WCAG AA (≈2.2:1) and is the one way to break this palette.
 Everything else about the atoms is unchanged and sacred.
 
 The channel now runs **cool-and-warm** rather than candy: a cream paper ground, two dark
-authority accents, two hot accents rationed. The hard offset shadow stays `orange` — against navy
+authority accents, two hot accents rationed. The hard offset shadow stays `green-bright` — against navy
 it is the sharpest contrast pair in the system, and it is the frame's signature gesture.
 
 ## Typography
@@ -204,7 +211,7 @@ to `display-hero` (15.5cqw) for a wordmark cover.
 ## Depth & Surface
 
 Zero blur. Two depth devices only:
-- **Hard offset shadow** — a solid duplicate offset ≈1.25cqw in X and Y (`box-shadow: 1.25cqw 1.25cqw 0 {colors.orange}, 1.25cqw 1.25cqw 0 0.2cqw {colors.ink}`). **One featured block per frame** (marker, stamp). Diagram stacks may use a 0.95cqw ink-only offset.
+- **Hard offset shadow** — a solid duplicate offset ≈1.25cqw in X and Y (`box-shadow: 1.25cqw 1.25cqw 0 {colors.green-bright}, 1.25cqw 1.25cqw 0 0.2cqw {colors.ink}`). **One featured block per frame** (marker, stamp). Diagram stacks may use a 0.95cqw ink-only offset.
 - **Color-block contrast** — cream on cream-2, ink on cream, accent on cream. No shadow needed when contrast carries.
 
 **Ceiling:** no blurred shadow, no gradient, no glow, anywhere.
@@ -233,17 +240,17 @@ Zero blur. Two depth devices only:
 ### 1 · Wordmark Cover  (identity · move: full-frame lockup · centered)
 **Ground** `{colors.cream}`, `frame-pad`. **Container** grid, chrome top/bottom, focal centered.
 **Composes** frame-chrome, the wordmark. **Focal** the two-line wordmark at `display-hero`
-(15.5cqw), centered, second line in an accent (`{colors.navy}`/`orange`). **Chrome** mono topbar
+(15.5cqw), centered, second line in an accent (`{colors.navy}`/`green-bright`). **Chrome** mono topbar
 (section label + pill) and meta footer (descriptor + 01•NN). **Accent** the second-line color only;
 optionally one corner decorative-circle bleeding off an edge. **Silence** ~55% empty cream.
 **Fixed** Archivo Black uppercase 0.84 lh, one accent on the wordmark, square corners. **Free** which
 accent, line break, whether a circle bleeds a corner. **Density** sparse.
 
 ### 2 · Big Claim  (oversized statement · move: scale · left)
-**Ground** one full-bleed accent (`{colors.navy}`/`green`/`orange`), `content-gutter`. **Container**
+**Ground** one full-bleed accent (`{colors.navy}`/`green`/`green-bright`), `content-gutter`. **Container**
 flex, claim left-anchored and vertically centered. **Composes** kicker-block, the claim. **Focal**
 a 2–3 line claim at `display-xl`/`display-lg`. **Type color follows the ground rule:** ink on
-`orange`/`yellow` (ink-on-fire), cream on `navy`/`green`. Never pure white.
+`green-bright`/`yellow` (ink-on-fire), cream on `navy`/`green`. Never pure white.
 **Chrome** small ink kicker-block above the claim; mono meta footer. **Accent** the ground IS the
 accent; no second accent competes. **Silence** ~45% of the colored field empty. **Fixed** the ground rule for type color,
 fit-to-measure sizing, no shadow on type. **Free** the claim, which accent ground, which
@@ -252,7 +259,7 @@ word breaks. **Density** sparse — one idea.
 ### 3 · Stat Grid  (catalog · move: density — the one dense frame · centered)
 **Ground** `{colors.cream}`, `content-gutter`. **Container** grid: a centered `display-head` over a
 3-up row of stat-cells. **Composes** frame-chrome, 3× stat-cell. **Focal** the row of three
-ink-bordered cells (green / navy / orange), each a `stat-num` + mono label. **Chrome** mono topbar +
+ink-bordered cells (green / navy / green-bright), each a `stat-num` + mono label. **Chrome** mono topbar +
 meta. **Accent** the three cell fills (the named density exception — three accents allowed here).
 **Silence** ~25% — tight by design. **Fixed** 0.4cqw borders, square corners, no per-cell shadow,
 mono labels. **Free** the three figures+labels, head copy, which three accents. **Density** dense-exception.
@@ -266,8 +273,8 @@ this beat, cream-on-green type, one stamp. **Free** sign-off copy, stamp text, s
 
 ### 5 · Featured Marker  (callout · move: hard-shadow focal · left/asymmetric)
 **Ground** `{colors.cream}`. **Composes** frame-chrome, marker-block, optional body-md support line.
-**Focal** the navy marker-block with the signature orange+ink hard offset shadow, set asymmetrically.
-**Accent** navy block + orange shadow (two accents). **Silence** ~50%. **Fixed** exactly one hard
+**Focal** the navy marker-block with the signature green-bright+ink hard offset shadow, set asymmetrically.
+**Accent** navy block + green-bright shadow (two accents). **Silence** ~50%. **Fixed** exactly one hard
 shadow on the frame, 0.4cqw borders. **Free** marker copy, block position, optional support line.
 **Density** sparse.
 

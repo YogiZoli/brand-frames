@@ -11,7 +11,7 @@
 :root{
   --cream:#EFE9D9; --cream-2:#E4DCC4; --ink:#0F0F0F; --ink-2:#2A2A2A;
   --green:#1F8A4C; --green-dark:#136636; --navy:#1B3A6B; --navy-dark:#12294D;
-  --orange:#E85A1F; --yellow:#F5C518;
+  --green-bright:#34A853; --yellow:#F5C518;
   --display:"Archivo Black",sans-serif; --body:"Space Grotesk",sans-serif; --mono:"JetBrains Mono",monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -42,7 +42,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
 .cover .footer{display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:20px;letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:2;padding-left:200px}
 .cover .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--ink);margin:0 12px;vertical-align:middle}
 /* cover decor */
-.cover .badge{position:absolute;top:44%;right:6%;width:260px;height:260px;background:var(--navy);border:4px solid var(--ink);transform:rotate(-6deg);display:grid;place-items:center;z-index:1;box-shadow:24px 24px 0 var(--orange),24px 24px 0 4px var(--ink)}
+.cover .badge{position:absolute;top:44%;right:6%;width:260px;height:260px;background:var(--navy);border:4px solid var(--ink);transform:rotate(-6deg);display:grid;place-items:center;z-index:1;box-shadow:24px 24px 0 var(--green-bright),24px 24px 0 4px var(--ink)}
 .cover .badge .ring{width:84%;height:84%;border:4px solid var(--ink);border-radius:50%;display:grid;place-items:center;text-align:center}
 .cover .badge .ring span{font-family:var(--display);text-transform:uppercase;line-height:.9;font-size:34px}
 .cover .circle{position:absolute;left:-120px;bottom:-120px;width:300px;height:300px;border-radius:50%;background:var(--yellow);border:4px solid var(--ink);z-index:0}
@@ -70,7 +70,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
 .stat-cell .l{font-family:var(--mono);font-size:18px;letter-spacing:.08em;text-transform:uppercase;margin-top:12px}
 .stat-cell.green{background:var(--green);color:var(--cream)}
 .stat-cell.navy{background:var(--navy);color:var(--ink)}
-.stat-cell.orange{background:var(--orange);color:var(--cream)}
+.stat-cell.green-bright{background:var(--green-bright);color:var(--cream)}
 .stat-cell.cream{background:var(--cream)}
 .step-card{border:4px solid var(--ink);padding:28px;height:300px;display:flex;flex-direction:column;justify-content:space-between}
 .step-card .num{font-family:var(--display);font-size:120px;line-height:.85}
@@ -80,7 +80,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
 .step-card.yellow{background:var(--yellow)}
 .step-card.navy{background:var(--navy)}
 .step-card.green{background:var(--green);color:var(--cream)}
-.marker{background:var(--navy);border:4px solid var(--ink);padding:36px 44px;font-family:var(--display);text-transform:uppercase;font-size:46px;line-height:1;box-shadow:24px 24px 0 var(--orange),24px 24px 0 4px var(--ink);align-self:flex-start}
+.marker{background:var(--navy);border:4px solid var(--ink);padding:36px 44px;font-family:var(--display);text-transform:uppercase;font-size:46px;line-height:1;box-shadow:24px 24px 0 var(--green-bright),24px 24px 0 4px var(--ink);align-self:flex-start}
 .kicker-block{background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:20px;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;align-self:flex-start}
 .badge-rot{background:var(--yellow);border:4px solid var(--ink);font-family:var(--display);text-transform:uppercase;font-size:26px;padding:14px 22px;transform:rotate(-4deg);align-self:flex-start}
 .pill-badge{border:2px solid var(--ink);border-radius:999px;font-family:var(--mono);font-size:18px;letter-spacing:.06em;text-transform:uppercase;padding:8px 18px;align-self:flex-start}
@@ -110,7 +110,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
 /* frame 1 — cover */
 .f-cover{display:grid;place-items:center}
 .f-cover h3{font-family:var(--display);text-transform:uppercase;line-height:.84;letter-spacing:-.02em;font-size:15.5cqw;text-align:center}
-.f-cover h3 .o{color:var(--orange)}
+.f-cover h3 .o{color:var(--green-bright)}
 
 /* frame 2 — big claim on navy */
 .f-claim{background:var(--navy);display:flex;align-items:center;padding:0 8cqw}
@@ -124,7 +124,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
 .f-stats .cell{border:.4cqw solid var(--ink);padding:2.2cqw 2.4cqw}
 .f-stats .cell .n{font-family:var(--display);font-size:6.4cqw;line-height:.88}
 .f-stats .cell .l{font-family:var(--mono);font-size:1.2cqw;letter-spacing:.08em;text-transform:uppercase;margin-top:.8cqw}
-.f-stats .green{background:var(--green);color:var(--cream)}.f-stats .navy{background:var(--navy)}.f-stats .orange{background:var(--orange);color:var(--cream)}
+.f-stats .green{background:var(--green);color:var(--cream)}.f-stats .navy{background:var(--navy)}.f-stats .green-bright{background:var(--green-bright);color:var(--cream)}
 
 /* frame 4 — closing green */
 .f-close{color:var(--cream);display:grid;place-items:center;position:relative}
@@ -147,12 +147,12 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
 .do-card li{font-size:18px;line-height:1.5;padding-left:28px;position:relative;margin-bottom:12px}
 .do-card li::before{position:absolute;left:0;font-family:var(--display)}
 .do-card.do li::before{content:"+";}
-.do-card.dont li::before{content:"\00d7";color:var(--orange)}
+.do-card.dont li::before{content:"\00d7";color:var(--green-bright)}
 
 .foot{padding:64px 96px;background:var(--ink);color:var(--cream);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:16px;letter-spacing:.08em;text-transform:uppercase}
 @media(max-width:1100px){.gallery,.swatches{grid-template-columns:1fr}.swatches{grid-template-columns:1fr 1fr}}
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"><style id="ft-override">:root{--primary:#EFE9D9!important;--secondary:#0F0F0F!important;--tertiary:#E4DCC4!important;--accent:#1B3A6B!important;--f-disp:'Archivo Black',sans-serif!important;--f-body:'Space Grotesk',sans-serif!important;--cream:#EFE9D9!important;--cream-2:#E4DCC4!important;--ink:#0F0F0F!important;--navy:#1B3A6B!important;--display:'Archivo Black',sans-serif!important;--body:'Space Grotesk',sans-serif!important;--ink-2:#2A2A2A!important;--green:#1F8A4C!important;--green-dark:#136636!important;--navy-dark:#12294D!important;--orange:#E85A1F!important;--yellow:#F5C518!important;}</style></head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"><style id="ft-override">:root{--primary:#EFE9D9!important;--secondary:#0F0F0F!important;--tertiary:#E4DCC4!important;--accent:#1B3A6B!important;--f-disp:'Archivo Black',sans-serif!important;--f-body:'Space Grotesk',sans-serif!important;--cream:#EFE9D9!important;--cream-2:#E4DCC4!important;--ink:#0F0F0F!important;--navy:#1B3A6B!important;--display:'Archivo Black',sans-serif!important;--body:'Space Grotesk',sans-serif!important;--ink-2:#2A2A2A!important;--green:#1F8A4C!important;--green-dark:#136636!important;--navy-dark:#12294D!important;--green-bright:#34A853!important;--yellow:#F5C518!important;}</style></head>
 <body>
 
 <!-- ============ COVER ============ -->
@@ -185,7 +185,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
     <div class="sw"><div class="chip" style="background:var(--ink)"></div><div class="meta"><div class="name">Ink</div><div class="hex">#0F0F0F</div><div class="role">Borders, type, rules, chrome.</div></div></div>
     <div class="sw"><div class="chip" style="background:var(--green)"></div><div class="meta"><div class="name">Green</div><div class="hex">#1F8A4C</div><div class="role">Dominant accent + closing ground.</div></div></div>
     <div class="sw"><div class="chip" style="background:var(--navy)"></div><div class="meta"><div class="name">Navy</div><div class="hex">#1B3A6B</div><div class="role">High-energy fills, markers, stamp.</div></div></div>
-    <div class="sw"><div class="chip" style="background:var(--orange)"></div><div class="meta"><div class="name">Orange</div><div class="hex">#E85A1F</div><div class="role">The hard-shadow color. Stat fills.</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--green-bright)"></div><div class="meta"><div class="name">Green-bright</div><div class="hex">#34A853</div><div class="role">The hard-shadow color. Stat fills.</div></div></div>
     <div class="sw"><div class="chip" style="background:var(--yellow)"></div><div class="meta"><div class="name">Yellow</div><div class="hex">#F5C518</div><div class="role">Warm punctuation. Badges, circles.</div></div></div>
     <div class="sw"><div class="chip" style="background:var(--cream-2)"></div><div class="meta"><div class="name">Cream 2</div><div class="hex">#E4DCC4</div><div class="role">Recessed table fill.</div></div></div>
     <div class="sw"><div class="chip" style="background:var(--ink-2)"></div><div class="meta"><div class="name">Ink 2</div><div class="hex">#2A2A2A</div><div class="role">Secondary body text.</div></div></div>
@@ -207,7 +207,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
   </div>
   <div class="type-row">
     <div class="lbl"><div class="tok">stat-num</div><div class="meta">Archivo Black · 96px<br>line 0.9</div></div>
-    <div class="spec"><span class="disp" style="font-size:88px">240<span style="color:var(--orange)">%</span></span></div>
+    <div class="spec"><span class="disp" style="font-size:88px">240<span style="color:var(--green-bright)">%</span></span></div>
   </div>
   <div class="type-row">
     <div class="lbl"><div class="tok">body-lg</div><div class="meta">Space Grotesk · 28px<br>line 1.4 · left-aligned</div></div>
@@ -227,7 +227,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
   <div class="comp-grid" style="margin-bottom:48px">
     <div class="stat-cell green span-3"><div class="n">240%</div><div class="l">Output Lift</div></div>
     <div class="stat-cell navy span-3"><div class="n">12K</div><div class="l">Frames Shipped</div></div>
-    <div class="stat-cell orange span-3"><div class="n">3.4×</div><div class="l">Faster Cuts</div></div>
+    <div class="stat-cell green-bright span-3"><div class="n">3.4×</div><div class="l">Faster Cuts</div></div>
     <div class="stat-cell cream span-3"><div class="n">98</div><div class="l">Templates</div></div>
   </div>
 
@@ -296,7 +296,7 @@ section{padding:120px 96px;border-bottom:4px solid var(--ink)}
           <div class="row">
             <div class="cell green"><div class="n">240%</div><div class="l">Output Lift</div></div>
             <div class="cell navy"><div class="n">3.4×</div><div class="l">Faster Cuts</div></div>
-            <div class="cell orange"><div class="n">12K</div><div class="l">Frames Shipped</div></div>
+            <div class="cell green-bright"><div class="n">12K</div><div class="l">Frames Shipped</div></div>
           </div>
         </div>
         <div class="chrome-bot"><span>Stat Cells</span><span>03<span class="cdot"></span>04</span></div>

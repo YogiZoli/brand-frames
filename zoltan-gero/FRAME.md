@@ -1,272 +1,340 @@
----
+﻿---
 version: alpha
-name: Capsule — Frame (video / frame layer)
+name: Zoltan Gero — Creative Mode Navy (video / frame layer)
 description: >
-  Video-first companion to Capsule's design.md. The unit is the frame (1920×1080). Atoms are
-  identical and sacred — the pill geometry (9999px small / 2rem cards) with a 2px ink outline on
-  everything, the sun-bleached cream canvas, the nine-color candy palette, Bodoni Moda + Space
-  Grotesk, soft hard-offset shadows (4/6/8/12px in 8% ink), floating decorative-pill wallpaper,
-  radial accent glows, and the grain overlay. Composition + frame scale rewritten. Motion out of scope.
+  Video-first companion to Creative Mode's design.md. The unit is the frame (1920×1080),
+  not the slide-in-a-deck. Atoms are identical and sacred — warm cream canvas, 4px ink
+  borders, hard offset shadows (no blur), Archivo Black uppercase at 0.92 line-height,
+  JetBrains Mono taxonomy, Space Grotesk body, the four-accent palette. Composition,
+  frame scale, and aspect-ratio behavior are rewritten for the frame. Motion is out of scope.
 unit: the frame — 1920×1080 primary; 9:16 and 1:1 documented
 principle: atoms are sacred · composition is free · numbers come from the script
 
 colors:
-  cream: "#F5F5F0"
-  ink: "#1A1A1A"
-  outline: "#1E1E1E"
-  white: "#FFFFFF"
-  coral: "#E85D4E"
-  lime: "#C4D94E"
-  lavender: "#C5B5E0"
-  sky: "#8BB4F7"
-  violet: "#A06CE8"
-  yellow: "#F2D160"
-  peach: "#F5B895"
-  mint: "#A8E6CF"
-  shadow: "rgba(26,26,26,0.08)"
+  cream: "#EFE9D9"
+  cream-2: "#E4DCC4"
+  ink: "#0F0F0F"
+  ink-2: "#2A2A2A"
+  green: "#1F8A4C"
+  green-dark: "#136636"
+  navy: "#1B3A6B"        # replaces Creative Mode's pink — DARK accent, always takes cream type
+  navy-dark: "#12294D"
+  orange: "#E85A1F"
+  yellow: "#F5C518"
 
 typography:
-  # — reading ramp (Space Grotesk) —
-  body:      { fontFamily: "Space Grotesk", cqw: 0.85, weight: 400, lineHeight: 1.6 }
-  subtitle:  { fontFamily: "Space Grotesk", cqw: 0.95, weight: 400, tracking: "0.18em", upper: true }
-  pill-text: { fontFamily: "Space Grotesk", cqw: 0.75, weight: 600, tracking: "0.12em", upper: true }
-  label:     { fontFamily: "Space Grotesk", px: 14, weight: 500, tracking: "0.1em", upper: true }
-  # — display / hero ramp (Bodoni Moda, ink, sentence case) —
-  card-headline:{ fontFamily: "Bodoni Moda", cqw: 1.9, weight: 700, lineHeight: 1.1 }
-  orbit-numeral:{ fontFamily: "Bodoni Moda", cqw: 2.6, weight: 700, lineHeight: 1.0 }
-  quote-display:{ fontFamily: "Bodoni Moda", cqw: 4.2, weight: 600, lineHeight: 1.3, tracking: "-0.01em" }
-  stat-number: { fontFamily: "Bodoni Moda", cqw: 3.6, weight: 800, lineHeight: 1.0, tracking: "-0.03em" }
-  section-headline:{ fontFamily: "Bodoni Moda", cqw: 4.0, weight: 700, lineHeight: 1.05, tracking: "-0.01em" }
-  headline:    { fontFamily: "Bodoni Moda", cqw: 5.0, weight: 700, lineHeight: 1.05, tracking: "-0.02em" }
-  closing-display:{ fontFamily: "Bodoni Moda", cqw: 8.5, weight: 800, lineHeight: 0.95, tracking: "-0.03em" }
-  display:     { fontFamily: "Bodoni Moda", cqw: 12.0, weight: 800, lineHeight: 0.88, tracking: "-0.03em" }
+  # — reading ramp (px @ 1920, with cqw) —
+  body-lg:    { fontFamily: "Space Grotesk", px: 28, cqw: 1.46, weight: 400, lineHeight: 1.4 }
+  body-md:    { fontFamily: "Space Grotesk", px: 24, cqw: 1.25, weight: 400, lineHeight: 1.3 }
+  mono-label: { fontFamily: "JetBrains Mono", px: 24, cqw: 1.25, weight: 400, tracking: "0.06em", upper: true }
+  mono-kicker:{ fontFamily: "JetBrains Mono", px: 24, cqw: 1.25, weight: 400, tracking: "0.14em", upper: true }
+  table-head: { fontFamily: "Archivo Black", px: 28, cqw: 1.46, weight: 400, upper: true }
+  # — display / hero ramp (frame-native, cqw-first) —
+  step-title: { fontFamily: "Archivo Black", px: 34,  cqw: 1.77, weight: 400, lineHeight: 1.0, upper: true }
+  badge-label:{ fontFamily: "Archivo Black", px: 28,  cqw: 1.46, weight: 400, upper: true }
+  marker:     { fontFamily: "Archivo Black", cqw: 2.4, weight: 400, lineHeight: 1.0, upper: true }
+  stamp-num:  { fontFamily: "Archivo Black", cqw: 2.2, weight: 400, lineHeight: 0.9 }
+  stat-num:   { fontFamily: "Archivo Black", cqw: 6.4, weight: 400, lineHeight: 0.88 }
+  step-num:   { fontFamily: "Archivo Black", cqw: 7.0, weight: 400, lineHeight: 0.85 }
+  display-head: { fontFamily: "Archivo Black", cqw: 4.2, weight: 400, lineHeight: 0.92, tracking: "-0.01em", upper: true }
+  display-lg: { fontFamily: "Archivo Black", cqw: 8.0,  weight: 400, lineHeight: 0.9,  tracking: "-0.01em", upper: true }
+  display-xl: { fontFamily: "Archivo Black", cqw: 11.0, weight: 400, lineHeight: 0.9,  tracking: "-0.01em", upper: true }
+  display-hero:{ fontFamily: "Archivo Black", cqw: 15.5,weight: 400, lineHeight: 0.84, tracking: "-0.02em", upper: true }
 
 spacing:
-  pad: "5cqw"
-  gap-md: "2cqw"
-  card-pad: "2cqw 1.6cqw"
+  frame-pad: "3.3cqw"        # 64px chrome gutter @1920
+  content-gutter: "5cqw"     # 96px content gutter @1920
+  grid-gap: "1.5cqw"         # 28px
+  cell-pad: "1.7cqw"         # 32px
 
 components:
-  pill:
-    rounded: "9999px (small) / 2rem (cards)"
-    border: "0.2cqw solid {colors.outline}"
-    backgroundColor: "any candy or {colors.white}"
-    description: "The universal container — every chip/button/label/stat tile/node/bar. No unstroked pill exists."
-  pill-card:
-    backgroundColor: "{colors.white}"
-    border: "0.2cqw solid {colors.outline}"
-    rounded: "2rem"
-    shadow: "0.4cqw 0.4cqw 0 {colors.shadow}"
-    typography: "{typography.card-headline} + {typography.body}"
-    description: "Holds a circular card-icon, Bodoni headline, Space Grotesk body."
-  stat-pill:
-    backgroundColor: "{colors.white}"
-    border: "0.2cqw solid {colors.outline}"
-    rounded: "2rem"
-    shadow: "0.3cqw 0.3cqw 0 {colors.shadow}"
-    typography: "{typography.stat-number} (COLORED) + {typography.pill-text}"
-    description: "The one place color touches a numeral; + a 40px accent bar."
-  title-pill:
-    backgroundColor: "{colors.yellow}"
-    border: "0.2cqw solid {colors.outline}"
-    rounded: "9999px"
-    shadow: "0.3cqw 0.3cqw 0 {colors.shadow}"
-    typography: "{typography.pill-text}"
-    description: "Sits above the display headline on cover/closing."
-  card-icon:
-    backgroundColor: "any candy"
-    border: "0.2cqw solid {colors.outline}"
-    rounded: "50%"
-    size: "60px"
-    typography: "Bodoni numeral/letter in {colors.ink}"
-    description: "Card mark."
-  floating-pill:
-    backgroundColor: "any candy"
-    border: "0.2cqw solid {colors.outline}"
-    rounded: "9999px / 50%"
-    transform: "rotate(−20°..+25°)"
+  frame-chrome:
+    typography: "{typography.mono-label}"
+    placement: "topbar 2.5cqw from top, meta 2.5cqw from bottom, both inset {spacing.frame-pad}"
+    rounded: "0"
     shadow: "none"
-    typography: "{typography.pill-text}"
-    description: "Decorative wallpaper confetti, 5–8 per declarative frame. Flat — no shadow."
-  quote-highlight:
-    backgroundColor: "{colors.lime} / {colors.sky}"
-    border: "0.2cqw solid {colors.outline}"
-    rounded: "9999px"
-    description: "Inline candy pill wrapping a phrase inside a Bodoni quote — the emphasis mechanism, replacing bold/italic."
-  bar-track:
+    description: "Mono topbar (section label left + 999px ink-stroked pill right) + meta footer (descriptor left + NN • NN counter right, 0.5cqw ink dot divider). Present on most frames."
+  stat-cell:
+    backgroundColor: "{colors.green} · {colors.navy} · {colors.orange} · {colors.cream}"
+    textColor: "{colors.cream} on accent · {colors.ink} on cream"
+    border: "0.4cqw solid {colors.ink}"
+    rounded: "0"
+    padding: "{spacing.cell-pad}"
+    typography: "{typography.stat-num} + {typography.mono-label}"
+    shadow: "none"
+    description: "Flat accent/cream stat tile, square corners, no shadow."
+  step-card:
+    backgroundColor: "{colors.cream} · {colors.navy} · {colors.yellow} · {colors.green}"
+    border: "0.4cqw solid {colors.ink}"
+    rounded: "0"
+    padding: "{spacing.cell-pad}"
+    typography: "{typography.step-num} + {typography.step-title} + {typography.body-md}"
+    shadow: "none"
+    description: "Ink-bordered card; giant step-num top. Sequence alternates cream with accents and ENDS on green."
+  marker-block:
+    backgroundColor: "{colors.navy}"
+    textColor: "{colors.cream}"   # navy is a dark ground — cream type, never ink
+    border: "0.4cqw solid {colors.ink}"
+    rounded: "0"
+    typography: "{typography.marker}"
+    shadow: "1.25cqw 1.25cqw 0 {colors.orange}, 1.25cqw 1.25cqw 0 0.2cqw {colors.ink}"
+    description: "The one hard-offset featured callout per frame."
+  kicker-block:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.cream}"
+    typography: "{typography.mono-kicker}"
+    padding: "0.5cqw 1cqw"
+    rounded: "0"
+    description: "Inverted eyebrow chip."
+  badge-rotated:
+    backgroundColor: "{colors.yellow}"
+    border: "0.4cqw solid {colors.ink}"
+    typography: "{typography.badge-label}"
+    rounded: "0"
+    transform: "rotate(-4deg)"
+    description: "Deliberate-imperfection annotation."
+  pill-badge:
     backgroundColor: "{colors.cream}"
-    border: "0.2cqw solid {colors.outline}"
-    rounded: "9999px"
-    fill: "child candy pill, value at right edge"
-    description: "36px pill chart track."
-  accent-line:
-    backgroundColor: "{colors.coral}"
-    rounded: "9999px"
-    size: "60×4 (80×4 closing)"
-    description: "Coral pill rule."
-  atmosphere:
-    background: "1–3 radial candy glows (6–15% opacity) over {colors.cream} + 4% grain overlay"
-    description: "Baseline canvas layers on every frame. Never absent."
+    border: "0.2cqw solid {colors.ink}"
+    rounded: "999px"
+    typography: "{typography.mono-label}"
+    description: "The ONLY rounded element; reads as a chip, not a card."
+  stamp:
+    backgroundColor: "{colors.navy}"
+    textColor: "{colors.cream}"
+    border: "0.4cqw solid {colors.cream}"
+    size: "~18cqw square"
+    rounded: "0"
+    transform: "rotate(-6deg)"
+    typography: "{typography.stamp-num}"
+    description: "Closing seal with a cream circular inner ring."
+  comparison-table:
+    backgroundColor: "{colors.cream-2}"
+    border: "0.4cqw solid {colors.ink}"
+    rule: "0.3cqw solid {colors.ink}"
+    rounded: "0"
+    typography: "{typography.table-head} + {typography.body-md}"
+    shadow: "none"
+    description: "Ink head row with cream Archivo labels; navy/green column-fill variants."
+  decorative-circle:
+    backgroundColor: "{colors.yellow}"
+    border: "0.4cqw solid {colors.ink}"
+    rounded: "50%"
+    description: "Decorative figure; pairs with a green panel for shape contrast."
 ---
 
-# Capsule — Frame (video / frame layer)
+# Creative Mode — Frame (video / frame layer)
 
 ## Overview
 
-Capsule at frame scale is a **playful editorial system where every container is a pill.** The
-`border-radius: 9999px` (small) / `2rem` (cards) rule plus a 2px ink outline wraps every chip,
-card, icon, bar, and node — inflated, friendly, graphically distinct. The canvas is sun-bleached
-cream warmed by soft radial candy glows and a permanent 4% grain overlay.
+Creative Mode at frame scale is a **neo-brutalist editorial poster in motion's clothing** — warm
+cream paper, near-black ink, and four accents that collide at full saturation. Every frame is one
+flat color-blocked composition: no gradients, no blurred shadows, no rounded cards (save the one
+pill chip). Depth is **hard offset shadow** (a solid same-direction duplicate) or **color-block
+contrast**, never light.
 
-The voice is a two-face conversation: **Bodoni Moda** (didone serif, weight 700–800, always ink,
-always sentence case) carries every headline, stat, and quote; **Space Grotesk** carries body and
-all uppercase tracked pill/label text. Nine candy accents fill pills interchangeably with no
-semantic meaning. Depth is a **soft hard-offset shadow** (4/6/8/12px in 8% ink) — lifted, not
-stamped — reserved for content-bearing containers; decorative floating pills are flat.
+The display voice is **Archivo Black in strict uppercase at 0.92 line-height** — letters overlap
+their own cap height; that tightness is the brand. **JetBrains Mono** carries every label, kicker,
+counter, and axis as a "technical artifact" register. **Space Grotesk** carries the few body lines.
+The frame is loud by construction and calm by restraint: two or three accents per frame, the green
+ground reserved for a single closing plate, the hard shadow spent on one featured element only.
 
 **Key characteristics at frame scale:**
-- **Pill geometry everywhere** — 9999px small, 2rem cards — each wrapped in a 2px `{colors.outline}` stroke.
-- **Bodoni Moda** display (ink, sentence case) + **Space Grotesk** body/pills (uppercase, tracked).
-- **Nine candy accents**, interchangeable; color touches stat numerals + pill fills, never headlines.
-- **Soft offset shadows** (4/6/8/12px, 8% ink) on content containers only; floating pills are flat.
-- **Floating decorative-pill wallpaper** (5–8, tilted) + radial glows + 4% grain on declarative frames.
-- **Cream canvas** warmed by atmosphere — bare corners read as broken.
-
-## The Frame
+- **Cream ground** (`{colors.cream}`) on nearly every frame; `{colors.green}` reserved for the closing plate.
+- **0.4cqw (4px @1920) ink borders** on every structural element; 0.3cqw internal rules.
+- **Hard offset shadow** (≈1.25cqw, orange+ink) on one featured block per frame — never blurred.
+- **Archivo Black uppercase**, 0.92 line-height, always; sentence-case Archivo Black does not exist.
+- **Two or three accents per frame**, never all four; collisions are the design.
+- **One pill chip** (999px) per frame as the sole rounded element.
 
 ### Frame Craft Bar
 Three eyeball tests gate every frame before any structural check:
-- **Squint** — one Bodoni headline or stat dominates at **3–6× its nearest neighbor**.
-- **Silence** — declarative frames carry **atmosphere, not clutter** (pills as wallpaper, not content); the **pillar-cards and stat grid are the dense exception**.
-- **Restraint** — every pill carries the 2px outline; color touches **fills + stat numerals only** (never a headline); soft shadow on content-bearing pills only (floating pills are flat); no tenth accent.
-- **Reference** — aim at a **Memphis / ice-cream-parlor editorial spread**; failure looks like a **flat, sticker-less SaaS card grid**.
+- **Squint** — exactly one element dominates, at **3–6× its nearest neighbor** (a chasm, not a ramp): the `display-hero`/`display-xl` claim or the `stat-num` figure, never two rival headlines.
+- **Silence** — sparse frames (cover, claim, closer) read **45–60% empty**; the **stat grid and comparison ledger are the one dense exception**. Never fill a sparse frame to look complete.
+- **Restraint** — the scarce gestures fire **once per frame**: at most one hard-offset shadow, two-to-three accents (never all four), the green ground reserved for the single closing plate.
+- **Reference** — aim at a **Risograph editorial poster / punk-zine spread** (flat ink-bordered blocks, one big claim, vast cream); failure looks like a **rounded, soft-shadowed SaaS feature grid**.
 
-- **Primary:** 1920×1080 (16:9). Display authored in **`cqw`** (`px ÷ 1920 × 100 = cqw`).
+## The Frame
+
+- **Primary:** 1920×1080 (16:9). All display sizes authored in **`cqw`** (`px ÷ 1920 × 100 = cqw`).
 - **Vertical:** 1080×1920 (9:16). **Square:** 1080×1080 (1:1).
-- **Safe area:** `pad` (5cqw); floating pills may bleed off edges as wallpaper.
+- **Safe area:** chrome at `3.3cqw` (64px) inset; content at `5cqw` (96px) gutter. No load-bearing element crosses the `3.3cqw` line.
 
-**The container law (load-bearing).** Every frame ground sets `container-type: size` AND carries
-the radial-glow + grain atmosphere; ALL frame-relative units are `cqw`/`cqh` against it — never
-`vw`. Pill radii stay `9999px`/`2rem` (shape, not scale); shadow offsets scale in `cqw`.
+**The container law (load-bearing).** Every frame ground sets `container-type: size`. ALL
+frame-relative units are `cqw`/`cqh` (1cqw = 1% of the frame's width), resolved against that
+ground — **never `vw`.** `vw` measures the page viewport, so a frame inflates whenever it isn't
+rendered full-screen; `cqw` resolves against the frame at any render size. This is why every size
+in the display ramp is `cqw`.
 
 ## Colors
 
-Tokens identical to the source. `{colors.cream}` is the ground; `{colors.ink}`/`{colors.outline}`
-is type + the universal 2px stroke; the nine candy accents fill pills with **no semantic mapping**
-— pair a warm (coral/yellow/peach) with a cool (sky/lavender/violet/mint) with a neutral-bright
-(lime); never two same-family adjacent. Color appears on **stat numerals and pill fills only** —
-never on a Bodoni headline. Shadow is always `{colors.shadow}` (8% ink). No tenth color.
+Tokens identical to the source. At frame scale: `{colors.cream}` is the **ground**, `{colors.ink}`
+is borders + type, and the four accents (`green` / `navy` / `orange` / `yellow`) are **flat fills
+rationed two-to-three per frame.** `{colors.orange}` is also the hard-shadow color. `{colors.green}`
+doubles as the single closing-plate ground — its rarity is the impact. Never introduce a fifth
+accent; never use pure white; never gradient.
+
+### The ground rule (load-bearing — this is the Zoltan Gero deviation from source Creative Mode)
+
+Creative Mode's pink is replaced by **`{colors.navy}` (#1B3A6B)**. Pink was a *light* accent and
+carried ink type. **Navy is a dark accent and carries cream type.** Two families now:
+
+| Accent | Type on it | Role |
+|---|---|---|
+| `navy` · `green` | **`{colors.cream}`** | dark grounds — authority, the close, the featured marker |
+| `orange` · `yellow` | **`{colors.ink}`** | hot grounds — ink-on-fire, annotation, the hard shadow |
+
+Applying ink type on navy fails WCAG AA (≈2.2:1) and is the one way to break this palette.
+Everything else about the atoms is unchanged and sacred.
+
+The channel now runs **cool-and-warm** rather than candy: a cream paper ground, two dark
+authority accents, two hot accents rationed. The hard offset shadow stays `orange` — against navy
+it is the sharpest contrast pair in the system, and it is the frame's signature gesture.
 
 ## Typography
 
-Two ramps. The **reading ramp** (Space Grotesk body 0.85cqw, uppercase tracked pill/label text)
-carries copy + chips; the **display ramp** (Bodoni `card-headline` 1.9cqw → `display` 12cqw, all
-700–800) carries every headline, stat, and quote.
+Two ramps. The **reading ramp** (body, mono labels, table heads) holds px+cqw for chrome and copy.
+The **display/hero ramp** is frame-native and authored in `cqw` — from `display-head` (4.2cqw) up
+to `display-hero` (15.5cqw) for a wordmark cover.
 
-- **Legibility floor:** any load-bearing line ≥ **1.4cqw**; px labels are chrome only.
-- **Fit-to-measure:** size the headline to its length. Cap the block at **≤ 78cqw**; ≤3 words → `display`/`closing-display`; 4–6 → `headline`; 7+ → `section-headline`.
-- **Bodoni 700+ in ink, sentence case** (italic via `<em>` only, color allowed on the italic key word as a candy hue); **Space Grotesk pills/labels uppercase, 0.08em+ tracked**; negative-track Bodoni display.
+- **Legibility floor:** any load-bearing line ≥ **1.4cqw (≈27px@1920)**. Mono chrome at 1.15cqw is colophon only.
+- **Fit-to-measure:** a headline's size tracks its line length. Cap the headline block at **≤ 78cqw** and never touch the safe margin. ≤3 words → `display-hero`/`display-xl`; 4–6 words → `display-lg`; 7+ words → `display-head`. Short lines go big; long lines step down.
+- **Uppercase + 0.92 line-height on all Archivo Black**, always. Mono carries 0.06–0.14em tracking. Never letter-space Archivo Black beyond the encoded −0.01em; never set body centered.
 
 ## Depth & Surface
 
-Soft hard-offset shadow is the only depth, in `{colors.shadow}` (8% ink), bottom-right:
-- **0.2cqw (4px)** small nodes; **0.3cqw (6px)** stat-pills, orbit pills, diagram nodes; **0.4cqw (8px)** pillar-cards; **0.6cqw (12px)** the visual frame.
-- The **2px outline** does most of the lift against cream; the shadow adds the float.
-- **Decorative floating pills cast no shadow** — this separates content from atmosphere at a glance.
+Zero blur. Two depth devices only:
+- **Hard offset shadow** — a solid duplicate offset ≈1.25cqw in X and Y (`box-shadow: 1.25cqw 1.25cqw 0 {colors.orange}, 1.25cqw 1.25cqw 0 0.2cqw {colors.ink}`). **One featured block per frame** (marker, stamp). Diagram stacks may use a 0.95cqw ink-only offset.
+- **Color-block contrast** — cream on cream-2, ink on cream, accent on cream. No shadow needed when contrast carries.
 
-**Ceiling:** no blurred shadow, no re-colored shadow, no gradient depth.
+**Ceiling:** no blurred shadow, no gradient, no glow, anywhere.
 
 ## Shapes
 
-- **9999px** — all small pills (chips, buttons, bars, nodes, floating pills, quote highlights, accent lines).
-- **2rem** — larger cards (pillar-card, stat-pill, chart container, visual frame).
-- **50%** — circular pills (card-icon 60px, step-node 56px, orbit-center 160px, nav dots).
-- **0** — only the grain overlay and the gradient region inside a visual frame. No sharp-cornered text container exists.
+- **0 radius** on every structural element — stat cells, step cards, table cells, markers, panels.
+- **50%** on decorative circles, stamp inner ring, the meta dot.
+- **999px** on the topbar pill chip only — the single rounded exception.
+- **Rotation** only at the fixed brand angles: badge −4deg, stamp −6deg.
 
 ## Components
 
-- **pill** — the universal 2px-outlined container. **pill-card / stat-pill / title-pill** — the white/yellow content pills with soft shadows.
-- **card-icon** — circular candy mark; **floating-pill** — flat tilted wallpaper confetti; **quote-highlight** — inline candy emphasis pill.
-- **bar-track** — pill-shaped chart bar; **accent-line** — coral pill rule; **atmosphere** — the baseline glow + grain on every frame.
+- **frame-chrome** — the mono topbar + meta footer. Present on most frames; dropped only on a pure full-bleed wordmark beat if it competes.
+- **stat-cell / step-card** — ink-bordered flat-fill blocks; step sequences end on green.
+- **marker-block** — the one hard-shadow featured callout per frame.
+- **kicker-block** — inverted ink eyebrow chip; **badge-rotated** — −4deg yellow annotation; **pill-badge** — the lone rounded chip.
+- **stamp** — the −6deg closing seal. **comparison-table** — cream-2 ledger with ink head row.
+- **decorative-circle** — yellow disc for shape contrast against a green panel.
 
 ## Frame Treatments
 
-> Recipe: ground · container · composes · focal · chrome · accent · silence · Fixed/Free · density.
-> Atmosphere (glow + grain) on every frame; declarative frames carry floating-pill wallpaper.
+> Recipe per plate: ground · container · composes · focal · chrome · accent · silence · Fixed/Free · density.
+> Authored at 1920×1080. Lean centered; vary the anchor; one idea per frame.
 
-### 1 · Cover  (identity · move: title pill + display · centered)
-**Ground** cream + atmosphere, floating-pill wallpaper. **Composes** title-pill, display, accent-line, floating-pills (5–8). **Focal** a 1–2 line Bodoni `display` headline in ink (italic key word in a candy hue), centered, under a yellow title-pill; a coral accent-line below. **Chrome** uppercase Space Grotesk sub. **Accent** the italic word + candy floating pills. **Silence** content centered; pills fill the edges. **Fixed** pill outlines, Bodoni ink, flat floating pills. **Free** title, which candy hues, pill words/positions. **Density** medium-atmospheric.
+### 1 · Wordmark Cover  (identity · move: full-frame lockup · centered)
+**Ground** `{colors.cream}`, `frame-pad`. **Container** grid, chrome top/bottom, focal centered.
+**Composes** frame-chrome, the wordmark. **Focal** the two-line wordmark at `display-hero`
+(15.5cqw), centered, second line in an accent (`{colors.navy}`/`orange`). **Chrome** mono topbar
+(section label + pill) and meta footer (descriptor + 01•NN). **Accent** the second-line color only;
+optionally one corner decorative-circle bleeding off an edge. **Silence** ~55% empty cream.
+**Fixed** Archivo Black uppercase 0.84 lh, one accent on the wordmark, square corners. **Free** which
+accent, line break, whether a circle bleeds a corner. **Density** sparse.
 
-### 2 · Pillar Cards  (catalog · move: 3-up grid · left — the dense frame)
-**Ground** cream + atmosphere. **Composes** title-pill (lavender), section-headline, 3× pill-card. **Focal** three white 2rem pill-cards (circular candy card-icon, Bodoni card-headline, Space Grotesk body) with 0.4cqw shadows, under a Bodoni section-headline. **Chrome** a lavender header tag-pill. **Accent** the three card-icon fills (coral/sky/lime sequence). **Silence** tight — the density exception (no floating pills here). **Fixed** 2px outlines, soft shadows, ink headlines. **Free** card content, icon hues. **Density** dense-exception.
+### 2 · Big Claim  (oversized statement · move: scale · left)
+**Ground** one full-bleed accent (`{colors.navy}`/`green`/`orange`), `content-gutter`. **Container**
+flex, claim left-anchored and vertically centered. **Composes** kicker-block, the claim. **Focal**
+a 2–3 line claim at `display-xl`/`display-lg`. **Type color follows the ground rule:** ink on
+`orange`/`yellow` (ink-on-fire), cream on `navy`/`green`. Never pure white.
+**Chrome** small ink kicker-block above the claim; mono meta footer. **Accent** the ground IS the
+accent; no second accent competes. **Silence** ~45% of the colored field empty. **Fixed** the ground rule for type color,
+fit-to-measure sizing, no shadow on type. **Free** the claim, which accent ground, which
+word breaks. **Density** sparse — one idea.
 
-### 3 · Stat Grid  (data · move: stat pills · centered head)
-**Ground** cream + atmosphere. **Composes** section-headline, 3–4× stat-pill. **Focal** a row of white stat-pills, each a COLORED Bodoni stat-number + uppercase label + accent bar. **Accent** the colored numerals + bars (the one place color meets type). **Silence** moderate. **Fixed** 2rem pills, colored numerals only, soft shadow. **Free** figures (from script), hues. **Density** standard.
+### 3 · Stat Grid  (catalog · move: density — the one dense frame · centered)
+**Ground** `{colors.cream}`, `content-gutter`. **Container** grid: a centered `display-head` over a
+3-up row of stat-cells. **Composes** frame-chrome, 3× stat-cell. **Focal** the row of three
+ink-bordered cells (green / navy / orange), each a `stat-num` + mono label. **Chrome** mono topbar +
+meta. **Accent** the three cell fills (the named density exception — three accents allowed here).
+**Silence** ~25% — tight by design. **Fixed** 0.4cqw borders, square corners, no per-cell shadow,
+mono labels. **Free** the three figures+labels, head copy, which three accents. **Density** dense-exception.
 
-### 4 · Pull Quote  (quote · move: highlight pill · left)
-**Ground** cream + atmosphere, a few floating pills. **Composes** quote-display, quote-highlight, accent-line. **Focal** a Bodoni quote in ink with one phrase wrapped in a lime/sky `quote-highlight` pill (the emphasis mechanism — never bold). **Chrome** uppercase attribution. **Accent** the highlight pill. **Silence** ~50%. **Fixed** Bodoni 600, highlight-pill emphasis. **Free** quote, highlight color/phrase. **Density** sparse.
+### 4 · Closing Plate  (closer · move: ground-swap · centered)
+**Ground** `{colors.green}` (the single green frame of the run), `frame-pad`. **Focal** a 2-line
+sign-off at `display-lg` in `{colors.cream}`, centered. **Composes** frame-chrome (cream variant),
+stamp. **Chrome** cream mono topbar + meta. **Accent** one `{colors.navy}` stamp rotated −6deg in
+a corner, cream ring + stamp-num. **Silence** ~55% empty green. **Fixed** green ground reserved to
+this beat, cream-on-green type, one stamp. **Free** sign-off copy, stamp text, stamp corner. **Density** sparse.
 
-### 5 · Orbit  (concept · move: gravitational pills · centered)
-**Ground** cream + atmosphere. **Composes** orbit-center (160px lime circle, Bodoni ordinal), 4–6 orbit-pill satellites (candy, tilted, soft shadow). **Focal** the lime center anchored by orbiting candy pills. **Accent** the satellite hues. **Silence** moderate. **Fixed** circular center, outlined satellites with shadow. **Free** ordinal, satellite words/positions. **Density** medium.
+### 5 · Featured Marker  (callout · move: hard-shadow focal · left/asymmetric)
+**Ground** `{colors.cream}`. **Composes** frame-chrome, marker-block, optional body-md support line.
+**Focal** the navy marker-block with the signature orange+ink hard offset shadow, set asymmetrically.
+**Accent** navy block + orange shadow (two accents). **Silence** ~50%. **Fixed** exactly one hard
+shadow on the frame, 0.4cqw borders. **Free** marker copy, block position, optional support line.
+**Density** sparse.
 
-### 6 · Closing Plate  (closer · move: title pill + display · centered)
-**Ground** cream + atmosphere, floating-pill wallpaper. **Composes** title-pill (yellow), closing-display, accent-line, floating-pills. **Focal** a Bodoni `closing-display` sign-off in ink (italic word in violet/candy), centered. **Accent** the italic word + pills. **Silence** content centered. **Fixed** Bodoni ink, flat pills. **Free** sign-off, pill words. **Density** medium-atmospheric.
+### 6 · Comparison Ledger  (data · move: matrix · left)
+**Ground** `{colors.cream}`, `content-gutter`. **Composes** frame-chrome, comparison-table.
+**Focal** the cream-2 table with ink head row; one column fill (navy or green) marks the winner.
+**Accent** the single column fill. **Silence** tight — the second density exception. **Fixed**
+cream-2 fill, 0.3cqw internal rules, ink head row with cream Archivo labels. **Free** rows, which
+column fills, copy. **Density** dense-exception.
 
 ## Composition Rules
 
 ### Do
-- Make every text container a **pill** (9999px / 2rem) with the **2px ink outline**.
-- Set **Bodoni headlines in ink, sentence case**; color lives on stat numerals + pill fills.
-- Use **soft offset shadows** (4/6/8/12px, 8% ink) on content containers; keep floating pills flat.
-- Float **5–8 candy pills** + radial glows + grain on declarative frames; bare corners read as broken.
-- Wrap inline emphasis in a **candy quote-highlight pill**, never bold/italic-alone.
-- Pair warm+cool+neutral-bright accents; lean centered on cover/closer, left on cards/quote.
+- Compose around **one idea per frame**, focal element **3–5× its neighbors** (squint test).
+- **Lean centered** — cover, claim, stat grid, and closer all center their focal element; reserve left/asymmetric for the marker and ledger.
+- Keep sparse frames **45–60% empty**; only the stat grid and ledger run dense.
+- Use **two or three accents per frame**; reserve `{colors.green}` ground for the closing plate.
+- Spend the hard offset shadow on **one featured block per frame**.
+- Size headlines **fit-to-measure**; render Archivo Black uppercase at 0.92 lh.
 
 ### Don't
-- No sharp-cornered text container; no unstroked pill.
-- No colored Bodoni headline; no uppercase Bodoni.
-- No blurred or re-colored shadow; no tenth accent color.
-- No shadow on decorative floating pills.
-- Don't blow a headline edge-to-edge — fit to measure.
+- Don't round corners (except the pill chip); don't gradient, blur, or glow.
+- Don't set Archivo Black in sentence case or letter-space it beyond −0.01em.
+- Don't use all four accents on one frame, a fifth accent, or pure white.
+- Don't center body copy or set labels in anything but JetBrains Mono.
+- Don't blow a headline edge-to-edge — step the ramp down for long lines.
+- Don't put two hard shadows on one frame.
 
 ## Aspect-Ratio Behavior
 
 | Treatment | 16:9 | 9:16 | 1:1 |
 |---|---|---|---|
-| Cover | display centered, pills around | display top, pills band | centered, fewer pills |
-| Pillar Cards | head + 3-up | head + 3 stacked | head + 2+1 |
-| Stat Grid | 3–4 across | 2×2 | 2×2 |
-| Pull Quote | quote left | quote top, highlight inline | centered |
-| Orbit | center + 4–6 satellites | center + 3 satellites | center + 4 |
-| Closing | centered + pills | centered, pills band | centered |
+| Wordmark Cover | two lines centered | stacked taller, circle top | centered, tighter |
+| Big Claim | claim left, full accent | claim top, accent full | claim centered |
+| Stat Grid | head over 3-up row | head top, 3 stacked | head top, 2×2 (4th cell) |
+| Closing Plate | sign-off centered, stamp corner | stacked, stamp below | centered, stamp corner |
+| Featured Marker | marker asymmetric | marker centered, shadow down | marker centered |
+| Comparison Ledger | full-width table | table scrolls to fewer cols | 2-col table |
 
-`pad` holds on the short edge; re-step display above the 1.4cqw floor. Floating-pill count drops
-on tighter ratios so they stay wallpaper, not clutter.
+Safe area holds the `3.3cqw` chrome inset on the short edge for every ratio; re-step display per
+ratio so no load-bearing line drops below the 1.4cqw floor.
 
 ## Approved Entities
 
 No real customers, logos, or vendors are defined in the source — render any such mark as a
-placeholder. Floating-pill words are neutral atmospheres ("VISION", "FUTURE", "NEXT"), never content-specific.
+placeholder. Products/sections are content-agnostic; the system supplies geometry, not brands.
 
 ## Numerals & Claims (hard rule)
 
-Never invent figures, stats, or counts at frame scale. Render slots as `— figure —`, `{metric}`,
-`N%`. Stat-pill numbers and bar-track widths carry placeholders until the script supplies values.
+Never invent figures, percentages, counts, or dates at frame scale. Render data slots as
+`— figure —`, `{metric}`, `N×`. Real numerals appear only when the script supplies them — the stat
+grid and ledger especially carry placeholders, not fabricated values.
 
 ## Pre-Render Self-Audit
 
-- **Squint** — one Bodoni element dominates at 3–5× its neighbor.
-- **Silence** — declarative frames carry atmosphere not clutter; only pillar/stat grids run dense.
-- **Pills** — every container is a pill with a 2px outline; no sharp text container.
-- **Color** — candy on fills + stat numerals only; headlines ink; no tenth hue.
-- **Depth** — soft offset shadow on content only; floating pills flat; no blur.
-- **Type** — Bodoni ink sentence-case, fit-to-measure; pills uppercase tracked; ≥1.4cqw floor.
-- **Anchor** — centered on cover/closer/orbit, left on cards/quote; no 3 consecutive alike.
+- **Squint** — one element dominates at 3–5× its neighbor, else rescale.
+- **Silence** — sparse frames 45–60% empty; only stat grid / ledger run dense.
+- **Accents** — two or three per frame, never all four; green ground only on the closer.
+- **Depth** — 0 blur; at most one hard offset shadow; color-block contrast otherwise.
+- **Geometry** — square corners except the pill; rotation only at −4/−6deg.
+- **Type** — Archivo Black uppercase 0.92 lh, fit-to-measure, ≥1.4cqw on load-bearing lines.
+- **Anchor** — centered default; left/asymmetric only on marker + ledger; no 3 consecutive frames share an anchor.
 - **Fabrication** — every numeral traces to the script, else placeholder.
 
 ## Known Gaps
 
-- **Motion intentionally out of scope.** frame.md specifies composition only; the 0.6s fade in the source is a deck mechanic.
-- **Bodoni Moda + Space Grotesk via Google Fonts.** CJK pairing (ZCOOL XiaoWei / Yozai) carries over from the source.
-- **9:16 / 1:1 are guidance**; verify the floor and that floating-pill count scales down.
-- The grain overlay, radial glows, floating pills, and bar fills are CSS-only; no external imagery is required.
+- **Motion intentionally out of scope here — it lives in `_frames\MOTION.md`.** This file specifies composition only. `MOTION.md` is frame-independent and supplies the missing layer: entry/exit grammar, camera, stagger, tempo, kinetic type and the house block palette. Copy BOTH into every project. Note two frame-specific motion consequences: this palette is **zero-blur**, so blur-based entrances (`blur-in`, `focus-blur-resolve`) are out — use `per-word-rise` without the blur phase, `char-slam-explode`, `split-flap-board`; and the hard-edged, high-mass atoms make **overshoot (`back.out`) read exceptionally well**. The closing green is a *plate*, not a transition.
+- **Archivo Black requires Google Fonts**; fallback is `sans-serif`. CJK pairing (Noto Serif SC 900 / NSC 400) carries over from the source's CJK section.
+- **9:16 / 1:1 are guidance**, not pixel-locked; verify the legibility floor per ratio.
+- Decorative geometry (circle, stamp, stacked blocks) is CSS-only; no external imagery is required.

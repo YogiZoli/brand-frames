@@ -10,7 +10,7 @@ Never invent a palette, font, or layout in a project. Copy from here.
 
 | Channel | Folder | Frame pack | Character |
 |---|---|---|---|
-| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **Capsule** | Cream canvas, 2px ink outline pills, nine-colour candy palette, Bodoni Moda + Space Grotesk |
+| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **Creative Mode Navy** | Warm cream paper, 4px ink borders, hard offset shadows (zero blur), Archivo Black uppercase 0.92 lh + JetBrains Mono + Space Grotesk. Accents: navy · green (dark, cream type) / orange · yellow (hot, ink type). Adopted 2026-08-15, replacing Capsule — the old pack is archived in `_archive/capsule/`. |
 | VoxFlow (Máté workflow) | `voxflow/` | **Blue Professional** | Corporate parchment + cobalt primary, Space Grotesk display, Inter body |
 
 ## Files in each channel folder

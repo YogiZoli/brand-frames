@@ -116,7 +116,10 @@
     },
     /* HIGHLIGHTER — a soft slanted band swipes in under the word, left to right */
     highlight: function (e, at, d) {
-      tl.fromTo(e, { scaleX: 0 }, { scaleX: 1, duration: d || .8, ease: "power2.out",
+      var svg = e.querySelector("svg");
+      if (svg) tl.fromTo(svg, { clipPath: "inset(0 100% 0 0)" },
+        { clipPath: "inset(0 0% 0 0)", duration: d || .8, ease: "power2.out" }, at);
+      else tl.fromTo(e, { scaleX: 0 }, { scaleX: 1, duration: d || .8, ease: "power2.out",
         transformOrigin: "left center" }, at);
     },
     /* CHART LEAD DOT — travels the polyline at constant speed, then stops and pulses */

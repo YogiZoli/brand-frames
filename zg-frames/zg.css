@@ -101,7 +101,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .blbl{font-size:32px;color:var(--muted);font-weight:700;margin-top:16px}
 .bbadge{position:absolute;top:-66px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--navy);
   color:#fff;font-size:32px;font-weight:800;padding:10px 22px;border-radius:40px}
-.bbadge.onblue{background:var(--green)} .bbadge.ongreen{background:var(--navy)}
+
 .funnel{display:flex;flex-direction:column;gap:24px;width:1640px}
 .fbar{height:118px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;padding:0 42px;
   overflow:hidden;white-space:nowrap;box-shadow:0 22px 54px -20px rgba(17,29,46,.4)}
@@ -284,3 +284,79 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .ecpill{font-size:32px} .ecbtn{font-size:50px}
 .ilbl{font-size:40px;margin-top:16px}
 .rlbl{font-size:32px}
+
+/* v1.3: negative vs positive differ in LIGHTNESS too, not only hue (CVD proof) */
+.mk.x{background:var(--red);color:#fff}
+.mk.ok{background:var(--green-bg);color:var(--green-dk)}
+.pflag{background:var(--red);color:#fff}
+.pflag.ok{background:var(--green-bg);color:var(--green-dk)}
+.lenswrap .lens{left:0;top:0}
+
+/* ================= v1.3 — DESIGN-FOUNDATION.md compliance ================= */
+
+/* colour ramps (5 stops) — no more ad-hoc hexes */
+:root{
+  --blue-50:#eef4fd; --blue-100:#d6e6fb; --blue-500:#1a73e8; --blue-700:#1257b8; --blue-900:#0c3d80;
+  --green-50:#e9f7ef; --green-100:#cfeedd; --green-500:#22a75a; --green-700:#178047; --green-900:#0e5c33;
+  --red-50:#fdeceb; --red-100:#fbd5d3; --red-500:#e24b4a; --red-700:#b83230; --red-900:#8a2320;
+  --amber-50:#fdf3e2; --amber-100:#fae2bb; --amber-500:#e8a33d; --amber-700:#b26a00;
+  --navy-50:#f2f5f8; --navy-100:#e3e9f0; --navy-500:#5b6b86; --navy-700:#2b3a52; --navy-900:#111d2e;
+  --pink-500:#d4537e;
+  --hl-yellow:#ffd94a; --hl-pink:#ffadc9; --hl-green:#9ae6a8;
+  --r-chip:8px; --r-btn:16px; --r-card:24px; --r-panel:32px;
+  --e-1:0 2px 4px rgba(17,29,46,.06), 0 8px 16px -6px rgba(17,29,46,.10);
+  --e-2:0 4px 8px rgba(17,29,46,.06), 0 24px 48px -18px rgba(17,29,46,.18);
+  --e-3:0 8px 16px rgba(17,29,46,.08), 0 40px 80px -28px rgba(17,29,46,.24);
+}
+
+/* 1. LINE-HEIGHT — the fix for "össze van nyomva". Bigger type = tighter leading. */
+.kick{line-height:1.30}
+.sub{line-height:1.40;max-width:1200px}
+.title{line-height:1.10} .title.sm{line-height:1.16}
+.bigw,.disp,.ectitle{line-height:1.10}
+.scl,.tl,.prow,.recv,.l3n{line-height:1.22}
+.blbl,.rlbl,.ilbl,.reck,.skcap,.ptitle,.cx{line-height:1.50}
+
+/* 2. TRACKING — em only, never px. Big type tightens, tracked caps open up. */
+.title,.bigw,.disp,.ectitle{letter-spacing:-.03em}
+.title.sm{letter-spacing:-.02em}
+.kick{letter-spacing:.12em}
+.sub{letter-spacing:0}
+.reck,.ptitle,.rlbl,.recr,.l3r,.ecpill,.flab,.plateTag,.cx{letter-spacing:.16em}
+.cpill,.pillout{letter-spacing:.01em}
+
+/* 3. VERTICAL RHYTHM — air BETWEEN lines comes from gap, not leading */
+.cam{gap:64px}
+.stmt{gap:16px}
+.tiles{gap:64px} .split{gap:104px} .bars{gap:168px} .pers{gap:168px} .skrow{gap:104px}
+.rstop{gap:40px}
+.funnel{gap:40px}
+.recrow{padding:32px 40px}
+.prow{padding:32px 0}
+
+/* 4. SHAPE — max three radii, icons always circular */
+.tile,.scard,.panel,.rec,.form{border-radius:var(--r-card)}
+.device,.plate{border-radius:var(--r-panel)}
+.fin,.fbtn,.callout,.l3,.pop{border-radius:var(--r-btn)}
+.badge,.bbadge,.pbadge,.recpill,.recok,.ecpill,.cpill,.pillout{border-radius:999px}
+
+/* 5. ELEVATION — one light source, two layers */
+.tile,.scard,.icon,.pcirc,.ringface{box-shadow:var(--e-2)}
+.panel,.rec,.form,.device{box-shadow:var(--e-3)}
+.pop,.callout,.l3,.sh{box-shadow:var(--e-1)}
+
+/* 6. badge: loud on purpose — red (Zoltan: piros vagy narancs, ahogy jobb) */
+.bbadge{background:var(--red-500);color:#fff}
+
+/* 7. HIGHLIGHTER — yellow marker pen, hand-drawn, multiply blend */
+.hlb{position:absolute;left:-16px;right:-16px;bottom:2px;height:52%;z-index:-1;
+  background:none;transform:none;overflow:visible}
+.hlb svg{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:multiply;overflow:visible}
+.hlb path{fill:var(--hl-yellow);opacity:.62}
+.hlb.pink path{fill:var(--hl-pink)} .hlb.green path{fill:var(--hl-green)}
+
+/* 8. stroke weights */
+.rseg,.rfill,.rbold{height:9px}
+.cline{stroke-width:9px}
+.arline{stroke-width:11px}
+.prsame,.porb,.ringbar,.ringtrack{border-width:5px;stroke-width:5px}

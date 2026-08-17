@@ -31,7 +31,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
   justify-content:center;align-items:center;text-align:center;gap:30px;
   transform-origin:center;will-change:transform;opacity:0}
 
-.kick{font-size:42px;letter-spacing:9px;font-weight:800;color:var(--blue);text-transform:uppercase}
+.kick{font-size:54px;letter-spacing:9px;font-weight:800;color:var(--blue);text-transform:uppercase}
 .sub{font-size:48px;font-weight:600;color:var(--sub);max-width:1400px;line-height:1.25}
 .title{font-size:128px;font-weight:800;line-height:1.24;letter-spacing:-2px;overflow:hidden;padding:0 8px;white-space:nowrap}
 .title.sm{font-size:88px}
@@ -55,7 +55,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .tdot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--green);
   box-shadow:0 0 0 8px rgba(34,167,90,.18);top:50%;margin-top:-11px;left:0}
 
-.rail{position:relative;display:flex;align-items:center;width:1560px}
+.rail{position:relative;display:flex;align-items:center;width:1640px}
 .rstop{display:flex;flex-direction:column;align-items:center;gap:20px;flex:none;width:230px}
 .rdot{position:relative;width:46px;height:46px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 12px rgba(26,115,232,.12)}
 .rstop.on .rdot{background:var(--green);box-shadow:0 0 0 12px rgba(34,167,90,.16)}
@@ -64,15 +64,15 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .rfill{position:absolute;inset:0;background:var(--blue);transform-origin:left center;transform:scaleX(0)}
 .rbold{position:absolute;top:0;height:9px;width:150px;border-radius:6px;background:var(--green);opacity:.85}
 
-.tiles{display:flex;gap:36px}
-.tile{width:360px;height:290px;background:var(--card);border-radius:22px;display:flex;flex-direction:column;
+.tiles{display:flex;gap:44px;width:1640px;justify-content:center}
+.tile{width:380px;height:300px;background:var(--card);border-radius:22px;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:20px;box-shadow:var(--sh-card);padding:0 20px}
 .tico{position:relative;width:96px;height:96px;border-radius:50%;background:var(--blue-bg);color:var(--blue);
   display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800}
 .tico.g{background:var(--green-bg);color:var(--green-dk)}
 .tl{font-size:38px;font-weight:800;color:var(--navy);line-height:1.15;text-align:center}
-.split{display:flex;gap:80px}
-.scard{width:360px;height:300px;background:var(--card);border-radius:22px;display:flex;flex-direction:column;
+.split{display:flex;gap:150px}
+.scard{width:420px;height:320px;background:var(--card);border-radius:22px;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:22px;box-shadow:var(--sh-card);padding:0 22px}
 .mk{width:104px;height:104px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:54px;font-weight:800}
 .mk.x{background:var(--red-bg);color:var(--red)} .mk.ok{background:var(--green-bg);color:var(--green-dk)} .mk.b{background:var(--blue-bg);color:var(--blue)}
@@ -82,9 +82,9 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
   font-size:58px;font-weight:800;color:var(--navy);box-shadow:var(--sh-card);max-width:1560px}
 .cpill b{color:var(--blue)} .cpill i{font-style:normal;color:var(--green)}
 .cpic{width:56px;height:56px;border-radius:50%;background:var(--blue-bg);flex:none}
-.pillout{background:#faf6ee;border:5px solid var(--green);border-radius:100px;padding:34px 76px;font-size:56px;font-weight:800}
+.pillout{background:#faf6ee;border:5px solid var(--green);border-radius:100px;padding:26px 62px;font-size:44px;font-weight:800;letter-spacing:2px}
 
-.panel{position:relative;width:1420px;background:var(--card);border-radius:26px;padding:40px 52px;text-align:left;box-shadow:var(--sh-panel)}
+.panel{position:relative;width:1640px;background:var(--card);border-radius:26px;padding:40px 52px;text-align:left;box-shadow:var(--sh-panel)}
 .ptitle{font-size:34px;font-weight:800;letter-spacing:4px;color:var(--label);text-transform:uppercase;margin-bottom:12px}
 .prow{display:flex;align-items:center;gap:26px;font-size:40px;font-weight:700;color:var(--navy);padding:24px 0;border-bottom:1px solid #eef2f7}
 .prow:last-child{border-bottom:0}
@@ -93,22 +93,23 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .prow.hot .pflag{background:var(--green-bg);color:var(--green-dk)}
 .pbadge{margin-left:auto;background:var(--green);color:#fff;font-size:24px;font-weight:800;letter-spacing:2px;padding:10px 20px;border-radius:40px}
 
-.bars{display:flex;gap:300px;align-items:flex-end;height:380px;margin-top:20px}
+.bars{display:flex;gap:150px;align-items:flex-end;height:400px;margin-top:34px}
 .bcol{display:flex;flex-direction:column;align-items:center}
-.bnum{font-size:54px;font-weight:800;margin-bottom:74px}
+.bnum{font-size:62px;font-weight:800;margin-bottom:52px}
 .bwrap{position:relative;display:flex;flex-direction:column;align-items:center}
-.bbar{width:170px;border-radius:16px 16px 0 0;margin-top:14px;transform-origin:bottom}
-.blbl{font-size:34px;color:var(--muted);font-weight:700;margin-top:20px}
-.bbadge{position:absolute;top:-62px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--green);
+.bbar{width:190px;border-radius:16px 16px 0 0;margin-top:14px;transform-origin:bottom}
+.blbl{font-size:36px;color:var(--muted);font-weight:700;margin-top:20px}
+.bbadge{position:absolute;top:-66px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--navy);
   color:#fff;font-size:28px;font-weight:800;padding:10px 22px;border-radius:40px}
-.funnel{display:flex;flex-direction:column;gap:26px;width:1300px}
+.bbadge.onblue{background:var(--green)} .bbadge.ongreen{background:var(--navy)}
+.funnel{display:flex;flex-direction:column;gap:30px;width:1640px}
 .fbar{height:118px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;padding:0 42px;
   overflow:hidden;white-space:nowrap;box-shadow:0 22px 54px -20px rgba(17,29,46,.4)}
 .fl{font-size:56px;font-weight:800;color:#fff} .fr{font-size:34px;font-weight:600;color:#fff}
 
-.chart{position:relative;width:1400px;height:460px}
+.chart{position:relative;width:1640px;height:470px}
 .chart svg{overflow:visible}
-.cx{font-size:24px;font-weight:700;letter-spacing:2px;fill:var(--muted);text-transform:uppercase}
+.cx{font-size:32px;font-weight:700;letter-spacing:2px;fill:var(--muted);text-transform:uppercase}
 
 .lens{position:absolute;width:300px;height:300px;border:8px solid var(--blue);border-radius:50%;
   box-shadow:0 0 44px rgba(26,115,232,.22);pointer-events:none;opacity:0}
@@ -135,7 +136,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .ecpill{font-size:34px;font-weight:700;letter-spacing:5px;color:var(--muted);background:var(--card);border-radius:50px;padding:18px 44px;box-shadow:var(--sh-chip)}
 .ecbtn{font-size:50px;font-weight:800;color:#fff;background:var(--green);border-radius:22px;padding:26px 58px;box-shadow:0 26px 60px -18px rgba(34,167,90,.55)}
 
-.plate{position:relative;width:1620px;height:700px;border-radius:20px;overflow:hidden;
+.plate{position:relative;width:1640px;height:700px;border-radius:20px;overflow:hidden;
   background:linear-gradient(135deg,#dde5ef,#c9d6e6 60%,#dfe7f1)}
 .plateTag{position:absolute;top:22px;left:26px;font-size:24px;font-weight:800;letter-spacing:3px;color:#7d8ea3;text-transform:uppercase}
 .l3{position:absolute;left:70px;bottom:70px;display:flex;align-items:center;gap:22px;background:var(--card);
@@ -148,7 +149,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .quote{position:absolute;left:120px;right:120px;top:180px;font-size:64px;font-weight:800;line-height:1.2;color:var(--navy);text-align:left}
 .quote b{color:var(--green)}
 
-.device{position:relative;width:1500px;border-radius:22px;background:#2b3442;padding:44px 18px 18px;box-shadow:var(--sh-panel)}
+.device{position:relative;width:1640px;border-radius:22px;background:#2b3442;padding:44px 18px 18px;box-shadow:var(--sh-panel)}
 .dbar{position:absolute;top:16px;left:24px;display:flex;gap:10px}
 .dbar span{width:16px;height:16px;border-radius:50%;background:#5b6675}
 .dscreen{position:relative;height:640px;border-radius:12px;overflow:hidden;background:#eef3f8}
@@ -160,3 +161,66 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .drow{position:absolute;left:60px;height:26px;border-radius:13px;background:#cfdcea}
 .cursor{position:absolute;width:0;height:0;border-left:22px solid var(--navy);border-bottom:16px solid transparent;
   border-top:16px solid transparent;left:120px;top:120px}
+
+/* ===== v1.1 — from FEEDBACK-LOG 2026-08-17 (2) ===== */
+
+/* 1. space: the group is wide, the air is BETWEEN elements */
+.wide{width:1640px}
+.spread{display:flex;width:1640px;justify-content:space-between;align-items:center}
+
+/* 4. LENS — never empty: it magnifies the letters underneath */
+.lenswrap{position:relative}
+.lens{position:absolute;width:320px;height:320px;border:8px solid var(--blue);border-radius:50%;
+  box-shadow:0 0 44px rgba(26,115,232,.22);background:rgba(255,255,255,.96);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0}
+.lenstxt{font-size:62px;font-weight:800;color:var(--navy);white-space:nowrap;transform-origin:center}
+.lenstxt.g{color:var(--green)}
+
+/* 6a. PROGRESS RING — fills 0 to 100% then STOPS. Not a spinner. */
+.ringwrap{position:relative;width:230px;height:230px;display:flex;align-items:center;justify-content:center}
+.ringsvg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ringtrack{fill:none;stroke:#dbe4ee;stroke-width:10}
+.ringbar{fill:none;stroke:var(--green);stroke-width:10;stroke-linecap:round;
+  stroke-dasharray:1;stroke-dashoffset:1}
+.ringface{width:170px;height:170px;border-radius:50%;background:var(--card);box-shadow:var(--sh-card);
+  display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:800;color:var(--blue)}
+
+/* 6b. PULSE RING — SAME size as the circle it belongs to, only pulsing */
+.prsame{position:absolute;inset:0;border:5px solid var(--green);border-radius:50%;opacity:0}
+
+/* 7a. FORM being filled — letters in progress */
+.form{width:1080px;background:var(--card);border-radius:26px;padding:52px 60px;text-align:left;box-shadow:var(--sh-panel)}
+.fh{font-size:56px;font-weight:800;color:var(--blue);margin-bottom:10px}
+.fhs{font-size:30px;color:var(--muted);margin-bottom:36px}
+.flab{font-size:24px;font-weight:800;letter-spacing:3px;color:var(--label);text-transform:uppercase;margin-top:26px}
+.fin{margin-top:12px;min-height:92px;background:#f6f9fd;border:2px solid var(--line);border-radius:16px;
+  padding:22px 26px;font-size:42px;font-weight:600;color:var(--navy)}
+.fin.on{border-color:var(--blue)}
+.caret{display:inline-block;width:4px;height:44px;background:var(--blue);vertical-align:-8px;margin-left:4px}
+.fbtn{margin-top:40px;text-align:center;font-size:42px;font-weight:800;color:#fff;background:var(--green);
+  border-radius:16px;padding:26px 0;box-shadow:0 26px 60px -18px rgba(34,167,90,.55)}
+.mouse{position:absolute;width:0;height:0;border-left:26px solid var(--navy);
+  border-bottom:19px solid transparent;border-top:19px solid transparent;filter:none}
+
+/* 7b. CONTACT RECORD — a real record, never a CRM name on screen */
+.rec{width:1200px;background:var(--card);border-radius:26px;overflow:hidden;box-shadow:var(--sh-panel);text-align:left}
+.rechead{background:var(--blue);padding:36px 44px;display:flex;align-items:center;gap:26px}
+.recav{width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:800}
+.recn{font-size:46px;font-weight:800;color:#fff}
+.recr{font-size:26px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:2px;text-transform:uppercase}
+.recpill{margin-left:auto;background:rgba(255,255,255,.9);color:var(--blue);font-size:24px;font-weight:800;
+  letter-spacing:2px;padding:12px 24px;border-radius:40px}
+.recrow{display:flex;align-items:center;gap:26px;padding:28px 44px;border-bottom:1px solid #eef2f7}
+.recrow:last-child{border-bottom:0}
+.reci{width:60px;height:60px;border-radius:50%;background:var(--blue-bg);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;flex:none}
+.reck{font-size:22px;font-weight:800;letter-spacing:3px;color:var(--label);text-transform:uppercase}
+.recv{font-size:38px;font-weight:700;color:var(--navy)}
+.recok{margin-left:auto;background:var(--green-bg);color:var(--green-dk);font-size:24px;font-weight:800;
+  padding:10px 22px;border-radius:40px}
+
+/* 8. END CARD — smaller title, meaningful icon */
+.ectitle{font-size:88px}
+.appic{display:flex;align-items:center;justify-content:center}
+.appic svg{width:58px;height:58px}

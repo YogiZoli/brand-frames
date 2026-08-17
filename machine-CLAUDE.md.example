@@ -1,0 +1,34 @@
+# Zoltan Gero — gép-szintű irányjelző
+
+## Videógyártás: a kánon egyetlen helyen van
+
+Ha bármi videóval, HyperFrames-szel, kompozícióval, renderrel, jelenetekkel
+vagy mozgással kapcsolatos munka jön, **ELŐSZÖR ezt olvasd el**:
+
+```
+C:\Users\gdp\HyperFrames\_frames\PIPELINE.md
+```
+
+Mellette, ugyanabban a repóban (`github.com/YogiZoli/brand-frames`):
+
+| Fájl | Mi van benne |
+|---|---|
+| `PIPELINE.md` | **a kánon** — a menet, az 5 kapu, a határ, a költség-politika |
+| `FEEDBACK-LOG.md` | Zoltán általános szabályai, dátumozva. Ezek MINDEN videóra élnek. |
+| `MOTION.md` | mozgásrendszer (pulzálás ±2%, 3 fázisú ikon-építés, rail, lupe…) |
+| `zoltan-gero/FRAME.md` | design tokenek az EN csatornára |
+| `voxflow/FRAME.md` | design tokenek a VoxFlow csatornára |
+| `AUDIO.md` | narráció + zene recept |
+| `_feedback/` | **a feedback egyetlen helye** — screenshotok dátum-mappákban |
+
+## Két szabály, ami mindent felülír
+
+1. **Mi szöveget írunk, a HyperFrames gyárt kockát.** Soha nem írunk saját
+   render- vagy videómotort. (Ezt egyszer megtettük: `exp-v9`. Nem tér vissza.)
+2. **A kép azt mutatja, amiről a hang beszél.** Nem dekoráció, nem distraction.
+
+## Ha ütközés van
+
+`PIPELINE.md` > skill > Drive doksi > projekt-utasítás > korábbi chat.
+Ha egy skill vagy doksi mást mond, **szólj Zoltánnak, hogy javítani kell** —
+ne kövesd, és ne írd át csendben a kánont.

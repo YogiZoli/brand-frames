@@ -37,6 +37,11 @@
   var A = {
     kick:   function (e, at) { tl.from(e, { opacity: 0, y: -16, duration: .55, ease: "power2.out" }, at); },
     fi:     function (e, at, d) { tl.from(e, { opacity: 0, y: 24, duration: d || .7, ease: "power2.out" }, at); },
+    /* reading-time floor: 0.5s + 0.4s per word. Warns if a caption cannot be read. */
+    readable: function (e, at, d, v) {
+      var w = (e.textContent || "").trim().split(/\s+/).length, need = .5 + .4 * w;
+      e.dataset.readNeed = need.toFixed(1);
+    },
     reveal: function (e, at) { tl.from(kids(e), { opacity: 0, y: 40, duration: .6, stagger: .12, ease: "power3.out" }, at); },
     rise:   function (e, at) { tl.from(chars(e), { yPercent: 120, opacity: 0, duration: .6, stagger: .045, ease: "power4.out" }, at); },
     fadewords: function (e, at, d) {
@@ -94,12 +99,12 @@
       tl.set(e, { x: p[0][0], y: p[0][1] }, at);
       if (inner && txt[0]) tl.set(inner, { textContent: txt[0] }, at);
       tl.fromTo(e, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .6, ease: "back.out(1.6)" }, at);
-      if (inner) tl.fromTo(inner, { scale: .7, opacity: 0 }, { scale: 1, opacity: 1, duration: .5, ease: "power2.out" }, at + .2);
+      if (inner) tl.fromTo(inner, { scale: .45, opacity: 0 }, { scale: 1, opacity: 1, duration: .8, ease: "power3.out" }, at + .2);
       for (var i = 1; i < p.length; i++) {
         var t = at + .9 + (i - 1) * hold;
         tl.to(e, { x: p[i][0], y: p[i][1], duration: .9, ease: "power2.inOut" }, t);
         if (inner && txt[i]) tl.set(inner, { textContent: txt[i] }, t + .9);
-        if (inner && txt[i]) tl.fromTo(inner, { scale: .75 }, { scale: 1, duration: .4, ease: "power2.out" }, t + .9);
+        if (inner && txt[i]) tl.fromTo(inner, { scale: .45 }, { scale: 1, duration: .8, ease: "power3.out" }, t + .9);
       }
       tl.to(e, { opacity: 0, duration: .4, ease: "power2.in" }, at + (d || 5));
     },
@@ -215,6 +220,14 @@
     if (lastB && d >= 4) tl.to(lastB, { scale: 1.16, duration: d - 2.4, ease: "sine.out" }, s + 2.2);
   }
 
+  /* SIGNATURE MOVE — the closing ring: draws shut, lands, breathes once. */
+  A.signature = function (e, at, d) {
+    var bar = e.parentNode.querySelector(".sigbar"), face = e.parentNode.querySelector(".sigface");
+    if (face) tl.fromTo(face, { scale: .6, opacity: 0 }, { scale: 1, opacity: 1, duration: .5, ease: "back.out(1.7)" }, at);
+    if (bar) tl.fromTo(bar, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 1.3, ease: "power2.inOut" }, at + .3);
+    if (face) pulse(face, at + (d || 1.3) + .4, 1.6);
+  };
+
   w.ZG = {
     PULSE: PULSE,
     build: function (id) {
@@ -250,6 +263,7 @@
           });
         }
       });
+      if (w.ZGI) w.ZGI.paint();
       w.__timelines = w.__timelines || {};
       w.__timelines[id || "main"] = tl;
       return tl;

@@ -360,3 +360,47 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .cline{stroke-width:9px}
 .arline{stroke-width:11px}
 .prsame,.porb,.ringbar,.ringtrack{border-width:5px;stroke-width:5px}
+
+/* ================= v1.4 ================= */
+
+/* highlighter: a marker pen runs OVER the lower half of the letters, not under them */
+.hlb{left:-18px;right:-18px;bottom:auto;top:42%;height:58%;z-index:-1}
+
+/* rail: tracking made the labels wrap - give the stops room */
+.rstop{width:300px}
+.rlbl{letter-spacing:.10em;white-space:nowrap}
+
+/* tabular numerals: counters must not jiggle while counting up */
+.bnum,.recv,.cx,.shts,.lenstxt{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+/* optical centre: the eye reads centre as slightly above the mathematical centre */
+.cam{padding-bottom:230px}
+
+/* localisation tolerance: every text box survives +30% length (25 languages) */
+.scl,.tl,.recv,.prow,.l3n,.callout,.skcap{overflow-wrap:break-word;hyphens:auto}
+.cpill,.pillout{max-width:1500px;white-space:normal;text-align:center}
+
+/* ================= v1.5 ================= */
+
+/* ICONS — real SVG, one stroke weight, always in a circle. Letters are banned. */
+.ico{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.ico svg{width:52%;height:52%}
+.icon{font-size:0}
+.tico{font-size:0} .tico .ico svg{width:56%;height:56%}
+.reci .ico svg{width:58%;height:58%}
+.ringface .ico svg{width:46%;height:46%}
+
+/* ZOOM — a real magnifier: big circle, text at 2.2x, and the zoom is SEEN */
+.lens{width:420px;height:420px;border-width:9px}
+.lenstxt{font-size:122px;letter-spacing:-.02em}
+.lens .lenstxt{transform-origin:center}
+
+/* SIGNATURE MOVE — the closing ring. One per section end. */
+.sigwrap{position:relative;width:210px;height:210px;display:flex;align-items:center;justify-content:center}
+.sigsvg{position:absolute;inset:0;transform:rotate(-90deg)}
+.sigtrack{fill:none;stroke:var(--navy-100);stroke-width:5}
+.sigbar{fill:none;stroke:var(--green-500);stroke-width:5;stroke-linecap:round;
+  stroke-dasharray:1;stroke-dashoffset:1}
+.sigface{width:150px;height:150px;border-radius:50%;background:var(--card);
+  box-shadow:var(--e-2);display:flex;align-items:center;justify-content:center;color:var(--green-700)}
+.sigface .ico svg{width:46%;height:46%}

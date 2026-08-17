@@ -183,3 +183,58 @@ egy archetípus hibája, hanem az elrendezési logikáé.** Szabály:
 - A pill és a `pillout` animációja (17)
 - A végkártya felépítése és animációja (18)
 - Összességében: *„amazing overall, all scenes are very good"*
+
+---
+
+## 2026-08-17 (3) — sampler v1.1 feedback
+Forrás: `_feedback/2026-08-17/HR-v3-01..10.png`
+
+### A GYÖKÉRHIBA — megoldva a `SCALE.md`-vel
+
+Zoltán: *„Egy valami van ami globális és nem tetszik: a térközök, és ezzel együtt
+a text méretek. Van valami standard ami nálunk követendő mint aranystandard?"*
+
+Igen, és eddig nem volt. A méretek ad hoc számok voltak (26, 34, 42, 44, 54, 62,
+74, 88, 120, 128, 132) — semmi nem indokolta őket egymáshoz képest. Ezért tűnt
+egyszerre szűknek és aránytalannak.
+
+**Döntés: `_frames/SCALE.md`** — betűméret 1,25-es moduláris skála 32-ről
+(32·40·50·62·78·98·122), térköz 8-pontos rács (8·16·24·40·64·104·168),
+mozgás-időtartamok skálán, max 3 betűméret jelenetenként. **Ezeken kívül más
+érték nem használható.**
+
+### Jelenet-szintű szabályok
+
+**Sávok (v3-01):** a szám és a badge ütközött a fejléccel — negatív absztolút
+pozicionálás (`top:-66px`) tilos, a badge flex-sorrendben a sáv fölé kerül saját
+térközzel. **A badge lehet színes — piros vagy amber jó —, és pulzál.** Nem
+kell semlegesnek lennie, csak a sávtól eltérőnek.
+
+**Nyíl (v3-02):** *„overall very good, everything is OK, except:"* — ha a vonal
+végén nyílhegy van, **nem kell az utazó pont is.** Vagy pont, vagy nyílhegy,
+nem mindkettő ugyanabban az animációban. És: **a vonal és a nyílhegy azonos
+színű** — vagy kék vonal + ZÖLD utazó pont, de nem kék vonal + zöld nyílhegy.
+
+**Arány-sávok (v3-03):** 2 vagy 3 sáv is jó. Kettőnél a mostani térköz rendben.
+**Ha három van, a harmadik élesen más színű: PIROS preferált** (amber elfogadható).
+
+**Split (v3-04):** *„nagyon tetszik, amikor egy-egy szó mintha szövegkijelölővel
+lenne aláhúzva"* — kell egy **highlighter-kiemelés** archetípus: lágy, ferde
+sáv húzódik be a szó alá balról jobbra. Plusz: a ✗/✓ jelölők kapjanak saját
+animációt, és **Skitch-stílusú jelölő-készlet** kell (kör + fül + glyph,
+öt változat).
+
+**Vonaldiagram (v3-05):** a mostani „minden pont egyenként kiül" nem az, amit
+kért. Helyette: **a zöld bold pont VÉGIGMEGY a vonalon**, egyenletes
+sebességgel, mintha rajzolná, és **a végén megáll és pulzál.** A közbenső pontok
+maradhatnak halványan, de a főszereplő az utazó pont.
+
+**Form (v3-07):** *„fantasztikus az animáció maga"* — de a form és a tipográfia
+**kisebb és életszerűbb** legyen. A korábbi (HeyGen-referencia) példa aránya jobb
+volt: keskenyebb kártya, kisebb betűk, több levegő a mezők között.
+
+**Progress ring (v3-09):** az animáció jó, **csak a térköz nem** — a `SCALE.md`
+`--sp-6` (104 px) rendezi.
+
+**Keyword pill (v3-10):** a fejléc még nagyobb, a pill szövege kisebb.
+Ez pontosan a `SCALE.md` fejléc-szabálya: kicker `--fs-lead`, pill `--fs-caption`.

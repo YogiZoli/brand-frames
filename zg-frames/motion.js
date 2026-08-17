@@ -109,11 +109,38 @@
       var path = e.querySelector(".cline"), dots = e.querySelectorAll(".cdot"), stage = e.querySelector(".cstage");
       if (path) tl.fromTo(path, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d, ease: "power1.inOut" }, at);
       for (var i = 0; i < dots.length; i++) {
-        A.pop(dots[i], at + .25 + (d - .5) * (i / Math.max(1, dots.length - 1)));
+        tl.fromTo(dots[i], { opacity: 0 }, { opacity: .35, duration: .3 }, at + .25 + (d - .5) * (i / Math.max(1, dots.length - 1)));
       }
       if (stage) tl.to(stage, { x: "+=3", y: "-=2", duration: .09, repeat: Math.round(d / .09), yoyo: true, ease: "none" }, at);
-      var last = dots[dots.length - 1];
-      if (last) pulse(last, at + d, 1.6);
+
+    },
+    /* HIGHLIGHTER — a soft slanted band swipes in under the word, left to right */
+    highlight: function (e, at, d) {
+      tl.fromTo(e, { scaleX: 0 }, { scaleX: 1, duration: d || .8, ease: "power2.out",
+        transformOrigin: "left center" }, at);
+    },
+    /* CHART LEAD DOT — travels the polyline at constant speed, then stops and pulses */
+    leaddot: function (e, at, d) {
+      var poly = e.parentNode.querySelector(".cline");
+      var dot = e.parentNode.querySelector(".ctrav");
+      if (!poly || !dot) return;
+      var pts = poly.getAttribute("points").trim().split(/\s+/).map(function (s) {
+        var a = s.split(","); return { x: +a[0], y: +a[1] };
+      });
+      var segs = [], total = 0, i;
+      for (i = 1; i < pts.length; i++) {
+        var L = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+        segs.push(L); total += L;
+      }
+      d = d || 2.6;
+      tl.set(dot, { attr: { cx: pts[0].x, cy: pts[0].y }, opacity: 1 }, at);
+      var t = at;
+      for (i = 1; i < pts.length; i++) {
+        var dur = d * (segs[i - 1] / total);
+        tl.to(dot, { attr: { cx: pts[i].x, cy: pts[i].y }, duration: dur, ease: "none" }, t);
+        t += dur;
+      }
+      pulse(dot, t + .1, 1.6);
     },
     dzoom:  function (e, at, d) {
       tl.fromTo(e, { scale: 1, x: 0, y: 0 },

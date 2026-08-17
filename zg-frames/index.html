@@ -4,7 +4,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <link rel="stylesheet" href="zg.css"/>
 </head><body>
-<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="127">
+<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="136.5">
 <div class="g1"></div><div class="g2"></div><div class="grid"></div>
 
 <section id="zg01" class="clip" data-start="0" data-duration="4.5" data-track-index="1"><div class="cam">
@@ -14,7 +14,7 @@
 
 <section id="zg02" class="clip" data-start="4.5" data-duration="4.5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">02 · DISPLAY WORD</div>
-<div style="display:flex;flex-direction:column;align-items:center;gap:18px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px">
 <div class="disp" data-anim="blurword" data-at=".4" data-dur="3.4">BEFORE</div>
 <div class="uln"></div></div>
 <div class="sub" data-anim="fi" data-at="3.2">Starts blurry, finishes sharp. One per film.</div></div></section>
@@ -33,16 +33,15 @@
 
 <section id="zg05" class="clip" data-start="17.5" data-duration="5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">05 · ARROW · 3 PHASES</div>
-<div class="arrow" style="gap:120px">
-  <div class="icell"><div class="icon" style="width:190px;height:190px;font-size:76px">C<span class="prsame"></span></div><div class="ilbl">Comment</div></div>
+<div class="arrow" style="gap:104px">
+  <div class="icell"><div class="icon" style="width:190px;height:190px;font-size:78px">C<span class="prsame"></span></div><div class="ilbl">Comment</div></div>
   <div style="position:relative">
     <svg class="arsvg" width="520" height="120" viewBox="0 0 520 120">
       <line class="arline" x1="14" y1="60" x2="440" y2="60" stroke="var(--blue)" stroke-width="11" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
-      <polyline class="arhead" points="410,32 484,60 410,88" fill="none" stroke="var(--green)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
     </svg>
     <span class="tdot" data-val="426"></span>
   </div>
-  <div class="icell"><div class="icon g" style="width:190px;height:190px;font-size:76px">$<span class="prsame"></span></div><div class="ilbl">Client</div></div>
+  <div class="icell"><div class="icon g" style="width:190px;height:190px;font-size:78px">$<span class="prsame"></span></div><div class="ilbl">Client</div></div>
 </div>
 <div class="sub" data-anim="fi" data-at="3.4">Icon, then the line fills, then both pulse.</div></div></section>
 
@@ -77,16 +76,16 @@
 
 <section id="zg09" class="clip" data-start="36.5" data-duration="5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">09 · STATE FLIP</div>
-<div class="flipgroup" style="display:flex;gap:220px">
+<div class="flipgroup" style="display:flex;gap:168px">
   <div class="flip" style="position:relative;width:210px;height:210px">
-    <div class="fa icon" style="position:absolute;inset:0;width:210px;height:210px;font-size:76px">?</div>
-    <div class="fb icon g" style="position:absolute;inset:0;width:210px;height:210px;font-size:56px;opacity:0">YES</div></div>
+    <div class="fa icon" style="position:absolute;inset:0;width:210px;height:210px;font-size:78px">?</div>
+    <div class="fb icon g" style="position:absolute;inset:0;width:210px;height:210px;font-size:50px;opacity:0">YES</div></div>
   <div class="flip" style="position:relative;width:210px;height:210px">
-    <div class="fa icon" style="position:absolute;inset:0;width:210px;height:210px;font-size:76px">?</div>
-    <div class="fb icon g" style="position:absolute;inset:0;width:210px;height:210px;font-size:56px;opacity:0">YES</div></div>
+    <div class="fa icon" style="position:absolute;inset:0;width:210px;height:210px;font-size:78px">?</div>
+    <div class="fb icon g" style="position:absolute;inset:0;width:210px;height:210px;font-size:50px;opacity:0">YES</div></div>
   <div class="flip" style="position:relative;width:210px;height:210px">
-    <div class="fa icon" style="position:absolute;inset:0;width:210px;height:210px;font-size:76px">?</div>
-    <div class="fb icon g" style="position:absolute;inset:0;width:210px;height:210px;font-size:56px;opacity:0">YES</div></div>
+    <div class="fa icon" style="position:absolute;inset:0;width:210px;height:210px;font-size:78px">?</div>
+    <div class="fb icon g" style="position:absolute;inset:0;width:210px;height:210px;font-size:50px;opacity:0">YES</div></div>
 </div>
 <div class="sub" data-anim="fi" data-at="3.4">One by one, then the last one grows.</div></div></section>
 
@@ -113,17 +112,18 @@
 <div class="kick" data-anim="kick" data-at=".1">12 · COUNT-UP BARS</div>
 <div class="bars">
   <div class="bcol"><div class="bnum" data-anim="count" data-at=".6" data-val="30" data-suffix="s" style="color:var(--blue)">0</div>
-    <div class="bbar" data-anim="barsh" data-at=".6" data-dur="1.5" style="background:var(--blue);height:150px"></div>
+    <div class="bbar" data-anim="barsh" data-at=".6" data-dur="1.5" style="background:var(--blue);height:126px"></div>
     <div class="blbl">Video length</div></div>
   <div class="bcol"><div class="bnum" data-anim="count" data-at="1.6" data-val="54" data-suffix="s" style="color:var(--green)">0</div>
     <div class="bwrap"><span class="bbadge ongreen" data-anim="pop" data-at="3.2" data-pulse="3.6">measured</span>
-    <div class="bbar" data-anim="barsh" data-at="1.6" data-dur="1.5" style="background:var(--green);height:270px"></div></div>
+    <div class="bbar" data-anim="barsh" data-at="1.6" data-dur="1.5" style="background:var(--green);height:227px"></div></div>
     <div class="blbl">Machine time</div></div>
 </div></div></section>
 
 <section id="zg13" class="clip" data-start="56.5" data-duration="5.5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">13 · LINE CHART</div>
 <div class="chart" data-anim="chart" data-at=".5" data-dur="3">
+  <span data-anim="leaddot" data-at=".5" data-dur="3"></span>
   <svg width="1640" height="470" viewBox="0 0 1640 470">
     <g class="cstage">
       <polyline class="cline" points="30,420 300,380 570,330 840,290 1110,210 1380,140 1600,60" fill="none"
@@ -135,7 +135,8 @@
       <circle class="cdot" cx="840" cy="290" r="13" fill="var(--blue)"/>
       <circle class="cdot" cx="1110" cy="210" r="13" fill="var(--blue)"/>
       <circle class="cdot" cx="1380" cy="140" r="13" fill="var(--blue)"/>
-      <circle class="cdot" cx="1600" cy="60" r="20" fill="var(--green)"/>
+      <circle class="cdot" cx="1600" cy="60" r="13" fill="var(--blue)"/>
+      <circle class="ctrav" cx="30" cy="420" r="22" opacity="0"/>
     </g>
     <text class="cx" x="30" y="462">month 1</text>
     <text class="cx" x="1440" y="462">month 12</text>
@@ -148,9 +149,9 @@
 <div class="lenswrap">
   <div class="panel" style="height:400px">
     <div class="ptitle">Lead record</div>
-    <div style="display:flex;gap:260px;margin-top:34px">
-      <div><div class="reck">PRIMARY INTENT</div><div style="font-size:52px;font-weight:800;margin-top:10px">Enterprise scale</div></div>
-      <div><div class="reck">TEMPERATURE</div><div style="font-size:52px;font-weight:800;margin-top:10px;color:var(--green)">Warm to hot</div></div>
+    <div style="display:flex;gap:168px;margin-top:40px">
+      <div><div class="reck">PRIMARY INTENT</div><div style="font-size:50px;font-weight:800;margin-top:8px">Enterprise scale</div></div>
+      <div><div class="reck">TEMPERATURE</div><div style="font-size:50px;font-weight:800;margin-top:8px;color:var(--green)">Warm to hot</div></div>
     </div>
   </div>
   <span class="lens" data-anim="lens" data-at=".6" data-dur="4.6"
@@ -190,7 +191,7 @@
 
 <section id="zg17" class="clip" data-start="79" data-duration="5.5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">17 · PROGRESS RING · FILLS THEN STOPS</div>
-<div class="pers" style="gap:220px">
+<div class="pers" style="gap:168px">
   <div class="pcol"><div class="ringwrap" data-anim="pop" data-at=".4">
     <svg class="ringsvg" viewBox="0 0 230 230"><circle class="ringtrack" cx="115" cy="115" r="105"/>
       <circle class="ringbar" cx="115" cy="115" r="105" pathLength="1" data-anim="ring" data-at="1" data-dur="2"/></svg>
@@ -208,9 +209,9 @@
 
 <section id="zg18" class="clip" data-start="84.5" data-duration="4" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">18 · PULSE RING · SAME SIZE</div>
-<div style="display:flex;gap:220px">
-  <div class="icell"><div class="icon" style="width:200px;height:200px;font-size:72px">A<span class="prsame" data-anim="pring" data-at=".9" data-dur="2.4"></span></div><div class="ilbl">Waiting</div></div>
-  <div class="icell"><div class="icon g" style="width:200px;height:200px;font-size:72px">B<span class="prsame" data-anim="pring" data-at="1.3" data-dur="2"></span></div><div class="ilbl">Active</div></div>
+<div style="display:flex;gap:168px">
+  <div class="icell"><div class="icon" style="width:200px;height:200px;font-size:78px">A<span class="prsame" data-anim="pring" data-at=".9" data-dur="2.4"></span></div><div class="ilbl">Waiting</div></div>
+  <div class="icell"><div class="icon g" style="width:200px;height:200px;font-size:78px">B<span class="prsame" data-anim="pring" data-at="1.3" data-dur="2"></span></div><div class="ilbl">Active</div></div>
 </div>
 <div class="sub" data-anim="fi" data-at="2.6">The ring matches the circle. It only breathes.</div></div></section>
 
@@ -241,7 +242,7 @@
 <div class="kick" data-anim="kick" data-at=".1">22 · OVERLAY · TITLE + CALLOUT</div>
 <div class="plate"><span class="plateTag">your phone footage — untouched</span>
   <div style="position:absolute;left:100px;top:120px;right:520px;text-align:left">
-    <div style="font-size:82px;font-weight:800;line-height:1.14" data-anim="fadewords" data-at=".5" data-dur="1.6">Move approval in front of execution</div>
+    <div style="font-size:78px;font-weight:800;line-height:1.14" data-anim="fadewords" data-at=".5" data-dur="1.6">Move approval in front of execution</div>
   </div>
   <div class="callout" data-anim="pop" data-at="2.2" data-pulse="3" style="right:80px;bottom:150px">54s per 30s of video</div>
 </div></div></section>
@@ -266,20 +267,19 @@
     </div>
     <span class="lens" style="width:260px;height:260px" data-anim="lens" data-at="2.8" data-dur="3"
           data-path="620,180;760,200" data-words="Row selected|Row selected">
-      <span class="lenstxt" style="font-size:44px">Row selected</span></span>
+      <span class="lenstxt" style="font-size:40px">Row selected</span></span>
   </div>
 </div></div></section>
 
 <section id="zg25" class="clip" data-start="119" data-duration="4" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">25 · SHORT SCENE · SECOND SPEED</div>
 <div class="stmt" data-anim="reveal" data-at=".25"><div class="title navy sm">Under four seconds</div><div class="title blue">NO THREE PHASES</div></div>
-<div class="arrow" style="margin-top:10px;gap:90px">
-  <div class="icell"><div class="icon" style="width:120px;height:120px;font-size:48px">A</div></div>
+<div class="arrow" style="margin-top:8px;gap:104px">
+  <div class="icell"><div class="icon" style="width:120px;height:120px;font-size:50px">A</div></div>
   <div style="position:relative"><svg class="arsvg" width="300" height="80" viewBox="0 0 300 80">
     <line class="arline" x1="10" y1="40" x2="240" y2="40" stroke="var(--blue)" stroke-width="9" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
-    <polyline class="arhead" points="216,20 268,40 216,60" fill="none" stroke="var(--green)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
   </svg></div>
-  <div class="icell"><div class="icon g" style="width:120px;height:120px;font-size:48px">B</div></div>
+  <div class="icell"><div class="icon g" style="width:120px;height:120px;font-size:50px">B</div></div>
 </div></div></section>
 
 <section id="zg26" class="clip" data-start="123" data-duration="4" data-track-index="1"><div class="cam">
@@ -287,6 +287,25 @@
 <div class="title blue" data-anim="rise" data-at=".35">v1.1</div>
 <div class="uln" data-anim="gx" data-at="1.2" data-dur=".7"></div>
 <div class="sub" data-anim="fi" data-at="2">Approve the motion once. Every video inherits it.</div></div></section>
+
+<section id="zg27" class="clip" data-start="127" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">27 &middot; HIGHLIGHTER</div>
+<div class="stmt" data-anim="reveal" data-at=".35">
+  <div class="title navy sm">Put your approvals</div>
+  <div class="title navy sm">in front of the <span class="hl">slow step<span class="hlb" data-anim="highlight" data-at="1.4" data-dur=".8"></span></span></div>
+</div>
+<div class="sub" data-anim="fi" data-at="2.6">The band swipes in like a marker pen.</div></div></section>
+
+<section id="zg28" class="clip" data-start="131.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">28 &middot; SKITCH MARKERS</div>
+<div class="skrow" data-anim="pops" data-at=".4">
+  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="var(--red)"/><circle cx="39" cy="39" r="36" fill="var(--red)"/><text class="skg" x="39" y="53" text-anchor="middle">&#10007;</text></svg></span><div class="skcap">wrong</div></div>
+  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="var(--blue)"/><circle cx="39" cy="39" r="36" fill="var(--blue)"/><text class="skg" x="39" y="53" text-anchor="middle">?</text></svg></span><div class="skcap">question</div></div>
+  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="#b26a00"/><circle cx="39" cy="39" r="36" fill="#b26a00"/><text class="skg" x="39" y="53" text-anchor="middle">!</text></svg></span><div class="skcap">watch out</div></div>
+  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="var(--green)"/><circle cx="39" cy="39" r="36" fill="var(--green)"/><text class="skg" x="39" y="53" text-anchor="middle">&#10003;</text></svg></span><div class="skcap">approved</div></div>
+  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="#d4537e"/><circle cx="39" cy="39" r="36" fill="#d4537e"/><text class="skg" x="39" y="53" text-anchor="middle">&#9829;</text></svg></span><div class="skcap">loved</div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.2">Shape and word carry the meaning, never colour alone.</div></div></section>
 
 </div>
 <script src="motion.js"></script>

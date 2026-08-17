@@ -2,3 +2,8 @@ snapshots/
 *.mp4
 
 push.ps1
+zg-frames/*.mp4
+zg-frames/*.log
+zg-frames/snapshots/
+zg-frames/.thumbnails/
+zg-frames/.hyperframes/

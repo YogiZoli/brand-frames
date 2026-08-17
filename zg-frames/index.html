@@ -1,0 +1,245 @@
+<!doctype html><html lang="en" data-resolution="landscape"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=1920, height=1080"/>
+<title>zg-frames — motion sampler v1.0</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<link rel="stylesheet" href="zg.css"/>
+</head><body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="114">
+<div class="g1"></div><div class="g2"></div><div class="grid"></div>
+
+<section id="zg01" class="clip" data-start="0" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">01 · STATEMENT</div>
+<div class="stmt" data-anim="reveal" data-at=".35"><div class="title navy sm">The workhorse archetype</div><div class="title blue">TWO LINES</div></div>
+<div class="sub" data-anim="fi" data-at="2.2">Navy sets it up, blue lands it.</div></div></section>
+
+<section id="zg02" class="clip" data-start="4.5" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">02 · DISPLAY WORD</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:18px">
+<div class="disp" data-anim="blurword" data-at=".4" data-dur="3.4">BEFORE</div>
+<div class="uln"></div></div>
+<div class="sub" data-anim="fi" data-at="3.2">Starts blurry, finishes sharp. One per film.</div></div></section>
+
+<section id="zg03" class="clip" data-start="9" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">03 · HERO</div>
+<div class="title blue" data-anim="rise" data-at=".35">ONE SITTING</div>
+<div class="uln" data-anim="gx" data-at="1.3" data-dur=".7"></div>
+<div class="sub" data-anim="fi" data-at="2.4">Per-character rise, then the rule draws.</div></div></section>
+
+<section id="zg04" class="clip" data-start="13.5" data-duration="4" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">04 · STEP CARD</div>
+<div class="title blue" data-anim="rise" data-at=".3">STEP THREE</div>
+<div class="uln" data-anim="gx" data-at="1.2" data-dur=".6"></div>
+<div class="sub" data-anim="fi" data-at="2.1">Chapter marker between sections.</div></div></section>
+
+<section id="zg05" class="clip" data-start="17.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">05 · ARROW · 3 PHASES</div>
+<div class="arrow">
+  <div class="icell"><div class="icon">C<span class="pring"></span></div><div class="ilbl">Comment</div></div>
+  <div style="position:relative">
+    <svg class="arsvg" width="300" height="110" viewBox="0 0 300 110">
+      <line class="arline" x1="12" y1="55" x2="240" y2="55" stroke="var(--blue)" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+      <polyline class="arhead" points="216,30 268,55 216,80" fill="none" stroke="var(--green)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    </svg>
+    <span class="tdot" data-val="228"></span>
+  </div>
+  <div class="icell"><div class="icon g">$<span class="pring"></span></div><div class="ilbl">Client</div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.4">Icon, then the line fills, then both pulse.</div></div></section>
+
+<section id="zg06" class="clip" data-start="22.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">06 · PROGRESS RAIL</div>
+<div class="rail">
+  <div class="rstop"><span class="rdot"></span><span class="rlbl">01 Script</span></div>
+  <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
+  <div class="rstop"><span class="rdot"></span><span class="rlbl">02 Voice</span></div>
+  <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
+  <div class="rstop"><span class="rdot"></span><span class="rlbl">03 Visuals</span></div>
+  <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
+  <div class="rstop"><span class="rdot"></span><span class="rlbl">04 Face</span></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.6">Fills step by step. Last stop turns green and pulses.</div></div></section>
+
+<section id="zg07" class="clip" data-start="27.5" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">07 · PROPORTION BARS</div>
+<div class="funnel">
+  <div style="display:flex;justify-content:center"><div class="fbar" data-anim="bars" data-at=".4" style="width:96%;background:var(--blue)"><span class="fl">NARRATION</span><span class="fr">leads</span></div></div>
+  <div style="display:flex;justify-content:center"><div class="fbar" data-anim="bars" data-at=".8" style="width:40%;background:var(--green)"><span class="fl">MUSIC</span><span class="fr">quiet</span></div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="2.6">Width carries the ratio.</div></div></section>
+
+<section id="zg08" class="clip" data-start="32" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">08 · SPLIT</div>
+<div class="split" data-anim="pops" data-at=".4">
+  <div class="scard"><div class="mk x">&#10007;</div><div class="scl">Open a terminal</div></div>
+  <div class="scard"><div class="mk ok">&#10003;</div><div class="scl">Say it in plain English</div></div>
+</div>
+<div class="bigw blue" data-anim="rise" data-at="2.2">NEVER</div></div></section>
+
+<section id="zg09" class="clip" data-start="36.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">09 · STATE FLIP</div>
+<div class="flipgroup" style="display:flex;gap:120px">
+  <div class="flip" style="position:relative;width:200px;height:200px">
+    <div class="fa icon" style="position:absolute;inset:0;width:200px;height:200px;font-size:70px">?</div>
+    <div class="fb icon g" style="position:absolute;inset:0;width:200px;height:200px;font-size:56px;opacity:0">YES</div></div>
+  <div class="flip" style="position:relative;width:200px;height:200px">
+    <div class="fa icon" style="position:absolute;inset:0;width:200px;height:200px;font-size:70px">?</div>
+    <div class="fb icon g" style="position:absolute;inset:0;width:200px;height:200px;font-size:56px;opacity:0">YES</div></div>
+  <div class="flip" style="position:relative;width:200px;height:200px">
+    <div class="fa icon" style="position:absolute;inset:0;width:200px;height:200px;font-size:70px">?</div>
+    <div class="fb icon g" style="position:absolute;inset:0;width:200px;height:200px;font-size:56px;opacity:0">YES</div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.4">One by one, then the last one grows.</div></div></section>
+
+<section id="zg10" class="clip" data-start="41.5" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">10 · TILES · CIRCLE ICONS</div>
+<div class="tiles" data-anim="pops" data-at=".4">
+  <div class="tile"><span class="tico">T</span><span class="tl">Title</span></div>
+  <div class="tile"><span class="tico">D</span><span class="tl">Description</span></div>
+  <div class="tile"><span class="tico">C</span><span class="tl">Chapters</span></div>
+  <div class="tile"><span class="tico g">25</span><span class="tl">Languages</span></div>
+</div></div></section>
+
+<section id="zg11" class="clip" data-start="46" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">11 · PANEL LIST</div>
+<div class="panel">
+  <div class="ptitle" data-anim="kick" data-at=".3">What the check catches</div>
+  <div class="prow" data-anim="fi" data-at=".5"><span class="pflag">!</span>Text running off the edge</div>
+  <div class="prow" data-anim="fi" data-at="1.1"><span class="pflag">!</span>Two blocks landing on each other</div>
+  <div class="prow hot" data-anim="fi" data-at="1.8" data-pulse="2.6"><span class="pflag">&#10003;</span>Colours too close to read<span class="pbadge">PRIORITY</span></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.4">Rows arrive one by one. The hot row is green.</div></div></section>
+
+<section id="zg12" class="clip" data-start="51" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">12 · COUNT-UP BARS</div>
+<div class="bars">
+  <div class="bcol"><div class="bnum" data-anim="count" data-at=".5" data-val="30" style="color:var(--blue)">0</div>
+    <div class="bbar" data-anim="barsh" data-at=".5" style="background:var(--blue);height:120px"></div>
+    <div class="blbl">Seconds of video</div></div>
+  <div class="bcol"><div class="bnum" data-anim="count" data-at="1.3" data-val="54" style="color:var(--green)">0</div>
+    <div class="bwrap"><span class="bbadge" data-anim="pop" data-at="3">measured</span>
+    <div class="bbar" data-anim="barsh" data-at="1.3" style="background:var(--green);height:216px"></div></div>
+    <div class="blbl">Seconds of machine time</div></div>
+</div></div></section>
+
+<section id="zg13" class="clip" data-start="56" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">13 · LINE CHART · SHAKE</div>
+<div class="chart" data-anim="chart" data-at=".4" data-dur="2.6">
+  <svg width="1400" height="460" viewBox="0 0 1400 460">
+    <g class="cstage">
+      <polyline class="cline" points="20,420 200,380 400,330 620,300 840,230 1060,160 1340,70" fill="none"
+        stroke="var(--blue)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"
+        pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+      <circle class="cdot" cx="1340" cy="70" r="18" fill="var(--green)"/>
+    </g>
+    <text class="cx" x="20" y="452">month 1</text>
+    <text class="cx" x="1240" y="452">month 12</text>
+  </svg>
+</div>
+<div class="sub" data-anim="fi" data-at="3.4">Draws left to right, green end dot, fine shake.</div></div></section>
+
+<section id="zg14" class="clip" data-start="61" data-duration="5.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">14 · LENS CARD · 3 PHASES</div>
+<div class="panel" style="height:440px">
+  <div class="ptitle">Contact details</div>
+  <div style="display:flex;gap:180px;margin-top:26px">
+    <div><div class="popk">PRIMARY INTENT</div><div style="font-size:46px;font-weight:800;margin-top:8px">Enterprise scale</div></div>
+    <div><div class="popk">TEMPERATURE</div><div style="font-size:46px;font-weight:800;margin-top:8px;color:var(--green)">Warm to hot</div></div>
+  </div>
+  <span class="lens" data-anim="lens" data-at=".5" data-dur="4.2" data-path="120,120;760,120;760,20"></span>
+  <div class="pop" data-anim="pop" data-at="2.4" style="left:520px;top:-40px"><div class="popk">Source video</div><div class="popv">Q3_review.mp4</div></div>
+  <div class="pop" data-anim="pop" data-at="3.4" style="left:980px;top:-40px"><div class="popk">Original comment</div><div class="popv">"This matches our needs"</div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="4.2">The lens moves to what the voice is naming.</div></div></section>
+
+<section id="zg15" class="clip" data-start="66.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">15 · CONTACT SHEET</div>
+<div class="sheet" data-anim="pops" data-at=".35">
+  <div class="sh"><span class="shts">0:04</span></div><div class="sh"><span class="shts">0:21</span></div>
+  <div class="sh"><span class="shts">0:47</span></div><div class="sh"><span class="shts">1:12</span></div>
+  <div class="sh"><span class="shts">1:38</span></div><div class="sh"><span class="shts">2:05</span></div>
+  <div class="sh"><span class="shts">2:41</span></div><div class="sh"><span class="shts">3:16</span></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.2">One frame per scene, approved by scrolling.</div></div></section>
+
+<section id="zg16" class="clip" data-start="71.5" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">16 · PERSONAS</div>
+<div class="pers">
+  <div class="pcol"><div class="pcirc" data-anim="pop" data-at=".4"><span class="porb" data-anim="orbit" data-at="1" data-dur="3.2"></span><span class="pico"></span></div><div class="plbl">Time</div></div>
+  <div class="pcol"><div class="pcirc" data-anim="pop" data-at=".7"><span class="porb" data-anim="orbit" data-at="1" data-dur="3.2"></span><span class="pico"></span></div><div class="plbl">Money</div></div>
+  <div class="pcol"><div class="pcirc" data-anim="pop" data-at="1"><span class="porb" data-anim="orbit" data-at="1" data-dur="3.2"></span><span class="pico"></span></div><div class="plbl">Location</div></div>
+</div></div></section>
+
+<section id="zg17" class="clip" data-start="76" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">17 · KEYWORD PILL</div>
+<div class="cpill" data-anim="pop" data-at=".35" data-pulse="2.2"><span class="cpic"></span>Comment <i>TRIGGER</i> below</div>
+<div class="pillout" data-anim="pop" data-at="1.6" data-pulse="2.6">APPROVAL POINT 04</div></div></section>
+
+<section id="zg18" class="clip" data-start="80.5" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">18 · END CARD</div>
+<div class="appic" data-anim="pop" data-at=".4"></div>
+<div class="ectitle" data-anim="rise" data-at=".7">See you <b>there</b></div>
+<div class="ecpill" data-anim="fi" data-at="1.7">PURPOSEFUL &middot; PEACEFUL &middot; PROFITABLE</div>
+<div class="ecbtn" data-anim="pop" data-at="2.2" data-pulse="2.8">Comment GUIDE &#8594;</div></div></section>
+
+<section id="zg19" class="clip" data-start="85" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">19 · OVERLAY · LOWER THIRD</div>
+<div class="plate"><span class="plateTag">your phone footage — untouched</span>
+  <div class="l3" data-anim="fi" data-at=".6" data-dur=".8" data-pulse="2.6">
+    <span class="l3bar"></span><div><div class="l3n">Zoltan Gero</div><div class="l3r">AI agents &middot; evergreen income</div></div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.4">HF renders this with alpha. The footage never re-encodes.</div></div></section>
+
+<section id="zg20" class="clip" data-start="90" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">20 · OVERLAY · TITLE + CALLOUT</div>
+<div class="plate"><span class="plateTag">your phone footage — untouched</span>
+  <div style="position:absolute;left:90px;top:110px;text-align:left">
+    <div style="font-size:76px;font-weight:800;line-height:1.15" data-anim="fadewords" data-at=".5" data-dur="1.6">Move approval in front of execution</div>
+  </div>
+  <div class="callout" data-anim="pop" data-at="2.2" data-pulse="3" style="right:90px;bottom:140px">54s per 30s of video</div>
+</div></div></section>
+
+<section id="zg21" class="clip" data-start="95" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">21 · OVERLAY · PULL QUOTE</div>
+<div class="plate"><span class="plateTag">your phone footage — untouched</span>
+  <div class="quote" data-anim="fadewords" data-at=".5" data-dur="2">"The judgment is mine. What changed is <b>when it arrives</b>."</div>
+  <div class="l3" style="bottom:60px" data-anim="fi" data-at="2.8"><span class="l3bar"></span><div><div class="l3r">from the script</div></div></div>
+</div></div></section>
+
+<section id="zg22" class="clip" data-start="100" data-duration="6" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">22 · FOOTAGE INSIDE HF</div>
+<div class="device"><span class="dbar"><span></span><span></span><span></span></span>
+  <div class="dscreen">
+    <div class="dstage" data-anim="dzoom" data-at="1.2" data-dur="2.6" data-scale="1.7" data-px="-200" data-py="-70">
+      <span class="drow" style="top:80px;width:760px"></span>
+      <span class="drow" style="top:150px;width:520px"></span>
+      <span class="drow" style="top:220px;width:640px;background:var(--blue-bg)"></span>
+      <span class="drow" style="top:290px;width:420px"></span>
+      <span class="cursor" data-anim="cursor" data-at=".6" data-dur="2.4" data-path="120,120;420,220;660,230"></span>
+    </div>
+    <span class="lens" data-anim="lens" data-at="2.6" data-dur="3" data-path="500,180;700,200"></span>
+  </div>
+</div>
+<div class="sub" data-anim="fi" data-at="4.4">Zoom, pan, cursor, lens — HF owns the frame.</div></div></section>
+
+<section id="zg23" class="clip" data-start="106" data-duration="4" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">23 · SHORT SCENE · SECOND SPEED</div>
+<div class="stmt" data-anim="reveal" data-at=".25"><div class="title navy sm">Under four seconds</div><div class="title blue">NO THREE PHASES</div></div>
+<div class="arrow" style="margin-top:10px">
+  <div class="icell"><div class="icon" style="width:110px;height:110px;font-size:44px">A</div></div>
+  <div style="position:relative"><svg class="arsvg" width="200" height="80" viewBox="0 0 200 80">
+    <line class="arline" x1="10" y1="40" x2="150" y2="40" stroke="var(--blue)" stroke-width="8" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <polyline class="arhead" points="132,20 172,40 132,60" fill="none" stroke="var(--green)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+  </svg></div>
+  <div class="icell"><div class="icon g" style="width:110px;height:110px;font-size:44px">B</div></div>
+</div></div></section>
+
+<section id="zg24" class="clip" data-start="110" data-duration="4" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">ZG-FRAMES</div>
+<div class="title blue" data-anim="rise" data-at=".35">v1.0</div>
+<div class="uln" data-anim="gx" data-at="1.2" data-dur=".7"></div>
+<div class="sub" data-anim="fi" data-at="2">Approve the motion once. Every video inherits it.</div></div></section>
+
+</div>
+<script src="motion.js"></script>
+<script>window.__timelines = window.__timelines || {}; window.__timelines["main"] = ZG.build("main");</script>
+</body></html>

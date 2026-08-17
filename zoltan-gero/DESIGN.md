@@ -1,3 +1,19 @@
+<!-- ZG-CANON -->
+> ## ⚠️ ELOSZOR OLVASD: a kanon
+> A videogyartas egyetlen ervenyes leirasa:
+> **`C:\Users\gdp\HyperFrames\_frames\PIPELINE.md`**
+> (repo: github.com/YogiZoli/brand-frames)
+>
+> Mellette: `FEEDBACK-LOG.md` (Zoltan altalanos szabalyai, MINDEN videora),
+> `MOTION.md`, `<csatorna>/FRAME.md`, `AUDIO.md`, `_feedback/` (a feedback
+> egyetlen helye).
+>
+> **Ket szabaly mindent felulir:** (1) mi szoveget irunk, a HyperFrames gyart
+> kockat - sajat motor TILOS; (2) a kep azt mutatja, amirol a hang beszel.
+>
+> Utkozes eseten: PIPELINE.md > skill > Drive doksi > projekt-utasitas > chat.
+<!-- /ZG-CANON -->
+
 # DESIGN — Zoltan Gero channel design language (C2C Blue)
 
 The channel's design brief. Recovered 2026-08-16 from the Comment-to-Client / Expansion Pack

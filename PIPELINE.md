@@ -18,6 +18,61 @@ határt — az volt az `exp-v9`, és soha nem tér vissza.
 | a registry mechanizmusa (`data-composition-src`) | mozgás-szabályok (`MOTION.md`) |
 | | a videó jelenet-táblája |
 
+## VIDEÓTÍPUSOK — NÉGY BÁZIS + EGY FLAG (2026-08-17)
+
+A videó elején egyetlen kérdés: **mi az alapanyag?** Nem négy párhuzamos
+csővezeték — négy bázis, közös kapukkal.
+
+| Bázis | Az alapanyag | Ki állítja össze | Avatar |
+|---|---|---|---|
+| `explainer` | nincs felvétel, HF grafika | HyperFrames, lokálisan | opcionális sarok-kör |
+| `talking_head` | telefonos felvétel Zoltánról | HF overlay a felvétel FÖLÉ | nem értelmes |
+| `screenrecording` | képernyőfelvétel (walkthrough is) | a felvétel a HF-en BELÜL | opcionális sarok-kör |
+| `avatar_only` | **a HeyGen avatar maga** | HeyGen online vagy API | maga a videó |
+
+A régi `hybrid` = `explainer` + avatar flag. Az avatar flag, de **csak ott**:
+`avatar_only`-nál az avatar a bázis, nem jelölő. Ez a korábbi modell hibája volt.
+A `walkthrough` nem külön típus: `screenrecording` oktató szándékkal.
+
+### A két kombinációs irány — mindkettő stock HyperFrames
+
+**HF a felvétel FÖLÉ (`talking_head`):** a HF alfa-csatornával renderel
+(`--format mov` / `webm`, vagy `png-sequence` RGBA), ffmpeg ráteszi az
+érintetlen felvételre. Lower-third, kinetikus cím, callout, pull-quote,
+kiemelő gyűrű. **A felvétel nem kódolódik újra.**
+
+**A felvétel a HF-en BELÜL (`screenrecording`):** a klip a kompozícióba
+mountolva, így a HF zoomol, pásztáz, eszközkeretbe tesz, és a kurzort követi
+lupéval. Itt a kontroll fontosabb, mint az érintetlenség.
+
+Döntés 2026-08-17: **mindkettőt tudjuk, esettől függően** — `talking_head`
+felette, `screenrecording` belül.
+
+### `talking_head` — KEVESEBB lépés, nem több
+
+| `explainer` | `talking_head` |
+|---|---|
+| script → VO gyártás ElevenLabsszel → átirat | felveszed → átirat a felvételről |
+| 100+ jelenet grafikája | ~15 overlay időpont |
+| avatar composite a végén | nincs — Zoltán a képen van |
+
+Nincs VO-gyártás (a saját hang már ott van), és nincs teljes jelenet-grafika:
+grafika csak oda kerül, ahol számít. A jelenet-tábla ekkor overlay-táblává
+egyszerűsödik. Az öt kapu ugyanaz.
+
+### `avatar_only` — ide NE építsünk HF gépezetet
+
+Ahol az avatar a videó és a grafika mellékes, a HeyGen online (vagy API) a
+helyes út. Nincs jelenet-tábla, nincs build. **Figyelem:** a HeyGen API-pénztárca
+külön van a 600 in-app kredittől, és üresen 402-vel elhasal.
+
+### Miért nem HeyGen online mindenre
+
+A HeyGen online **nem ratchetel**: minden videó nulláról indul, a design
+driftel, nincs verziózás, nincs regressziós teszt, és az operátor a kézi
+összeállító. Amíg a `zg-frames` nem áll, a HeyGen online gyorsabb — utána a
+lokális út gyorsabb ÉS ingyen van.
+
 ## A MENET
 
 | # | Lépés | Ki | Kapu |

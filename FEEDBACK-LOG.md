@@ -92,3 +92,94 @@ pulzálás mindkét állapotban, a végén a kiemelt elem teljes és lassan nagy
 Jobb alsó sarok. **A HeyGen által adott méretet NEM változtatjuk** — a
 kompozíció hagy neki helyet (a `.cam` alsó padding), a composite csak
 kör-maszkot tesz rá és beilleszti.
+
+---
+
+## 2026-08-17 (2) — sampler v1.0 feedback
+Forrás: `_feedback/2026-08-17/HR-update-feedback-01..08.png`
+Nyolc kép, hét általános szabály. Sorrend: a legfontosabb elöl.
+
+### 1. TÉRHASZNÁLAT — a legnagyobb hiba (feedback-04)
+
+> „All are very narrow! Lots of big white spaces! Can you use the white spaces?
+> **Be more loose!** Use the usual white spaces — I don't know what normal or
+> standard, but use that."
+
+A kompozíció eddig egy szűk sávban ült a kép közepén, körülötte üres. **Ez nem
+egy archetípus hibája, hanem az elrendezési logikáé.** Szabály:
+
+- A tartalom **használja ki a biztonságos területet** (1920 − 2×140 = 1640 px),
+  ne csak a közepét. A szűk, magas blokk tilos.
+- Az elemek közti térköz **nagyobb**, de a csoport **szélesebb** — a levegő az
+  elemek KÖZÖTT legyen, ne a kompozíció KÖRÜL.
+- Ami eddig 1300–1420 px széles volt (panel, funnel), az **1640 px**.
+- Kivétel a jobb alsó sarok: ott az avatarnak marad hely.
+
+### 2. FEJLÉC ÉS TÖRZS ARÁNYA (feedback-07)
+
+> „Make it slightly bigger like the text now… usually you can make the headlines
+> bigger, as big as now the text, rather than make the text smaller."
+
+- A **kicker/headline NAGYOBB**: 42 px → **54 px**.
+- A törzs/kiemelt szöveg **relatíve kisebb**, ne fordítva. Ha szűkös, a fejlécet
+  növeld, ne a szöveget zsugorítsd.
+- A `pillout` („APPROVAL POINT 04") szövege a **headline méretéhez** igazodik,
+  nem 56 px-hez. Max a fejléc mérete.
+
+### 3. SÁVOK (feedback-01)
+
+- **A sávok legyenek KÖZELEBB** egymáshoz. 300 px térköz sok → ~140 px.
+- A számok **ne legyenek egymáshoz és a fejléchez közel** — kapjanak levegőt.
+- **A badge színe MINDIG más, mint a sáv, amin ül.** Zöld sávon nem zöld badge.
+- A badge **pulzál**.
+- A sáv **nyílása animált** — a növekedés legyen látható.
+
+### 4. LUPE / ZOOM (feedback-02)
+
+> „Now the ZOOM was empty! It should be: ZOOM effect is ALWAYS on a word or text,
+> the letters are magnified like zooming."
+
+- **A lupe SOHA nem lehet üres.** Mindig szón vagy szövegen áll, és **a betűk
+  nagyítva látszanak benne** — ez a lényege.
+- A lupe alatti tartalom nagyítva jelenik meg, nem csak körvonal kerül rá.
+- A popup kártyák **nem fedhetik** a fejlécet vagy egymást.
+
+### 5. VONALDIAGRAM (feedback-05)
+
+- **A pontok animálódnak**: ahogy a vonal odaér, minden adatpont kiül.
+- A tengelyfeliratok **nagyobbak** (24 px → 32 px).
+
+### 6. KÖR-ANIMÁCIÓ — két külön dolog, eddig összekevertem (feedback-06)
+
+> „You misunderstand the animation: it starts from 0, no animation. Then the
+> circle fills up to 100% full. When the circle is complete, no more animation."
+
+- **Progress ring:** 0-ból indul, **feltelik 100%-ra**, és amikor kész,
+  **megáll — nincs további animáció.** Ez NEM végtelen forgás. A mostani `orbit`
+  hibás volt.
+- **Pulzáló gyűrű:** ez a MÁSIK animáció. A körvonal **ugyanolyan méretű, mint
+  maga a kör alakú elem**, és pulzál. Nem nagyobb, nem forog.
+
+### 7. KONTAKT LAP (feedback-03)
+
+> „This contact sheet is entirely wrong."
+
+- A „8 db üres kártya időbélyeggel" archetípus **törölve**.
+- Helyette kettő: **(a) FORM, ami épp kitöltődik** — betűnként írja be magát,
+  „letters in progress"; **(b) CONTACT RECORD** — valódi kontakt-kártya, a
+  GoHighLevel kontakt nézetének logikájával (nevesített mezők, valódi értékek).
+  Képernyőn CRM-nevet SOHA nem írunk ki.
+
+### 8. VÉGKÁRTYA (feedback-08)
+
+- Az animáció jó, marad.
+- A „See you there" **kisebb** legyen.
+- Az app-ikon helyén **értelmes, a szöveghez tartozó ikon** legyen — vagy később
+  a logó, ha lesz. Üres kék négyzet nem elfogadható.
+- A CTA gomb **pulzál a végén**.
+
+### Amit kifejezetten jónak talált — ne rontsuk el
+- A 3 fázisú nyíl (05): *„letter and icon sizes are perfect, animation is perfect"*
+- A pill és a `pillout` animációja (17)
+- A végkártya felépítése és animációja (18)
+- Összességében: *„amazing overall, all scenes are very good"*

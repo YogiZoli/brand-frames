@@ -248,3 +248,201 @@ Narancs · sötét háttér · gradiens szövegen · színes vagy több irányú
 betű mint ikon (`C`, `$`) · négyzetes ikon · négynél több betűméret egy képen ·
 `elastic`/`bounce` easing · három egyidejű mozgás · jelentés csak színen ·
 kitalált szám vagy százalék · sarok-keret · özvegy sor · `px` letter-spacing.
+
+
+---
+
+# MÁSODIK RÉTEG — amit egy profi alapozás még tartalmaz
+
+Hozzáadva 2026-08-18. Az első réteg a látható dolgokat rendezte (méret, szín,
+forma). Ez a réteg azokat, amiket a néző **nem vesz észre, ha jól van — csak azt
+érzi, hogy profi.**
+
+---
+
+## 14. OPTIKAI KORREKCIÓK — a matematika hazudik
+
+A szem nem mérőszalag. Ahol a számok egyenlők, ott gyakran optikailag nem az.
+
+**Optikai közép.** A szem a képközepet a matematikai közép fölött érzékeli.
+Minden centrált kompozíció **4–5%-kal feljebb** ül. Ez az a „valami nem stimmel,
+de nem tudom mi" érzés, ami profi anyagoknál sosem jelentkezik.
+→ kódban: `.cam{padding-bottom:230px}`
+
+**Optikai túlnyúlás (overshoot).** Egy kör optikailag kisebbnek látszik, mint egy
+vele azonos magasságú négyzet. Ezért a **kör alakú ikon 2–4%-kal nagyobb**, mint
+a mellette álló szögletes elem. Ugyanígy: a hegyes formák (háromszög, pipa)
+kilógnak a rácsból, különben aprónak tűnnek.
+
+**Optikai margó-igazítás.** Az idézőjel, a kötőjel és a pont optikailag beljebb
+tolja a sort. Ha egy idézet nagy betűvel indul, a nyitó idézőjel **kilóg a
+margón kívülre** — különben a szövegblokk bal éle töröttnek látszik.
+
+**Ikon optikai súlya.** Két ikon akkor egyenlő, ha a **tintamennyiségük**
+egyenlő, nem ha a befoglaló dobozuk. Egy tömör kör „nehezebb", mint egy vonalas
+négyzet — a vonalasat nagyobbra kell venni.
+
+---
+
+## 15. SZÁMOK — külön szakma
+
+**Tabuláris számjegyek** minden változó számnál (számláló, idő, ár, statisztika).
+Arányos számjegyeknél a `1` keskenyebb, mint a `8`, ezért a szám **ugrál**
+számolás közben. → kódban: `font-variant-numeric:tabular-nums`
+
+**Formátum:**
+- Ezres elválasztó: **vékony szóköz**, nem vessző és nem pont (`12 400`).
+  Így nem ütközik a tizedesjellel egyik nyelven sem.
+- Mértékegység **mindig ott van** és szóközzel: `54 s`, `30 mp`, `+282 %`.
+- **Kerekítés:** a képre soha nem kerül két tizedesnél több. Százaléknál egész.
+- **Nagyságrend:** 10 000 fölött `12,4k`, egymillió fölött `1,2M`.
+
+**Igazság:** minden szám mért adat. Százalék csak akkor, ha a két alapszám is
+látszik vagy elhangzik. `12,4k → 47,4k` az **+282%**, nem +312%.
+
+---
+
+## 16. OLVASÁSI IDŐ — a legtöbbet vétett hiba videóban
+
+**Képlet: 0,5 mp + szavanként 0,4 mp.** Egy hatszavas felirat minimum **2,9 mp**.
+
+**A be- és kiúszás NEM számít bele.** Ha egy jelenet 3 mp és a szöveg 0,5-nél jön
+és 0,3-nál megy, akkor 2,2 mp a valós olvasási idő — az öt szónál már kevés.
+
+**A kép nem lehet gyorsabb, mint a hang.** Ha a narráció még a mondat elején jár,
+a következő vizuál nem érkezhet meg. A jelenet-tábla ezért a mondathatárokra ül.
+
+---
+
+## 17. LOKALIZÁCIÓ — 25 nyelv, ugyanaz a kompozíció
+
+- **+30% hossztűrés** minden szövegdobozban. A német, finn, magyar hosszabb az
+  angolnál; a kínai rövidebb, de magasabb sortávot kér.
+- **Szöveg soha nem képbe égetve** — mindig élő szöveg, hogy fordítható legyen.
+- **Nincs szójáték a kulcsüzenetben**, mert fordíthatatlan.
+- **Szám- és dátumformátum** lokalizálódik: `1,234.5` vs `1 234,5`.
+- **Az ikon nem nyelvfüggő** — ezért ér többet, mint a felirat.
+
+---
+
+## 18. RÁCS ÉS IGAZÍTÁS
+
+- **12 oszlopos rács** az 1640 px tartalom-boxon, **32 px köz**.
+  Oszlop = 105 px. Minden objektum oszlophatárra ül.
+- **Egy optikai tengely jelenetenként.** Ha a cím centrált, a kártya is centrált.
+  Kevert igazítás (cím középen, lista balra) csak akkor, ha a kártya maga egy
+  önálló doboz saját belső tengellyel.
+- **Az azonos szerepű elemek azonos helyen kezdődnek** egymást követő
+  jeleneteken. Ha a kicker mindig ugyanott van, a szem nem ugrál vágás közben.
+
+---
+
+## 19. TÖMÖRÍTÉS-BIZTOS SZÍN ÉS VONAL — YouTube-specifikus
+
+A YouTube h.264/VP9 kódolása **a vörös csatornát bántja a legjobban**, és az
+egy pixeles vonalakat szétmossa.
+
+- **Vonal minimum 3 px** 1080p-n. Az 1–2 px-es hajszálvonal csak fehér kártyán,
+  elválasztóként megengedett, hangsúlyként soha.
+- **Telített tiszta vörös nagy felületen tilos** — sávosodik. A `--red-500`
+  (`#e24b4a`) enyhén tompított, épp ezért.
+- **Finom gradiens nagy felületen sávosodhat** — ezért maradt a ground
+  gradiens 6% alatti kontraszttal, és ezért nincs gradiens kártyán.
+- **Zaj és textúra tilos** — a tömörítő minden bitjét ráönti, és elveszi a
+  szövegtől.
+
+---
+
+## 20. MOBIL OLVASHATÓSÁG — a nézők többsége telefonon van
+
+Egy 1920 px széles kompozíció telefonon kb. 400 px. Az osztó **4,8×**.
+
+| Képen (1920) | Telefonon | Olvasható? |
+|---|---|---|
+| 32 px | 6,7 px | **nem** — csak dekoráció lehet |
+| 40 px | 8,3 px | épphogy, csak rövid címke |
+| 50 px | 10,4 px | igen, de nem hosszú mondat |
+| 62 px+ | 13 px+ | igen |
+
+**Szabály: a kulcsüzenet soha nem kisebb 62 px-nél.** A 32 és 40 px csak
+mikro-címke és kontextus lehet — ha a nézőnek el KELL olvasnia, akkor ≥50 px.
+
+**Hüvelykujj-teszt:** ha a kontakt lapot lekicsinyíted 400 px szélesre és a fő
+üzenet nem olvasható, a jelenet megbukott.
+
+---
+
+## 21. MOZGÁS-BIZTONSÁG
+
+- **Semmi villogás 3 Hz fölött** — fényérzékeny epilepszia kockázat.
+  A pulzálásunk 1,1 mp ciklus = 0,9 Hz, biztonságos.
+- **Nagy felületű gyors parallax tilos** — mozgásbetegséget okoz kis kijelzőn.
+- **A kamera-drift maximum ±3%** a jelenet teljes hossza alatt. Gyorsabb
+  zoomolás fárasztó.
+
+---
+
+## 22. RÉTEGSORREND
+
+1. ground (gradiens + rács) → 2. objektum (kártya, sáv, diagram) →
+3. annotáció (nagyító, jelölő, callout) → 4. szöveg-overlay →
+5. avatar (composite, a renderen kívül)
+
+**Annotáció fedheti az objektumot** — ez a dolga. **Szöveg soha nem fedhet
+szöveget.** Az avatar semmit nem fedhet, ami információt hordoz — ezért marad
+üresen a jobb alsó sáv.
+
+---
+
+## 23. AZ ÜRES TÉR MINT KOMPONENS
+
+Az üres tér **tervezett, nem maradék**. Három szabály:
+
+- **A margó nem alku tárgya.** 140 px minden oldalon, akkor is, ha „elférne".
+- **Az objektum körüli levegő arányos az objektum súlyával.** Egy nagy kártya
+  körül több kell, mint egy pill körül.
+- **Egy jelenetnek joga van üresnek lenni.** Ha a mondat rövid, a kép legyen
+  csendes. A töltelék-elem rosszabb, mint az üresség.
+
+---
+
+## 24. RITMUS A JELENETEK KÖZÖTT
+
+- Átlagos jelenethossz **3,5–5 mp**. Ez a V9-ben mért, bevált sűrűség.
+- **Ne legyen metronóm:** ha öt jelenet egyforma hosszú, a néző elalszik.
+  Váltogass rövid (1,5–2,5) és hosszú (6–9) jeleneteket.
+- **Szakaszzáró jelenet lassabb** — ott van a bezáruló gyűrű, és ott kap
+  levegőt a néző.
+- **Kemény vágás alapból.** Az áttűnés lágyítja az üzenetet; csak szakaszhatáron.
+
+---
+
+## 25. HANGKÉSZLET A MOZGÁSHOZ — spec, gyártás külön lépés
+
+A mozgásnak hangja van, különben a videó „néma rajzfilm". Hat minta elég:
+
+| Mozdulat | Hang | Hossz |
+|---|---|---|
+| elem megérkezik (pop) | lágy, tompa koppanás, magas felharmonikus nélkül | 120 ms |
+| vonal rajzolódik | halk, folyamatos súrlódás, felfelé csúszó | a vonal hossza |
+| számláló fut | nagyon halk tick, 8 Hz, a végén elhal | a felfutás |
+| gyűrű bezárul (védjegy) | rövid, tiszta csengés, egy hang | 400 ms |
+| szakaszváltás | mély, halk lökés (whoosh nélkül) | 250 ms |
+| CTA megjelenik | felfelé lépő kis kvint | 300 ms |
+
+**Szint: −24 LU a narráció alatt**, tehát épp csak érezhető. Ha a hang
+észrevehető, túl hangos. A zene és a hangeffekt együtt sem viszi el a
+narráció elől a helyet.
+
+**Gyártás:** külön lépés, hangfájlokkal. Amíg nincs, a videó némán is teljes.
+
+---
+
+## 26. VERZIÓZÁS ÉS NÉVADÁS
+
+- **Könyvtár-verzió** akkor lép, ha a mozgás vagy a design változik:
+  `zg-frames v1.5`. A samplert ilyenkor újrarendereljük, és az lesz az új baseline.
+- **Videó-fájl:** `<projekt>_<verzió>_<YYYY-MM-DD_HHmm>.mp4`. Mindig új név,
+  soha felülírás — különben a lejátszó a régit szolgálja ki.
+- **A jóváhagyás mindig verzióra szól**, nem videóra: „`zg-frames v1.5` mozgás
+  jóváhagyva."

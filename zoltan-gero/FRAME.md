@@ -159,10 +159,16 @@ because per-letter animation splits text into spans.
 
 ## The avatar
 
-Composited **after** the render, as a transparent-background WebM, **exactly as received — zero
-modification.** The reference places him as a plain rectangular cutout at the bottom of the frame,
-**not** a circular mask. Never stretch, oval-ise, crop, veil, or re-compress. HeyGen Video Agent
-is banned.
+Composited **after** the render, as a transparent-background WebM.
+
+**Shape: a CIRCLE.** Decided 2026-08-16. The HeyGen reference uses a plain rectangular cutout;
+Zoltán wants the circular corner treatment instead, so the composite step applies a **circular
+mask** and places it in a corner.
+
+Everything else is untouched: never stretch it, never oval-ise it (a circle is round, not an
+ellipse — keep the source aspect and crop square before masking), never veil or fade it, never
+re-compress. HeyGen Video Agent is banned; the clip is generated in the app and composited
+locally with ffmpeg.
 
 ## Layout
 
@@ -178,7 +184,7 @@ a light end card with a green CTA · a light ground on every single frame.
 **Don't:** **orange, anywhere** · ANY dark scene, ever · cyan · garish overload ·
 oversized headings · anything touching the edges · whole-sentence emphasis · outlines or ink
 borders · gradients on type · "CRM" · "Studio" in a dashboard · dashes ("-") in the script or VO ·
-a static hub-and-spoke diagram · a circular mask on the avatar.
+a static hub-and-spoke diagram · a rectangular avatar cutout.
 
 ## ⚠️ No external Google Fonts `<link>`
 

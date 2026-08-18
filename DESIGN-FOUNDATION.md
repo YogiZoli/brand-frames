@@ -509,3 +509,127 @@ egyetlen kockát látott volna: három tördelést és egy kontrasztot. Ez a 7. 
 teljes indoklása.
 
 **Zoltán soha nem regressziós teszt. Zoltán soha nem kontrasztmérő.**
+
+
+---
+
+# v3.0 — A TELJES ALAPOZÁS (2026-08-18)
+
+Ez a réteg nem javítás. Ez az, ami eddig hiányzott. Minden szabály mellett ott
+van, miért. Ha nem tudod megmondani miért, az nem szabály, hanem ízlés.
+
+## A LEGFONTOSABB TERVEZÉSI TÉNY
+
+**A rendszer tulajdonosa színvak.** Ez nem akadálymentesítési jóindulat, hanem
+tervezési kiindulópont. Amit Zoltán lát, az a VILÁGOSSÁG, nem az árnyalat.
+
+Ezért minden szemantikus pár HÁROM dologban különbözik egyszerre:
+
+| | pozitív | negatív |
+|---|---|---|
+| világosság | világos mező | sötét mező |
+| alak | pipa | kereszt |
+| szó | approved | wrong |
+
+Bármelyik kettő elvesztésével az üzenet még átmegy. Mérve: zöld-500 L=0,680,
+piros-500 L=0,560, különbség 0,12, pont a padlón.
+
+Ez az egész paletta felépítésének oka. A zöldet SZÁNDÉKOSAN világosabbra
+vittem, mint a pirosat. Ennek ára van: fehér szöveg már nem áll meg a zöld-500
+fokozaton, mérve 2,71:1. A -700 fokozat megoldja. **Ez nem kompromisszum,
+hanem a csere ára, és megéri.**
+
+## SZÍN
+
+**Érzékelési színtér.** A rampák OKLCH-ban lettek újrakeverve. A hex a képernyő
+nyelve, nem a szemé. Az OKLCH L tengelye érzékelési világosság, tehát ha
+egyenletesen lépkedek rajta, a szem is egyenletesnek látja. A hex értékek
+maradnak fallbacknek egy `@supports` blokkban: soha nem cserélünk le működő
+értéket olyanra, amit nem mértünk ezen a gépen.
+
+**Semleges hőmérséklet-egység.** Minden semleges ugyanazt az enyhén hideg
+árnyalatot kapja, hue 256, ugyanaz, mint a vezető kéké. Egy meleg szürke egy
+hideg mellett piszkosnak látszik. Ez az egyik leggyakoribb ok, amiért egy design
+amatőrnek tűnik anélkül, hogy meg tudnád mondani, miért.
+
+**Egyidejű kontraszt.** Ugyanaz a zöld más színűnek látszik fehér lapon és kék
+kártyán. A szem mindig a környezethez viszonyít. A szövegszínt a HÁTTÉRHEZ
+hangoljuk: fehéren a -700, színes tinten a -900.
+
+**60 / 30 / 10.** Nagyjából 60% semleges, 30% vezető szín, 10% akcentus. Ha az
+akcentus 30% lesz, elveszti az erejét. A zöld nálunk akcentus.
+
+**Fehér szöveg soha nem ül az -500 fokozaton.** Az -500 vonalaknak, gyűrűknek,
+kitöltéseknek való, szövegháttérnek nem.
+
+## TIPOGRÁFIA
+
+**Kiegyensúlyozott sortörés.** Ha egy cím két sorra tör, a két sor közel
+egyforma hosszú. A 90/10-es törés a legárulkodóbb amatőr jel, és `text-wrap:
+balance` egy sorral ingyen megszünteti. Videón SOHA nincs sorkizárás és SOHA
+nincs elválasztás.
+
+**Vastagság-fegyelem.** Képenként legfeljebb KETTŐ. Eddig három volt: 600, 700,
+800. A hierarchiát előbb mérettel és színnel oldjuk meg, csak utána
+vastagsággal. A 700 megszűnt. Ál-félkövér tilos, `font-synthesis-weight:none`.
+
+**Írásjel-kultúra.** Ezt a `type.js` végzi el a build ELŐTT, minden feliraton,
+felejtés nélkül: törhetetlen szóköz a szám és a mértékegység közé, valódi
+hármaspont karakter, tipográfiai idézőjel nyelv szerint, szorzójel a betű x
+helyett. Kódot és parancsot soha nem érint, mert ott a gépíró idézőjel a HELYES.
+
+**Amit szándékosan NEM tesz:** nem tesz be gondolatjelet. Zoltán szabálya
+szerint a gondolatjel a legárulkodóbb AI-jel, és ez a képre írt szövegre is áll.
+Ahol gondolatjel kellene, ott KÜLÖN JELENET kell.
+
+**Optikai igazítás.** Lógó írásjel az idézeteknél, különben lyuk keletkezik a
+sor elején. Ikon és szöveg párosításánál a NAGYBETŰ-MAGASSÁGHOZ igazítunk, nem
+a befoglaló dobozhoz. A kerek betűk túllógása az alapvonalon szándékos.
+
+**Táblázatos számjegyek.** Minden számlálón, diagramfeliraton, időbélyegen.
+Enélkül ugrálnak a számjegyek felfutás közben, mert a 4 keskenyebb, mint a 0.
+
+## ELRENDEZÉS
+
+**Valódi 12 oszlopos rács.** Vászon 1920, margó 140, tartalom 1640, 12 oszlop,
+24 pixel köz, oszlop 114,67. A szélességek innentől oszlopokból számolnak, nem
+szemre lőtt pixelekből. Ettől fog két teljesen különböző jelenet egy családnak
+látszani, anélkül hogy a néző tudná, miért.
+
+**Optikai közép.** A tartalom a matematikai közép fölött 4-5%-kal ül jól.
+
+**Optikai méretkiegyenlítés.** Egy 100 pixeles kör kisebbnek látszik, mint egy
+100 pixeles négyzet, mert kevesebb festéket tesz a papírra. A kört 4%-kal
+nagyobbra kell rajzolni. A mi ikonjaink mind körök.
+
+**A biztonsági sáv.** A tartalmat soha nem nyomjuk össze, hogy beférjen.
+Ha nem fér be, a jelenet-tábla a hibás, nem a CSS.
+
+**Az avatar sávja.** A bal alsó sarok FOGLALT TERÜLET. Oda egyetlen elem sem
+kerülhet. A védjegy-gyűrű ezért a jobb alsó sarokba megy.
+
+## RENDSZERSZINT
+
+**Olvasási idő minimuma.** 0,5 mp elkapni, plusz 0,4 mp szavanként elolvasni.
+A `motion.js` ezt MEGMÉRI minden feliraton, és a `hyperframes check`
+figyelmeztetésként dobja ki. Egy szabály, amit nem mér senki, nem szabály.
+
+Az első futásnál ez 28 valódi hibát talált a saját samplerünkben. Nem elmélet.
+
+**Hossz-tűrés.** Angol és magyar kiadás megy ki, a magyar szöveg 25-30%-kal
+hosszabb. Minden szövegdoboznak ki kell bírnia +30%-ot törés nélkül. Ez is
+mérve van. Tulajdonnevet nem mérünk: az "Alex Rivers" magyarul is "Alex Rivers".
+
+**Villogás-korlát.** Másodpercenként legfeljebb három villanás, fényérzékeny
+epilepszia miatt. A mi pulzálásunk nagyjából 0,9 villanás per másodperc, messze
+biztonságos. De a határnak írásban kell lennie, különben egy jövőbeli jelenet
+átlépi, és senki nem veszi észre.
+
+**Első kocka egyenlő thumbnail-jelölt.** A t=0 kockát úgy tervezzük, hogy
+önmagában megálljon.
+
+## MÉRJ, NE FELTÉTELEZZ
+
+Ahol egy vizuális hatás olyan böngésző-funkción múlik, amit nem mértünk meg
+ezen a gépen, ott mérjünk geometriát, ne feltételezzünk szabványt. A
+`getTotalLength()` egy hívás. Egy elhalt animáció egy videó.

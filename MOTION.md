@@ -551,3 +551,95 @@ Sorrend: kihalványul (0,28 mp) → mozog (0,9 mp) → új szó → visszaúszik
 ## A nulladik szabály, még egyszer
 
 Ha egy effekt csak azért kerül be, mert tudjuk vagy kíváncsiak vagyunk rá — kimarad.
+
+
+---
+
+# v1.7 — A MOZGÁS ALAPTÖRVÉNYEI (2026-08-18)
+
+## Négy easing, több nincs
+
+Eddig tizenhárom különböző easing volt használatban. Tizenhárom easing nem
+stílus, hanem a stílus hiánya: a néző nem tud megtanulni egy nyelvet, amiben
+minden mondat máshogy hangsúlyoz.
+
+| név | mit csinál | mikor |
+|---|---|---|
+| `E.enter` | gyorsan indul, lágyan leül | megérkezik valami |
+| `E.exit` | lágyan indul, gyorsan eltűnik | elmegy valami |
+| `E.move` | mindkét vége lágy | helyet változtat |
+| `E.pop` | apró túllövéssel | hangsúllyal jelenik meg |
+
+Plusz egy műszer, ami nem stílus: `E_FILL`, majdnem lineáris. Töltésre. Egy
+progress, ami eases-in, UGRÁSNAK látszik, mert az első huszonöt százaléka alig
+mozdul, aztán berántja.
+
+## A tömeg időt jelent
+
+Egy nagy elem lassabban indul és áll meg, mint egy kicsi, és az időtartam a
+MEGTETT ÚTTAL skálázódik, nem fix. Eddig minden 0,8 mp volt, akár száz, akár
+ezer pixelt mozgott valami. Pontosan ettől érződik gépiesnek: a fizika hiányzik.
+
+```
+dur(px) = max( 0.42 + px/1600 ,  px/1800 ,  0.28 )
+```
+
+## Sebesség-plafon
+
+30 kocka per másodpercnél a gyors mozgás strobozik, tehát ugrálva látszik. Mivel
+a `filter:blur` tiltott, mert megduplázza a render idejét, az egyetlen megoldás
+a sebesség korlátozása:
+
+**Egy elem egy kocka alatt ne mozduljon 60 pixelnél többet.**
+60 px per kocka szorozva 30 kockával = 1800 px per másodperc. Ez a plafon, és a
+`dur()` garantálja: ha a kért idő gyorsabb lenne, kinyújtja.
+
+## Az irány jelentést hordoz
+
+Ha ezt következetesen tartjuk, a néző megtanulja a nyelvünket anélkül, hogy
+tudná, hogy tanul. Ez a legolcsóbb márkaépítés, ami létezik.
+
+| irány | jelentés |
+|---|---|
+| alulról érkezik | ÚJ dolog, most lép be a történetbe |
+| balról érkezik | FOLYTATÁS, ugyanannak a gondolatnak a következő fele |
+| nagyobbodik | HANGSÚLY, ez a fontos |
+| felfelé távozik | LEZÁRVA, ezt elintéztük |
+
+## Mozgás-hierarchia
+
+**A legfontosabb elem mozogjon utoljára és leglassabban.** Ha a főszereplő
+érkezik elsőnek és leggyorsabban, a szem a mellékszereplőkön köt ki, mert azok
+még mozognak, amikor ő már megállt. Jelölés: `data-hero` a jelenet
+főszereplőjén. A build a jelenet harmadánál, 0,82 mp-cel indítja.
+
+## Előkészítés és utórezgés
+
+Apró ellenmozdulat a fő mozdulat előtt, mint amikor nekifutsz, és leheletnyi
+túllövés a végén. Ez az egyetlen dolog, ami egy animációt élővé tesz.
+Rendszerré téve: 6% az úton, 0,12 mp. **Ha látod, hogy ott van, akkor túl sok.**
+
+## A VÉDJEGY-MOZDULAT — a bezáruló gyűrű
+
+Ez a legnagyobb hiányunk volt. Minden erős vizuális márkának van egy gesztusa,
+amit bárhol felismersz.
+
+A tiéd a rendszer lelkéből adódik. Az egész módszered arról szól, hogy a
+jóváhagyás a végrehajtás elé kerül. A progress ring, ami nullából telik meg és
+MEGÁLL, pontosan ez. Nem díszítés, hanem a módszer képi megfelelője.
+
+**A szabály:** minden szakaszzáró jeleneten, a végkártyán és a logó körül
+ugyanaz a bezáruló gyűrű fut le. Jelölés: `data-section-end` a section elemen.
+A `motion.js` magától beteszi, ha nincs ott, a jobb alsó sarokba, kicsiben.
+
+**Miért a jobb alsó sarok.** Mert a bal alsó sarok az avataré, és mert ez
+ÍRÁSJEL, nem mondat. Ott van, felismered, de nem viszi el a figyelmet.
+
+**Öt videó után a néző a gyűrűről ismer rá a csatornára.**
+
+## Hang a mozgáshoz
+
+Külön doksi: `SOUND.md`. Hat minta, F dúr pentaton, -30 dB a narráció alatt.
+A `motion.js` menet közben feljegyzi, mikor melyik jel szólna, és a build végén
+kiírja `window.__zgCues`-ba. **Hangmotort nem írunk**, csak a táblázatot, amit
+majd az ffmpeg használ.

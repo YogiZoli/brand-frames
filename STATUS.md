@@ -4,13 +4,32 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-18 02:40 · **commit:** lásd `git log -1`
+**Frissítve:** 2026-08-18 11:20 · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
 ---
 
 ## MOST ÉPP
+
+**A `zg-frames v1.6` JÓVÁHAGYVA (2026-08-18).** A render kész: 5760 kocka,
+8 perc 46 másodperc, 192 másodperc videó. A `baseline/` mappa mostantól a v1.6
+39 referenciakockáját tartalmazza, a régi v1.0 a `baseline_v1.0_archiv/`-ban van.
+
+**A regressziós teszt él és bizonyítottan mér.** A v1.6-ra 39 jelenetből 39
+"same", nulla eltérés. A régi v1.5-re ráeresztve 29 változott jelenetet talált,
+tízet pedig helyesen jelölt "NINCS A RENDERBEN"-nek. Egy teszt, ami mindig zöld,
+nem teszt. Ez nem az.
+
+**Új doksi:** `GLOSSARY.md`, a szakszavak példákkal és a teljes end-to-end
+folyamat, a stratégiától a publikálásig. Ez Zoltánnak szól, nem a gépnek.
+
+**A következő munka a 4. lépés lent:** a "One Sitting Workflow" videó
+újraépítése a könyvtárból, jelenet-táblával.
+
+---
+
+## KORÁBBAN ITT ÁLLT
 
 **A `zg-frames v1.6` rendere fut** — 39 archetípus, 192 mp, kb. 8–12 perc gépidő.
 Ez az első verzió, ami a **teljes** könyvtárat tartalmazza, és az első, amit

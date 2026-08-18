@@ -501,3 +501,53 @@ finished video. ElevenLabs TTS: negligible. The only paid element in the pipelin
 HeyGen avatar clips, and those are app credits, composited after the render.
 More motion costs render time, not money — and denser motion barely moves the render
 clock, because the frame count is fixed by the audio length.
+
+
+---
+
+# v1.6 — mozgás-szabályok (2026-08-18)
+
+## Kitöltés: mérj, ne bízz a `pathLength`-ben
+
+Bármi, ami körívet tölt (progress ring, signature ring, ciklus), a valódi kerületet
+használja, user unitban:
+
+```js
+function ringLen(e){ return e.getTotalLength ? e.getTotalLength() : 2*Math.PI*r; }
+tl.set(bar,{strokeDasharray:C, strokeDashoffset:C},0);   // üresen indul, a 0. kockától
+tl.to (bar,{strokeDashoffset:0, duration:d, ease:"power1.out"}, at);
+```
+
+- `pathLength="1"` `<path>`-en működik (nyíl, vonaldiagram, elágazás) — **körön nem**.
+- A könnyítés majdnem lineáris. **`power2.inOut` egy progress-en ugrásnak látszik**,
+  mert az első ~25% alig mozdul, aztán berántja. Töltésre `power1.out`, semmi más.
+- Az elem a **0. kockától** üres, nem csak a saját `at`-jétől. Ha egy jelenet
+  a saját kezdete előtt is látszik egy kockát, telinek fog látszani.
+
+## A lupé: üres üveg repülés közben
+
+A lencse nem cserél szöveget menet közben és nem visz magával rossz szót.
+Sorrend: kihalványul (0,28 mp) → mozog (0,9 mp) → új szó → visszaúszik (0,55 mp).
+**A lencse soha nem mutathat olyan szót, amin nem áll.**
+
+## Felugró buborék (`popin`)
+
+- Csak azután, hogy az, amire mutat, már landolt.
+- Mindig egy képernyőn lévő dologhoz horgonyozva, sosem szabadon lebegve.
+- `data-dur` megadásával magától el is megy — ha két buborék van egy jeleneten,
+  az elsőnek el KELL mennie, mielőtt a második érkezik. Egyszerre kettő = két gazda.
+
+## Az új családok mozgása
+
+| archetípus | mi mozog | mit tilt |
+|---|---|---|
+| `branchin` | törzs rajzol → két láb rajzol → végpontok pattannak | a nem választott ág sosem világít |
+| `funnelin` | fentről lefelé, szakaszonként, szélességből | mind egyszerre |
+| `cycle` | a kör EGYSZER körberajzol, a csomópontok sorban | pörgés, végtelen loop |
+| `gauge` | mutató és szám EGYÜTT mozog, aztán megáll | a szám a mutató nélkül |
+| `wipe` | egy törlőél átfut, mögötte az „utána" állapot | keresztfade |
+| `gridin` | hullámban érkeznek a cellák | mind egyszerre |
+
+## A nulladik szabály, még egyszer
+
+Ha egy effekt csak azért kerül be, mert tudjuk vagy kíváncsiak vagyunk rá — kimarad.

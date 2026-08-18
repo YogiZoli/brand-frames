@@ -9,6 +9,15 @@
   var tl;
 
   function n(v, d) { v = parseFloat(v); return isNaN(v) ? d : v; }
+
+  /* Real geometric length of a ring/arc, in SVG user units.
+     pathLength="1" is not reliable on <circle> in every engine — if it is ignored,
+     stroke-dasharray:1 means "1px", the ring reads as solid, and the fill APPEARS to
+     snap to 100%. Measuring removes the guess. (HF-v6-02) */
+  function ringLen(e) {
+    try { if (e.getTotalLength) { var L = e.getTotalLength(); if (L > 2) return L; } } catch (x) {}
+    return 2 * Math.PI * n(e.getAttribute("r"), 100);
+  }
   function kids(e) { return e.children.length ? e.children : [e]; }
 
   function words(e) {
@@ -80,9 +89,14 @@
       } }, at);
       tl.add(function () { host.innerHTML = s; host.classList.remove("on"); }, at + (d || 1.6) + .35);
     },
-    /* PROGRESS RING — 0 to 100%, then it STOPS. Never a spinner. */
+    /* PROGRESS RING — starts EMPTY, grows a little every frame, ends full, then STOPS.
+       v1.6: never trust pathLength. We measure the real circumference and animate in
+       user units, so the ring can never snap to full (HF-v6-02, "megint csak beugrott").
+       Ease is near-linear on purpose: a progress bar that eases-in looks like a jump. */
     ring:   function (e, at, d) {
-      tl.fromTo(e, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 1.8, ease: "power2.inOut" }, at);
+      var C = ringLen(e), pct = n(e.dataset.pct, 100) / 100;
+      tl.set(e, { strokeDasharray: C, strokeDashoffset: C }, 0);          /* empty from frame 0 */
+      tl.to(e, { strokeDashoffset: C * (1 - pct), duration: d || 2.2, ease: "power1.out" }, at);
     },
     /* PULSE RING — same size as its circle, only pulsing */
     pring:  function (e, at, d) {
@@ -100,13 +114,28 @@
       if (inner && txt[0]) tl.set(inner, { textContent: txt[0] }, at);
       tl.fromTo(e, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .6, ease: "back.out(1.6)" }, at);
       if (inner) tl.fromTo(inner, { scale: .45, opacity: 0 }, { scale: 1, opacity: 1, duration: .8, ease: "power3.out" }, at + .2);
+      /* v1.6 — the lens may NEVER show a word it is not standing on (HF-v6-05,
+         "off szöveg"). While it travels the glass is blank; the new word appears
+         only once the lens has landed. Blank glass in flight is honest; a wrong
+         word in the glass is a lie about what is underneath. */
       for (var i = 1; i < p.length; i++) {
         var t = at + .9 + (i - 1) * hold;
+        if (inner) tl.to(inner, { opacity: 0, scale: .5, duration: .28, ease: "power2.in" }, t - .18);
         tl.to(e, { x: p[i][0], y: p[i][1], duration: .9, ease: "power2.inOut" }, t);
-        if (inner && txt[i]) tl.set(inner, { textContent: txt[i] }, t + .9);
-        if (inner && txt[i]) tl.fromTo(inner, { scale: .45 }, { scale: 1, duration: .8, ease: "power3.out" }, t + .9);
+        if (inner && txt[i]) {
+          tl.set(inner, { textContent: txt[i] }, t + .78);
+          tl.to(inner, { opacity: 1, scale: 1, duration: .55, ease: "power3.out" }, t + .78);
+        }
       }
       tl.to(e, { opacity: 0, duration: .4, ease: "power2.in" }, at + (d || 5));
+    },
+    /* POP BUBBLE — a small card that swims in beside what is being pointed at,
+       waits, then leaves. Always anchored to a thing on screen, never floating free. */
+    popin:  function (e, at, d) {
+      var dx = n(e.dataset.dx, 0), dy = n(e.dataset.dy, 26);
+      tl.fromTo(e, { opacity: 0, x: "+=" + dx, y: "+=" + dy, scale: .92 },
+        { opacity: 1, x: "-=" + dx, y: "-=" + dy, scale: 1, duration: .55, ease: "back.out(1.5)" }, at);
+      if (d) tl.to(e, { opacity: 0, y: "-=18", duration: .35, ease: "power2.in" }, at + d);
     },
     /* LINE CHART — draws left to right, each dot pops as the line reaches it, fine shake */
     chart:  function (e, at, d) {
@@ -224,13 +253,99 @@
   A.signature = function (e, at, d) {
     var bar = e.parentNode.querySelector(".sigbar"), face = e.parentNode.querySelector(".sigface");
     if (face) tl.fromTo(face, { scale: .6, opacity: 0 }, { scale: 1, opacity: 1, duration: .5, ease: "back.out(1.7)" }, at);
-    if (bar) tl.fromTo(bar, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 1.3, ease: "power2.inOut" }, at + .3);
+    if (bar) {
+      var C = ringLen(bar);
+      tl.set(bar, { strokeDasharray: C, strokeDashoffset: C }, 0);
+      tl.to(bar, { strokeDashoffset: 0, duration: d || 1.3, ease: "power2.inOut" }, at + .3);
+    }
     if (face) pulse(face, at + (d || 1.3) + .4, 1.6);
+  };
+
+  /* ===== v1.6 — the last archetype families ===== */
+
+  /* GAUGE — a needle sweeps from the left stop to its value and settles. */
+  A.gauge = function (e, at, d) {
+    var arc = e.querySelector(".gaugebar"), nd = e.querySelector(".gneedle"),
+        num = e.querySelector(".gnum"), pct = n(e.dataset.pct, 70) / 100;
+    if (arc) {
+      var C = ringLen(arc);
+      tl.set(arc, { strokeDasharray: C, strokeDashoffset: C }, 0);
+      tl.to(arc, { strokeDashoffset: C * (1 - pct * .5), duration: d || 1.8, ease: "power1.out" }, at);
+    }
+    if (nd) tl.fromTo(nd, { rotation: -90, transformOrigin: "50% 100%" },
+      { rotation: -90 + 180 * pct, duration: d || 1.8, ease: "power2.out" }, at);
+    if (num) A.count(num, at, d || 1.8, num.dataset.val);
+  };
+
+  /* CYCLE — the loop draws once round, then the active node lights up. No spinning. */
+  A.cycle = function (e, at, d) {
+    var ring = e.querySelector(".cycpath"), nodes = e.querySelectorAll(".cycnode");
+    d = d || 2.2;
+    if (ring) {
+      var C = ringLen(ring);
+      tl.set(ring, { strokeDasharray: C, strokeDashoffset: C }, 0);
+      tl.to(ring, { strokeDashoffset: 0, duration: d, ease: "power1.inOut" }, at);
+    }
+    nodes.forEach(function (nd, i) {
+      var t = at + .2 + d * (i / Math.max(1, nodes.length));
+      tl.fromTo(nd, { scale: .4, opacity: 0, transformOrigin: "center" },
+        { scale: 1, opacity: 1, duration: .45, ease: "back.out(1.7)" }, t);
+    });
+    var last = nodes[nodes.length - 1];
+    if (last) pulse(last, at + d + .3, 1.6);
+  };
+
+  /* FUNNEL — stages narrow downward, each one arrives after the one above it. */
+  A.funnelin = function (e, at, d) {
+    var st = e.querySelectorAll(".fnst"), step = Math.min(.55, (d || 2.4) / Math.max(1, st.length));
+    st.forEach(function (s, i) {
+      tl.fromTo(s, { opacity: 0, scaleX: .55, y: -18, transformOrigin: "center top" },
+        { opacity: 1, scaleX: 1, y: 0, duration: .6, ease: "power3.out" }, at + i * step);
+    });
+    var last = st[st.length - 1];
+    if (last) pulse(last, at + st.length * step + .3, 1.4);
+  };
+
+  /* BRANCH — one line splits into two. Both legs draw, then the chosen leg lands. */
+  A.branchin = function (e, at, d) {
+    var stem = e.querySelector(".brstem"), legs = e.querySelectorAll(".brleg"),
+        ends = e.querySelectorAll(".brend");
+    d = d || 2.4;
+    if (stem) A.draw(stem, at, .6);
+    legs.forEach(function (l, i) { A.draw(l, at + .6 + i * .18, .7); });
+    ends.forEach(function (n2, i) {
+      tl.fromTo(n2, { opacity: 0, scale: .5, transformOrigin: "center" },
+        { opacity: 1, scale: 1, duration: .5, ease: "back.out(1.7)" }, at + 1.3 + i * .25);
+    });
+    var win = e.querySelector(".brend.win");
+    if (win) pulse(win, at + 2, Math.max(1.2, d - 2));
+  };
+
+  /* BEFORE / AFTER — a wipe line travels across and reveals the second state. */
+  A.wipe = function (e, at, d) {
+    var after = e.querySelector(".bafter"), bar = e.querySelector(".bawipe");
+    d = d || 1.8;
+    if (after) tl.fromTo(after, { clipPath: "inset(0 100% 0 0)" },
+      { clipPath: "inset(0 0% 0 0)", duration: d, ease: "power2.inOut" }, at);
+    if (bar) tl.fromTo(bar, { left: "0%", opacity: 0 },
+      { left: "100%", opacity: 1, duration: d, ease: "power2.inOut" }, at);
+    if (bar) tl.to(bar, { opacity: 0, duration: .3 }, at + d);
+  };
+
+  /* GRID — many small cells arrive as a wave, never all at once. */
+  A.gridin = function (e, at, d) {
+    var cells = e.querySelectorAll(".gcell");
+    tl.fromTo(cells, { opacity: 0, scale: .6, transformOrigin: "center" },
+      { opacity: 1, scale: 1, duration: .45, ease: "back.out(1.6)",
+        stagger: { each: (d || 1.8) / Math.max(1, cells.length), from: "start" } }, at);
+    var hot = e.querySelector(".gcell.on");
+    if (hot) pulse(hot, at + (d || 1.8) + .3, 1.6);
   };
 
   w.ZG = {
     PULSE: PULSE,
     build: function (id) {
+      if (w.ZGI) w.ZGI.paint();      /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });
       document.querySelectorAll("section.clip").forEach(function (sec) {
         var s = n(sec.dataset.start, 0), d = n(sec.dataset.duration, 3), cam = sec.querySelector(".cam");

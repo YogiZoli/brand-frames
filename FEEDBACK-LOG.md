@@ -238,3 +238,62 @@ volt: keskenyebb kártya, kisebb betűk, több levegő a mezők között.
 
 **Keyword pill (v3-10):** a fejléc még nagyobb, a pill szövege kisebb.
 Ez pontosan a `SCALE.md` fejléc-szabálya: kicker `--fs-lead`, pill `--fs-caption`.
+
+---
+
+## 2026-08-18 — HF-v6 (5 kép) · a v1.5 sampler
+
+Forrás: `_feedback/2026-08-17/HF-v6-01..05.png`. Mind az öt **általános** szabály,
+mind a **könyvtárba** ment, egyikből sem lett egyvideós javítás.
+
+### 1. „szar ikonok megint" — skitch markerek (HF-v6-01)
+**Amit láttunk:** a marker glyphje egy FONT KARAKTER volt (`&#10007; &#10003; ? ! &#9829;`)
+egy SVG `<text>`-ben, mellette egy nyers háromszög „fül".
+**Miért baj:** a font karakternek saját alapvonala, saját optikai súlya és saját
+metrikája van — soha nem ül középen a korongban, és soha nem egyezik az ikonkészlet
+vonalvastagságával. A háromszög fül pedig renderelési hibának olvasódik.
+**A szabály:** *a jelentést hordozó jel is IKON, nem betű.* Minden marker-glyph rajzolt
+path a 24-es rácson (`icons.js` → `G` készlet), tömör korongon, **fehér gyűrűvel**,
+hogy bármilyen felvételen megálljon. **Fül nincs** — Zoltán saját referencia-markerein
+sincs.
+
+### 2. „megint csak beugrott" — progress ring (HF-v6-02)
+**Amit láttunk:** a gyűrű a saját indulási pillanatában rögtön 100%-on állt.
+**A gyökérok:** `pathLength="1"` egy `<circle>`-ön. `<path>`-en működik, körön nem
+megbízható. Ha figyelmen kívül marad, a `stroke-dasharray:1` **1 pixelt** jelent,
+a gyűrű tömörnek látszik, és a töltés ugrásnak tűnik.
+**A szabály:** *soha ne bízz a `pathLength`-ben — mérj.* A `motion.js` `ringLen()`
+kiolvassa a valódi kerületet (`getTotalLength()`), és user unitban animál. A könnyítés
+szándékosan majdnem lineáris (`power1.out`): egy `inOut` progress ugrásnak látszik.
+Ugyanez a javítás a signature ringre és a ciklusra is.
+
+### 3. „kilógó szöveg" — contact record (HF-v6-03)
+**Amit láttunk:** a kártya utolsó sora félbevágva tűnt el a lekerekített alsó él alatt.
+**A gyökérok:** a `.cam` egy oszlop-flexbox. A flex elemek alapból **zsugorodnak**.
+A magas kártyát összenyomta, aztán a saját `overflow:hidden`-je levágta.
+**A szabály:** *a tartalmat SOHA nem nyomjuk össze, hogy beférjen.* `.cam > * {flex:0 0 auto}`.
+Ha nem fér be, a jelenet túl sűrű — és akkor a **jelenet-tábla** a hibás, nem a CSS.
+Sűrű jeleneteknek van egy `.dense` módosítójuk (kisebb gap, kisebb alsó tartalék).
+
+### 4. „off szöveg" — lupé (HF-v6-05)
+**Amit láttunk:** a lupé a TEMPERATURE oszlop fölött állt, és közben az „Enterprise"
+szót nagyította.
+**A gyökérok:** a szöveg csak a mozgás VÉGÉN cserélődött, így ~0,9 mp-ig a lencse
+olyan szót mutatott, ami nem alatta volt.
+**A szabály:** *a lencse soha nem mutathat olyan szót, amin nem áll.* Repülés közben
+az üveg **üres** (a szöveg kihalványul), az új szó csak a landolás után jelenik meg.
+Az üres üveg őszinte; a rossz szó hazugság arról, mi van alatta.
+
+### 5. „kimaradt 2 új beúszó felugró szövegbuborék" (HF-v6-04/05)
+A `.pop / .popk / .popv` osztályok ott voltak a CSS-ben, de **egyetlen jelenet sem
+használta őket**. Új `popin` mozgás + két buborék a lupé-jelenetben.
+**A szabály:** *a lupé mondja meg, HOVA nézz; a buborék mondja meg, MIT jelent.*
+A buborék mindig a lencse landolása UTÁN érkezik, sosem előtte — különben a szemnek
+két gazdája van. Buborék soha nem lebeg szabadon: mindig egy képernyőn lévő dologhoz
+horgonyzik.
+
+### Amit a kontakt lap kapott el, nem Zoltán
+A `check` és a kontakt lap három tördelési hibát fogott meg az új archetípusokon
+(ciklus közepe, mérőóra száma, elágazás gyökere) és egy kontraszthibát
+(fehér a `green-500`-on = 2,95:1, a 3:1 küszöb alatt → `green-700`).
+**Ez a 7. lépés dolga. Pontosan ezért van.**

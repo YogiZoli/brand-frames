@@ -446,3 +446,66 @@ narráció elől a helyet.
   soha felülírás — különben a lejátszó a régit szolgálja ki.
 - **A jóváhagyás mindig verzióra szól**, nem videóra: „`zg-frames v1.5` mozgás
   jóváhagyva."
+
+
+---
+
+# v2.1 — a HF-v6 körből született szabályok (2026-08-18)
+
+## A BIZTONSÁGI SÁV — a tartalmat soha nem nyomjuk össze
+
+```css
+.cam > * { flex: 0 0 auto; }
+```
+
+Egy oszlop-flexboxban a gyerekek alapból zsugorodnak. Ez a legalattomosabb
+elrendezési hiba, ami létezik: a doboz nem tűnik el, csak **kisebb lesz**, és a saját
+`overflow:hidden`-je levágja az utolsó sort. A kontakt lapon úgy néz ki, mint egy
+tervezési döntés.
+
+**A szabály:** ha a tartalom nem fér be, az nem CSS-hiba, hanem **jelenet-tábla-hiba**.
+A javítás nem a betűméret csökkentése, hanem kevesebb tartalom a jelenetre.
+
+Két sűrűség van, nem több:
+
+| osztály | gap | alsó tartalék | mire |
+|---|---|---|---|
+| `.cam` | 56px | 210px | normál jelenet |
+| `.cam.dense` | 40px | 170px | egy nagy panel/kártya viszi a jelenetet |
+
+## IKON, NEM BETŰ — most már a jelekre is
+
+Eddig a szabály az ikonokra szólt. Mostantól **minden jelentést hordozó jelre**:
+pipa, kereszt, kérdőjel, felkiáltójel, szív. Ezek is rajzolt path-ok a 24-es rácson,
+a készlet vonalvastagságával (`icons.js` → `G`).
+
+**Miért:** a font karakternek saját alapvonala, saját optikai súlya és saját metrikája
+van. Soha nem ül középen a korongban, és soha nem egyezik a mellette lévő ikon
+vonalvastagságával. Ez a különbség az, amit „szarnak" látunk, akkor is, ha nem tudjuk
+megnevezni.
+
+**Marker-anatómia:** tömör korong · fehér gyűrű (6px) · rajzolt fehér glyph (56%) ·
+lágy árnyék. **Fül nincs.** Minden fül, amit rajzoltunk, renderelési hibának olvasódott.
+
+## MÉRJ, NE FELTÉTELEZZ — a `pathLength` esete
+
+`pathLength="1"` `<path>`-en működik, `<circle>`-ön nem megbízható. Ha figyelmen kívül
+marad, a `stroke-dasharray:1` egy pixelt jelent, és az egész animáció csendben elhal.
+
+**Az általános tanulság:** ahol egy vizuális hatás egy böngésző-funkción múlik, amit
+nem mértünk meg ezen a gépen, ott **mérjünk geometriát**, ne feltételezzünk szabványt.
+A `getTotalLength()` egy hívás. Egy elhalt animáció egy videó.
+
+## KONTRASZT-PADLÓ — a `-500` fokozat nem hordoz fehér szöveget
+
+Mért érték: fehér a `--green-500`-on = **2,95:1**, a 3:1-es padló alatt.
+Fehér szöveg csak `-700` vagy sötétebb fokozaton áll. A `-500` fokozat vonalaknak,
+gyűrűknek, kitöltéseknek való — szövegháttérnek nem.
+
+## AMIT A GÉP ELLENŐRIZ, AZT NE ELLENŐRIZZE EMBER
+
+Ebben a körben a `check` és a kontakt lap fogott meg négy hibát, mielőtt Zoltán
+egyetlen kockát látott volna: három tördelést és egy kontrasztot. Ez a 7. lépés
+teljes indoklása.
+
+**Zoltán soha nem regressziós teszt. Zoltán soha nem kontrasztmérő.**

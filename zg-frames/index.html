@@ -1,10 +1,10 @@
 <!doctype html><html lang="en" data-resolution="landscape"><head><meta charset="UTF-8"/>
 <meta name="viewport" content="width=1920, height=1080"/>
-<title>zg-frames — motion sampler v1.1</title>
+<title>zg-frames — motion sampler v1.6</title>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <link rel="stylesheet" href="zg.css"/>
 </head><body>
-<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="141.5">
+<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="192">
 <div class="g1"></div><div class="g2"></div><div class="grid"></div>
 
 <section id="zg01" class="clip" data-start="0" data-duration="4.5" data-track-index="1"><div class="cam">
@@ -144,7 +144,7 @@
 </div>
 <div class="sub" data-anim="fi" data-at="3.9">Dots land as the line arrives. Green end point.</div></div></section>
 
-<section id="zg14" class="clip" data-start="62" data-duration="6" data-track-index="1"><div class="cam">
+<section id="zg14" class="clip" data-start="62" data-duration="6" data-track-index="1"><div class="cam dense">
 <div class="kick" data-anim="kick" data-at=".1">14 · LENS · MAGNIFIES THE LETTERS</div>
 <div class="lenswrap">
   <div class="panel" style="height:400px">
@@ -155,10 +155,16 @@
     </div>
   </div>
   <span class="lens" data-layout-allow-overlap data-anim="lens" data-at=".6" data-dur="4.6"
-        data-path="80,20;760,20" data-words="Enterprise|Hot">
+        data-path="57,7;590,7" data-words="Enterprise|Warm">
     <span class="lenstxt">Enterprise</span></span>
+  <div class="pop up" data-layout-allow-overlap style="left:40px;top:432px" data-dy="30"
+       data-anim="popin" data-at="1.3" data-dur="1.5">
+    <div class="popk">what it wants</div><div class="popv">A company-size rollout</div></div>
+  <div class="pop up g" data-layout-allow-overlap style="left:600px;top:432px" data-dy="30"
+       data-anim="popin" data-at="3.2">
+    <div class="popk">how ready it is</div><div class="popv">Ready to talk this week</div></div>
 </div>
-<div class="sub" data-anim="fi" data-at="4.6">It never sits on empty space.</div></div></section>
+<div class="sub" data-anim="fi" data-at="4.6">The glass goes blank while it travels. It never shows a word it is not standing on.</div></div></section>
 
 <section id="zg15" class="clip" data-start="68" data-duration="6" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">15 · FORM · LETTERS IN PROGRESS</div>
@@ -175,7 +181,7 @@
   <span class="mouse" data-anim="click" data-at="3.9" data-dur="1" data-path="900,140;520,560"></span>
 </div></div></section>
 
-<section id="zg16" class="clip" data-start="74" data-duration="5" data-track-index="1"><div class="cam">
+<section id="zg16" class="clip" data-start="74" data-duration="5" data-track-index="1"><div class="cam dense">
 <div class="kick" data-anim="kick" data-at=".1">16 · CONTACT RECORD</div>
 <div class="rec">
   <div class="rechead" data-anim="fi" data-at=".35">
@@ -194,15 +200,15 @@
 <div class="pers" style="gap:168px">
   <div class="pcol"><div class="ringwrap" data-anim="pop" data-at=".4">
     <svg class="ringsvg" viewBox="0 0 230 230"><circle class="ringtrack" cx="115" cy="115" r="105"/>
-      <circle class="ringbar" cx="115" cy="115" r="105" pathLength="1" data-anim="ring" data-at="1" data-dur="2"/></svg>
+      <circle class="ringbar" cx="115" cy="115" r="105" data-anim="ring" data-at=".8" data-dur="2.4"/></svg>
     <div class="ringface"><span class="ico" data-icon="clock"></span></div></div><div class="plbl">Time</div></div>
   <div class="pcol"><div class="ringwrap" data-anim="pop" data-at=".7">
     <svg class="ringsvg" viewBox="0 0 230 230"><circle class="ringtrack" cx="115" cy="115" r="105"/>
-      <circle class="ringbar" cx="115" cy="115" r="105" pathLength="1" data-anim="ring" data-at="1.4" data-dur="2"/></svg>
+      <circle class="ringbar" cx="115" cy="115" r="105" data-anim="ring" data-at="1.2" data-dur="2.4"/></svg>
     <div class="ringface"><span class="ico" data-icon="money"></span></div></div><div class="plbl">Money</div></div>
   <div class="pcol"><div class="ringwrap" data-anim="pop" data-at="1">
     <svg class="ringsvg" viewBox="0 0 230 230"><circle class="ringtrack" cx="115" cy="115" r="105"/>
-      <circle class="ringbar" cx="115" cy="115" r="105" pathLength="1" data-anim="ring" data-at="1.8" data-dur="2"/></svg>
+      <circle class="ringbar" cx="115" cy="115" r="105" data-anim="ring" data-at="1.6" data-dur="2.4"/></svg>
     <div class="ringface"><span class="ico" data-icon="place"></span></div></div><div class="plbl">Location</div></div>
 </div>
 <div class="sub" data-anim="fi" data-at="4.2">Zero to full, then it stops. No spinning.</div></div></section>
@@ -284,7 +290,7 @@
 
 <section id="zg26" class="clip" data-start="123" data-duration="4" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">ZG-FRAMES</div>
-<div class="title blue" data-anim="rise" data-at=".35">v1.5</div>
+<div class="title blue" data-anim="rise" data-at=".35">v1.6</div>
 <div class="uln" data-anim="gx" data-at="1.2" data-dur=".7"></div>
 <div class="sub" data-anim="fi" data-at="2">Approve the motion once. Every video inherits it.</div></div></section>
 
@@ -299,22 +305,150 @@
 <section id="zg28" class="clip" data-start="131.5" data-duration="5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">28 &middot; SKITCH MARKERS</div>
 <div class="skrow" data-anim="pops" data-at=".4">
-  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="var(--red)"/><circle cx="39" cy="39" r="36" fill="var(--red)"/><text class="skg" x="39" y="53" text-anchor="middle">&#10007;</text></svg></span><div class="skcap">wrong</div></div>
-  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="var(--blue)"/><circle cx="39" cy="39" r="36" fill="var(--blue)"/><text class="skg" x="39" y="53" text-anchor="middle">?</text></svg></span><div class="skcap">question</div></div>
-  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="#b26a00"/><circle cx="39" cy="39" r="36" fill="#b26a00"/><text class="skg" x="39" y="53" text-anchor="middle">!</text></svg></span><div class="skcap">watch out</div></div>
-  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="var(--green)"/><circle cx="39" cy="39" r="36" fill="var(--green)"/><text class="skg" x="39" y="53" text-anchor="middle">&#10003;</text></svg></span><div class="skcap">approved</div></div>
-  <div><span class="sk"><svg class="sksvg" viewBox="0 0 104 78"><path d="M74 39 L104 20 L104 58 Z" fill="#d4537e"/><circle cx="39" cy="39" r="36" fill="#d4537e"/><text class="skg" x="39" y="53" text-anchor="middle">&#9829;</text></svg></span><div class="skcap">loved</div></div>
+  <div class="skcell"><span class="skm red tail"><span class="ico" data-glyph="cross"></span></span><div class="skcap">wrong</div></div>
+  <div class="skcell"><span class="skm blue tail"><span class="ico" data-glyph="query"></span></span><div class="skcap">question</div></div>
+  <div class="skcell"><span class="skm amber tail"><span class="ico" data-glyph="bang"></span></span><div class="skcap">watch out</div></div>
+  <div class="skcell"><span class="skm green tail"><span class="ico" data-glyph="check"></span></span><div class="skcap">approved</div></div>
+  <div class="skcell"><span class="skm pink tail"><span class="ico" data-glyph="heart"></span></span><div class="skcap">loved</div></div>
 </div>
-<div class="sub" data-anim="fi" data-at="3.2">Shape and word carry the meaning, never colour alone.</div></div></section>
+<div class="sub" data-anim="fi" data-at="3.2">Drawn glyphs on the same grid as every icon. Never a font character.</div></div></section>
 
 <section id="zg29" class="clip" data-start="136.5" data-duration="5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">29 &middot; SIGNATURE MOVE</div>
 <div class="sigwrap">
   <svg class="sigsvg" viewBox="0 0 210 210"><circle class="sigtrack" cx="105" cy="105" r="96"/>
-    <circle class="sigbar" cx="105" cy="105" r="96" pathLength="1" data-anim="signature" data-at=".4" data-dur="1.3"/></svg>
+    <circle class="sigbar" cx="105" cy="105" r="96" data-anim="signature" data-at=".4" data-dur="1.3"/></svg>
   <div class="sigface"><span class="ico" data-icon="check"></span></div>
 </div>
 <div class="sub" data-anim="fi" data-at="2.6">The ring closes. One per section end &mdash; the house gesture.</div></div></section>
+
+<!-- ===== v1.6 — the last ten archetypes ===== -->
+
+<section id="zg30" class="clip" data-start="141.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">30 &middot; BRANCH &middot; IT GOES ONE OF TWO WAYS</div>
+<div class="branch" data-anim="branchin" data-at=".35" data-dur="3.4">
+  <svg viewBox="0 0 1440 420" width="1440" height="420">
+    <path class="brstem" d="M470 210 H620" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <path class="brleg no" d="M620 210 C720 210, 740 320, 840 320" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <path class="brleg" d="M620 210 C720 210, 740 100, 840 100" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+  </svg>
+  <div class="brroot">A comment arrives</div>
+  <div class="brend win" style="left:860px;top:52px"><span class="skm green"><span class="ico" data-glyph="check"></span></span>Keyword matched &rarr; guide sent</div>
+  <div class="brend" style="left:860px;top:272px"><span class="skm blue"><span class="ico" data-glyph="query"></span></span>No keyword &rarr; simple reply</div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.6">One line splits. Only the taken path stays bright.</div></div></section>
+
+<section id="zg31" class="clip" data-start="146.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">31 &middot; FUNNEL &middot; MANY ARRIVE, FEW FINISH</div>
+<div class="fnl" data-anim="funnelin" data-at=".4" data-dur="2.2">
+  <div class="fnst"><span class="fnl-l">Watched the video</span><span class="fnl-r">100%</span></div>
+  <div class="fnst"><span class="fnl-l">Left a comment</span><span class="fnl-r">18%</span></div>
+  <div class="fnst"><span class="fnl-l">Opened the guide</span><span class="fnl-r">11%</span></div>
+  <div class="fnst"><span class="fnl-l">On the list</span><span class="fnl-r">9%</span></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.4">Width is the number. The last stage is the one that pays.</div></div></section>
+
+<section id="zg32" class="clip" data-start="151.5" data-duration="5.5" data-track-index="1"><div class="cam dense">
+<div class="kick" data-anim="kick" data-at=".1">32 &middot; CYCLE &middot; IT COMES BACK ROUND</div>
+<div class="cyc" data-anim="cycle" data-at=".4" data-dur="2.6">
+  <svg class="cycsvg" viewBox="0 0 520 520"><circle class="cyctrack" cx="260" cy="260" r="200"/>
+    <circle class="cycpath" cx="260" cy="260" r="200"/></svg>
+  <div class="cyccentre"><span class="t">The flywheel</span><span class="s">no start, no end</span></div>
+  <span class="cycnode" style="left:314px;top:-6px"><span class="ico" data-icon="visuals"></span></span>
+  <span class="cyclbl" style="left:470px;top:14px">Publish</span>
+  <span class="cycnode" style="left:514px;top:194px"><span class="ico" data-icon="comment"></span></span>
+  <span class="cyclbl" style="left:566px;top:436px">Comment</span>
+  <span class="cycnode g" style="left:314px;top:394px"><span class="ico" data-icon="mail"></span></span>
+  <span class="cyclbl" style="left:76px;top:436px">Guide sent</span>
+  <span class="cycnode" style="left:114px;top:194px"><span class="ico" data-icon="cycle"></span></span>
+  <span class="cyclbl" style="left:60px;top:14px">Next topic</span>
+</div>
+<div class="sub" data-anim="fi" data-at="3.8">It draws once round, then stops. A loop is not a spinner.</div></div></section>
+
+<section id="zg33" class="clip" data-start="157" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">33 &middot; GAUGE &middot; HOW FAR ALONG</div>
+<div class="gauge" data-anim="gauge" data-at=".5" data-dur="2.2" data-pct="72">
+  <svg class="gaugesvg" viewBox="0 0 620 360" width="620" height="360">
+    <path class="gaugetrack" d="M60 300 A250 250 0 0 1 560 300"/>
+    <path class="gaugebar" d="M60 300 A250 250 0 0 1 560 300"/>
+  </svg>
+  <span class="gneedle"></span><span class="ghub"></span>
+  <div class="gnum" data-val="72" data-suffix="%">0</div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.6">The needle and the number move together, then settle.</div></div></section>
+
+<section id="zg34" class="clip" data-start="162" data-duration="5" data-track-index="1"><div class="cam dense">
+<div class="kick" data-anim="kick" data-at=".1">34 &middot; QUOTE</div>
+<div class="qcard" data-anim="fi" data-at=".35" data-dur=".8">
+  <span class="qmark"><span class="ico" data-icon="quote"></span></span>
+  <div class="qtext" data-anim="fadewords" data-at=".8" data-dur="2">The judgment is mine. What changed is <b>when it arrives</b>.</div>
+  <div class="qwho" data-anim="fi" data-at="2.8"><span class="qbar"></span>
+    <div><div class="qname">Zoltan Gero</div><div class="qrole">from the script</div></div></div>
+</div></div></section>
+
+<section id="zg35" class="clip" data-start="167" data-duration="4.5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">35 &middot; QUESTION</div>
+<div class="qask">
+  <span class="qbadge" data-anim="pop" data-at=".3" data-pulse="2.4"><span class="ico" data-icon="question"></span></span>
+  <div class="qline" data-anim="fadewords" data-at=".8" data-dur="1.8">What if approval came <em>before</em> the slow step?</div>
+</div></div></section>
+
+<section id="zg36" class="clip" data-start="171.5" data-duration="5" data-track-index="1"><div class="cam dense">
+<div class="kick" data-anim="kick" data-at=".1">36 &middot; BEFORE / AFTER</div>
+<div class="ba" data-anim="wipe" data-at=".9" data-dur="2">
+  <div class="bstate bbefore">
+    <div class="bkey">before</div><div class="bval">40 minutes</div>
+    <div class="bnote">to fix one wrong word, after the render</div></div>
+  <div class="bstate bafter" data-layout-allow-overlap>
+    <div class="bkey">after</div><div class="bval">One line</div>
+    <div class="bnote">to fix the same word, in the scene table</div></div>
+  <span class="bawipe" data-layout-allow-overlap></span>
+</div>
+<div class="sub" data-anim="fi" data-at="3.4">One wipe carries the whole comparison.</div></div></section>
+
+<section id="zg37" class="clip" data-start="176.5" data-duration="5" data-track-index="1"><div class="cam">
+<div class="kick" data-anim="kick" data-at=".1">37 &middot; GRID &middot; THERE ARE MANY</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:40px">
+<div class="gwrap" data-anim="gridin" data-at=".4" data-dur="1.9">
+  <span class="gcell">EN</span><span class="gcell">DE</span><span class="gcell">FR</span><span class="gcell">ES</span>
+  <span class="gcell">PT</span><span class="gcell">IT</span><span class="gcell">NL</span><span class="gcell">PL</span>
+  <span class="gcell">TR</span><span class="gcell">RU</span><span class="gcell">AR</span><span class="gcell">HI</span>
+  <span class="gcell">ID</span><span class="gcell">VI</span><span class="gcell">TH</span><span class="gcell">JA</span>
+  <span class="gcell">KO</span><span class="gcell">ZH</span><span class="gcell">SV</span><span class="gcell">DA</span>
+  <span class="gcell">FI</span><span class="gcell">CS</span><span class="gcell">RO</span><span class="gcell on">HU</span>
+</div>
+<div class="gcap" data-anim="fi" data-at="2.4">Twenty-five languages, one upload.</div>
+</div></div></section>
+
+<section id="zg38" class="clip" data-start="181.5" data-duration="5.5" data-track-index="1"><div class="cam dense">
+<div class="kick" data-anim="kick" data-at=".1">38 &middot; COMMAND</div>
+<div class="cmd">
+  <div class="cmdbar" data-anim="fi" data-at=".3"><i></i><i></i><i></i><span class="cmdttl">terminal</span></div>
+  <div class="cmdbody">
+    <div class="cmdline" data-anim="fi" data-at=".7"><span class="cmdp">&gt;</span> <span class="cmdk">hyperframes</span> check</div>
+    <div class="cmdline cmdout" data-anim="fi" data-at="1.6">0 errors &middot; 0 warnings</div>
+    <div class="cmdline" data-anim="fi" data-at="2.3" style="margin-top:16px"><span class="cmdp">&gt;</span> <span class="cmdk">hyperframes</span> render <span class="cmddim">-o</span> <span class="cmdstr">sampler.mp4</span></div>
+  </div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.8">Exactly what you type. Never a screenshot of a terminal.</div></div></section>
+
+<section id="zg39" class="clip" data-start="187" data-duration="5" data-track-index="1"><div class="cam dense">
+<div class="kick" data-anim="kick" data-at=".1">39 &middot; LEAD CARD &middot; ONE REAL PERSON</div>
+<div class="lead" data-anim="fi" data-at=".35" data-dur=".8">
+  <span class="leadav"><span class="ico" data-icon="client"></span></span>
+  <div class="leadmain">
+    <div class="leadn" data-anim="fi" data-at=".7">Alex Rivers</div>
+    <div class="leadr" data-anim="fi" data-at=".95">Course creator &middot; 4 months in</div>
+    <div class="leadtags" data-anim="pops" data-at="1.4">
+      <span class="ltag">commented GUIDE</span>
+      <span class="ltag">opened twice</span>
+      <span class="ltag g">replied</span>
+    </div>
+  </div>
+  <div class="leadscore"><div class="v" data-anim="count" data-at="1.9" data-dur="1.4" data-val="86">0</div>
+    <div class="k">ready</div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.6">A number on a list is not a person. This is.</div></div></section>
 
 </div>
 <script src="icons.js"></script>

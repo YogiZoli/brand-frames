@@ -145,6 +145,21 @@ annyi: **„feedback"**.
 helyre kerül: `FEEDBACK-LOG.md` + `MOTION.md` (vagy `FRAME.md`) + a
 komponens. Ez a ratchet: a 3. videó ott kezd, ahol a 2. befejezte.
 
+## ÍRÁSSZABÁLY — a scriptre és minden kimenetre
+
+**Emoji nincs. Gondolatjel nincs.** Sem a scriptben, sem a leírásban, sem a
+chatválaszban. Helyette vessző, kettőspont, zárójel, vagy külön mondat.
+A kötőjel szóösszetételben és technikai névben marad (`zg-frames`, `AI-t`).
+Teljes szabály: `C:\Users\gdp\CLAUDE.md`.
+
+**Minden válasz végén teljes elérési út**, beilleszthető megnyitó paranccsal
+és Drive URL-lel, ha van. Zoltán soha nem gépel útvonalat.
+
+FIGYELEM: ezekben a doksikban a 2026-08-18 előtt írt bekezdések tele vannak
+gondolatjellel. Azok a szabály előttről valók. **Ne utánozd őket.** Amit
+mostantól bárki ír, az a fenti szabály szerint készül, és ha egy régi
+bekezdést amúgy is szerkeszteni kell, akkor abból is kikerül a gondolatjel.
+
 ## A NULLADIK SZABÁLY
 
 > **A kép azt mutatja, amiről a hang beszél.** Megerősíti, láthatóvá teszi,

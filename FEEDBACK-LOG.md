@@ -297,3 +297,31 @@ A `check` és a kontakt lap három tördelési hibát fogott meg az új archetí
 (ciklus közepe, mérőóra száma, elágazás gyökere) és egy kontraszthibát
 (fehér a `green-500`-on = 2,95:1, a 3:1 küszöb alatt → `green-700`).
 **Ez a 7. lépés dolga. Pontosan ezért van.**
+
+---
+
+## 2026-08-18 (2) — írásszabály, minden Claude-ra, minden témára
+
+Nem videó-specifikus, nem is design-szabály. Ez arról szól, hogyan hangzik Zoltán.
+
+**Emoji: nincs.** Sehol. Se chatválaszban, se scriptben, se leírásban, se
+státuszjelzésben. A pipa és a kereszt is emoji. Státuszt szó mond meg.
+Kivétel csak akkor, ha egy létező fájlnév tartalmazza, mert az útvonal
+különben nem működik.
+
+**Gondolatjel: nincs.** Sem hosszú, sem rövid, sem szóközök közé tett kötőjel.
+Helyette vessző, kettőspont, zárójel, vagy legtöbbször **külön mondat**.
+A gondolatjel a legárulkodóbb AI-jel egy szövegben.
+
+**Ami marad:** kötőjel szóösszetételben és technikai névben (`zg-frames`,
+`e-mail`, `AI-t`, `stroke-dasharray`), markdown listajelölő, táblázat.
+Az helyesírás és szintaxis, nem stílus.
+
+Teljes szabály: `C:\Users\gdp\CLAUDE.md`.
+
+## 2026-08-18 (3) — mindig teljes elérési út
+
+Zoltán másol-beilleszt, soha nem gépel útvonalat és soha nem kérdez rá.
+Minden válasz végén "Fájlok" blokk: abszolút Windows-útvonal, beilleszthető
+megnyitó parancs, és Drive URL, ha van. Egy sor egy beilleszthető dolog.
+Teljes szabály: `C:\Users\gdp\CLAUDE.md`.

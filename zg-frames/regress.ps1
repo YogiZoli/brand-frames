@@ -149,7 +149,11 @@ $md = New-Object System.Text.StringBuilder
 [void]$md.AppendLine("| scene | RMSE | verdict | archetype |")
 [void]$md.AppendLine("|---|---:|---|---|")
 foreach ($r in $sorted) {
-  [void]$md.AppendLine("| {0} | {1} | {2} | {3} |" -f $r.Id, $(if($null -eq $r.Rmse){"—"}else{$r.Rmse}), $r.Verdict, $r.Title)
+  # NOTE: build the string FIRST. AppendLine("..." -f a,b) makes PowerShell bind the
+  # array to the overload resolver instead of to -f, and the format call blows up.
+  $rmseTxt = if ($null -eq $r.Rmse) { "n/a" } else { [string]$r.Rmse }
+  $line = "| " + $r.Id + " | " + $rmseTxt + " | " + $r.Verdict + " | " + $r.Title + " |"
+  [void]$md.AppendLine($line)
 }
 [void]$md.AppendLine("")
 [void]$md.AppendLine("CHANGED: $($changed.Count) · NEW: $($new.Count) · unchanged: $($rows.Count - $changed.Count - $new.Count)")

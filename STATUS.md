@@ -4,7 +4,7 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-18 16:52 · **commit:** lásd `git log -1`
+**Frissítve:** 2026-08-18 17:05 · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
@@ -12,21 +12,15 @@ fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén friss�
 
 ## MOST ÉPP
 
-**A `zg-frames v1.7` DESIGN ALAPOZÁS kész a KÓDBAN, a render ÚJRA FUT.**
-A v1.6 render 8p46mp gépidővel elkészült és Zoltán JÓVÁHAGYTA a mozgást — DE a
-v1.6 még a design alapozás ELŐTTI verzió. A v1.7-ben minden design-réteg bekerült
-(lásd lent). A v1.7 első rendere elhasalt egy gép-újraindítás miatt (a napló
-navigation timeout + AudioContext hibát mutat); 16:51-kor újraindítva.
+**A `zg-frames v1.7` JÓVÁHAGYVA ÉS BASELINE (2026-08-18).** Zoltán megnézte a
+`sampler_v1.7.mp4`-et és jóváhagyta a design alapozást. A `baseline/` mappa
+mostantól a v1.7 39 kockáját tartalmazza (a `regress.ps1 -Accept` lefutott).
+A könyvtár innentől a TELJES design alapozáson áll: OKLCH, színvak-első
+szemantika, négy easing, tömeg-arányos időzítés, védjegy-gyűrű, olvasási idő és
+hossz-tűrés mint mért ellenőrzés.
 
-**Amikor a v1.7 render kész** (`_go.bat` mindent lefuttat): `sampler_v1.7.mp4` +
-`_sheet17.jpg` + `_split17.jpg` + `_ring17.jpg` + `_skitch17.jpg` +
-`_regress/regress-report.md`. A `check` már 0 hiba, a snapshotok jók, a
-színvak-bizonyítékok (`_gray_*.png`, `_cvd_*17.png`) jók.
-
-**A baseline MÉG a v1.6.** A v1.7 elfogadása külön lépés, ha Zoltán jóváhagyja a
-v1.7 samplert: `regress.ps1 -Video sampler_v1.7.mp4 -Accept`. A regressziós teszt
-a v1.7-en SOK változást fog mutatni a v1.6-hoz képest — ez VÁRT, a design
-alapozás mindent érintett.
+**Innentől minden könyvtár-változás után a `regress.ps1` fut, és megmondja,
+melyik archetípus mozdult el.** Zoltán soha nem regressziós teszt.
 
 ---
 

@@ -103,15 +103,30 @@ foreach ($s in $scenes) {
     $rows += [pscustomobject]@{ Id=$s.Id; Title=$s.Title; Rmse=$null; Verdict="NEW" }
     continue
   }
-  # ffmpeg's PSNR filter also reports MSE per plane; we take the average.
-  $log = ffmpeg -v error -i $now -i $ref -lavfi "psnr" -f null - 2>&1 | Out-String
-  $mse = $null
-  if ($log -match 'mse_avg:([\d.]+)') { $mse = [double]$Matches[1] }
-  if ($null -eq $mse) {
-    $rows += [pscustomobject]@{ Id=$s.Id; Title=$s.Title; Rmse=$null; Verdict="SIZE MISMATCH" }
+  # The scene exists in the table but the render is shorter than the table needs.
+  # This is not a library problem and not a test problem: it is an OLD RENDER.
+  if (-not (Test-Path $now) -or ($s.Start + $s.Dur * 0.78) -gt $len) {
+    $rows += [pscustomobject]@{ Id=$s.Id; Title=$s.Title; Rmse=$null; Verdict="NINCS A RENDERBEN" }
     continue
   }
-  $rmse = [math]::Sqrt($mse)
+  # ffmpeg's psnr filter prints ONE number we can rely on: "average:<dB>", or
+  # "average:inf" when the two frames are bit-identical. It does NOT print mse_avg
+  # unless a stats file is requested, so we convert from dB ourselves:
+  #     RMSE = 255 / 10^(PSNR/20)      inf dB -> RMSE 0
+  # Routed through cmd on purpose: ffmpeg writes its banner to stderr, and with
+  # $ErrorActionPreference = Stop PowerShell treats that as a fatal error.
+  $log = cmd /c "ffmpeg -v info -i ""$now"" -i ""$ref"" -lavfi psnr -f null - 2>&1" | Out-String
+  $rmse = $null
+  if ($log -match 'average:inf') {
+    $rmse = 0.0
+  } elseif ($log -match 'average:([\d.]+)') {
+    $psnr = [double]$Matches[1]
+    $rmse = 255.0 / [math]::Pow(10, $psnr / 20.0)
+  }
+  if ($null -eq $rmse) {
+    $rows += [pscustomobject]@{ Id=$s.Id; Title=$s.Title; Rmse=$null; Verdict="NEM OSSZEHASONLITHATO" }
+    continue
+  }
   $v = if ($rmse -lt 0.8) { "same" } elseif ($rmse -lt $Threshold) { "noise" } else { "CHANGED" }
   $rows += [pscustomobject]@{ Id=$s.Id; Title=$s.Title; Rmse=[math]::Round($rmse,2); Verdict=$v }
 }
@@ -124,7 +139,17 @@ $new     = $rows | Where-Object { $_.Verdict -eq "NEW" }
 Write-Host ""
 Write-Host "=== REGRESSION vs $Baseline ===" -ForegroundColor Cyan
 $sorted | Format-Table Id, @{n="RMSE";e={$_.Rmse}}, Verdict, Title -AutoSize | Out-String | Write-Host
-Write-Host ("CHANGED: {0}   NEW: {1}   unchanged: {2}" -f $changed.Count, $new.Count, ($rows.Count - $changed.Count - $new.Count))
+$broken = $rows | Where-Object { $_.Verdict -eq "NEM OSSZEHASONLITHATO" }
+$missing = $rows | Where-Object { $_.Verdict -eq "NINCS A RENDERBEN" }
+if ($missing.Count -gt 0) {
+  Write-Host ("{0} jelenet nincs benne ebben a renderben. Regi rendert nezel." -f $missing.Count) -ForegroundColor Yellow
+}
+$same   = $rows | Where-Object { $_.Verdict -eq "same" -or $_.Verdict -eq "noise" }
+Write-Host ("VALTOZOTT: {0}   UJ: {1}   valtozatlan: {2}   nem merheto: {3}" -f `
+  $changed.Count, $new.Count, $same.Count, $broken.Count)
+if ($broken.Count -gt 0) {
+  Write-Host "Van nem merheto jelenet. Az MAGA a teszt hibaja, nem a konyvtare." -ForegroundColor Red
+}
 if ($changed.Count -gt 0) {
   Write-Host "Ask one question about each CHANGED archetype: did I mean to change this?" -ForegroundColor Yellow
 }

@@ -4,7 +4,7 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-18 11:20 · **commit:** lásd `git log -1`
+**Frissítve:** 2026-08-18 16:52 · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
@@ -12,32 +12,56 @@ fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén friss�
 
 ## MOST ÉPP
 
-**A `zg-frames v1.6` JÓVÁHAGYVA (2026-08-18).** A render kész: 5760 kocka,
-8 perc 46 másodperc, 192 másodperc videó. A `baseline/` mappa mostantól a v1.6
-39 referenciakockáját tartalmazza, a régi v1.0 a `baseline_v1.0_archiv/`-ban van.
+**A `zg-frames v1.7` DESIGN ALAPOZÁS kész a KÓDBAN, a render ÚJRA FUT.**
+A v1.6 render 8p46mp gépidővel elkészült és Zoltán JÓVÁHAGYTA a mozgást — DE a
+v1.6 még a design alapozás ELŐTTI verzió. A v1.7-ben minden design-réteg bekerült
+(lásd lent). A v1.7 első rendere elhasalt egy gép-újraindítás miatt (a napló
+navigation timeout + AudioContext hibát mutat); 16:51-kor újraindítva.
 
-**A regressziós teszt él és bizonyítottan mér.** A v1.6-ra 39 jelenetből 39
-"same", nulla eltérés. A régi v1.5-re ráeresztve 29 változott jelenetet talált,
-tízet pedig helyesen jelölt "NINCS A RENDERBEN"-nek. Egy teszt, ami mindig zöld,
-nem teszt. Ez nem az.
+**Amikor a v1.7 render kész** (`_go.bat` mindent lefuttat): `sampler_v1.7.mp4` +
+`_sheet17.jpg` + `_split17.jpg` + `_ring17.jpg` + `_skitch17.jpg` +
+`_regress/regress-report.md`. A `check` már 0 hiba, a snapshotok jók, a
+színvak-bizonyítékok (`_gray_*.png`, `_cvd_*17.png`) jók.
 
-**Új doksi:** `GLOSSARY.md`, a szakszavak példákkal és a teljes end-to-end
-folyamat, a stratégiától a publikálásig. Ez Zoltánnak szól, nem a gépnek.
+**A baseline MÉG a v1.6.** A v1.7 elfogadása külön lépés, ha Zoltán jóváhagyja a
+v1.7 samplert: `regress.ps1 -Video sampler_v1.7.mp4 -Accept`. A regressziós teszt
+a v1.7-en SOK változást fog mutatni a v1.6-hoz képest — ez VÁRT, a design
+alapozás mindent érintett.
 
-**A következő munka a 4. lépés lent:** a "One Sitting Workflow" videó
-újraépítése a könyvtárból, jelenet-táblával.
+---
+
+## A KÉT KREATÍV KÉRDÉS — LEZÁRVA (2026-08-18)
+
+1. **A bezáruló gyűrű mint kötelező szakaszzáró: MEGVALÓSÍTVA.** A jelenet-tábla
+   `data-section-end` jelölésére a `motion.js` magától leteszi a gyűrűt a jobb
+   alsó sarokba (a bal alsó az avataré). Lásd `MOTION.md` v1.7.
+2. **A hangkészlet: SPECIFIKÁLVA.** `SOUND.md` — hat minta, F dúr pentaton,
+   −30 dB a narráció alatt. A `motion.js` kiírja a cue-táblát `window.__zgCues`-ba.
+   A hat wav még nincs legyártva; az a `sfx/` mappába kerül majd. Hangmotort NEM
+   írunk, csak a táblát + egy ffmpeg receptet (`pipeline\sound.ps1`, még nincs).
+
+---
+
+## A KÖVETKEZŐ MUNKA: "One Sitting Workflow" videó — MÉG NEM KEZDŐDÖTT EL
+
+Ez a 4. lépés lent, és a következő session dolga. NINCS elkezdve.
+- A hang és a script MEGVAN: `C:\Users\gdp\HyperFrames\ai-video-workflow\assets\`
+  (`vo.mp3`, `vo.srt`, `vo_bgm.mp3`, `transcript.json`). Zoltán a MEGLÉVŐ hangot
+  és scriptet akarja, nem újat.
+- A régi `ai-video-workflow\index.html` a monolit, 141 jelenetes, NEM a
+  könyvtárból épült verzió. Ezt kell lecserélni: mondattábla → jelenet-tábla
+  (Opus, archetípus + max 6 szó / mondat) → build a `zg-frames` könyvtárból →
+  check → kontakt lap → render → avatar composite.
+- Előbb a v1.7 samplert kell jóváhagyni, hogy a videó jóváhagyott könyvtárból
+  épüljön.
 
 ---
 
 ## KORÁBBAN ITT ÁLLT
 
-**A `zg-frames v1.6` rendere fut** — 39 archetípus, 192 mp, kb. 8–12 perc gépidő.
-Ez az első verzió, ami a **teljes** könyvtárat tartalmazza, és az első, amit
-a `regress.ps1` automatikusan összehasonlít a baseline-nal.
-
-Ha a render kész (a `_go.bat` magától lefuttatja mindet):
-`sampler_v1.6.mp4` · `_sheet16.jpg` (8×5 kontakt lap) · `_ring16.jpg` ·
-`_skitch16.jpg` · `_lens16.jpg` · `_regress/regress-report.md`.
+**A `zg-frames v1.6` JÓVÁHAGYVA.** 5760 kocka, 8p46mp, 192 mp videó. A regressziós
+teszt bizonyítottan mér: v1.6-ra 39/39 "same", a régi v1.5-re 29 változott.
+Új doksi: `GLOSSARY.md`.
 
 ---
 
@@ -47,19 +71,28 @@ Ha a render kész (a `_go.bat` magától lefuttatja mindet):
 - **`PIPELINE.md`** — a kánon: 9 lépés, 5 kapu, a határ, négy bázis-réteg,
   költség-politika, mért tények.
 - **`SCALE.md`** — betűméret-skála (32·40·50·62·78·98·122), 8-pontos térköz-rács.
-- **`DESIGN-FOUNDATION.md` v2.1** — a teljes alapozás + a HF-v6 kör négy új szabálya:
-  biztonsági sáv (`flex:0 0 auto`), ikon-nem-betű a jelekre is, mérj-ne-feltételezz
-  (`pathLength`), kontraszt-padló (a `-500` fokozat nem hordoz fehér szöveget).
-- **`MOTION.md` v1.6** — kitöltés mérésből, üres üveg repülés közben, `popin`,
-  az öt új család mozgása.
+- **`DESIGN-FOUNDATION.md` v3.0** — a teljes alapozás. v2.1: biztonsági sáv,
+  ikon-nem-betű, mérj-ne-feltételezz, kontraszt-padló. **v3.0 (a legutolsó):**
+  OKLCH rampák, SZÍNVAK-ELSŐ szemantika (világosság+alak+szó), semleges
+  hőmérséklet-egység, egyidejű kontraszt, 60/30/10, kiegyensúlyozott sortörés,
+  két betűvastagság, optikai igazítás és méretkiegyenlítés, valódi 12 oszlopos rács,
+  olvasási idő + hossz-tűrés mint MÉRT ellenőrzés, villogás-korlát.
+- **`MOTION.md` v1.7** — v1.6: kitöltés mérésből, üres üveg, popin, öt új család.
+  **v1.7:** négy easing, tömeg-arányos időzítés, sebesség-plafon (1800 px/mp),
+  irány-szemantika, mozgás-hierarchia (`data-hero`), a VÉDJEGY-GYŰRŰ.
+- **`SOUND.md`** — a hangkészlet spec (hat minta). ÚJ.
+- **`GLOSSARY.md`** — szakszavak példákkal + a teljes end-to-end folyamat. ÚJ.
 - **`FEEDBACK-LOG.md`** — Zoltán általános szabályai dátumozva (4 adag, a legutolsó
   a HF-v6 öt képe).
 - **`BOOTSTRAP.md`** + Drive „Laptopcsere" doksi.
 - **`_feedback/`** — a feedback egyetlen helye.
 
-### A könyvtár (`zg-frames/`) — **v1.6, TELJES**
+### A könyvtár (`zg-frames/`) — **v1.7, TELJES**
 - `zg.css` · `motion.js` · `icons.js` (16 ikon + 5 rajzolt marker-glyph)
-- `index.html` — a motion sampler, **39 jelenet, 192 mp**
+- `type.js` — **ÚJ**, írásjel-kultúra (nbsp, hármaspont, idézőjel, szorzójel),
+  a build ELŐTT fut, kódot sosem érint.
+- `index.html` — a motion sampler, **39 jelenet, 194 mp** (a v1.7-ben pár jelenet
+  fél mp-cel hosszabb, mert az olvasási idő audit ezt követelte)
 - **A tervezett ~38 archetípus mind megvan.** A v1.6-ban került be az utolsó tíz:
   elágazás · tölcsér · ciklus · mérőóra · idézet · kérdés · előtte/utána · grid ·
   parancs · lead-kártya.
@@ -78,12 +111,12 @@ Ha a render kész (a `_go.bat` magától lefuttatja mindet):
 
 ## A KÖVETKEZŐ LÉPÉS
 
-1. **v1.6 sampler megnézése.** Ha jó: `zg-frames v1.6 jóváhagyva` — és
-   **egyszer** lefut a `.\regress.ps1 -Video sampler_v1.6.mp4 -Accept`, ami ezt a
-   rendert teszi baseline-ná. Innentől minden könyvtár-változás után csak a szkript
-   fut, és megmondja, mi változott.
+1. **v1.7 sampler megnézése** (`sampler_v1.7.mp4`, 16:51-kor újraindított render).
+   Ha jó: `zg-frames v1.7 jóváhagyva` — és egyszer lefut a
+   `.\regress.ps1 -Video sampler_v1.7.mp4 -Accept`, ami baseline-ná teszi.
 2. **A „One Sitting Workflow" videó újraépítése** a könyvtárból, jelenet-táblával.
-   Ez zárja a kört és bizonyítja, hogy a rendszer működik.
+   A hang és a script megvan (`ai-video-workflow\assets\`). Ez a következő session
+   nagy feladata. Ez zárja a kört és bizonyítja, hogy a rendszer működik.
 3. Végső render + avatar composite + publikálás.
 
 ---
@@ -91,9 +124,9 @@ Ha a render kész (a `_go.bat` magától lefuttatja mindet):
 ## FÉLBEHAGYVA / NYITOTT
 
 - **A `HF-v4-feedback` képekből 5 nincs beolvasva** (02, 03, 05, 06, 08).
-- **Két kreatív javaslat, döntésre vár:** a „bezáruló gyűrű" mint védjegy-mozdulat
-  MINDEN szakaszzáró jeleneten (a mozgás megvan, a *policy* hiányzik); és egy
-  5-6 mintás halk hangkészlet a mozgáshoz.
+- **A két kreatív javaslat LEZÁRVA** (2026-08-18): a bezáruló gyűrű mint kötelező
+  szakaszzáró MEGVALÓSÍTVA (`data-section-end`), a hangkészlet SPECIFIKÁLVA
+  (`SOUND.md`). A hat wav legyártása maradt hátra (`sfx/` mappa).
 - A `lint` két figyelmeztetése (`composition_file_too_large`,
   `timeline_track_too_dense`) **szándékos** a samplernél: az egész értelme, hogy
   minden archetípus egy fájlban, egy idővonalon legyen. Igazi videóknál ez a két

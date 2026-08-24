@@ -207,6 +207,64 @@ nulladik szabály nem fegyelem kérdése, hanem automatikus.
   kicsinyítés (`scale=800:-2`), mert a HeyGen legkisebb kimenete 720p, és fix
   sarok-pozíció (`overlay=W-w-40:H-h-40`) — ez elhelyezés, nem torzítás. A
   composite az avatar SAJÁT hangját teszi alá; éles pipeline-ban az avatart a
-  valódi VO-ból generáljuk, így a szájszinkron automatikus. Teljes recept:
-  STATUS.md „AVATAR COMPOSITE — MEGOLDVA". (Javítva 2026-08-24: a régi
-  „kör-maszk" ÉS a „semmi átméretezés / méret generáláskor" is hibás volt.)
+  valódi VO-ból generáljuk, így a szájszinkron automatikus. (Javítva
+  2026-08-24: a régi „kör-maszk" ÉS a „semmi átméretezés / méret generáláskor"
+  is hibás volt.) Teljes recept és a két üzemmód: lásd lent.
+
+## AVATAR COMPOSITE — a végleges recept (kánon, 2026-08-24)
+
+Ez a bizonyítottan foltmentes recept. Korábban csak a STATUS.md-ben élt, ami
+felülíródik, ezért ide, a kánonba került. A gyökérok: a natív HeyGen webm VP9
+alfa VÉGIG jó volt; a korábbi „100% opaque" mérés hibás volt (egykockás
+PNG-kinyerés elveszti a VP9 alfa BlockAdditional adatát).
+
+**Avatar generálás:** `create_video_from_avatar`, outputFormat `webm` (natív
+átlátszó alfa), engine `avatar_iii`, resolution 720p. A III marad minden teljes
+videóhoz (III kb. 3,4 mp / 1 kredit; V kb. 1 mp / 1 kredit és ötszörös render).
+
+**A két üzemmód** (a wrapper `pipeline\avatar_composite.ps1` mindkettőt tudja):
+
+- **Segments (ALAP):** az avatar CSAK a megszólalás-szigetekre kerül (nyitás,
+  záró CTA, 1-2 kulcspillanat), időbélyegenként egy rövid webm, `between`-nel a
+  saját idejére kapcsolva. Ez a olcsóbb út, mert csak a valóban generált
+  másodpercek fogyasztanak kreditet.
+- **Full:** az avatar végig a sarokban, egyetlen overlay, `between` nélkül.
+  Drágább, csak külön kérésre.
+
+**Full mód (egyetlen klip végig):**
+
+```
+ffmpeg -y -i HATTER.mp4 -c:v libvpx-vp9 -i avatar.webm \
+  -filter_complex "[1:v]scale=800:-2[av];[0:v][av]overlay=W-w-40:H-h-40[v]" \
+  -map "[v]" -map 1:a? -c:v libx264 -crf 20 -pix_fmt yuv420p -c:a aac out.mp4
+```
+
+**Segments mód (több klip, mindegyik a saját idejére):**
+
+```
+ffmpeg -y -i HATTER.mp4 \
+  -c:v libvpx-vp9 -i avatar1.webm -c:v libvpx-vp9 -i avatar2.webm \
+  -filter_complex "\
+    [1:v]scale=800:-2,setpts=PTS+0/TB[a1]; \
+    [2:v]scale=800:-2,setpts=PTS+270/TB[a2]; \
+    [0:v][a1]overlay=W-w-40:H-h-40:enable='between(t,0,7.3)'[t1]; \
+    [t1][a2]overlay=W-w-40:H-h-40:enable='between(t,270,278.4)'[v]" \
+  -map "[v]" -map 0:a -c:v libx264 -crf 20 -pix_fmt yuv420p -c:a aac out.mp4
+```
+
+Kulcsszabályok mindkét módban:
+- `-c:v libvpx-vp9` KÖTELEZŐ minden avatar-input ELŐTT, különben elveszik az alfa.
+- `scale=800:-2` = arányos kicsinyítés (a HeyGen legkisebb kimenete 720p).
+- `overlay=W-w-40:H-h-40` = jobb alsó sarok, 40px margó, csak elhelyezés.
+- Segments: `setpts=PTS+<start>/TB` tolja a klipet, `enable='between(t,s,e)'` mutatja.
+- TILOS: colorkey / chromakey / blur / denoise / median / maszk / kör / stretch.
+
+**Alfa-önellenőrzés (a composite ELŐTT):**
+
+```
+ffmpeg -c:v libvpx-vp9 -i avatar.webm -vf format=yuva420p,alphaextract,signalstats \
+  -f null - 2>&1 | findstr /C:"YMIN" /C:"YMAX"
+```
+
+Valódi alfa esetén YMIN=0 és YMAX=255. Ha YMIN=255 vagy YMAX=0, a webm hibás,
+NE composite-olj vele.

@@ -177,14 +177,20 @@ because per-letter animation splits text into spans.
 
 Composited **after** the render, as a transparent-background WebM.
 
-**Shape: a CIRCLE.** Decided 2026-08-16. The HeyGen reference uses a plain rectangular cutout;
-Zoltán wants the circular corner treatment instead, so the composite step applies a **circular
-mask** and places it in a corner.
+**NO shape treatment. Corrected 2026-08-24** (supersedes the old "CIRCLE" rule). The HeyGen
+transparent-background WebM has a REAL native VP9 alpha channel that works; no colorkey is
+needed (colorkey would eat into the black shirt). Decode with `-c:v libvpx-vp9` or the alpha
+is lost.
 
-Everything else is untouched: never stretch it, never oval-ise it (a circle is round, not an
-ellipse — keep the source aspect and crop square before masking), never veil or fade it, never
-re-compress. HeyGen Video Agent is banned; the clip is generated in the app and composited
-locally with ffmpeg.
+BANNED: circular mask, crop, background swap, aspect distortion (stretch/oval), veil/fade,
+re-compress. ALLOWED and REQUIRED: proportional downscale (`scale=800:-2`) because HeyGen's
+smallest output is 720p, and fixed corner placement (`overlay=W-w-40:H-h-40`). Placement into
+a fixed corner is positioning, not distortion. The composite maps the avatar's own audio; in
+production the avatar is generated from the real VO, so lip-sync is automatic. Full recipe:
+STATUS.md "AVATAR COMPOSITE — MEGOLDVA". HeyGen Video Agent stays banned (expensive
+auto-composer); plain API avatar generation is the automated path — Claude generates, Zoltán
+approves. (Corrected 2026-08-24: the old "no resize / size set at generation" claim was also
+wrong — it is impossible below 720p.)
 
 ## Layout
 

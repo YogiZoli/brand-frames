@@ -85,7 +85,7 @@ lokális út gyorsabb ÉS ingyen van.
 | 6 | **lint → check** | HyperFrames | ❌ (0 hiba a feltétel) |
 | 7 | **Kontakt lap** (állókép jelenetenként) | HyperFrames | ✅ **4. kapu** |
 | 8 | **Render**, egyszer | HyperFrames | ❌ |
-| 9 | **Avatar composite** (kör-maszk, jobb alul) | ffmpeg | ✅ **5. kapu** |
+| 9 | **Avatar composite** (natív alfa, arányos kicsinyítés + fix sarok, SEMMI maszk/torzítás) | ffmpeg | ✅ **5. kapu** |
 
 ### Miért nincs kapu a 3. és az 5. lépésen
 
@@ -200,5 +200,13 @@ nulladik szabály nem fegyelem kérdése, hanem automatikus.
   A compiler helyben injektálja az Intert.
 - Hang: narráció + zene EGY artifact. Soha ne relatív dB-vel. → `AUDIO.md`
 - Minden render új, időbélyeges fájlnévre.
-- Avatar: kör, átlátszó WebM, render UTÁN ffmpeg-gel, **HeyGen méretén** —
-  átméretezés tilos. A kompozíció alsó sávja üresen marad neki.
+- Avatar: átlátszó hátterű WebM, amit a HeyGen ad. A natív VP9 alfa MŰKÖDIK,
+  colorkey NEM kell (az a fekete pólót kiharapná). Beolvasás `-c:v libvpx-vp9`-cel,
+  különben elveszik az alfa. TILOS: kör-maszk, háttércsere, képarány-torzítás
+  (stretch/oval), fátyol/fade, újrakódolás. ENGEDÉLYEZETT és SZÜKSÉGES: arányos
+  kicsinyítés (`scale=800:-2`), mert a HeyGen legkisebb kimenete 720p, és fix
+  sarok-pozíció (`overlay=W-w-40:H-h-40`) — ez elhelyezés, nem torzítás. A
+  composite az avatar SAJÁT hangját teszi alá; éles pipeline-ban az avatart a
+  valódi VO-ból generáljuk, így a szájszinkron automatikus. Teljes recept:
+  STATUS.md „AVATAR COMPOSITE — MEGOLDVA". (Javítva 2026-08-24: a régi
+  „kör-maszk" ÉS a „semmi átméretezés / méret generáláskor" is hibás volt.)

@@ -46,6 +46,10 @@ param(
   [Parameter(Mandatory=$true)]
   [string]$Out,
 
+  # Opcionalis kulon hangsav (pl. a VO+BGM mp3). Ha nincs megadva, a hatter
+  # hangja jon (ha van), kulonben nema. Eles pipeline-ban ide a vo_bgm.mp3 megy.
+  [string]$Audio,
+
   # A sarok-avatar celszelessege pixelben (magassag aranyos: -2)
   [int]$Width = 800,
 
@@ -70,12 +74,19 @@ function Assert-File($path, $label) {
 function Test-Alpha($webm) {
   Assert-File $webm "Avatar webm"
   Write-Host "  Alfa-ellenorzes: $webm" -ForegroundColor DarkGray
+  $prevEA = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
   $log = & ffmpeg -c:v libvpx-vp9 -i $webm `
-    -vf "format=yuva420p,alphaextract,signalstats" `
+    -vf "format=yuva420p,alphaextract,signalstats,metadata=print" `
     -f null - 2>&1 | Out-String
+  $ErrorActionPreference = $prevEA
 
-  $ymin = if ($log -match 'YMIN:(\d+)') { [int]$Matches[1] } else { $null }
-  $ymax = if ($log -match 'YMAX:(\d+)') { [int]$Matches[1] } else { $null }
+  # A signalstats kockankent ir YMIN/YMAX-ot (a metadata=print teszi lathatova).
+  # A legkisebb YMIN es a legnagyobb YMAX szamit: van-e valahol atlatszo es subject.
+  $yminAll = [regex]::Matches($log, 'YMIN=(\d+)') | ForEach-Object { [int]$_.Groups[1].Value }
+  $ymaxAll = [regex]::Matches($log, 'YMAX=(\d+)') | ForEach-Object { [int]$_.Groups[1].Value }
+  $ymin = if ($yminAll) { ($yminAll | Measure-Object -Minimum).Minimum } else { $null }
+  $ymax = if ($ymaxAll) { ($ymaxAll | Measure-Object -Maximum).Maximum } else { $null }
 
   if ($null -eq $ymin -or $null -eq $ymax) {
     throw "Nem sikerult kiolvasni az alfa statisztikat ($webm). Az ffmpeg nem adott signalstats-ot. Van egyaltalan alfa csatorna a fajlban?"
@@ -124,12 +135,19 @@ $scale   = "scale=$Width`:-2"
 $overlay = "overlay=W-w-$Margin`:H-h-$Margin"
 
 if ($Mode -eq 'Full') {
-  $args = @(
-    '-y','-i',$Background,
-    '-c:v','libvpx-vp9','-i',$Avatar,
+  $inputs = @('-y','-i',$Background,'-c:v','libvpx-vp9','-i',$Avatar)
+  # Hang: kulon -Audio ha van (input 2), kulonben az avatar sajat hangja (1:a?).
+  if ($Audio) {
+    Assert-File $Audio "Hangsav"
+    $inputs += @('-i',$Audio)
+    $amap = '2:a'
+  } else {
+    $amap = '1:a?'
+  }
+  $args = $inputs + @(
     '-filter_complex', "[1:v]$scale[av];[0:v][av]$overlay[v]",
-    '-map','[v]','-map','1:a?',
-    '-c:v','libx264','-crf','20','-pix_fmt','yuv420p','-c:a','aac',
+    '-map','[v]','-map',$amap,
+    '-c:v','libx264','-crf','20','-pix_fmt','yuv420p','-c:a','aac','-shortest',
     $Out
   )
 }
@@ -152,17 +170,30 @@ else {
     $i++
   }
   $filter = ($chains -join ';')
+  # Hang: kulon -Audio ha van (a szegmensek utani input), kulonben a hatter
+  # hangja, ha van (0:a?). Ha egyik sincs, a video nema lesz.
+  if ($Audio) {
+    Assert-File $Audio "Hangsav"
+    $inputs += @('-i',$Audio)
+    $amap = "$($parsed.Count + 1):a"
+  } else {
+    $amap = '0:a?'
+  }
   $args = $inputs + @(
     '-filter_complex', $filter,
-    '-map','[v]','-map','0:a',
-    '-c:v','libx264','-crf','20','-pix_fmt','yuv420p','-c:a','aac',
+    '-map','[v]','-map',$amap,
+    '-c:v','libx264','-crf','20','-pix_fmt','yuv420p','-c:a','aac','-shortest',
     $Out
   )
 }
 
 Write-Host "Composite ($Mode) -> $Out" -ForegroundColor Cyan
-& ffmpeg @args
-if ($LASTEXITCODE -ne 0) { throw "ffmpeg hiba (exit $LASTEXITCODE)." }
+$prevEA = $ErrorActionPreference
+$ErrorActionPreference = 'Continue'
+& ffmpeg @args 2>&1 | ForEach-Object { "$_" } | Out-Null
+$code = $LASTEXITCODE
+$ErrorActionPreference = $prevEA
+if ($code -ne 0) { throw "ffmpeg hiba (exit $code)." }
 
 Assert-File $Out "Kimenet"
 $size = [math]::Round((Get-Item -LiteralPath $Out).Length / 1MB, 1)

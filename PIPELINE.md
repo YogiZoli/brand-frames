@@ -262,9 +262,15 @@ Kulcsszabályok mindkét módban:
 **Alfa-önellenőrzés (a composite ELŐTT):**
 
 ```
-ffmpeg -c:v libvpx-vp9 -i avatar.webm -vf format=yuva420p,alphaextract,signalstats \
-  -f null - 2>&1 | findstr /C:"YMIN" /C:"YMAX"
+ffmpeg -c:v libvpx-vp9 -i avatar.webm \
+  -vf format=yuva420p,alphaextract,signalstats,metadata=print -f null - 2>&1 | findstr YMIN
 ```
 
-Valódi alfa esetén YMIN=0 és YMAX=255. Ha YMIN=255 vagy YMAX=0, a webm hibás,
-NE composite-olj vele.
+A `metadata=print` KELL, e nélkül a signalstats nem írja ki a `YMIN=`/`YMAX=`
+sorokat. Valódi alfa esetén a legkisebb YMIN=0 (van átlátszó háttér) és a
+legnagyobb YMAX=255 (van subject). Ha YMIN mindenütt 255 vagy YMAX mindenütt 0,
+a webm hibás, NE composite-olj vele. (A wrapper ezt automatikusan ellenőrzi.)
+
+**Hang:** a háttér-render általában néma, a VO+BGM külön sáv. A wrapper `-Audio
+vo_bgm.mp3` paramétere teszi alá; enélkül a háttér hangját veszi (`0:a?`), vagy
+néma marad. Éles pipeline-ban add meg a `-Audio`-t a VO+BGM mp3-mal.

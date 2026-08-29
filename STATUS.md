@@ -4,7 +4,7 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-24 22:40 (Cowork, avatar recept a kánonba, elavult szekciók törölve) · **commit:** lásd `git log -1`
+**Frissítve:** 2026-08-29 22:05 (zg-frames v6 JÓVÁHAGYVA + baseline, kánon-átállás kész) · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
@@ -77,8 +77,33 @@ Második kör (2026-08-29, sorrend 2-1-3):
   2 figyelmeztetés (`composition_file_too_large`, `timeline_track_too_dense`) — ezek a
   samplernél SZÁNDÉKOSAK (egy fájl mind a 39 archetípus), éles videónál sub-kompokra bomlik.
 
-**Hátra: új sampler render + Zoltán-jóváhagyás + új `regress.ps1` baseline. Csak a teljes
-kör végén, ahogy Zoltán kérte.** A `frame-showcase.html` teljes újratördelése: fejlesztési tétel.
+Harmadik kör (2026-08-29 este, sampler feedback 10 kép, `_feedback/2026-08-29/`):
+- Új sampler render a kánonon: `sampler_2026-08-29_final.mp4` (39 archetípus, 194 mp).
+- zg26 verziószám kivéve: "ONE LIBRARY", nem tud elavulni.
+- 7 feedback-javítás a könyvtáron, mind a `FEEDBACK-LOG.md` 2026-08-29 bejegyzésben:
+  valódi kurzor-SVG, auto-pulzálás minden gombon, KEYWORD router (`kroute` + 3 pill,
+  a gyenge "APPROVAL POINT 04" törölve), BRANCH korongok kontraszt, FUNNEL 4 lépcső
+  kánonon belül elkülönítve, GAUGE ív/mutató szinkron (`* .5` hiba javítva), LENS
+  felső unfold felirat (`unfold` mozgás).
+- `check`: PASSED, 0 hiba, kontraszt 58/58, 2 ismert lint-warning (sampler méret).
+
+Negyedik kör (2026-08-29 este, sampler feedback 10 kép, `_feedback/2026-08-29/` minor/mouse/router/arrow/flywheel/quote):
+- 13 apró javítás 6 jelenetre: LENS feliratok a panel alá + lupe soha nem üres
+  (a régi "blank while it travels" elv felülírva), FORM kurzor végigmegy a mezőkön
+  mielőtt gépel + gomb-glow minden gombon (`btnPulse`), KEYWORD router valódi
+  szétágazó lábakkal + ikon minden pill elé, ARROW végigfutó nyílhegy, CYCLE
+  csomópont-szinkron (lineáris töltés), QUOTE dőlt + author jobbra + záró
+  idézőjel csak a végén.
+- Új render: `sampler_2026-08-29_v6.mp4`. `check`: PASSED, 0 hiba, 58/58.
+
+**JÓVÁHAGYVA (Zoltán, 2026-08-29 22:00).** A `sampler_2026-08-29_v6.mp4` az ÚJ
+regressziós baseline (`regress.ps1 -Accept` lefutott, `baseline/APPROVED.txt`
+frissítve, 39 archetípus). Drive tükör: `📺 YouTube & Content/zg-frames/`.
+A `zg-frames` könyvtár mostantól a brand kánonon áll, jóváhagyott mozgással.
+Minden éles videó erre a könyvtárra épülhet.
+
+**KÖVETKEZŐ: a "One Sitting Workflow" videó újraépítése a könyvtárból** (lásd lent).
+A `frame-showcase.html` teljes újratördelése: fejlesztési tétel.
 
 VoxFlow: **nem nyúltunk hozzá** (Máté csatornája).
 

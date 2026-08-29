@@ -95,6 +95,26 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 .cpic{width:56px;height:56px;border-radius:50%;background:var(--blue-bg);flex:none}
 .pillout{background:#faf6ee;border:5px solid var(--green);border-radius:100px;padding:26px 62px;font-size:40px;font-weight:800;letter-spacing:2px}
 
+/* KEYWORD ROUTER — a szeretett cpill szétágazik a kulcsszó-opciókra.
+   IF/ELSE elválasztó, visszafogott. Feedback 2026-08-29. */
+.kroute{position:relative;width:1500px;margin-top:12px;padding-bottom:96px}
+.krsvg{display:block;width:1500px;height:170px}
+.krstem,.krleg{fill:none;stroke:var(--blue-500);stroke-width:6;stroke-linecap:round}
+.krdot{fill:var(--blue-500)}
+.krrow{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:36px}
+.krpill{flex:1;display:flex;align-items:center;justify-content:center;gap:16px;
+  background:var(--card);border-radius:999px;padding:22px 16px;
+  font-size:32px;font-weight:800;color:var(--navy);box-shadow:var(--sh-card);white-space:nowrap;opacity:0}
+.krpill i{font-style:normal;color:var(--green-700)}
+.kri{width:52px;height:52px;flex:none;border-radius:50%;background:var(--blue-50);
+  color:var(--blue-700);display:flex;align-items:center;justify-content:center}
+.kri .ico svg{width:56%;height:56%}
+
+/* LENS feliratok: színes tint, hogy a figyelmet vezessék (feedback 2026-08-29) */
+.pop.tint.b{background:var(--blue-50);box-shadow:var(--sh-card),inset 0 0 0 3px var(--blue-500)}
+.pop.tint.g{background:var(--green-50);box-shadow:var(--sh-card),inset 0 0 0 3px var(--green-500)}
+.pop.tint .popv{color:var(--navy)}
+
 .panel{position:relative;width:1640px;background:var(--card);border-radius:26px;padding:40px 52px;text-align:left;box-shadow:var(--sh-panel)}
 .ptitle{font-size:32px;font-weight:800;letter-spacing:4px;color:var(--label);text-transform:uppercase;margin-bottom:8px}
 .prow{display:flex;align-items:center;gap:24px;font-size:40px;font-weight:700;color:var(--navy);padding:24px 0;border-bottom:1px solid #eef2f7}
@@ -170,8 +190,11 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
    linear-gradient(#e6edf5 2px,transparent 2px) 0 0/100% 80px,
    #f5f9fd}
 .drow{position:absolute;left:60px;height:26px;border-radius:13px;background:#cfdcea}
-.cursor{position:absolute;width:0;height:0;border-left:22px solid var(--navy);border-bottom:16px solid transparent;
-  border-top:16px solid transparent;left:120px;top:120px}
+/* egérmutató: valódi rendszer-kurzor, nem CSS háromszög. Feedback 2026-08-29
+   (FORM): "úgy néz ki, mint egy béna play button. Legyen Apple system pointer." */
+.cursor,.mouse{position:absolute;left:0;top:0;width:46px;height:46px;border:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath d='M3 2 L3 25 L9.6 18.7 L13.9 28.4 L17.8 26.6 L13.6 17.1 L23 17.1 Z' fill='%231E2733' stroke='%23ffffff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat left top/contain;
+  filter:drop-shadow(0 3px 7px rgba(14,32,56,.32))}
 
 /* ===== v1.1 — from FEEDBACK-LOG 2026-08-17 (2) ===== */
 
@@ -179,8 +202,10 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 .wide{width:1640px}
 .spread{display:flex;width:1640px;justify-content:space-between;align-items:center}
 
-/* 4. LENS — never empty: it magnifies the letters underneath */
-.lenswrap{position:relative;width:1640px}
+/* 4. LENS — never empty: it magnifies the letters underneath.
+   min-height: a feliratok a panel ALATT ülnek (top:452), a .sub csak utánuk
+   folyjon, ne csússzon rá. Feedback 2026-08-29. */
+.lenswrap{position:relative;width:1640px;min-height:780px}
 .lens{position:absolute;width:320px;height:320px;border:8px solid var(--blue);border-radius:50%;
   box-shadow:0 0 44px rgba(30,124,232,.22);background:rgba(255,255,255,.96);overflow:hidden;
   display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0}
@@ -210,8 +235,7 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 .caret{display:inline-block;width:4px;height:44px;background:var(--blue);vertical-align:-8px;margin-left:8px}
 .fbtn{margin-top:40px;text-align:center;font-size:40px;font-weight:800;color:#fff;background:var(--green);
   border-radius:16px;padding:26px 0;box-shadow:0 26px 60px -18px rgba(18,161,80,.55)}
-.mouse{position:absolute;width:0;height:0;border-left:26px solid var(--navy);
-  border-bottom:19px solid transparent;border-top:19px solid transparent;filter:none}
+/* .mouse öröklődik a fenti .cursor,.mouse szabályból (valódi pointer SVG) */
 
 /* 7b. CONTACT RECORD — a real record, never a CRM name on screen */
 .rec{width:1200px;background:var(--card);border-radius:26px;overflow:hidden;box-shadow:var(--sh-panel);text-align:left}
@@ -547,10 +571,14 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
   background:var(--blue-500);color:#fff;display:flex;align-items:center;justify-content:center;
   box-shadow:var(--e-2)}
 .qmark .ico svg{width:52%;height:52%}
-.qtext{font-size:78px;font-weight:800;line-height:1.18;letter-spacing:-.02em;
+.qtext{font-size:78px;font-weight:800;font-style:italic;line-height:1.18;letter-spacing:-.02em;
   color:var(--navy-900);margin-top:24px}
 .qtext b{color:var(--green-700)}
-.qwho{display:flex;align-items:center;gap:20px;margin-top:40px}
+.qopen,.qq{color:var(--blue-500);font-style:italic}
+.qq{display:inline-block;opacity:0}
+/* AUTHOR jobbra rendezve, ha idézet. Feedback 2026-08-29. */
+.qwho{display:flex;flex-direction:row-reverse;align-items:center;gap:20px;margin-top:40px;
+  justify-content:flex-start;text-align:right}
 .qbar{width:10px;height:60px;border-radius:6px;background:var(--green-500);flex:none}
 .qname{font-size:40px;font-weight:800;color:var(--navy-900);line-height:1.22}
 .qrole{font-size:32px;font-weight:700;letter-spacing:.16em;color:var(--label);
@@ -682,6 +710,8 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
   --green-bg: var(--pos-bg); --green-dk: var(--pos-fg);
   --red-bg: var(--red-50);  --blue-bg: var(--blue-50);
   --green: var(--green-500); --red: var(--red-500); --blue: var(--blue-500);
+  /* koztes fokozatok a funnel lepcsokhoz, a kanon skalabol */
+  --blue-800: #163F7B; --green-600: #0E8542;
 }
 .is-pos{background:var(--pos-bg);color:var(--pos-fg)}
 .is-neg{background:var(--neg-bg);color:var(--neg-fg)}
@@ -690,10 +720,36 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 /* feher szoveg SOHA nem ul a -500 fokozaton (kontraszt-padlo 3:1). A -700 megoldja. */
 .ecbtn,.fbtn{background:var(--cta)}          /* #0E8542 mely CTA zold, feher szoveg ~4.7:1 */
 .pbadge{background:var(--green-700)}
-.fnst:nth-child(3){background:var(--green-700)}
+/* FUNNEL: a negy lepcso legyen jol elkulonithzeto (feedback 2026-08-29).
+   Kanonon belul: vilagos azur -> melykek -> mely zold -> majdnem fekete zold.
+   A kek->zold hue-torés a 'guide' lepcsonel = ott valik konverzioja. */
+.fnst:nth-child(1){background:var(--blue-500)}
+.fnst:nth-child(2){background:var(--blue-800)}
+.fnst:nth-child(3){background:var(--green-600)}
 .fnst:nth-child(4){background:var(--green-900)}
 .cycnode.g{color:var(--green-700)}
-.ctrav,.tdot{fill:var(--green-700);background:var(--green-700)}
+
+/* BRANCH kimeneti jelolok: tomor korong, feher jel, magas kontraszt.
+   Feedback 2026-08-29: "a router tetszik, de az ikonok nem jok." */
+.brend .skm{width:72px;height:72px;background:var(--card);color:var(--neutral-500);
+  box-shadow:inset 0 0 0 3px var(--neutral-300), var(--e-1)}
+.brend .skm.green{background:var(--accent-600);color:#fff;
+  box-shadow:inset 0 0 0 3px var(--accent-700), var(--e-1)}
+.brend .skm .ico svg{width:58%;height:58%;stroke-width:2.6}
+
+/* ARROW · 3 PHASES: a végigfutó jelölő NYÍLHEGY, nem pötty.
+   Feedback 2026-08-29: "miért pont, és miért nem inkább nyíl?" */
+.tdot{width:0;height:0;border-radius:0;background:none;box-shadow:none;
+  margin-top:-26px;
+  border-left:46px solid var(--blue-500);
+  border-top:26px solid transparent;border-bottom:26px solid transparent;
+  filter:drop-shadow(0 3px 7px rgba(20,79,159,.35))}
+
+/* macOS-hűbb kurzor: keskenyebb, a hegy pontosan a bal felső sarokban.
+   Feedback 2026-08-29: "ez amúgy Apple default mouse pointer?" */
+.cursor,.mouse{width:44px;height:44px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.2 2.3 L4.2 19.6 L8.7 15.3 L11.6 21.9 L14.4 20.7 L11.5 14.2 L17.6 14.2 Z' fill='%231E2733' stroke='%23ffffff' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat left top/contain}
+.ctrav{fill:var(--green-700);background:var(--green-700)}
 .bawipe{background:var(--green-700)}
 .pflag.ok{background:var(--pos-bg);color:var(--pos-fg)}
 .mk.ok{background:var(--pos-bg);color:var(--pos-fg)}
@@ -725,11 +781,9 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 
 /* --- optikai igazitas: logo irasjel az idezeteknel, nagybetu-magassaghoz igazitas --- */
 .hang{hanging-punctuation:first last}
-.qtext{hanging-punctuation:first}
-.qtext:before{content:open-quote;margin-left:-0.42em}
-.qtext:after{content:close-quote}
-.qtext{quotes:"\201C" "\201D" "\2018" "\2019"}
-[lang="hu"] .qtext{quotes:"\201E" "\201D" "\00BB" "\00AB"}
+/* az idézőjelek most VALÓDI span-ok (.qopen / .qq), nem pszeudo-elem: a záró
+   idézőjel csak a szöveg legvégén jelenik meg. Feedback 2026-08-29. */
+.qtext .qopen{margin-left:-0.42em}
 .icon-row{display:flex;align-items:center;gap:20px}
 .icon-row > .ico{align-self:center;transform:translateY(-0.04em)}
 

@@ -1,6 +1,6 @@
 ﻿<!doctype html><html lang="en" data-resolution="landscape"><head><meta charset="UTF-8"/>
 <meta name="viewport" content="width=1920, height=1080"/>
-<title>zg-frames — motion sampler v1.6</title>
+<title>zg-frames motion sampler</title>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <link rel="stylesheet" href="zg.css"/>
 </head><body>
@@ -154,17 +154,17 @@
       <div><div class="reck">TEMPERATURE</div><div style="font-size:50px;font-weight:800;margin-top:8px;color:var(--green)">Warm to hot</div></div>
     </div>
   </div>
-  <span class="lens" data-layout-allow-overlap data-anim="lens" data-at=".6" data-dur="4.6"
+  <span class="lens" data-layout-allow-overlap data-anim="lens" data-at=".6" data-dur="4.8"
         data-path="57,7;590,7" data-words="Enterprise|Warm">
     <span class="lenstxt" data-layout-allow-overlap>Enterprise</span></span>
-  <div class="pop up" data-layout-allow-overlap style="left:40px;top:432px" data-dy="30"
-       data-anim="popin" data-at="1.3" data-dur="1.5">
+  <div class="pop tint b" data-layout-allow-overlap style="left:40px;top:452px"
+       data-anim="unfold" data-at="1.3" data-dur="1.7">
     <div class="popk">what it wants</div><div class="popv">A company-size rollout</div></div>
-  <div class="pop up g" data-layout-allow-overlap style="left:600px;top:432px" data-dy="30"
-       data-anim="popin" data-at="3.2">
+  <div class="pop tint g" data-layout-allow-overlap style="left:620px;top:452px"
+       data-anim="unfold" data-at="3.2">
     <div class="popk">how ready it is</div><div class="popv">Ready to talk this week</div></div>
 </div>
-<div class="sub" data-anim="fi" data-at="3.6">Blank while it travels.</div></div></section>
+<div class="sub" data-anim="fi" data-at="3.3">Never an empty glass.</div></div></section>
 
 <section id="zg15" class="clip" data-start="68" data-duration="6" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">15 · FORM · LETTERS IN PROGRESS</div>
@@ -178,7 +178,7 @@
     <div class="fin" data-anim="type" data-at="2.3" data-dur="1.6" data-val="alex@example.com"></div>
     <div class="fbtn" data-pulse="4.4">Send it to me</div>
   </div>
-  <span class="mouse" data-anim="click" data-at="3.9" data-dur="1" data-path="900,140;520,560"></span>
+  <span class="mouse" data-anim="click" data-at=".2" data-dur=".85" data-path="880,60;540,250;540,250;540,405;540,545"></span>
 </div></div></section>
 
 <section id="zg16" class="clip" data-start="74" data-duration="5" data-track-index="1"><div class="cam dense">
@@ -222,9 +222,22 @@
 <div class="sub" data-anim="fi" data-at="1.2">Same size. It only breathes.</div></div></section>
 
 <section id="zg19" class="clip" data-start="88.5" data-duration="4.5" data-track-index="1"><div class="cam">
-<div class="kick" data-anim="kick" data-at=".1">19 · KEYWORD PILL</div>
-<div class="cpill" data-anim="pop" data-at=".35" data-pulse="2.2"><span class="cpic"></span>Comment <i>TRIGGER</i> below</div>
-<div class="pillout" data-anim="pop" data-at="1.6" data-pulse="2.6">APPROVAL POINT 04</div></div></section>
+<div class="kick" data-anim="kick" data-at=".1">19 · KEYWORD PILL · ONE COMMENT, ONE ROUTE</div>
+<div class="cpill" data-anim="pop" data-at=".35" data-pulse="2.2"><span class="cpic"></span>Comment the keyword</div>
+<div class="kroute" data-layout-allow-overlap data-anim="kroute" data-at="1.5" data-dur="2.6">
+  <svg class="krsvg" viewBox="0 0 1500 170" width="1500" height="170">
+    <path class="krstem" d="M750 6 V60" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <path class="krleg" d="M750 60 C610 60 400 96 250 140" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <path class="krleg" d="M750 60 V140" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <path class="krleg" d="M750 60 C890 60 1100 96 1250 140" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <circle class="krdot" cx="750" cy="18" r="8"/>
+  </svg>
+  <div class="krrow">
+    <div class="krpill"><span class="kri"><span class="ico" data-icon="script"></span></span>Comment <i>GUIDE</i> below</div>
+    <div class="krpill"><span class="kri"><span class="ico" data-icon="visuals"></span></span>Comment <i>COURSE</i> below</div>
+    <div class="krpill"><span class="kri"><span class="ico" data-icon="tag"></span></span>Comment <i>TRIGGER</i> below</div>
+  </div>
+</div></div></section>
 
 <section id="zg20" class="clip" data-start="93" data-duration="5" data-track-index="1" data-section-end><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">20 · END CARD</div>
@@ -290,7 +303,7 @@
 
 <section id="zg26" class="clip" data-start="123" data-duration="4" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1">ZG-FRAMES</div>
-<div class="title blue" data-anim="rise" data-at=".35">v1.6</div>
+<div class="title blue" data-anim="rise" data-at=".35">ONE LIBRARY</div>
 <div class="uln" data-anim="gx" data-at="1.2" data-dur=".7"></div>
 <div class="sub" data-anim="fi" data-at="1.2">Approve once. Every video inherits.</div></div></section>
 
@@ -334,7 +347,7 @@
   </svg>
   <div class="brroot">A comment arrives</div>
   <div class="brend win" style="left:860px;top:52px"><span class="skm green"><span class="ico" data-glyph="check"></span></span>Keyword matched &rarr; guide sent</div>
-  <div class="brend" style="left:860px;top:272px"><span class="skm blue"><span class="ico" data-glyph="query"></span></span>No keyword &rarr; simple reply</div>
+  <div class="brend" style="left:860px;top:272px"><span class="skm"><span class="ico" data-glyph="dash"></span></span>No keyword &rarr; simple reply</div>
 </div>
 <div class="sub" data-anim="fi" data-at="1.8">Only the taken path stays bright.</div></div></section>
 
@@ -381,7 +394,7 @@
 <div class="kick" data-anim="kick" data-at=".1">34 &middot; QUOTE</div>
 <div class="qcard" data-anim="fi" data-at=".35" data-dur=".8">
   <span class="qmark"><span class="ico" data-icon="quote"></span></span>
-  <div class="qtext" data-anim="fadewords" data-at=".8" data-dur="2">The judgment is mine. What changed is <b>when it arrives</b>.</div>
+  <div class="qtext"><span class="qopen">&#8220;</span><span class="qbody" data-anim="fadewords" data-at=".9" data-dur="1.9">The judgment is mine. What changed is when it arrives</span><span class="qq" data-anim="pop" data-at="2.75">&#8221;</span></div>
   <div class="qwho" data-anim="fi" data-at="2.8"><span class="qbar"></span>
     <div><div class="qname">Zoltan Gero</div><div class="qrole">from the script</div></div></div>
 </div></div></section>

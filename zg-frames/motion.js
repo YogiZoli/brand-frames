@@ -131,6 +131,19 @@
       yoyo: true, transformOrigin: "center", ease: E.move }, at);
   }
 
+  /* GOMB-PULZÁLÁS — látványosabb: nagyobb lélegzet + zöld glow lüktet a
+     dobozárnyékon. Feedback 2026-08-29: "legyen glowing vagy pulsating effect,
+     minden gombon, jól látható." Nincs filter:blur, csak scale + box-shadow. */
+  function btnPulse(el, at, dur) {
+    if (!el || dur < 1) return;
+    var reps = Math.max(1, Math.round(dur / 1.15));
+    tl.to(el, { scale: 1.035, duration: 1.15, repeat: reps, yoyo: true,
+      transformOrigin: "center", ease: E.move }, at);
+    tl.fromTo(el, { boxShadow: "0 18px 44px -16px rgba(18,161,80,.45)" },
+      { boxShadow: "0 24px 70px -8px rgba(18,161,80,.85), 0 0 0 6px rgba(18,161,80,.12)",
+        duration: 1.15, repeat: reps, yoyo: true, ease: E.move }, at);
+  }
+
   var A = {
     kick:   function (e, at) { tl.from(e, { opacity: 0, y: -16, duration: .55, ease: E.enter }, at); },
     fi:     function (e, at, d) { tl.from(e, { opacity: 0, y: 24, duration: d || .7, ease: E.enter }, at); },
@@ -200,26 +213,27 @@
     },
     orbit:  function (e, at, d) { tl.to(e, { rotation: 360, duration: 2.4, repeat: Math.max(1, Math.round((d || 3) / 2.4)), ease: "none", transformOrigin: "center" }, at); },
     travel: function (e, at, d, v) { tl.fromTo(e, { x: 0, opacity: 0 }, { x: n(v, 300), opacity: 1, duration: d || 1.2, ease: E.move }, at); },
-    /* LENS — never empty. Moves between targets and magnifies the letters inside. */
+    /* LENS — a real magnifier. The glass is NEVER empty: the current word rides
+       along while travelling, and the next word swells in over it as the lens
+       lands. Feedback 2026-08-29: "ne legyen üres a zoom-effect, imitálja a
+       valódi zoom-ot." (Ez felülírja a régi v1.6 "blank while it travels" elvet.) */
     lens:   function (e, at, d) {
       var p = (e.dataset.path || "0,0").split(";").map(function (s) { return s.split(",").map(Number); }),
           txt = (e.dataset.words || "").split("|"),
-          inner = e.querySelector(".lenstxt"), hold = 1.5;
+          inner = e.querySelector(".lenstxt"), hold = 1.7;
       tl.set(e, { x: p[0][0], y: p[0][1] }, at);
-      if (inner && txt[0]) tl.set(inner, { textContent: txt[0] }, at);
+      if (inner && txt[0]) tl.set(inner, { textContent: txt[0], opacity: 1, scale: 1 }, at);
       tl.fromTo(e, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .6, ease: E.pop }, at);
-      if (inner) tl.fromTo(inner, { scale: .45, opacity: 0 }, { scale: 1, opacity: 1, duration: .8, ease: E.enter }, at + .2);
-      /* v1.6 — the lens may NEVER show a word it is not standing on (HF-v6-05,
-         "off szöveg"). While it travels the glass is blank; the new word appears
-         only once the lens has landed. Blank glass in flight is honest; a wrong
-         word in the glass is a lie about what is underneath. */
+      if (inner) tl.fromTo(inner, { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: .7, ease: E.enter }, at + .2);
       for (var i = 1; i < p.length; i++) {
-        var t = at + .9 + (i - 1) * hold;
-        if (inner) tl.to(inner, { opacity: 0, scale: .5, duration: .28, ease: E.exit }, t - .18);
-        tl.to(e, { x: p[i][0], y: p[i][1], duration: .9, ease: E.move }, t);
+        var t = at + 1.1 + (i - 1) * hold;
+        tl.to(e, { x: p[i][0], y: p[i][1], duration: 1.0, ease: E.move }, t);
         if (inner && txt[i]) {
-          tl.set(inner, { textContent: txt[i] }, t + .78);
-          tl.to(inner, { opacity: 1, scale: 1, duration: .55, ease: E.enter }, t + .78);
+          /* the glass zooms out a touch mid-travel, swaps, then zooms back in */
+          tl.to(inner, { scale: .8, duration: .5, ease: E.move }, t + .05);
+          tl.set(inner, { textContent: txt[i] }, t + .52);
+          tl.fromTo(inner, { scale: 1.35, opacity: .4 },
+            { scale: 1, opacity: 1, duration: .55, ease: E.enter }, t + .52);
         }
       }
       tl.to(e, { opacity: 0, duration: .4, ease: E.exit }, at + (d || 5));
@@ -231,6 +245,15 @@
       tl.fromTo(e, { opacity: 0, x: "+=" + dx, y: "+=" + dy, scale: .92 },
         { opacity: 1, x: "-=" + dx, y: "-=" + dy, scale: 1, duration: .55, ease: E.pop }, at);
       if (d) tl.to(e, { opacity: 0, y: "-=18", duration: .35, ease: E.exit }, at + d);
+    },
+    /* UNFOLD — a tinted caption opens downward from its top edge, colour leads the
+       eye. Feedback 2026-08-29 (LENS): "felül a tetején beúszott, unfold, színes". */
+    unfold: function (e, at, d) {
+      tl.fromTo(e, { opacity: 0, scaleY: 0, transformOrigin: "top center" },
+        { opacity: 1, scaleY: 1, duration: .5, ease: E.pop }, at);
+      tl.fromTo(e.children, { opacity: 0, y: -8 },
+        { opacity: 1, y: 0, duration: .4, stagger: .08, ease: E.enter }, at + .18);
+      if (d) tl.to(e, { opacity: 0, y: -14, duration: .32, ease: E.exit }, at + d);
     },
     /* LINE CHART — draws left to right, each dot pops as the line reaches it, fine shake */
     chart:  function (e, at, d) {
@@ -287,13 +310,20 @@
         tl.to(e, { x: p[i][0], y: p[i][1], duration: step, ease: E.move }, at + (i - 1) * step);
       }
     },
-    /* mouse travels to a target then "clicks" */
+    /* mouse travels through N waypoints then "clicks" the last one.
+       Feedback 2026-08-29 (FORM): a kurzor MÁR AZ ELEJÉN legyen ott, és vigye
+       be az egeret a mezőre, mielőtt a gépelés indul. Több pont a path-ban:
+       előbb a name mezőre, majd az email mezőre, végül a gombra. */
     click:  function (e, at, d) {
       var p = (e.dataset.path || "0,0").split(";").map(function (s) { return s.split(",").map(Number); });
+      var seg = d || 1.1;
       tl.set(e, { x: p[0][0], y: p[0][1], opacity: 0 }, at);
       tl.to(e, { opacity: 1, duration: .3 }, at);
-      tl.to(e, { x: p[1][0], y: p[1][1], duration: d || 1.1, ease: E.move }, at + .2);
-      tl.to(e, { scale: .8, duration: .12, yoyo: true, repeat: 1, ease: E.exit }, at + .2 + (d || 1.1));
+      for (var i = 1; i < p.length; i++) {
+        tl.to(e, { x: p[i][0], y: p[i][1], duration: seg, ease: E.move }, at + .2 + (i - 1) * seg);
+      }
+      var endT = at + .2 + (p.length - 1) * seg;
+      tl.to(e, { scale: .82, duration: .12, yoyo: true, repeat: 1, ease: E.exit }, endT);
     }
   };
 
@@ -365,7 +395,9 @@
     if (arc) {
       var C = ringLen(arc);
       tl.set(arc, { strokeDasharray: C, strokeDashoffset: C }, 0);
-      tl.to(arc, { strokeDashoffset: C * (1 - pct * .5), duration: d || 1.8, ease: E_FILL }, at);
+      /* az ív VÉGE és a mutató VÉGE ugyanoda mutasson: a fél-kör arány = pct.
+         (feedback 2026-08-29, GAUGE: "nem ugyanoda mutatnak") */
+      tl.to(arc, { strokeDashoffset: C * (1 - pct), duration: d || 1.8, ease: E_FILL }, at);
     }
     if (nd) tl.fromTo(nd, { rotation: -90, transformOrigin: "50% 100%" },
       { rotation: -90 + 180 * pct, duration: d || 1.8, ease: E_FILL }, at);
@@ -379,12 +411,14 @@
     if (ring) {
       var C = ringLen(ring);
       tl.set(ring, { strokeDasharray: C, strokeDashoffset: C }, 0);
-      tl.to(ring, { strokeDashoffset: 0, duration: d, ease: E.move }, at);
+      /* lineáris töltés, hogy a csomópont pontosan akkor gyúljon ki, amikor a
+         kör odaér. Feedback 2026-08-29: "nincs olyan, hogy később tölt be." */
+      tl.to(ring, { strokeDashoffset: 0, duration: d, ease: E_FILL }, at);
     }
     nodes.forEach(function (nd, i) {
-      var t = at + .2 + d * (i / Math.max(1, nodes.length));
+      var t = at + d * (i / Math.max(1, nodes.length)) + .04;
       tl.fromTo(nd, { scale: .4, opacity: 0, transformOrigin: "center" },
-        { scale: 1, opacity: 1, duration: .45, ease: E.pop }, t);
+        { scale: 1, opacity: 1, duration: .32, ease: E.pop }, t);
     });
     var last = nodes[nodes.length - 1];
     if (last) pulse(last, at + d + .3, 1.6);
@@ -399,6 +433,32 @@
     });
     var last = st[st.length - 1];
     if (last) pulse(last, at + st.length * step + .3, 1.4);
+  };
+
+  /* KEYWORD ROUTER — one comment fans out to the keyword options. IF/ELSE, quiet.
+     Feedback 2026-08-29: "router effect az elejére, valami nem túl harsány." */
+  A.kroute = function (e, at, d) {
+    var stem = e.querySelector(".krstem"), legs = e.querySelectorAll(".krleg"),
+        pills = e.querySelectorAll(".krpill"), dot = e.querySelector(".krdot");
+    d = d || 2.6;
+    if (stem) A.draw(stem, at, .4);
+    if (dot) {
+      tl.set(dot, { opacity: 0, attr: { cy: 22 } }, at);
+      tl.to(dot, { opacity: 1, duration: .16 }, at + .08);
+      tl.to(dot, { attr: { cy: 70 }, duration: .34, ease: E.move }, at + .1);
+      tl.to(dot, { opacity: 0, duration: .18 }, at + .46);
+    }
+    /* mint a 30 BRANCH: a láb 0-ról indul ÉS a doboz felé kivastagodik.
+       Feedback 2026-08-29: "0-ról indít, és a szöveg dobozhoz érve kivastagodik." */
+    legs.forEach(function (l, i) {
+      var lt = at + .44 + i * .12;
+      tl.fromTo(l, { strokeDashoffset: 1, strokeWidth: 2 },
+        { strokeDashoffset: 0, strokeWidth: 7, duration: .6, ease: E.move }, lt);
+    });
+    pills.forEach(function (p, i) {
+      tl.fromTo(p, { opacity: 0, y: -14, scale: .94 },
+        { opacity: 1, y: 0, scale: 1, duration: .5, ease: E.pop }, at + .9 + i * .22);
+    });
   };
 
   /* BRANCH — one line splits into two. Both legs draw, then the chosen leg lands. */
@@ -558,13 +618,22 @@
         auditReading(sec, s, d);
         auditLength(sec);
 
+        /* A VÉDJEGY-PULZÁLÁS MINDEN GOMBON — nem csak ott, ahol data-pulse van.
+           Feedback 2026-08-29 (FORM, END CARD): "minden gombon legyen a pulsating
+           effect, ne csak itt, hanem az összes scene-en." */
+        sec.querySelectorAll("[data-pulse]").forEach(function (e) {
+          var t = n(e.dataset.pulse, 2); pulse(e, s + t, d - t - .4);
+        });
+        sec.querySelectorAll(".fbtn,.ecbtn,.cpill,.callout,.krpill,.appbtn")
+          .forEach(function (b) {
+            var land = Math.min(n(b.dataset.at, 0) + 1.2, d * 0.45);
+            btnPulse(b, s + land, d - land - .4);
+          });
+
         if (d >= 4) {
           sec.querySelectorAll(".arrow").forEach(function (g) { autoArrow(g, s, d); });
           sec.querySelectorAll(".rail").forEach(function (r) { autoRail(r, s, d); });
           sec.querySelectorAll(".flipgroup").forEach(function (g) { autoFlip(g, s, d); });
-          sec.querySelectorAll("[data-pulse]").forEach(function (e) {
-            var t = n(e.dataset.pulse, 2); pulse(e, s + t, d - t - .4);
-          });
         } else {
           sec.querySelectorAll(".arrow").forEach(function (g) {
             tl.from(g.querySelectorAll(".icell"), { opacity: 0, y: 26, duration: .5, stagger: .18, ease: E.enter }, s + .2);

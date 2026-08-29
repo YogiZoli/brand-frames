@@ -5,6 +5,73 @@ A forrás screenshotok: `_feedback/<dátum>/`
 
 ---
 
+## 2026-08-29 (este, 2. adag) — sampler apró simítások (10 kép)
+
+Forrás: `_feedback/2026-08-29/` (minor / mouse / router / arrow / flywheel / quote).
+
+- **LENS:** a felirat SOHA ne csússzon rá a címre vagy a sub-ra. A lupe SOHA
+  ne legyen üres utazás közben: a régi szó zoomol ki, az új zoomol be, imitálja
+  a valódi nagyítót. Ez FELÜLÍRJA a régi v1.6 "blank while it travels" elvet.
+- **FORM kurzor:** a kurzor MÁR AZ ELEJÉN a képen van, előbb a name mezőre megy,
+  csak utána indul a gépelés, majd az email mezőre, végül a gombra. A `click`
+  mozgás mostantól N pontos path-ot kezel.
+- **Gomb-glow:** minden gomb kap egy jól látható zöld glow-lüktetést a
+  dobozárnyékon (`btnPulse`), nem csak a finom scale-t.
+- **KEYWORD router:** valódi szétágazó lábak (mint a 30 BRANCH), 0-ról indulnak
+  és a pillek felé kivastagodnak. Minden pill elé kis magyarázó ikon.
+- **ARROW:** a végigfutó jelölő NYÍLHEGY, nem pötty.
+- **CYCLE:** lineáris körtöltés, a csomópont pontosan akkor gyúl ki, amikor a
+  kör odaér, nem később.
+- **QUOTE:** az idézet dőlt IS (nem csak félkövér). Az author jobbra rendezve.
+  A záró idézőjel valódi span (`.qq`), csak a legutolsó szó után pattan be.
+
+---
+
+## 2026-08-29 — sampler feedback a brand-kánon utáni első renderre (10 kép)
+
+Forrás: `_feedback/2026-08-29/zoom-effect-01..10.png`. Mind a könyvtárba ment.
+
+- **Egérmutató (FORM):** soha nem CSS-háromszög. Valódi rendszer-kurzor nyíl
+  (sötét kitöltés, fehér kontúr, árnyék). Az "odaviszem az egeret, majd gépel"
+  effekt jó, marad. Megoldva: `.cursor,.mouse` SVG data-URI a `zg.css`-ben.
+- **Pulzálás MINDEN gombon, minden jeleneten**, nem csak ahol kézzel be volt
+  írva `data-pulse`. A `motion.js` build() mostantól automatikusan pulzáltat
+  minden `.fbtn .ecbtn .cpill .callout .krpill .appbtn` elemet.
+- **KEYWORD PILL:** a több-választásos "routing" verzió a kedvenc. Egy pill
+  szétágazik három opcióra (GUIDE / COURSE / TRIGGER), visszafogott IF/ELSE
+  elválasztó effekttel. Új `kroute` mozgás + `.kroute` blokk. A gyenge
+  "APPROVAL POINT 04" elem törölve.
+- **BRANCH / router:** a forma jó, de a kimeneti korongok legyenek magas
+  kontrasztúak: vitt út = tömör accent-zöld + fehér pipa, nem vitt út = fehér
+  korong szürke kerettel + szürke vonás. Új `dash` glyph.
+- **FUNNEL:** a lépcsők legyenek jól elkülöníthetők. Kánonon belül: azúr to
+  mélykék to mély zöld to majdnem fekete zöld. Narancs TILOS marad.
+- **GAUGE:** az ív vége és a mutató vége UGYANOTT legyen. A `motion.js` `* .5`
+  hibája javítva (`C * (1 - pct)`).
+- **LENS felirat:** felülről, a cím és a kártya közé ússzon be, unfold
+  effekttel, színes tinttel, figyelemvezetéssel. Új `unfold` mozgás.
+
+---
+
+## 2026-08-29 — render-kommunikáció, MINDEN renderre, visszavonásig
+
+Amikor bármilyen hosszú műveletet indítasz (render, batch, composite, bármi ami
+percekben mérhető), a művelet indításakor azonnal, EGYETLEN üzenetben írd meg:
+
+- mennyi ideig tart, konkrét perccel (becslés is jó, de szám legyen)
+- pontosan HÁNY ÓRAKOR folytatod ("folytatás 18:52-kor, kb. 9 perc múlva")
+- hogy addig a gépet NE csukja le (a lokális render a gép leállásával megszakad)
+- egy sor, hogy közben nem kell Claude-ot nyitva tartani
+
+Utána HALLGATÁS. Nem pollozol, nem tartod nyitva a beszélgetést, nem írsz
+státuszfrissítést, amíg a művelet le nem fut. A harness magától értesít, amikor kész.
+
+Zoltán ezt minden egyes render előtt kézzel elmondta hónapokon át. Mostantól a
+hiánya hiba. Ha nem tudod a pontos időt, olvasd ki EGYSZER a render logból az
+ETA-t, aztán csend.
+
+---
+
 ## 2026-08-17 — 5 adag feedback az „One Sitting Workflow" 30 mp-es tesztre
 
 ### A NULLADIK SZABÁLY — minden más felette áll

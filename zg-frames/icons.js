@@ -42,6 +42,7 @@
     check: '<path d="M6.6 12.4 10.4 16.2 17.4 8.2"/>',
     bang:  '<path d="M12 6.4v7.2"/><path d="M12 17.4h.01"/>',
     query: '<path d="M9.1 9.2A2.9 2.9 0 1 1 12 12.9V14.4"/><path d="M12 17.8h.01"/>',
+    dash:  '<path d="M7 12h10"/>',
     heart: '<path d="M12 19.4 5.4 12.6a4.2 4.2 0 0 1 5.9-6l.7.7.7-.7a4.2 4.2 0 1 1 5.9 6z" fill="currentColor" stroke-width="1.2"/>'
   };
   var SG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" ' +

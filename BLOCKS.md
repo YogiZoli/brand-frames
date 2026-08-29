@@ -82,7 +82,7 @@ Tiered by how often they earn their place. All are frame-independent once re-ski
 | `push-in` | the mandatory camera move | no colour to change |
 | `drift-hold` | ambient idle so nothing freezes | no colour |
 | `grain-field` | living background texture | tint to `--zg-grid` |
-| `dynamic-grid` | the drifting background grid | `rgba(26,115,232,0.09)` exactly |
+| `dynamic-grid` | the drifting background grid | `--grid-line` (`rgba(30,124,232,0.07)`) |
 | `per-word-rise` | headline entrance | strip any blur phase |
 | `mk-callout-highlight` | word-by-word emphasis synced to the voiceover | highlight in blue; **one word per sentence** |
 | `beat-timeline` | orchestration spine, beats pinned to labels | no colour |
@@ -102,7 +102,7 @@ Tiered by how often they earn their place. All are frame-independent once re-ski
 `code-highlight` · `code-scroll` · `code-typing` · `code-terminal-run`
 
 Re-skin pattern for all of these: surface → `--hf-surface`, border → `--hf-border`,
-every accent → blue, at most one green per scene, all type → Inter, radius → 12px.
+every accent → azure, at most one green per scene, all type → Open Sans, radius → `--radius-xl` (16px).
 
 ### Tier C — accents, one or two per video
 

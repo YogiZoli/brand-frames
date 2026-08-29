@@ -26,7 +26,7 @@ Never invent a palette, font, or layout in a project. Copy from here.
 
 | Channel | Folder | Frame pack | Character |
 |---|---|---|---|
-| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **C2C Blue** | The recovered Comment-to-Client / Expansion Pack look: ground #eef3f7, lead blue #1a73e8, navy text #0e2038, ONE green accent #34a853 per scene, Inter-only, no orange, no shadows. |
+| Zoltan Gero (@ZoltanGero, EN) | `zoltan-gero/` | **Brand kanon** | Forras: `C:\Users\gdp\projects\design-system\tokens.css` + `README.md`. Ground `#F6F8FC`, azure `#1E7CE8` vezet, navy text `#1E2733`, zold akcentus `#12A150` (CTA `#0E8542`), Open Sans, no orange, no dark. Lasd `zoltan-gero/BRAND-BRIDGE.md`. |
 | VoxFlow (Máté workflow) | `voxflow/` | **Blue Professional** | As delivered: warm cream #fdfae7, single saturated cobalt #1e2bfa, Space Grotesk display + Inter body, soft tinted cards, no shadows. |
 
 ## Files in each channel folder

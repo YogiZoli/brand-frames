@@ -1,6 +1,14 @@
 /* zg-frames — archetype styles. Channel-neutral: colours come from tokens below.
    Default channel = zoltan-gero. VoxFlow: <div id="root" data-channel="voxflow">
-   NO Google Fonts link, NO @import, NO filter:blur — see PIPELINE.md. */
+   NO Google Fonts link, NO @import kulso URL-re, NO filter:blur — see PIPELINE.md. */
+
+/* Open Sans (brand kanon) HELYI .ttf-bol. Igy a compiler NEM tolt Google Fonts-ot.
+   Utvonal a zg.css-hez kepest: fonts/ */
+@font-face{font-family:"Open Sans";font-weight:400;font-display:block;src:url("fonts/OpenSans-400.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-weight:500;font-display:block;src:url("fonts/OpenSans-500.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-weight:600;font-display:block;src:url("fonts/OpenSans-600.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-weight:700;font-display:block;src:url("fonts/OpenSans-700.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-weight:800;font-display:block;src:url("fonts/OpenSans-800.ttf") format("truetype")}
 
 /* PALETTA = a brand kanon. Forras: C:\Users\gdp\projects\design-system\tokens.css
    Tukor: ../zoltan-gero/tokens.css . hid: ../zoltan-gero/brand.css . lasd BRAND-BRIDGE.md
@@ -17,7 +25,7 @@
 [data-channel="voxflow"]{ --blue:#0b5fd0; --green:#1f8f7a; --green-dk:#0f6b5a; --navy:#0d1b2a; }
 
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Open Sans","Segoe UI",system-ui,sans-serif;background:var(--bg);font-synthesis-weight:none}
+body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synthesis-weight:none}
 #root{position:relative;width:1920px;height:1080px;overflow:hidden;color:var(--navy);
   background:radial-gradient(1500px 1000px at 50% 12%,#fff 0%,var(--bg) 55%,#e9eff6 100%)}
 .grid{position:absolute;inset:0;

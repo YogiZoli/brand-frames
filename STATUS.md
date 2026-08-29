@@ -66,9 +66,19 @@ Megtörtént ebben a körben:
   helyette kompakt video-strukturális blokk. 952 sor → 772 sor.
 - `_frames/zoltan-gero/FRAME.md` v4.0, `DESIGN.md`, `DESIGN-FOUNDATION.md` fejléc: átvezetve.
 
-**Hátra van (a következő körre):** `DESIGN.md` / `SCALE.md` / `GLOSSARY.md` / `README.md` /
-`BLOCKS.md` / `frame-showcase.html` palettamaradványok; `lint` + `check` zöldre futtatás;
-**új sampler render + Zoltán-jóváhagyás + új `regress.ps1` baseline — csak a teljes kör végén.**
+Második kör (2026-08-29, sorrend 2-1-3):
+- **2.** Az 5 `content_overlap` hiba javítva: `data-layout-allow-overlap` a jelzett
+  leveleleken (`.lenstxt`, before/after `.bkey/.bval/.bnote`). Ezek a kánon előttről voltak.
+- **1.** Palettamaradványok átvezetve: `README.md`, `BLOCKS.md`, `DESIGN.md`,
+  `frame-showcase.html` (utóbbiból a VoxFlow `#ft-override` szennyeződés is kitörölve,
+  Google Fonts `<link>` helyett helyi Open Sans). `SCALE.md` / `GLOSSARY.md` tiszta volt.
+- **3.** `hyperframes check`: **PASSED**, 0 hiba, motion 0/0, kontraszt 58/58 WCAG AA,
+  nincs Google Fonts fetch (helyi `@font-face` a `zg-frames/fonts/`-ból). `lint`: 0 hiba,
+  2 figyelmeztetés (`composition_file_too_large`, `timeline_track_too_dense`) — ezek a
+  samplernél SZÁNDÉKOSAK (egy fájl mind a 39 archetípus), éles videónál sub-kompokra bomlik.
+
+**Hátra: új sampler render + Zoltán-jóváhagyás + új `regress.ps1` baseline. Csak a teljes
+kör végén, ahogy Zoltán kérte.** A `frame-showcase.html` teljes újratördelése: fejlesztési tétel.
 
 VoxFlow: **nem nyúltunk hozzá** (Máté csatornája).
 

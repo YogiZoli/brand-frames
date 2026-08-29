@@ -4,16 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>C2C Blue</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="ds-fonts">
+@font-face{font-family:"Open Sans";font-weight:400;src:url("fonts/OpenSans-400.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-weight:600;src:url("fonts/OpenSans-600.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-weight:700;src:url("fonts/OpenSans-700.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-weight:800;src:url("fonts/OpenSans-800.ttf") format("truetype")}
+</style>
 <style id="ds-tokens">
+/* PALETTA = brand kanon. C:\Users\gdp\projects\design-system\tokens.css . lasd ../zoltan-gero/BRAND-BRIDGE.md */
 :root{
-  --bg:#eef3f7; --primary:#1a73e8; --text:#0e2038; --muted:#5b6b86; --light:#8a97ad;
-  --accent-light:rgba(26,115,232,0.08); --accent-medium:rgba(26,115,232,0.15);
-  --border:rgba(26,115,232,0.2); --card-bg:rgba(26,115,232,0.04);
-  --positive:#34a853; --negative:#dc2626;
-  --disp:"Inter",sans-serif; --body:"Inter",sans-serif;
+  --bg:#F6F8FC; --primary:#1E7CE8; --text:#1E2733; --muted:#6A7688; --light:#97A3B8;
+  --cta:#0E8542;
+  --accent-light:rgba(30,124,232,0.08); --accent-medium:rgba(30,124,232,0.15);
+  --border:#E0E6F0; --card-bg:#FFFFFF;
+  --positive:#12A150; --negative:#E5484D;
+  --disp:"Open Sans",sans-serif; --body:"Open Sans",sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{background:#0b0b16}
@@ -150,7 +155,6 @@ section{padding:108px 76px;position:relative}
 .foot .r{font-family:var(--disp);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:11px;color:var(--muted)}
 @media(max-width:1100px){.gallery{grid-template-columns:1fr}.swatches{grid-template-columns:1fr 1fr}}
 </style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"><style id="ft-override">:root{--primary:#FDFAE7!important;--secondary:#0e2038!important;--tertiary:#6B6B6B!important;--accent:#1E2BFA!important;--f-disp:'Inter',sans-serif!important;--f-body:'Inter',sans-serif!important;--bg:#FDFAE7!important;--primary:#1E2BFA!important;--text:#0e2038!important;--muted:#6B6B6B!important;--disp:'Inter',sans-serif!important;--body:'Inter',sans-serif!important;--light:#9A9A9A!important;--positive:#34a853!important;--negative:#DC2626!important;--accent-light:rgba(26,115,232,0.08)!important;--accent-medium:rgba(26,115,232,0.15)!important;--border:rgba(26,115,232,0.2)!important;--card-bg:rgba(26,115,232,0.04)!important;}</style></head>
 <body>
 
 <!-- COVER -->
@@ -161,7 +165,7 @@ section{padding:108px 76px;position:relative}
     <div class="aline"></div>
     <div class="meta">FRAME SYSTEM · VOL. 01 · CONFIDENTIAL</div>
     <h1>Restraint, with one strong commitment.</h1>
-    <div class="sub">A consulting-grade frame system — warm cream, a single saturated cobalt carrying every accent, and soft tinted cards that never shout.</div>
+    <div class="sub">A consulting-grade frame system — warm cream, a single saturated azure carrying every accent, and soft tinted cards that never shout.</div>
   </div>
   <div class="counter">01 / 06</div>
   <div class="pbar"></div>
@@ -171,25 +175,25 @@ section{padding:108px 76px;position:relative}
 <section>
   <div class="sec-head"><div class="ey"><div class="aline"></div><h2>Palette</h2></div><span class="sp"></span><span class="tagpill">One Accent, Three Grays</span></div>
   <div class="swatches">
-    <div class="sw"><div class="chip" style="background:var(--bg);box-shadow:inset 0 0 0 1px var(--border)"></div><div class="meta"><div class="name">Canvas</div><div class="hex">#eef3f7</div></div></div>
-    <div class="sw"><div class="chip" style="background:var(--primary)"></div><div class="meta"><div class="name">Cobalt</div><div class="hex">#1a73e8 · the only accent</div></div></div>
-    <div class="sw"><div class="chip" style="background:var(--text)"></div><div class="meta"><div class="name">Text</div><div class="hex">#0e2038</div></div></div>
-    <div class="sw"><div class="chip" style="background:var(--muted)"></div><div class="meta"><div class="name">Muted</div><div class="hex">#5b6b86 · body</div></div></div>
-    <div class="sw"><div class="chip" style="background:var(--card-bg)"></div><div class="meta"><div class="name">Card Tint</div><div class="hex">cobalt · 4%</div></div></div>
-    <div class="sw"><div class="chip" style="background:var(--border)"></div><div class="meta"><div class="name">Border</div><div class="hex">cobalt · 20%</div></div></div>
-    <div class="sw"><div class="chip" style="background:var(--positive)"></div><div class="meta"><div class="name">Positive</div><div class="hex">#34a853 · inline only</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--bg);box-shadow:inset 0 0 0 1px var(--border)"></div><div class="meta"><div class="name">Canvas</div><div class="hex">#F6F8FC</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--primary)"></div><div class="meta"><div class="name">Azure</div><div class="hex">#1E7CE8 · the only accent</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--text)"></div><div class="meta"><div class="name">Text</div><div class="hex">#1E2733</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--muted)"></div><div class="meta"><div class="name">Muted</div><div class="hex">#6A7688 · body</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--card-bg)"></div><div class="meta"><div class="name">Card Tint</div><div class="hex">azure · 4%</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--border)"></div><div class="meta"><div class="name">Border</div><div class="hex">azure · 20%</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--positive)"></div><div class="meta"><div class="name">Positive</div><div class="hex">#12A150 · inline only</div></div></div>
     <div class="sw"><div class="chip" style="background:var(--negative)"></div><div class="meta"><div class="name">Negative</div><div class="hex">#dc2626 · inline only</div></div></div>
   </div>
 </section>
 
 <!-- TYPOGRAPHY -->
 <section>
-  <div class="sec-head"><div class="ey"><div class="aline"></div><h2>Typography</h2></div><span class="sp"></span><span class="tagpill">Inter + Inter</span></div>
-  <div class="type-row"><div><div class="tok">h1</div><div class="m">Inter 700 · −0.02em · near-black</div></div><div class="spec"><span class="disp" style="font-weight:700;font-size:66px;letter-spacing:-.02em;color:var(--text)">Measured.</span></div></div>
-  <div class="type-row"><div><div class="tok">h4-eyebrow</div><div class="m">Inter 600 · uppercase · 0.08em · cobalt</div></div><div class="spec"><span class="eyebrow">Executive Summary</span></div></div>
-  <div class="type-row"><div><div class="tok">metric-value</div><div class="m">Inter 700 · cobalt</div></div><div class="spec"><span class="disp" style="font-weight:700;font-size:54px;color:var(--primary)">$24.3M</span></div></div>
-  <div class="type-row"><div><div class="tok">body</div><div class="m">Inter 400 · line 1.6 · muted gray</div></div><div class="spec"><p style="font-size:17px;line-height:1.6;max-width:660px">Inter carries every paragraph in muted gray — readable, premium, never competing with the cobalt accent or the near-black headline.</p></div></div>
-  <div class="type-row" style="border-bottom:0"><div><div class="tok">cta</div><div class="m">Inter 600 · cobalt pill · cream text</div></div><div class="spec"><span class="cta">Book a Briefing</span></div></div>
+  <div class="sec-head"><div class="ey"><div class="aline"></div><h2>Typography</h2></div><span class="sp"></span><span class="tagpill">Open Sans + Open Sans</span></div>
+  <div class="type-row"><div><div class="tok">h1</div><div class="m">Open Sans 700 · −0.02em · near-black</div></div><div class="spec"><span class="disp" style="font-weight:700;font-size:66px;letter-spacing:-.02em;color:var(--text)">Measured.</span></div></div>
+  <div class="type-row"><div><div class="tok">h4-eyebrow</div><div class="m">Open Sans 600 · uppercase · 0.08em · azure</div></div><div class="spec"><span class="eyebrow">Executive Summary</span></div></div>
+  <div class="type-row"><div><div class="tok">metric-value</div><div class="m">Open Sans 700 · azure</div></div><div class="spec"><span class="disp" style="font-weight:700;font-size:54px;color:var(--primary)">$24.3M</span></div></div>
+  <div class="type-row"><div><div class="tok">body</div><div class="m">Open Sans 400 · line 1.6 · muted gray</div></div><div class="spec"><p style="font-size:17px;line-height:1.6;max-width:660px">Open Sans carries every paragraph in muted gray — readable, premium, never competing with the azure accent or the near-black headline.</p></div></div>
+  <div class="type-row" style="border-bottom:0"><div><div class="tok">cta</div><div class="m">Open Sans 600 · azure pill · cream text</div></div><div class="spec"><span class="cta">Book a Briefing</span></div></div>
 </section>
 
 <!-- COMPONENTS -->
@@ -200,7 +204,7 @@ section{padding:108px 76px;position:relative}
     <div class="s4"><div class="cnote">Metric card</div><div class="card"><div class="mv">$24.3M</div><div class="ml">Annual Revenue</div><div class="md">Recurring, across every region.</div><div class="chg pos">↑ +18% YoY</div></div></div>
     <div class="s4"><div class="cnote">Stat cells</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem"><div class="statcell"><div class="n">94%</div><div class="nm">Retention</div><div class="ctx">Net revenue</div></div><div class="statcell"><div class="n">3.4×</div><div class="nm">Multiple</div><div class="ctx">On capital</div></div></div></div>
     <div class="s4"><div class="cnote">Bar ranking</div><div class="bars">
-      <div class="row"><span class="bl">Cobalt</span><span class="track"><span class="fill" style="width:88%"></span></span><span class="pct">88</span></div>
+      <div class="row"><span class="bl">Azure</span><span class="track"><span class="fill" style="width:88%"></span></span><span class="pct">88</span></div>
       <div class="row"><span class="bl">Restraint</span><span class="track"><span class="fill" style="width:64%"></span></span><span class="pct">64</span></div>
       <div class="row"><span class="bl">Density</span><span class="track"><span class="fill" style="width:46%"></span></span><span class="pct">46</span></div>
     </div></div>
@@ -210,8 +214,8 @@ section{padding:108px 76px;position:relative}
     <div class="s8"><div class="cnote">Step timeline — fade into future</div>
       <div class="steps">
         <div class="step"><div class="circ" style="opacity:1">1</div><div class="t">Survey</div><div class="d">Establish the cream baseline.</div></div>
-        <div class="step"><div class="circ" style="opacity:.85">2</div><div class="t">Tint</div><div class="d">Lift cards with 4% cobalt.</div></div>
-        <div class="step"><div class="circ" style="opacity:.7">3</div><div class="t">Accent</div><div class="d">One cobalt carries emphasis.</div></div>
+        <div class="step"><div class="circ" style="opacity:.85">2</div><div class="t">Tint</div><div class="d">Lift cards with 4% azure.</div></div>
+        <div class="step"><div class="circ" style="opacity:.7">3</div><div class="t">Accent</div><div class="d">One azure carries emphasis.</div></div>
         <div class="step"><div class="circ" style="opacity:.55">4</div><div class="t">Deliver</div><div class="d">Executive-ready briefing.</div></div>
       </div>
     </div>
@@ -233,7 +237,7 @@ section{padding:108px 76px;position:relative}
           <div class="aline"></div>
           <div class="ey">FRAME SYSTEM · VOL. 01</div>
           <h3>Restraint, with one commitment.</h3>
-          <div class="sub">Cream, cobalt, and soft tinted cards.</div>
+          <div class="sub">Cream, azure, and soft tinted cards.</div>
         </div>
         <div class="pbar" style="width:16%"></div>
       </div>
@@ -255,7 +259,7 @@ section{padding:108px 76px;position:relative}
     </div>
 
     <div class="fw">
-      <div class="flabel"><b>Bar Ranking</b><span>· data · cobalt fills · left</span></div>
+      <div class="flabel"><b>Bar Ranking</b><span>· data · azure fills · left</span></div>
       <div class="frame gf3">
         <div class="body">
           <div class="ey">Drivers</div>
@@ -291,19 +295,19 @@ section{padding:108px 76px;position:relative}
     <div class="do-card do">
       <h4>Do</h4><div class="aline"></div>
       <ul>
-        <li>Start every frame on warm cream; cobalt carries every accent.</li>
-        <li>Set headlines near-black with −0.02em tracking; eyebrows cobalt, uppercase, 0.08em.</li>
-        <li>Render every numeral in cobalt Inter 600–700.</li>
+        <li>Start every frame on warm cream; azure carries every accent.</li>
+        <li>Set headlines near-black with −0.02em tracking; eyebrows azure, uppercase, 0.08em.</li>
+        <li>Render every numeral in azure Open Sans 600–700.</li>
         <li>Use tinted cards — 4% fill, 20% border, 10–14px radius; soft, never outlined.</li>
-        <li>Pill chrome at 100px; body in Inter 400, muted gray, line 1.6.</li>
+        <li>Pill chrome at 100px; body in Open Sans 400, muted gray, line 1.6.</li>
       </ul>
     </div>
     <div class="do-card dont">
       <h4>Don't</h4><div class="aline"></div>
       <ul>
-        <li>No second accent color; no cobalt headlines.</li>
-        <li>No drop shadows (save the one soft cobalt CTA hover).</li>
-        <li>No square corners; no opaque cobalt borders.</li>
+        <li>No second accent color; no azure headlines.</li>
+        <li>No drop shadows (save the one soft azure CTA hover).</li>
+        <li>No square corners; no opaque azure borders.</li>
         <li>No font substitutes; no uppercase body.</li>
         <li>Don't fill space with heavier borders — add substance, not noise.</li>
       </ul>
@@ -317,7 +321,7 @@ section{padding:108px 76px;position:relative}
 </div>
 
 <template id="__bundler_thumbnail">
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#eef3f7"/><rect x="58" y="0" width="42" height="100" fill="#1a73e8" opacity="0.08"/><rect x="14" y="40" width="6" height="20" fill="#1a73e8"/><rect x="26" y="44" width="44" height="6" rx="3" fill="#0e2038"/><rect x="26" y="56" width="30" height="4" rx="2" fill="#1a73e8"/></svg>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#F6F8FC"/><rect x="58" y="0" width="42" height="100" fill="#1E7CE8" opacity="0.08"/><rect x="14" y="40" width="6" height="20" fill="#1E7CE8"/><rect x="26" y="44" width="44" height="6" rx="3" fill="#1E2733"/><rect x="26" y="56" width="30" height="4" rx="2" fill="#1E7CE8"/></svg>
 </template>
 </body>
 </html>

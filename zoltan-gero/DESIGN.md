@@ -109,8 +109,9 @@ with ffmpeg.
 - **Per-letter kinetic text needs solid colours.** Gradient-clipped text goes invisible the moment
   it is split into spans.
 - **No external Google Fonts `<link>`.** On this machine it never fires the load event and
-  `check` / `render` hang with a navigation timeout. The compiler injects Inter locally. This bit
-  us again on 2026-08-15.
+  `check` / `render` hang with a navigation timeout. The brand font is **Open Sans**, loaded from
+  local `.ttf` via `@font-face` in `zg-frames/zg.css` (`fonts/` co-located). No `<link>`, no
+  remote `@import`. This bit us on 2026-08-15.
 - **Always render to a NEW timestamped filename** — `<slug>_vN_YYYY-MM-DD_HHMM.mp4`. Overwriting
   the same name means the player serves a cached copy and you review the previous render.
 - Run `npx hyperframes check` before every render, and fix what it reports.

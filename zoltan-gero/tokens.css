@@ -1,0 +1,109 @@
+/* ============================================================================
+   Zoltan Gero brand system  tokens.css  (HyperFrames tukor)
+
+   FORRAS / KANON:  C:\Users\gdp\projects\design-system\tokens.css + README.md
+   Ez a fajl annak a TUKRE, videora hangolva. Ha a ketto elter, a kanon nyer,
+   es ezt a fajlt kell hozzaigazitani. Sose forkold csendben.
+
+   Eltres a webes kanontol, szandekosan (lasd _frames/zoltan-gero/BRAND-BRIDGE.md):
+   - a betut helyi @font-face tolti (fonts/fonts.css), NINCS Google Fonts <link>
+   - video-reteg tokenek a vegen: 1920-as vaszon, 140px biztonsagi sav, avatar-zona,
+     12 oszlopos racs, video-meretu arnyekok
+   Szinvaksag-elso OKLCH szemantika: NINCS. Torolve 2026-08-29 Zoltan k, nem kanon.
+   ========================================================================== */
+
+@import url("fonts/fonts.css");
+
+:root {
+  /* --- Brand scale: azure --- */
+  --brand-50:  #EBF3FE;  --brand-100: #D6E6FD;  --brand-200: #B0CEFB;
+  --brand-300: #82B0F7;  --brand-400: #4F8DF0;  --brand-500: #1E7CE8;
+  --brand-600: #1663C6;  --brand-700: #144F9F;  --brand-800: #163F7B;
+  --brand-900: #15355F;  --brand-950: #0E2038;
+
+  /* --- Accent scale: green (action: CTA, ring, progress, active) --- */
+  --accent-50:  #E4F5EA;  --accent-100: #BFE8CC;  --accent-200: #8DD5A6;
+  --accent-300: #56BE7B;  --accent-400: #24A957;  --accent-500: #12A150;
+  --accent-600: #0E8542;  --accent-700: #0C6A36;  --accent-800: #0C5430;
+  --accent-900: #0A4228;
+
+  /* --- Neutral scale: blue-biased grey --- */
+  --neutral-0:   #FFFFFF;  --neutral-50:  #F6F8FC;  --neutral-100: #EDF1F7;
+  --neutral-200: #E0E6F0;  --neutral-300: #CAD3E1;  --neutral-400: #97A3B8;
+  --neutral-500: #6A7688;  --neutral-600: #4C5768;  --neutral-700: #333D4C;
+  --neutral-800: #1E2733;  --neutral-900: #131A24;
+
+  /* --- Semantic --- */
+  --success: #0B7A3E;  --success-surface: #E3F3E8;
+  --warning: #E5A400;  --warning-surface: #FBF2DD;
+  --danger:  #E5484D;  --danger-surface:  #FCECED;
+  --info:    var(--brand-600);
+
+  /* --- Role tokens (light) --- */
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-800);
+  --surface: var(--neutral-0);
+  --surface-foreground: var(--neutral-800);
+  --surface-alt: var(--neutral-100);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+
+  --primary: var(--accent-600);           /* deep green CTA #0E8542, white text ~4.7:1 */
+  --primary-hover: var(--accent-700);
+  --primary-foreground: var(--neutral-0);
+
+  --secondary: var(--brand-600);          /* deep azure #1663C6, white text ~5.8:1 */
+  --secondary-hover: var(--brand-700);
+  --secondary-foreground: var(--neutral-0);
+
+  --link: var(--brand-600);
+  --link-hover: var(--brand-700);
+
+  --accent-surface: var(--brand-50);
+  --accent-surface-foreground: var(--brand-700);
+
+  --border: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+  --input: var(--neutral-300);
+  --ring: var(--accent-600);
+
+  /* --- Typography --- */
+  --font-sans: "Open Sans", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --font-display: "Open Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* --- Radius (canon: 6/10/12/16/24; video card scale = one step up) --- */
+  --radius-sm: 6px;  --radius-md: 10px;  --radius-lg: 12px;
+  --radius-xl: 16px;  --radius-2xl: 24px;  --radius-full: 9999px;
+  --radius: var(--radius-lg);
+
+  /* --- Shadow: navy-tinted (canon hue rgba(14,32,56)), video-scaled geometry --- */
+  --shadow-xs: 0 1px 2px rgba(14,32,56,.06);
+  --shadow-sm: 0 2px 6px rgba(14,32,56,.06), 0 10px 20px -8px rgba(14,32,56,.10);
+  --shadow-md: 0 4px 10px rgba(14,32,56,.07), 0 26px 50px -18px rgba(14,32,56,.16);
+  --shadow-lg: 0 8px 18px rgba(14,32,56,.09), 0 44px 84px -28px rgba(14,32,56,.22);
+  --shadow-cta: 0 6px 20px rgba(18,161,80,.30);
+
+  /* --- Motion --- */
+  --duration-fast: 120ms;  --duration-base: 180ms;  --duration-slow: 280ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  --grid-line: rgba(30,124,232,0.07);
+  --hero-wash: linear-gradient(180deg, var(--brand-50) 0%, var(--neutral-50) 60%);
+
+  /* ==== VIDEO LAYER (1920x1080), nincs a webes kanonban ==================== */
+  --canvas: 1920px;
+  --margin: 140px;                 /* biztonsagi sav minden oldalon, nem alku targya */
+  --gutter: 24px;
+  --content: 1640px;               /* 1920 - 2*140 */
+  --col: 114.67px;                 /* (1640 - 11*24) / 12 */
+  --w4: 483px; --w6: 804px; --w8: 1125px; --w9: 1286px; --w10: 1446px; --w12: 1640px;
+  --avatar-safe: 420px;            /* bal also sarok: a composite avatare, FOGLALT */
+}

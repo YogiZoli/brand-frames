@@ -52,15 +52,31 @@ tökéletes szinkron, csak referencia).
 
 ## MOST ÉPP
 
-**A `zg-frames v1.7` JÓVÁHAGYVA ÉS BASELINE (2026-08-18).** Zoltán megnézte a
-`sampler_v1.7.mp4`-et és jóváhagyta a design alapozást. A `baseline/` mappa
-mostantól a v1.7 39 kockáját tartalmazza (a `regress.ps1 -Accept` lefutott).
-A könyvtár innentől a TELJES design alapozáson áll: OKLCH, színvak-első
-szemantika, négy easing, tömeg-arányos időzítés, védjegy-gyűrű, olvasási idő és
-hossz-tűrés mint mért ellenőrzés.
+**BRAND KANON ÁTVEZETÉS A HR-BE (2026-08-29, Zoltán döntése).** A friss, up-to-date
+igazság a `C:\Users\gdp\projects\design-system\tokens.css` + `README.md`. A HyperFrames
+réteg innentől abból származik, nem fordítva.
 
-**Innentől minden könyvtár-változás után a `regress.ps1` fut, és megmondja,
-melyik archetípus mozdult el.** Zoltán soha nem regressziós teszt.
+Megtörtént ebben a körben:
+- `_frames/zoltan-gero/tokens.css` — a kánon tükre, video-réteggel (új).
+- `_frames/zoltan-gero/fonts/` — Open Sans 400-800 helyi `.ttf` + `fonts.css` `@font-face` (új).
+- `_frames/zoltan-gero/BRAND-BRIDGE.md` — token-leképezés + a szándékos eltérések regisztere (új).
+- `_frames/zoltan-gero/brand.css` — a `--hf-*` híd rákötve a kánonra.
+- `_frames/zg-frames/zg.css` — paletta, betű, radius, árnyék a kánon szerint; a régi
+  "v1.7 TELJES DESIGN ALAPOZÁS" OKLCH + színvak-első blokk **törölve** (Zoltán: nem kánon),
+  helyette kompakt video-strukturális blokk. 952 sor → 772 sor.
+- `_frames/zoltan-gero/FRAME.md` v4.0, `DESIGN.md`, `DESIGN-FOUNDATION.md` fejléc: átvezetve.
+
+**Hátra van (a következő körre):** `DESIGN.md` / `SCALE.md` / `GLOSSARY.md` / `README.md` /
+`BLOCKS.md` / `frame-showcase.html` palettamaradványok; `lint` + `check` zöldre futtatás;
+**új sampler render + Zoltán-jóváhagyás + új `regress.ps1` baseline — csak a teljes kör végén.**
+
+VoxFlow: **nem nyúltunk hozzá** (Máté csatornája).
+
+---
+
+**A régi állapot (elavult): `zg-frames v1.7` JÓVÁHAGYVA ÉS BASELINE (2026-08-18).**
+A v1.7 baseline-t a fenti paletta-csere felülírja. Új sampler kell, mielőtt bármelyik
+éles videó erre a könyvtárra épül.
 
 ---
 

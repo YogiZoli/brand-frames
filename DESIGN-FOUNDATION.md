@@ -4,7 +4,17 @@ Készült 2026-08-17, Zoltán kérésére: *„az összes design alapozást kér
 és írd át hogy az profi legyen"*.
 
 Ez a fájl a **miért és mennyit** minden vizuális döntésre. A `SCALE.md` a
-számokat adja, ez a rendszert körülöttük. Ütközés esetén ez a kettő együtt nyer.
+számokat adja, ez a rendszert körülöttük.
+
+> **FRISSÍTVE 2026-08-29 — a paletta már a BRAND KANONBÓL jön.**
+> Forrás: `C:\Users\gdp\projects\design-system\tokens.css` + `README.md`.
+> A 4. pont rampái a kánon szerint frissültek (azure `#1E7CE8`, zöld `#12A150`,
+> CTA `#0E8542`). A **színvakság-első OKLCH szemantikai rendszert Zoltán törölte**:
+> nem kánon. Ahol lentebb az szerepel (4. pont "Színvakság", v3.0 "A LEGFONTOSABB
+> TERVEZÉSI TÉNY"), az **elavult** — a szemantikus pár mint egyszerű gyakorlat
+> marad (világos pozitív mező kontra tömör negatív mező + alak + szó), ideológia
+> nélkül. Részletek: `_frames/zoltan-gero/BRAND-BRIDGE.md`.
+> Ütközés esetén: a brand kánon nyer.
 
 ---
 
@@ -81,11 +91,14 @@ méretben. Ennél hosszabb sor videón olvashatatlan, mert a szem nem talál vis
 
 | Szerep | 50 (halvány) | 100 (tint) | 500 (alap) | 700 (sötét) | 900 (szöveg) |
 |---|---|---|---|---|---|
-| **kék** — vezető | `#eef4fd` | `#d6e6fb` | `#1a73e8` | `#1257b8` | `#0c3d80` |
-| **zöld** — pozitív | `#e9f7ef` | `#cfeedd` | `#22a75a` | `#178047` | `#0e5c33` |
-| **piros** — negatív | `#fdeceb` | `#fbd5d3` | `#e24b4a` | `#b83230` | `#8a2320` |
-| **amber** — figyelem | `#fdf3e2` | `#fae2bb` | `#e8a33d` | `#b26a00` | `#7d4a00` |
-| **navy** — szöveg | `#f2f5f8` | `#e3e9f0` | `#5b6b86` | `#2b3a52` | `#111d2e` |
+| **kék** — vezető | `#EBF3FE` | `#D6E6FD` | `#1E7CE8` | `#144F9F` | `#15355F` |
+| **zöld** — pozitív / akcentus | `#E4F5EA` | `#BFE8CC` | `#12A150` | `#0C6A36` | `#0A4228` |
+| **piros** — negatív | `#FCECED` | `#FBD5D3` | `#E5484D` | `#B83230` | `#8A2320` |
+| **amber** — figyelem | `#FBF2DD` | `#FAE2BB` | `#E5A400` | `#B26A00` | `#7D4A00` |
+| **navy** — szöveg | `#F6F8FC` | `#EDF1F7` | `#6A7688` | `#333D4C` | `#1E2733` |
+
+**CTA / gomb = `#0E8542`** (kánon `--primary`), fehér szöveggel (~4,7:1). A `#12A150`
+vonalnak, gyűrűnek, kitöltésnek való, fehér szöveg nem áll meg rajta.
 
 **Használati szabály:** `500` = tömör kitöltés és vonal. `100` = halvány háttér
 tömör kitöltés MÖGÉ. `700` = szöveg a `100`-as háttéren. `900` = törzsszöveg.

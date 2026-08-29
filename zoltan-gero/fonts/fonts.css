@@ -1,0 +1,16 @@
+/* Open Sans — a Zoltan Gero brand kanon betuje (projects/design-system/FONTS.md).
+   Helyi @font-face, NINCS Google Fonts <link>, NINCS @import kulso URL-re.
+   A HyperFrames compiler a .ttf-eket build-idoben woff2-re tomoriti es beagyazza.
+   Sulyok: 400 (normal) . 500 . 600 (korulolvasott: cimke, felirat) . 700 . 800 (olvasott: cim, kiemelt).
+   Licenc: LICENSE-OpenSans.txt (SIL Open Font License 1.1). */
+
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:400;font-display:block;
+  src:url("OpenSans-400.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:500;font-display:block;
+  src:url("OpenSans-500.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:600;font-display:block;
+  src:url("OpenSans-600.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:700;font-display:block;
+  src:url("OpenSans-700.ttf") format("truetype")}
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:800;font-display:block;
+  src:url("OpenSans-800.ttf") format("truetype")}

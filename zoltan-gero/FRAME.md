@@ -15,52 +15,56 @@
 <!-- /ZG-CANON -->
 
 ---
-version: 3.0
+version: 4.0
 name: C2C Ownership — Frame (video / frame layer) · Zoltan Gero
 description: >
-  Rebuilt 2026-08-16 from the HeyGen reference render "Comment-to-Client: The Ownership Formula",
-  which Zoltán named as the best of everything we have made. Light near-white ground with a faint
-  grid, sentence-case Inter headings, blue as the lead and GREEN as the accent (the reference used
-  orange; Zoltán dislikes orange, so every orange role becomes green). 100% light ground, zero dark scenes. Thin drawn line charts, tilted 3D device cards, building tables,
-  annotation rings, and an app-style end card. Motion is out of scope — see ../MOTION.md.
+  v4.0 (2026-08-29): a paletta es a betu mostantol a BRAND KANONBOL jon
+  (C:\Users\gdp\projects\design-system\tokens.css + README.md). Azure #1E7CE8 vezet,
+  zold #12A150 az akcentus, CTA #0E8542, betu Open Sans. Reszletek: BRAND-BRIDGE.md.
+  Vilagos, majdnem feher ground halvany raccsal, sentence-case cimek, vekony rajzolt
+  vonaldiagramok, dontott 3D eszkozkartyak, epulo tablak, annotacios gyuruk, app-stilusu
+  vegkartya. 100% vilagos ground, nulla sotet jelenet. Mozgas kulon: ../MOTION.md.
 unit: the frame — 1920×1080 primary; 9:16 and 1:1 documented
 principle: atoms are sacred · composition is free · numbers come from the script
 
 colors:
-  bg:          "#f4f7fa"   # light ground, faint grid texture over it
-  bg-white:    "#fdfefe"
-  grid:        "rgba(26,115,232,0.05)"
-  blue:        "#1a73e8"   # LEAD — headings, wordmark, icons, primary bar, links
-  green:       "#22a75a"   # ACCENT — replaces the reference's orange, everywhere
-    navy:        "#111d2e"   # display type on light
-  label:       "#8a94a6"   # micro-labels, axis text, tracked caps
-  muted:       "#5b6b86"
-  card:        "#ffffff"
-  ok:          "#16a34a"   # "Verified" pills
-  shadow-card: "0 18px 44px rgba(17,29,46,0.10)"
-  shadow-btn:  "0 8px 20px rgba(34,167,90,0.35)"
+  # PALETTA = brand kanon. C:\Users\gdp\projects\design-system\tokens.css . tukor: ./tokens.css
+  bg:          "#F6F8FC"   # --neutral-50, nem tiszta feher
+  bg-white:    "#FFFFFF"
+  grid:        "rgba(30,124,232,0.06)"
+  blue:        "#1E7CE8"   # --brand-500  VEZET: cim, wordmark, ikon, sav, link
+  green:       "#12A150"   # --accent-500 AKCENTUS: vonal, gyuru, kitoltes
+  cta:         "#0E8542"   # --primary    gomb / CTA, feher szoveg ~4.7:1
+  navy:        "#1E2733"   # --neutral-800 display + torzsszoveg
+  label:       "#97A3B8"   # --neutral-400 micro-label, tengelyfelirat
+  muted:       "#6A7688"   # --neutral-500
+  card:        "#FFFFFF"    # --surface
+  ok:          "#0B7A3E"   # --success  "Verified" pill
+  shadow-card: "0 4px 10px rgba(14,32,56,.07), 0 26px 50px -18px rgba(14,32,56,.16)"
+  shadow-btn:  "0 6px 20px rgba(18,161,80,0.30)"
 
 radii:
+  # kanon skala (6/10/12/16/24), video-kartya = egy lepes feljebb
   card:   "16px"
   tile:   "12px"
-  btn:    "8px"
+  btn:    "12px"
   badge:  "6px"
-  pill:   "100px"
+  pill:   "999px"
   circle: "50%"
 
 typography:
-  # Inter only — 400 / 500 / 600 / 700 / 800.
-  kicker:      { fontFamily: "Inter", px: 26, weight: 700, tracking: "0.22em", upper: true, color: "label" }
-  hero:        { fontFamily: "Inter", px: 96,  weight: 700, lineHeight: 1.12, tracking: "-0.02em", color: "navy", case: "sentence" }
-  hero-caps:   { fontFamily: "Inter", px: 104, weight: 800, tracking: "0.01em", upper: true, color: "blue" }
-  display-word:   { fontFamily: "Inter", px: 132, weight: 800, upper: true, color: "green" }
-  card-title:  { fontFamily: "Inter", px: 34,  weight: 700, color: "navy" }
-  wordmark:    { fontFamily: "Inter", px: 62,  weight: 700, color: "blue" }
-  domain:      { fontFamily: "Inter", px: 30,  weight: 600, color: "blue" }
-  micro-label: { fontFamily: "Inter", px: 18,  weight: 600, tracking: "0.16em", upper: true, color: "label" }
-  row:         { fontFamily: "Inter", px: 24,  weight: 500, color: "navy" }
-  body:        { fontFamily: "Inter", px: 24,  weight: 400, lineHeight: 1.5, color: "muted" }
-  btn:         { fontFamily: "Inter", px: 26,  weight: 700, color: "card" }
+  # Open Sans only — 400 / 500 / 600 / 700 / 800. Helyi @font-face (fonts/fonts.css), nincs <link>.
+  kicker:      { fontFamily: "Open Sans", px: 26, weight: 700, tracking: "0.22em", upper: true, color: "label" }
+  hero:        { fontFamily: "Open Sans", px: 96,  weight: 700, lineHeight: 1.12, tracking: "-0.02em", color: "navy", case: "sentence" }
+  hero-caps:   { fontFamily: "Open Sans", px: 104, weight: 800, tracking: "0.01em", upper: true, color: "blue" }
+  display-word:   { fontFamily: "Open Sans", px: 132, weight: 800, upper: true, color: "green" }
+  card-title:  { fontFamily: "Open Sans", px: 34,  weight: 700, color: "navy" }
+  wordmark:    { fontFamily: "Open Sans", px: 62,  weight: 700, color: "blue" }
+  domain:      { fontFamily: "Open Sans", px: 30,  weight: 600, color: "blue" }
+  micro-label: { fontFamily: "Open Sans", px: 18,  weight: 600, tracking: "0.16em", upper: true, color: "label" }
+  row:         { fontFamily: "Open Sans", px: 24,  weight: 500, color: "navy" }
+  body:        { fontFamily: "Open Sans", px: 24,  weight: 400, lineHeight: 1.5, color: "muted" }
+  btn:         { fontFamily: "Open Sans", px: 26,  weight: 700, color: "card" }
 
 spacing:
   safe:      "140px"
@@ -75,7 +79,7 @@ spacing:
 The HeyGen render uses orange for every accent — the `OWN` burn, the second bar, the `PRIORITY`
 badge, the `EXACTLY` annotation, the `Instant Access` button, the `ALGORITHM CHANGE` title.
 **Zoltán dislikes orange** (recorded 2026-07-30, re-confirmed 2026-08-16). Every one of those roles
-becomes **green `#22a75a`**. Nothing else about the reference changes.
+becomes **green** (`#12A150` akcentus, `#0E8542` ha gomb). Nothing else about the reference changes.
 
 Blue leads. Green accents. That is the whole colour system.
 
@@ -208,11 +212,13 @@ oversized headings · anything touching the edges · whole-sentence emphasis · 
 borders · gradients on type · "CRM" · "Studio" in a dashboard · dashes ("-") in the script or VO ·
 a static hub-and-spoke diagram · a rectangular avatar cutout.
 
-## ⚠️ No external Google Fonts `<link>`
+## Betu: Open Sans, helyi @font-face, NINCS Google Fonts `<link>`
 
-On this machine the Google Fonts stylesheet never fires its load event and `check` / `render` hang
-with a navigation timeout. Declare `font-family: "Inter", sans-serif`, add **no** `<link>` and
-**no** `@import` — the compiler injects Inter locally.
+A brand kanon betuje az Open Sans (`projects/design-system/FONTS.md`). Ezen a gepen a Google
+Fonts stylesheet sosem tuzeli a load eventet, a `check` / `render` navigation timeouttal lefagy.
+Ezert az 5 sulyu Open Sans .ttf a `fonts/` mappaban van, `fonts/fonts.css` `@font-face`-szel;
+a `tokens.css` importalja. Declare `font-family: "Open Sans", sans-serif`, **NINCS** `<link>` es
+**NINCS** kulso `@import` — a compiler build-idoben woff2-re tomoriti es beagyazza.
 
 ## Reference frames — the ground truth
 

@@ -1,52 +1,52 @@
-﻿/* brand.css — Zoltan Gero (C2C Blue)
-   The token bridge. Copy into every project next to FRAME.md and load it AFTER any
-   registry block's own stylesheet. This is what turns a stock registry block into ours.
-   Rules: BLOCKS.md · atoms: FRAME.md · motion: MOTION.md · language: DESIGN.md          */
+/* brand.css — Zoltan Gero, a token-hid registry blokkokhoz.
+   KANON: C:\Users\gdp\projects\design-system\tokens.css + README.md
+   Toltsd a tokens.css UTAN, es barmely registry blokk sajat stylesheetje utan.
+   Ez teszi a stock blokkot a mienkke. Reszletek: BRAND-BRIDGE.md . FRAME.md . MOTION.md . DESIGN.md */
 
 :root {
-  /* ---- our palette, recovered from the C2C / Expansion Pack videos ---- */
-  --zg-ground:   #e8eef5;                    /* cool light blue-grey, radial lift to white top-centre */
-  --zg-blue:     #1a73e8;                    /* lead colour: emphasis, numerals, kickers, bars */
-  --zg-navy:     #111d2e;                    /* display + body type */
-  --zg-green:    #22a75a;                    /* ONE emphasis or CTA per scene, never more */
-  --zg-muted:    #5b6b86;                    /* subtitles, captions, secondary lines */
-  --zg-grid:     rgba(26,115,232,0.09);      /* the drifting background grid */
-  --zg-surface:  rgba(26,115,232,0.04);      /* tinted card fill */
-  --zg-border:   rgba(26,115,232,0.20);      /* card + divider border */
+  /* ---- a kanon paletta (azure vezet, zold az akcio) ---- */
+  --zg-ground:  var(--neutral-50);      /* #F6F8FC, nem tiszta feher */
+  --zg-blue:    var(--brand-500);       /* #1E7CE8 identitas, link, kicker, sav */
+  --zg-navy:    var(--neutral-800);     /* #1E2733 cim + torzsszoveg */
+  --zg-green:   var(--accent-500);      /* #12A150 akcentus: vonal, gyuru, kitoltes */
+  --zg-cta:     var(--primary);         /* #0E8542 gomb / CTA, feher szoveggel */
+  --zg-muted:   var(--neutral-500);     /* #6A7688 felirat, masodlagos sor */
+  --zg-grid:    var(--grid-line);
+  --zg-surface: var(--surface);         /* #FFFFFF kartya */
+  --zg-border:  var(--border);          /* #E0E6F0 */
 
-  /* ---- the bridge: registry components read these ---- */
-  --hf-bg:            var(--zg-ground);
-  --hf-fg:            var(--zg-navy);
-  --hf-text:          var(--zg-navy);
-  --hf-text-muted:    var(--zg-muted);
-  --hf-accent:        var(--zg-blue);
-  --hf-accent-2:      var(--zg-green);
-  --hf-primary:       var(--zg-blue);
-  --hf-secondary:     var(--zg-green);
-  --hf-surface:       var(--zg-surface);
-  --hf-card-bg:       var(--zg-surface);
-  --hf-border:        var(--zg-border);
-  --hf-grid:          var(--zg-grid);
-  --hf-positive:      var(--zg-green);
-  --hf-negative:      #dc2626;
+  /* ---- a hid: registry komponensek ezeket olvassak ---- */
+  --hf-bg:         var(--zg-ground);
+  --hf-fg:         var(--zg-navy);
+  --hf-text:       var(--zg-navy);
+  --hf-text-muted: var(--zg-muted);
+  --hf-accent:     var(--zg-blue);
+  --hf-accent-2:   var(--zg-green);
+  --hf-primary:    var(--zg-blue);
+  --hf-secondary:  var(--zg-green);
+  --hf-surface:    var(--zg-surface);
+  --hf-card-bg:    var(--zg-surface);
+  --hf-border:     var(--zg-border);
+  --hf-grid:       var(--zg-grid);
+  --hf-positive:   var(--zg-green);
+  --hf-negative:   var(--danger);
 
-  --hf-font-display:  "Inter", sans-serif;
-  --hf-font-body:     "Inter", sans-serif;
-  --hf-font-mono:     "Inter", sans-serif;
+  --hf-font-display: var(--font-sans);
+  --hf-font-body:    var(--font-sans);
+  --hf-font-mono:    var(--font-mono);
 
-  --hf-radius:        16px;
-  --hf-radius-pill:   100px;
-  --hf-radius-sm:     10px;
-  --hf-shadow:        0 18px 44px rgba(17,29,46,0.10);  /* soft card shadow - this pack DOES use them */
+  --hf-radius:      var(--radius-xl);
+  --hf-radius-pill: var(--radius-full);
+  --hf-radius-sm:   var(--radius-md);
+  --hf-shadow:      var(--shadow-md);
 }
 
-/* ---- hard bans, enforced in CSS so a stray block cannot reintroduce them ---- */
-/* NO ORANGE. The accent is green. Recorded 2026-07-30, re-confirmed 2026-08-16. */
+/* ---- hard banok, CSS-ben kikenyszeritve ---- */
+/* NARANCS NINCS. Az akcentus zold. (Zoltan, 2026-07-30, ujra 2026-08-16.) */
 [style*="#E85A1F"], [style*="#e85a1f"],
 [style*="#ff6b35"], [style*="#f97316"], [style*="orange"] {
   color: var(--zg-blue) !important;
   background-color: transparent !important;
 }
-
-/* No gradients, no glows — minimalist over garish. */
+/* Nincs gradiens tipuson, nincs glow. Minimalista, nem harsany. */
 .hf-gradient, [class*="gradient"] { background-image: none !important; }

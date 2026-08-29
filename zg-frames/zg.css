@@ -2,19 +2,22 @@
    Default channel = zoltan-gero. VoxFlow: <div id="root" data-channel="voxflow">
    NO Google Fonts link, NO @import, NO filter:blur — see PIPELINE.md. */
 
+/* PALETTA = a brand kanon. Forras: C:\Users\gdp\projects\design-system\tokens.css
+   Tukor: ../zoltan-gero/tokens.css . hid: ../zoltan-gero/brand.css . lasd BRAND-BRIDGE.md
+   Ha a kompozicio betolti a tokens.css-t, annak var()-jai nyernek; ezek a hex fallbackek. */
 :root{
-  --bg:#f4f7fa; --bg-w:#fdfefe; --grid:rgba(26,115,232,.07);
-  --blue:#1a73e8; --green:#22a75a; --green-dk:#127a3d; --navy:#111d2e;
-  --label:#8a94a6; --muted:#5b6b86; --sub:#41527a; --card:#fff;
-  --line:#e3e9f0; --red:#e24b4a; --red-bg:#fdeaea; --blue-bg:#eaf1ff; --green-bg:#dff2e7;
-  --sh-card:0 26px 60px -22px rgba(17,29,46,.28);
-  --sh-panel:0 34px 80px -30px rgba(17,29,46,.32);
-  --sh-chip:0 14px 34px -14px rgba(17,29,46,.28);
+  --bg:#F6F8FC; --bg-w:#FFFFFF; --grid:rgba(30,124,232,.07);
+  --blue:#1E7CE8; --green:#12A150; --green-dk:#0C6A36; --cta:#0E8542; --navy:#1E2733;
+  --label:#97A3B8; --muted:#6A7688; --sub:#4C5768; --card:#FFFFFF;
+  --line:#E0E6F0; --red:#E5484D; --red-bg:#FCECED; --blue-bg:#EBF3FE; --green-bg:#E3F3E8;
+  --sh-card:0 4px 10px rgba(14,32,56,.07), 0 26px 50px -18px rgba(14,32,56,.16);
+  --sh-panel:0 8px 18px rgba(14,32,56,.09), 0 44px 84px -28px rgba(14,32,56,.22);
+  --sh-chip:0 2px 6px rgba(14,32,56,.06), 0 10px 20px -8px rgba(14,32,56,.10);
 }
 [data-channel="voxflow"]{ --blue:#0b5fd0; --green:#1f8f7a; --green-dk:#0f6b5a; --navy:#0d1b2a; }
 
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
+body{font-family:"Open Sans","Segoe UI",system-ui,sans-serif;background:var(--bg);font-synthesis-weight:none}
 #root{position:relative;width:1920px;height:1080px;overflow:hidden;color:var(--navy);
   background:radial-gradient(1500px 1000px at 50% 12%,#fff 0%,var(--bg) 55%,#e9eff6 100%)}
 .grid{position:absolute;inset:0;
@@ -23,8 +26,8 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
   -webkit-mask-image:radial-gradient(1300px 820px at 50% 46%,#000 0%,transparent 88%);
   mask-image:radial-gradient(1300px 820px at 50% 46%,#000 0%,transparent 88%)}
 .g1,.g2{position:absolute;border-radius:50%}
-.g1{width:820px;height:820px;top:-220px;right:-140px;background:radial-gradient(circle,rgba(34,167,90,.10),transparent 70%)}
-.g2{width:820px;height:820px;bottom:-220px;left:-140px;background:radial-gradient(circle,rgba(26,115,232,.16),transparent 70%)}
+.g1{width:820px;height:820px;top:-220px;right:-140px;background:radial-gradient(circle,rgba(18,161,80,.10),transparent 70%)}
+.g2{width:820px;height:820px;bottom:-220px;left:-140px;background:radial-gradient(circle,rgba(30,124,232,.16),transparent 70%)}
 
 .clip{position:absolute;inset:0}
 .cam{position:absolute;inset:0;padding:0 150px 190px;display:flex;flex-direction:column;
@@ -41,7 +44,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .disp{font-size:122px;font-weight:800;color:var(--green);letter-spacing:-2px}
 .uln{width:340px;height:9px;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--green));transform-origin:left center}
 .ch,.wd{display:inline-block} .sp{display:inline-block;width:.28em}
-.glowword{color:var(--green)!important;text-shadow:0 0 34px rgba(34,167,90,.45)}
+.glowword{color:var(--green)!important;text-shadow:0 0 34px rgba(18,161,80,.45)}
 
 .arrow{display:flex;align-items:center;gap:40px}
 .arsvg{overflow:visible;flex:none}
@@ -53,12 +56,12 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .ilbl{font-size:32px;font-weight:700;color:var(--muted);margin-top:16px;text-align:center}
 .icell{display:flex;flex-direction:column;align-items:center}
 .tdot{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--green);
-  box-shadow:0 0 0 8px rgba(34,167,90,.18);top:50%;margin-top:-8px;left:0}
+  box-shadow:0 0 0 8px rgba(18,161,80,.18);top:50%;margin-top:-8px;left:0}
 
 .rail{position:relative;display:flex;align-items:center;width:1640px}
 .rstop{display:flex;flex-direction:column;align-items:center;gap:16px;flex:none;width:230px}
-.rdot{position:relative;width:46px;height:46px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 12px rgba(26,115,232,.12)}
-.rstop.on .rdot{background:var(--green);box-shadow:0 0 0 12px rgba(34,167,90,.16)}
+.rdot{position:relative;width:46px;height:46px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 12px rgba(30,124,232,.12)}
+.rstop.on .rdot{background:var(--green);box-shadow:0 0 0 12px rgba(18,161,80,.16)}
 .rlbl{font-size:32px;font-weight:800;color:var(--sub);letter-spacing:2px;text-transform:uppercase}
 .rseg{position:relative;flex:1;height:9px;border-radius:6px;background:#c7d3e2;overflow:hidden}
 .rfill{position:absolute;inset:0;background:var(--blue);transform-origin:left center;transform:scaleX(0)}
@@ -89,7 +92,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .prow{display:flex;align-items:center;gap:24px;font-size:40px;font-weight:700;color:var(--navy);padding:24px 0;border-bottom:1px solid #eef2f7}
 .prow:last-child{border-bottom:0}
 .pflag{width:54px;height:54px;border-radius:50%;background:var(--red-bg);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;flex:none}
-.prow.hot{border:2px solid var(--green);background:rgba(34,167,90,.07);border-radius:16px;padding:22px 20px;margin-top:8px}
+.prow.hot{border:2px solid var(--green);background:rgba(18,161,80,.07);border-radius:16px;padding:22px 20px;margin-top:8px}
 .prow.hot .pflag{background:var(--green-bg);color:var(--green-dk)}
 .pbadge{margin-left:auto;background:var(--green);color:#fff;font-size:32px;font-weight:800;letter-spacing:2px;padding:10px 20px;border-radius:40px}
 
@@ -104,7 +107,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 
 .funnel{display:flex;flex-direction:column;gap:24px;width:1640px}
 .fbar{height:118px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;padding:0 42px;
-  overflow:hidden;white-space:nowrap;box-shadow:0 22px 54px -20px rgba(17,29,46,.4)}
+  overflow:hidden;white-space:nowrap;box-shadow:0 22px 54px -20px rgba(14,32,56,.4)}
 .fl{font-size:50px;font-weight:800;color:#fff} .fr{font-size:32px;font-weight:600;color:#fff}
 
 .chart{position:relative;width:1640px;height:470px}
@@ -112,7 +115,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .cx{font-size:32px;font-weight:700;letter-spacing:2px;fill:var(--muted);text-transform:uppercase}
 
 .lens{position:absolute;width:300px;height:300px;border:8px solid var(--blue);border-radius:50%;
-  box-shadow:0 0 44px rgba(26,115,232,.22);pointer-events:none;opacity:0}
+  box-shadow:0 0 44px rgba(30,124,232,.22);pointer-events:none;opacity:0}
 .pop{position:absolute;background:var(--card);border-radius:16px;padding:18px 26px;box-shadow:var(--sh-chip);opacity:0}
 .popk{font-size:32px;font-weight:800;letter-spacing:3px;color:var(--blue);text-transform:uppercase}
 .popv{font-size:32px;font-weight:700;color:var(--navy)}
@@ -130,11 +133,11 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .pico{width:96px;height:96px;border-radius:50%;background:var(--blue)}
 .plbl{font-size:40px;font-weight:800;color:var(--navy)}
 
-.appic{width:112px;height:112px;border-radius:26px;background:var(--blue);box-shadow:0 22px 50px -20px rgba(26,115,232,.5)}
+.appic{width:112px;height:112px;border-radius:26px;background:var(--blue);box-shadow:0 22px 50px -20px rgba(30,124,232,.5)}
 .ectitle{font-size:122px;font-weight:800;letter-spacing:-2px;color:var(--navy);overflow:hidden;padding:0 8px}
 .ectitle b{color:var(--blue)}
 .ecpill{font-size:32px;font-weight:700;letter-spacing:5px;color:var(--muted);background:var(--card);border-radius:50px;padding:18px 44px;box-shadow:var(--sh-chip)}
-.ecbtn{font-size:50px;font-weight:800;color:#fff;background:var(--green);border-radius:22px;padding:26px 58px;box-shadow:0 26px 60px -18px rgba(34,167,90,.55)}
+.ecbtn{font-size:50px;font-weight:800;color:#fff;background:var(--green);border-radius:22px;padding:26px 58px;box-shadow:0 26px 60px -18px rgba(18,161,80,.55)}
 
 .plate{position:relative;width:1640px;height:700px;border-radius:20px;overflow:hidden;
   background:linear-gradient(135deg,#dde5ef,#c9d6e6 60%,#dfe7f1)}
@@ -171,7 +174,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 /* 4. LENS — never empty: it magnifies the letters underneath */
 .lenswrap{position:relative;width:1640px}
 .lens{position:absolute;width:320px;height:320px;border:8px solid var(--blue);border-radius:50%;
-  box-shadow:0 0 44px rgba(26,115,232,.22);background:rgba(255,255,255,.96);overflow:hidden;
+  box-shadow:0 0 44px rgba(30,124,232,.22);background:rgba(255,255,255,.96);overflow:hidden;
   display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0}
 .lenstxt{font-size:62px;font-weight:800;color:var(--navy);white-space:nowrap;transform-origin:center}
 .lenstxt.g{color:var(--green)}
@@ -198,7 +201,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .fin.on{border-color:var(--blue)}
 .caret{display:inline-block;width:4px;height:44px;background:var(--blue);vertical-align:-8px;margin-left:8px}
 .fbtn{margin-top:40px;text-align:center;font-size:40px;font-weight:800;color:#fff;background:var(--green);
-  border-radius:16px;padding:26px 0;box-shadow:0 26px 60px -18px rgba(34,167,90,.55)}
+  border-radius:16px;padding:26px 0;box-shadow:0 26px 60px -18px rgba(18,161,80,.55)}
 .mouse{position:absolute;width:0;height:0;border-left:26px solid var(--navy);
   border-bottom:19px solid transparent;border-top:19px solid transparent;filter:none}
 
@@ -242,7 +245,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 /* HIGHLIGHTER — the emphasis Zoltan liked: a soft slanted band swipes in under a word */
 .hl{position:relative;display:inline-block;z-index:0}
 .hlb{position:absolute;left:-12px;right:-12px;bottom:8px;height:40%;z-index:-1;
-  background:rgba(34,167,90,.30);border-radius:6px;
+  background:rgba(18,161,80,.30);border-radius:6px;
   transform:skewX(-8deg) scaleX(0);transform-origin:left center}
 .hlb.amber{background:rgba(250,199,117,.60)}
 
@@ -295,18 +298,19 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 /* ================= v1.3 — DESIGN-FOUNDATION.md compliance ================= */
 
 /* colour ramps (5 stops) — no more ad-hoc hexes */
+/* rampak = kanon (projects/design-system/tokens.css). Nincs ad-hoc hex. */
 :root{
-  --blue-50:#eef4fd; --blue-100:#d6e6fb; --blue-500:#1a73e8; --blue-700:#1257b8; --blue-900:#0c3d80;
-  --green-50:#e9f7ef; --green-100:#cfeedd; --green-500:#22a75a; --green-700:#178047; --green-900:#0e5c33;
-  --red-50:#fdeceb; --red-100:#fbd5d3; --red-500:#e24b4a; --red-700:#b83230; --red-900:#8a2320;
-  --amber-50:#fdf3e2; --amber-100:#fae2bb; --amber-500:#e8a33d; --amber-700:#b26a00;
-  --navy-50:#f2f5f8; --navy-100:#e3e9f0; --navy-500:#5b6b86; --navy-700:#2b3a52; --navy-900:#111d2e;
+  --blue-50:#EBF3FE; --blue-100:#D6E6FD; --blue-500:#1E7CE8; --blue-700:#144F9F; --blue-900:#15355F;
+  --green-50:#E4F5EA; --green-100:#BFE8CC; --green-500:#12A150; --green-700:#0C6A36; --green-900:#0A4228;
+  --red-50:#FCECED; --red-100:#FBD5D3; --red-500:#E5484D; --red-700:#B83230; --red-900:#8A2320;
+  --amber-50:#FBF2DD; --amber-100:#FAE2BB; --amber-500:#E5A400; --amber-700:#B26A00;
+  --navy-50:#F6F8FC; --navy-100:#EDF1F7; --navy-500:#6A7688; --navy-700:#333D4C; --navy-900:#1E2733;
   --pink-500:#d4537e;
   --hl-yellow:#ffd94a; --hl-pink:#ffadc9; --hl-green:#9ae6a8;
-  --r-chip:8px; --r-btn:16px; --r-card:24px; --r-panel:32px;
-  --e-1:0 2px 4px rgba(17,29,46,.06), 0 8px 16px -6px rgba(17,29,46,.10);
-  --e-2:0 4px 8px rgba(17,29,46,.06), 0 24px 48px -18px rgba(17,29,46,.18);
-  --e-3:0 8px 16px rgba(17,29,46,.08), 0 40px 80px -28px rgba(17,29,46,.24);
+  --r-chip:6px; --r-btn:12px; --r-card:16px; --r-panel:24px;
+  --e-1:0 2px 6px rgba(14,32,56,.06), 0 10px 20px -8px rgba(14,32,56,.10);
+  --e-2:0 4px 10px rgba(14,32,56,.07), 0 26px 50px -18px rgba(14,32,56,.16);
+  --e-3:0 8px 18px rgba(14,32,56,.09), 0 44px 84px -28px rgba(14,32,56,.22);
 }
 
 /* 1. LINE-HEIGHT — the fix for "össze van nyomva". Bigger type = tighter leading. */
@@ -438,7 +442,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
    optional teardrop tail that is part of the same shape. */
 .skm{position:relative;width:104px;height:104px;border-radius:50%;
   display:inline-flex;align-items:center;justify-content:center;color:#fff;
-  box-shadow:0 6px 18px rgba(17,29,46,.28), 0 0 0 6px #fff;}
+  box-shadow:0 6px 18px rgba(14,32,56,.28), 0 0 0 6px #fff;}
 .skm .ico{width:100%;height:100%}
 .skm .ico svg{width:56%;height:56%}
 .skm.red{background:var(--red-500)}
@@ -488,7 +492,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .fnl{display:flex;flex-direction:column;align-items:center;gap:16px;width:1440px}
 .fnst{display:flex;align-items:center;justify-content:space-between;
   height:112px;border-radius:var(--r-btn);padding:0 44px;color:#fff;
-  box-shadow:0 20px 44px -20px rgba(17,29,46,.42)}
+  box-shadow:0 20px 44px -20px rgba(14,32,56,.42)}
 .fnst:nth-child(1){width:100%;background:var(--blue-500)}
 .fnst:nth-child(2){width:78%;background:var(--blue-700)}
 .fnst:nth-child(3){width:56%;background:var(--green-500)}
@@ -568,7 +572,7 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .bafter .bval{color:var(--green-700)}
 .bnote{font-size:40px;font-weight:700;color:var(--muted);line-height:1.22}
 .bawipe{position:absolute;top:0;bottom:0;width:8px;margin-left:-4px;background:var(--green-500);
-  box-shadow:0 0 28px rgba(34,167,90,.55);opacity:0}
+  box-shadow:0 0 28px rgba(18,161,80,.55);opacity:0}
 
 /* 4h. GRID — "there are many of them" (Felsorol) */
 .gwrap{display:grid;grid-template-columns:repeat(8,1fr);gap:24px;width:1540px}
@@ -654,200 +658,81 @@ body{font-family:Inter,system-ui,sans-serif;background:var(--bg)}
 .leadscore{width:230px}
 
 /* ============================================================================
-   v1.7 — A TELJES DESIGN ALAPOZÁS
-   Ez a blokk nem javítás. Ez az, ami eddig hiányzott a rendszerből.
-   Minden szabály mellett ott van, MIÉRT. Ha nem tudod megmondani miért,
-   akkor az nem szabály, hanem ízlés, és annak itt nincs helye.
+   KANON-REND (2026-08-29) — ez valtotta le a regi "v1.7 TELJES DESIGN ALAPOZAS"
+   blokkot. A paletta, a betu, a radius es az arnyek mostantol a brand kanonbol jon
+   (projects/design-system/tokens.css). A szinvaksag-elso OKLCH szemantika torolve:
+   Zoltan dontese, nem kanon. Itt csak a video-strukturalis reteg marad.
+   Reszletek: ../zoltan-gero/BRAND-BRIDGE.md
    ============================================================================ */
 
-/* ---------------------------------------------------------------------------
-   1. SZÍN — ÉRZÉKELÉSI SZÍNTÉR (OKLCH)
-   A régi rampák hexában lettek kikeverve. A hex a KÉPERNYŐ nyelve, nem a
-   SZEMÉ. Ezért a 100-ról az 500-ra nagyobbat ugrott a szem, mint az 500-ról
-   a 700-ra: a lépések nem voltak egyforma távolságúak.
-   Az OKLCH-ban az L tengely érzékelési világosság. Ha egyenletesen lépkedek
-   rajta, a szem is egyenletesnek látja. Ez a különbség egy "összerakott" és
-   egy "megtervezett" paletta között.
-
-   A hex értékek MARADNAK fallbacknek. Ha a renderelő motor nem ismerné az
-   oklch-t, a videó nem lesz színtelen, csak visszaesik a régi palettára.
-   Soha nem cserélünk le működő értéket olyanra, amit nem mértünk ezen a gépen.
-   --------------------------------------------------------------------------- */
-@supports (color: oklch(0.5 0.1 250)) {
-  :root{
-    /* kék — vezető szín. L lépések: .96 .90 .58 .46 .34 */
-    --blue-50:  oklch(0.962 0.018 256);
-    --blue-100: oklch(0.900 0.052 256);
-    --blue-500: oklch(0.580 0.170 256);
-    --blue-700: oklch(0.460 0.155 256);
-    --blue-900: oklch(0.340 0.125 256);
-    /* zöld — megerősítés. Szándékosan VILÁGOSABB a pirosnál. Lásd 2. pont. */
-    --green-50:  oklch(0.962 0.022 152);
-    --green-100: oklch(0.900 0.060 152);
-    --green-500: oklch(0.680 0.145 152);
-    --green-700: oklch(0.540 0.120 152);
-    --green-900: oklch(0.400 0.095 152);
-    /* piros — tagadás. Szándékosan SÖTÉTEBB a zöldnél. */
-    --red-50:  oklch(0.952 0.020 27);
-    --red-100: oklch(0.890 0.052 27);
-    --red-500: oklch(0.560 0.175 27);
-    --red-700: oklch(0.440 0.160 27);
-    --red-900: oklch(0.330 0.128 27);
-    --amber-50:  oklch(0.960 0.030 80);
-    --amber-100: oklch(0.900 0.075 80);
-    --amber-500: oklch(0.760 0.130 80);
-    --amber-700: oklch(0.590 0.120 80);
-    --pink-500:  oklch(0.620 0.140 356);
-  }
-}
-
-/* ---------------------------------------------------------------------------
-   2. SZÍNVAKSÁG-ELSŐ RENDSZER — a legfontosabb szabály ebben a fájlban
-   Zoltán színvak. Ez nem akadálymentesítési jóindulat, hanem TERVEZÉSI TÉNY:
-   a rendszer tulajdonosa nem látja a különbséget a zöld és a piros ÁRNYALATA
-   között. Amit lát, az a VILÁGOSSÁG.
-
-   Ezért a szemantikus párok soha nem árnyalatban különböznek. Három dologban
-   különböznek egyszerre, és mindhárom kötelező:
-     a) VILÁGOSSÁG — legalább 0.12 L különbség OKLCH-ban
-     b) ALAK — pipa kontra kereszt, tömör kontra körvonalas
-     c) SZÓ — "approved" kontra "wrong"
-   Bármelyik kettő elvesztésével az üzenet még átjön. Ez a tervezési cél.
-
-   Mérve: zöld-500 L=0.680, piros-500 L=0.560. Különbség 0.12. Pont a padlón.
-   --------------------------------------------------------------------------- */
+/* --- szemantikus parok: vilagos pozitiv mezo / tomor negativ mezo ---------- */
 :root{
-  /* POZITÍV = világos mező, sötét szöveg. Könnyű, megengedő, nyitott. */
-  --pos-bg: var(--green-100);
-  --pos-fg: var(--green-900);
-  --pos-line: var(--green-700);
-  /* NEGATÍV = tömör sötét mező, fehér szöveg. Nehéz, záró, megállító. */
-  --neg-bg: var(--red-700);
-  --neg-fg: #fff;
-  --neg-line: var(--red-900);
-  /* FIGYELEM = tömör borostyán, fehér szöveg. A kettő között. */
-  --warn-bg: var(--amber-700);
-  --warn-fg: #fff;
+  --pos-bg: var(--green-100); --pos-fg: var(--green-900); --pos-line: var(--green-700);
+  --neg-bg: var(--red-500);   --neg-fg: #fff;             --neg-line: var(--red-700);
+  --warn-bg: var(--amber-700);--warn-fg: #fff;
+  /* regi v1.0 aliasok rakotve az uj rendszerre, hogy egy token ne jelentsen ket dolgot */
+  --green-bg: var(--pos-bg); --green-dk: var(--pos-fg);
+  --red-bg: var(--red-50);  --blue-bg: var(--blue-50);
+  --green: var(--green-500); --red: var(--red-500); --blue: var(--blue-500);
 }
 .is-pos{background:var(--pos-bg);color:var(--pos-fg)}
 .is-neg{background:var(--neg-bg);color:var(--neg-fg)}
 .is-warn{background:var(--warn-bg);color:var(--warn-fg)}
 
-/* ---------------------------------------------------------------------------
-   3. SEMLEGES HŐMÉRSÉKLET-EGYSÉG
-   Egy meleg szürke egy hideg szürke mellett PISZKOSNAK látszik. Ez az egyik
-   leggyakoribb ok, amiért egy design amatőrnek tűnik anélkül, hogy meg tudnád
-   mondani, miért. Minden semlegesünk ugyanazt az enyhén hideg árnyalatot
-   kapja (hue 256, ugyanaz, mint a vezető kéké), így a szürkék egy CSALÁD.
-   --------------------------------------------------------------------------- */
-@supports (color: oklch(0.5 0.1 250)) {
-  :root{
-    --navy-50:  oklch(0.972 0.006 256);
-    --navy-100: oklch(0.930 0.010 256);
-    --navy-500: oklch(0.560 0.022 256);
-    --navy-700: oklch(0.380 0.030 256);
-    --navy-900: oklch(0.235 0.032 256);
-    --line: oklch(0.925 0.010 256);
-    --label: oklch(0.640 0.020 256);
-    --muted: oklch(0.520 0.028 256);
-    --sub:   oklch(0.430 0.045 256);
-    --navy:  oklch(0.235 0.032 256);
-    --bg:    oklch(0.968 0.008 256);
-  }
-}
+/* feher szoveg SOHA nem ul a -500 fokozaton (kontraszt-padlo 3:1). A -700 megoldja. */
+.ecbtn,.fbtn{background:var(--cta)}          /* #0E8542 mely CTA zold, feher szoveg ~4.7:1 */
+.pbadge{background:var(--green-700)}
+.fnst:nth-child(3){background:var(--green-700)}
+.fnst:nth-child(4){background:var(--green-900)}
+.cycnode.g{color:var(--green-700)}
+.ctrav,.tdot{fill:var(--green-700);background:var(--green-700)}
+.bawipe{background:var(--green-700)}
+.pflag.ok{background:var(--pos-bg);color:var(--pos-fg)}
+.mk.ok{background:var(--pos-bg);color:var(--pos-fg)}
+.mk.x{background:var(--neg-bg);color:var(--neg-fg)}
+.pflag{background:var(--neg-bg);color:var(--neg-fg)}
+.skm.green{background:var(--pos-bg);color:var(--pos-fg);
+  box-shadow:0 6px 18px rgba(14,32,56,.22), 0 0 0 6px #fff, inset 0 0 0 3px var(--green-700)}
+.mk .ico svg{width:46%;height:46%}
+.pflag .ico svg{width:52%;height:52%}
+.fa.icon .ico svg{width:44%;height:44%}
 
-/* ---------------------------------------------------------------------------
-   4. EGYIDEJŰ KONTRASZT
-   Ugyanaz a zöld MÁS SZÍNŰNEK látszik fehér lapon és kék kártyán. A szem
-   mindig a környezethez viszonyít. Ezért a szövegszínt a HÁTTÉRHEZ hangoljuk,
-   nem egy értéket használunk mindenütt.
-   --------------------------------------------------------------------------- */
-.on-white{color:var(--green-700)}          /* fehér kártyán a 700 kell */
-.on-tint{color:var(--green-900)}           /* színes tinten a 900 kell */
-.rechead .recpill{color:var(--blue-700)}   /* kék fejlécen ülő fehér pill */
+/* szovegszin a hatterhez: feher lapon a -700, szines tinten a -900 */
+.on-white{color:var(--green-700)}
+.on-tint{color:var(--green-900)}
+.rechead .recpill{color:var(--blue-700)}
 .fnst .fnl-r{color:#fff;opacity:.92}
 
-/* ---------------------------------------------------------------------------
-   5. 60 / 30 / 10
-   Egy képen a felület nagyjából 60% semleges, 30% vezető szín, 10% akcentus.
-   Ha az akcentus 30% lesz, ELVESZTI AZ EREJÉT. A zöld nálunk akcentus:
-   megerősítés, befejezés, siker. Nem lehet a fele a képnek.
-   Ezt nem lehet CSS-ben kikényszeríteni, de ki lehet mondani, és a kontakt
-   lapon két másodperc alatt látszik, ha megsértettük.
-   --------------------------------------------------------------------------- */
-
-/* ---------------------------------------------------------------------------
-   6. TIPOGRÁFIA — KIEGYENSÚLYOZOTT SORTÖRÉS
-   Ha egy cím két sorra tör, a két sor legyen közel egyforma hosszú. A 90/10-es
-   törés az egyik legárulkodóbb amatőr jel, és teljesen ingyen megszüntethető.
-   Videón SOHA nincs sorkizárás és SOHA nincs elválasztás.
-   --------------------------------------------------------------------------- */
+/* --- tipografia: kiegyensulyozott sortores, videon nincs sorkizaras/elvalasztas --- */
 .title,.bigw,.disp,.ectitle,.sub,.scl,.tl,.qline,.qtext,.gcap,.qname,
 .brend,.recv,.leadn,.leadr,.bval,.bnote,.skcap,.ilbl,.plbl,.blbl,.cyclbl{
-  text-wrap:balance;text-align:inherit;hyphens:none;-webkit-hyphens:none}
+  text-wrap:balance;hyphens:none;-webkit-hyphens:none}
 .sub,.qline,.qtext{text-wrap:pretty}
-/* semmi sem lehet sorkizárt */
 *{text-align-last:auto}
 
-/* ---------------------------------------------------------------------------
-   7. VASTAGSÁG-FEGYELEM — képenként LEGFELJEBB KETTŐ
-   Eddig három volt használatban: 600, 700, 800. A hierarchiát előbb mérettel
-   és színnel oldjuk meg, csak utána vastagsággal. Két vastagság van:
-     800 = amit olvasni fogsz
-     600 = amit körbeolvasol (címke, felirat, mellékes)
-   A 700 megszűnt. Ál-félkövér (a böngésző által szintetizált) tilos: az Inter
-   valódi vágatokat hoz, azokat kell kérni.
-   --------------------------------------------------------------------------- */
+/* --- vastagsag: ket suly. 800 = amit olvasol, 600 = amit korulolvasol. --- */
 .sub,.fr,.fhs,.recr,.leadr,.bnote,.qrole,.l3r,.ecpill,.cx,.blbl,.rlbl,
-.ilbl,.skcap,.plbl,.cyclbl,.shts,.prow,.drow{font-weight:600}
-.ilbl,.plbl,.skcap{font-weight:800}
-.prow{font-weight:800}
-.recv,.tl,.scl,.leadn,.qname,.gcap,.brend{font-weight:800}
-body{font-synthesis-weight:none}
+.cyclbl,.shts,.drow{font-weight:600}
+.ilbl,.plbl,.skcap,.prow,.recv,.tl,.scl,.leadn,.qname,.gcap,.brend{font-weight:800}
 
-/* ---------------------------------------------------------------------------
-   8. OPTIKAI IGAZÍTÁS
-   A matematikai közép nem a látott közép.
-   a) Lógó írásjel: az idézőjel kilóg a szövegtömbből, különben LYUK keletkezik
-      a sor elején, és a tömb szélei nem tűnnek egyenesnek.
-   b) Ikon és szöveg párosításnál nem a befoglaló dobozt igazítjuk, hanem a
-      NAGYBETŰ-MAGASSÁGOT. A doboz teteje fölött van a betű fölötti üres sáv.
-   c) A kerek betűk (O, C, S) túllógnak az alapvonalon. Ez SZÁNDÉKOS, és nem
-      szabad kijavítani.
-   --------------------------------------------------------------------------- */
+/* --- optikai igazitas: logo irasjel az idezeteknel, nagybetu-magassaghoz igazitas --- */
 .hang{hanging-punctuation:first last}
 .qtext{hanging-punctuation:first}
 .qtext:before{content:open-quote;margin-left:-0.42em}
 .qtext:after{content:close-quote}
 .qtext{quotes:"\201C" "\201D" "\2018" "\2019"}
 [lang="hu"] .qtext{quotes:"\201E" "\201D" "\00BB" "\00AB"}
-/* ikon plusz szöveg: a nagybetű-magasságra igazítunk, nem a dobozra */
 .icon-row{display:flex;align-items:center;gap:20px}
 .icon-row > .ico{align-self:center;transform:translateY(-0.04em)}
 
-/* ---------------------------------------------------------------------------
-   9. OPTIKAI MÉRETKIEGYENLÍTÉS
-   Egy 100 px-es kör KISEBBNEK látszik, mint egy 100 px-es négyzet, mert
-   kevesebb festéket tesz a papírra. A kört nagyjából 4%-kal nagyobbra kell
-   rajzolni, hogy egyformának tűnjön. A mi ikonjaink mind körök, tehát ez
-   rendszerszinten mérhető és rendszerszinten javítható.
-   --------------------------------------------------------------------------- */
-:root{--optic-circle:1.04}
-.tico{width:100px;height:100px}          /* volt 96, a négyzetes tile mellett */
+/* --- optikai meretkiegyenlites: a kor kevesebb festek, 4%-kal nagyobbra --- */
+.tico{width:100px;height:100px}
 .reci{width:58px;height:58px}
 .pflag{width:56px;height:56px}
 .mk{width:108px;height:108px}
 .cpic{width:58px;height:58px}
 
-/* ---------------------------------------------------------------------------
-   10. VALÓDI 12 OSZLOPOS RÁCS
-   Eddig a szélességek szemre lőtt pixelek voltak: 1640, 1440, 1200, 1500, 880.
-   Innentől oszlopokból számolnak. Ettől fog két teljesen különböző jelenet
-   EGY CSALÁDNAK látszani, anélkül hogy a néző tudná, miért.
-
-     vászon 1920 · margó 140 · tartalom 1640 · 12 oszlop · 24 px köz
-     oszlop = (1640 - 11*24) / 12 = 114.67 px
-   --------------------------------------------------------------------------- */
+/* --- 12 oszlopos racs (a tokens.css video-retegebol; itt fallback standalone samplernek) --- */
 :root{
   --canvas:1920px; --margin:140px; --gutter:24px;
   --content:1640px; --col:114.67px;
@@ -855,94 +740,33 @@ body{font-synthesis-weight:none}
 }
 .w4{width:var(--w4)} .w6{width:var(--w6)} .w8{width:var(--w8)}
 .w9{width:var(--w9)} .w10{width:var(--w10)} .w12{width:var(--w12)}
-/* a meglévő blokkok ráállnak a rácsra */
 .panel,.rail,.tiles,.funnel,.chart,.plate,.device,.lenswrap,.gwrap{width:var(--w12)}
 .branch,.fnl,.qcard,.cmd,.ba{width:var(--w10)}
 .rec,.lead{width:var(--w9)}
 .form{width:var(--w6)}
-.gwrap{width:var(--w12)}
 
-/* ---------------------------------------------------------------------------
-   11. ELSŐ KOCKA EGYENLŐ THUMBNAIL-JELÖLT
-   A t=0 kockát úgy kell megtervezni, hogy ÖNMAGÁBAN megálljon. Ez ingyen
-   thumbnail-jelölt, és ingyen jó első benyomás a görgető szemnek.
-   Ezért a nyitó jelenet nem indulhat üres képpel: a .cam belépője a nyitó
-   jeleneten azonnal látható állapotból indul.
-   --------------------------------------------------------------------------- */
+/* --- tabularis szamjegyek: a szamlalok ne ugraljanak felfutas kozben --- */
+.bnum,.recv,.cx,.shts,.lenstxt,.gnum,.leadscore .v,.bval{
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+/* --- biztonsagi sav: a tartalmat SOHA nem nyomjuk ossze, hogy beferjen --- */
+.cam > *{flex:0 0 auto}
+
+/* --- elso kocka = thumbnail-jelolt: a nyito jelenet nem indul ures keppel --- */
 section.clip:first-of-type .cam{opacity:1}
 
-/* ---------------------------------------------------------------------------
-   12. VILLOGÁS-KORLÁT — írásban, mert egészségügyi határ
-   Másodpercenként legfeljebb HÁROM villanás, fényérzékeny epilepszia miatt.
-   A mi pulzálásunk 2% amplitúdó 1,1 másodperces ciklussal, tehát nagyjából
-   0,9 villanás per másodperc. Messze biztonságos. De a határnak írásban kell
-   lennie, különben egy jövőbeli jelenet átlépi, és senki nem veszi észre.
-   --------------------------------------------------------------------------- */
-
-/* ---------------------------------------------------------------------------
-   13. A VÉDJEGY-MOZDULAT HELYE
-   Az automatikusan hozzáadott záró gyűrű nem a tartalom közepére megy, hanem
-   a jobb alsó sarokba, kicsiben. Ott van, látod, felismered, de nem viszi el
-   a figyelmet a mondanivalóról. Ez írásjel, nem mondat.
-   FONTOS: a bal alsó sarok az avataré. A gyűrű soha nem megy oda.
-   --------------------------------------------------------------------------- */
+/* --- a vedjegy-gyuru a jobb also sarokba, kicsiben (a bal also az avatare) --- */
 .sigwrap.sig-auto{position:absolute;right:150px;bottom:96px;width:132px;height:132px}
 .sigwrap.sig-auto .sigface{width:94px;height:94px}
 .sigwrap.sig-auto .sigtrack,.sigwrap.sig-auto .sigbar{stroke-width:6}
 
-/* ---------------------------------------------------------------------------
-   14. AZ AVATAR SÁVJA
-   A kompozíció bal alsó sarka üresen marad a kör alakú avatarnak, amit a
-   render UTÁN tesz rá az ffmpeg, HeyGen natív méretében. Ez a sáv nem
-   dekoráció, hanem FOGLALT TERÜLET: ide egyetlen elem sem kerülhet.
-   --------------------------------------------------------------------------- */
+/* --- az avatar savja: bal also sarok, FOGLALT terulet, ide egyetlen elem sem kerul --- */
 .cam{--avatar-safe:420px}
 .avatar-zone{position:absolute;left:0;bottom:0;width:var(--avatar-safe);
   height:var(--avatar-safe);pointer-events:none}
 
-/* ---------------------------------------------------------------------------
-   15. A RÉGI TOKENEK RÁKÖTVE AZ ÚJ RENDSZERRE
-   A --green-bg és a --green-dk még a v1.0-ból maradtak. Nem töröljük őket,
-   mert sok helyen hivatkoznak rájuk, hanem RÁKÖTJÜK a világosság-alapú
-   pozitív párra. Egy token, ami két helyen mást jelent, később bug lesz.
-   --------------------------------------------------------------------------- */
-:root{
-  --green-bg: var(--pos-bg);
-  --green-dk: var(--pos-fg);
-  --red-bg:   var(--red-50);
-  --blue-bg:  var(--blue-50);
-  --green:    var(--green-500);
-  --red:      var(--red-500);
-  --blue:     var(--blue-500);
-}
-/* a jelek mérete a korongjukban, most hogy rajzolt path és nem betű */
-.mk .ico svg{width:46%;height:46%}
-.pflag .ico svg{width:52%;height:52%}
-.fa.icon .ico svg{width:44%;height:44%}
-.pflag.ok{background:var(--pos-bg);color:var(--pos-fg)}
-.mk.ok{background:var(--pos-bg);color:var(--pos-fg)}
-.mk.x{background:var(--neg-bg);color:var(--neg-fg)}
-.pflag{background:var(--neg-bg);color:var(--neg-fg)}
-
-/* ---------------------------------------------------------------------------
-   16. FEHÉR SZÖVEG SOHA NEM ÜL AZ -500 FOKOZATON
-   Ez a v1.7-es paletta egyenes következménye. A zöldet SZÁNDÉKOSAN
-   világosabbra vittem, hogy a világossága elváljon a pirosétól, mert a
-   rendszer tulajdonosa színvak, és a világosság az, amit lát.
-   Ennek az ára, hogy fehér szöveg már nem áll meg rajta: mérve 2,71:1,
-   a 3:1-es padló alatt. A -700 fokozat megoldja, és semmit nem veszítünk.
-   Ez nem kompromisszum. Ez a csere ára, és megéri.
-   --------------------------------------------------------------------------- */
-.ecbtn,.fbtn{background:var(--green-700)}
-.pbadge{background:var(--green-700)}
-/* A "jóváhagyva" marker SZÁNDÉKOSAN kilóg a sorból: világos mező, sötét jel.
-   Szürkeárnyalatosan azonnal ő a legvilágosabb az öt közül, tehát a pozitív
-   üzenetet a VILÁGOSSÁG hordozza, nem a zöld. Ugyanaz a logika, mint a split
-   kártyán és a panel-sorban: a rendszer egy nyelvet beszél. */
-.skm.green{background:var(--pos-bg);color:var(--pos-fg);
-  box-shadow:0 6px 18px rgba(17,29,46,.22), 0 0 0 6px #fff, inset 0 0 0 3px var(--green-700)}
-.fnst:nth-child(3){background:var(--green-700)}
-.fnst:nth-child(4){background:var(--green-900)}
-.cycnode.g{color:var(--green-700)}
-.ctrav,.tdot{fill:var(--green-700);background:var(--green-700)}
-.bawipe{background:var(--green-700)}
+/* --- lekerekites: legfeljebb harom radius (kanon skala) --- */
+.tile,.scard,.panel,.rec,.form{border-radius:var(--r-card)}
+.device,.plate{border-radius:var(--r-panel)}
+.fin,.fbtn,.callout,.l3,.pop{border-radius:var(--r-btn)}
+.badge,.bbadge,.pbadge,.recpill,.recok,.ecpill,.cpill,.pillout{border-radius:999px}

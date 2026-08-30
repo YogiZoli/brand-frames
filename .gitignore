@@ -24,3 +24,5 @@ zg-frames/blocks/_attic/
 zg-frames/blocks/*/snapshots/
 zg-frames/index.monolith.html
 zg-frames/hyperframes.lock.json
+zg-frames/blocks/_*.jpg
+zg-frames/blocks/_*.png

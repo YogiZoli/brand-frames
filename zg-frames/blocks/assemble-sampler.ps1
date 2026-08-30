@@ -27,13 +27,10 @@ $order = @(
   "grid","command","lead-card"
 )
 
-$outPath = Join-Path $PSScriptRoot $Out
-$monolith = Join-Path $repo "index.html"
-$backup   = Join-Path $repo "index.monolith.html"
-if (($outPath -eq $monolith) -and (Test-Path $monolith) -and -not (Test-Path $backup)) {
-  Copy-Item $monolith $backup
-  Write-Host "backed up monolith -> $backup" -ForegroundColor DarkGray
-}
+$outPath = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot $Out))
+# The pre-refactor monolith lives in git history (commit 417ab8e:zg-frames/index.html);
+# no in-tree backup — a stray second root *.html trips the runtime's
+# multiple_root_compositions check.
 
 $t = 0.0
 $slots = New-Object System.Text.StringBuilder
@@ -51,6 +48,9 @@ foreach ($name in $order) {
   $t = [math]::Round($t + $dur, 3)
 }
 
+$fontFace = Get-Content (Join-Path $PSScriptRoot "_fontface.css") -Raw
+if (-not $fontFace) { throw "_fontface.css missing — run make-fontface.ps1" }
+
 $total = $t
 $doc = @"
 <!doctype html>
@@ -61,7 +61,8 @@ $doc = @"
 <title>zg-frames motion sampler (mounted blocks)</title>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 <style>
-  body{margin:0;background:#0b0f14}
+$fontFace
+  body{margin:0;background:#0b0f14;font-family:"Open Sans",system-ui,sans-serif}
   #root{position:relative;width:1920px;height:1080px;overflow:hidden}
   [data-composition-id="main"] > div[data-composition-src]{position:absolute;inset:0}
 </style>

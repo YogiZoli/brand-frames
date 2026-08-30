@@ -144,9 +144,13 @@
         duration: 1.15, repeat: reps, yoyo: true, ease: E.move }, at);
   }
 
+  /* fromTo, never from: a mounted block is re-seeked every time its slot becomes
+     visible, and tl.from() records its start state at registration, so on a
+     seek-back it desyncs (hyperframes-core: "Prefer gsap.fromTo() over
+     gsap.from()"). Every entrance below declares both ends explicitly. */
   var A = {
-    kick:   function (e, at) { tl.from(e, { opacity: 0, y: -16, duration: .55, ease: E.enter }, at); },
-    fi:     function (e, at, d) { tl.from(e, { opacity: 0, y: 24, duration: d || .7, ease: E.enter }, at); },
+    kick:   function (e, at) { tl.fromTo(e, { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: .55, ease: E.enter }, at); },
+    fi:     function (e, at, d) { tl.fromTo(e, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: d || .7, ease: E.enter }, at); },
     /* OLVASÁSI IDŐ MINIMUMA — v1.7-ben ez már VALÓDI ellenőrzés.
        Eddig kiszámolta a szükséges időt, beleírta egy attribútumba, és senki
        nem nézte meg soha. Egy szabály, amit nem mér senki, nem szabály.
@@ -159,11 +163,11 @@
       var words = (e.textContent || "").trim().split(/\s+/).filter(Boolean).length;
       e.dataset.readNeed = (0.5 + 0.4 * words).toFixed(1);
     },
-    reveal: function (e, at) { tl.from(kids(e), { opacity: 0, y: 40, duration: .6, stagger: .12, ease: E.enter }, at); },
-    rise:   function (e, at) { tl.from(chars(e), { yPercent: 120, opacity: 0, duration: .6, stagger: .045, ease: E.enter }, at); },
+    reveal: function (e, at) { tl.fromTo(kids(e), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .6, stagger: .12, ease: E.enter }, at); },
+    rise:   function (e, at) { tl.fromTo(chars(e), { yPercent: 120, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .6, stagger: .045, ease: E.enter }, at); },
     fadewords: function (e, at, d) {
       var ws = words(e);
-      tl.from(ws, { opacity: 0, duration: .45, stagger: (d || 1.2) / Math.max(1, ws.length), ease: E.enter }, at);
+      tl.fromTo(ws, { opacity: 0 }, { opacity: 1, duration: .45, stagger: (d || 1.2) / Math.max(1, ws.length), ease: E.enter }, at);
     },
     /* emphasis word: blurry in, pulses blurry, FINISHES SHARP, then the rule draws */
     blurword: function (e, at, d) {
@@ -179,7 +183,10 @@
     pops:   function (e, at) { tl.fromTo(kids(e), { scale: 0, opacity: 0, transformOrigin: "center" }, { scale: 1, opacity: 1, duration: .55, stagger: .18, ease: E.pop }, at); },
     draw:   function (e, at, d) { tl.fromTo(e, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || .7, ease: E.move }, at); },
     gx:     function (e, at, d) { tl.fromTo(e, { scaleX: 0 }, { scaleX: 1, duration: d || .8, ease: E.enter }, at); },
-    bars:   function (e, at) { tl.from(e, { width: 0, duration: 1, ease: E.enter }, at); },
+    bars:   function (e, at) {
+      var w0 = e.style.width || getComputedStyle(e).width;
+      tl.fromTo(e, { width: 0 }, { width: w0, duration: 1, ease: E.enter }, at);
+    },
     /* bar opening is always visible: grows from zero height */
     barsh:  function (e, at, d) { tl.fromTo(e, { scaleY: 0 }, { scaleY: 1, transformOrigin: "bottom", duration: d || 1.3, ease: E.enter }, at); },
     count:  function (e, at, d, v) {
@@ -569,8 +576,12 @@
       tl = gsap.timeline({ paused: true });
       q.querySelectorAll("section.clip").forEach(function (sec) {
         var s = n(sec.dataset.start, 0), d = n(sec.dataset.duration, 3), cam = sec.querySelector(".cam");
+        /* intro settle, then the slow push. The push is its OWN fromTo starting
+           AFTER the intro — two tweens on `scale` at the same position lazily
+           capture conflicting start values under seek, which is exactly what
+           made a mounted block drift bigger than the monolith. */
         tl.fromTo(cam, { opacity: 0, y: 44, scale: .97 }, { opacity: 1, y: 0, scale: 1, duration: .5, ease: E.enter }, s);
-        tl.to(cam, { scale: 1.03, duration: d, ease: E.move }, s);
+        tl.fromTo(cam, { scale: 1 }, { scale: 1.03, duration: Math.max(.1, d - .5), ease: E.move }, s + .5);
         tl.to(cam, { opacity: 0, y: -30, duration: .32, ease: E.exit }, s + Math.max(.34, d - .32));
         tl.set(cam, { opacity: 0 }, s + d);
 
@@ -643,12 +654,12 @@
           sec.querySelectorAll(".flipgroup").forEach(function (g) { autoFlip(g, s, d); });
         } else {
           sec.querySelectorAll(".arrow").forEach(function (g) {
-            tl.from(g.querySelectorAll(".icell"), { opacity: 0, y: 26, duration: .5, stagger: .18, ease: E.enter }, s + .2);
+            tl.fromTo(g.querySelectorAll(".icell"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .5, stagger: .18, ease: E.enter }, s + .2);
             var l = g.querySelector(".arline"), h = g.querySelector(".arhead");
             if (l) A.draw(l, s + .5, .4); if (h) A.draw(h, s + .85, .25);
           });
           sec.querySelectorAll(".rail").forEach(function (r) {
-            tl.from(r.querySelectorAll(".rstop"), { opacity: 0, y: 20, duration: .45, stagger: .12 }, s + .2);
+            tl.fromTo(r.querySelectorAll(".rstop"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .45, stagger: .12 }, s + .2);
             r.querySelectorAll(".rfill").forEach(function (f) { A.gx(f, s + .4, .6); });
           });
         }

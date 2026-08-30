@@ -54,15 +54,27 @@ Ujra kell futtatni MINDEN `zg.css` / `motion.js` / `icons.js` / `type.js` /
 `<name>.src.html` valtoztatas utan. A build a `_frames/blocks/<name>/`
 promoted konyvtarba is tukroz (BLOCKS.md).
 
+## A lanc
+
+```
+extract.ps1        # egyszeri: a monolit <section>-jeibol <name>.src.html (mind 39, lefutott)
+make-fontface.ps1  # _fontface.css (Open Sans base64) — csak ha a fonts/ valtozik
+build.ps1          # <name>.src.html + kozos css/js -> <name>.html   (minden valtoztatas utan)
+assemble-sampler.ps1  # ../index.html = 39 mount slot
+```
+
 ## Statusz (2026-08-30)
 
-Pilot: `arrow`, `funnel`, `lens`. A `_pilot/` harness mountolja mind a harmat
-(a `lens`-t ketszer, egyszer sajat `data-variable-values`-szel), es a
-`hyperframes check` zold: 0 error, 0 warning, 31/31 WCAG AA.
+Mind a 39 archetipus kinyerve, a sampler `index.html` mount host.
+`hyperframes check`: PASSED, 0/0, 58/58 WCAG AA.
 
-Bizonyitott: a mount-kontrakt, a `motion.js` scope-olasa (`ZG.buildIn(root,id)`),
-a helyi Open Sans a sub-kompba, a token-hid, es a per-instance valtozok.
+**Ismert elteres:** a mountolt render kb. 3-4%-kal nagyobb kerettel jon, mint a
+monolit. Egyenletes mind a 39 jeleneten. Vegigprobalva: `#root`/slot CSS
+`transform`, `<template>` vs no-template, font, cam-animacio — egyik sem
+befolyasolja. A sub-komp kompozitalas sajatja. Egyszeri keret-dontes, nem
+regresszio. Reszletek: `_frames/STATUS.md`.
 
-Hatra: a maradek 36 archetipus kinyerese, a sampler `index.html` atirasa mount
-hosztra, a `regress.ps1` scene-tabla parszere a slot-listara, uj sampler render,
-uj baseline (Zoltan mozgas-jovahagyasa, PIPELINE 3. kapu).
+**Meg NEM valtozo:** attributumban elo mozgas-parameterek (lens `data-path` /
+`data-words`, ikon `data-icon`). Kovetkezo: init-script a `getVariables()`-bol.
+
+Monolit backup: `git show 417ab8e:zg-frames/index.html`.

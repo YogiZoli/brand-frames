@@ -1597,10 +1597,36 @@ section.clip:first-of-type .cam{opacity:1}
     });
   }
 
+  /* PER-INSTANCE ATTRIBUTES — the seamless bit for live videos.
+     data-var-text swaps an element's TEXT (HyperFrames built-in). There is no
+     built-in for arbitrary ATTRIBUTES, and the lens motion is attribute-driven
+     (data-path = where the glass travels, data-words = what swells inside it),
+     as is the icon set (data-icon / data-glyph). So a block element carries:
+         data-vars='{"data-path":"lensPath","data-words":"lensWords"}'
+     meaning: at build time, set data-path from variable lensPath, data-words
+     from lensWords — but only when the live video actually passes a value.
+     No value (the sampler) -> the baked-in default stays. Runs FIRST in _run,
+     before icons paint and before the anim walk reads the attributes. */
+  function applyVars(scope) {
+    var q = scope && scope.nodeType === 1 ? scope : document;
+    var hf = w.__hyperframes, vars;
+    if (!hf || typeof hf.getVariables !== "function") return;
+    try { vars = hf.getVariables() || {}; } catch (e) { return; }
+    q.querySelectorAll("[data-vars]").forEach(function (el) {
+      var map;
+      try { map = JSON.parse(el.getAttribute("data-vars")); } catch (e) { return; }
+      Object.keys(map).forEach(function (attr) {
+        var v = vars[map[attr]];
+        if (v !== undefined && v !== null && String(v) !== "") el.setAttribute(attr, String(v));
+      });
+    });
+  }
+
   w.ZG = {
     PULSE: PULSE,
     E: E,
     dur: dur,
+    applyVars: applyVars,
     cues: function () { return cues.slice().sort(function (a, b) { return a.t - b.t; }); },
     /* build(id) — the monolithic sampler / a whole document.
        buildIn(root, id) — one mounted archetype block, scoped to its own root.
@@ -1611,6 +1637,7 @@ section.clip:first-of-type .cam{opacity:1}
     _run: function (scope, id) {
       var q = scope && scope.nodeType === 1 ? scope : document;
       cues = [];
+      applyVars(scope);              /* per-instance attributes BEFORE anything reads them */
       if (w.ZGT) w.ZGT.run(scope);   /* v1.7: írásjel-kultúra a mérés ELŐTT */
       if (w.ZGI) w.ZGI.paint(scope); /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });

@@ -4,18 +4,20 @@
     {"id":"kick","type":"string","label":"Kicker","default":"05 · ARROW · 3 PHASES"},
     {"id":"leftLabel","type":"string","label":"Left node label","default":"Comment"},
     {"id":"rightLabel","type":"string","label":"Right node label","default":"Client"},
+    {"id":"leftIcon","type":"string","label":"Left icon name (icons.js)","default":"comment"},
+    {"id":"rightIcon","type":"string","label":"Right icon name (icons.js)","default":"client"},
     {"id":"caption","type":"string","label":"Sub caption","default":"Icon. Line. Pulse."}
   ] }
 zg-->
 <div class="kick" data-anim="kick" data-at=".1" data-var-text="kick">05 · ARROW · 3 PHASES</div>
 <div class="arrow" style="gap:104px">
-  <div class="icell"><div class="icon" style="width:190px;height:190px"><span class="ico" data-icon="comment"></span><span class="prsame"></span></div><div class="ilbl" data-var-text="leftLabel">Comment</div></div>
+  <div class="icell"><div class="icon" style="width:190px;height:190px"><span class="ico" data-icon="comment" data-vars='{"data-icon":"leftIcon"}'></span><span class="prsame"></span></div><div class="ilbl" data-var-text="leftLabel">Comment</div></div>
   <div style="position:relative">
     <svg class="arsvg" width="520" height="120" viewBox="0 0 520 120">
       <line class="arline" x1="14" y1="60" x2="440" y2="60" stroke="var(--blue)" stroke-width="11" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
     </svg>
     <span class="tdot" data-val="426"></span>
   </div>
-  <div class="icell"><div class="icon g" style="width:190px;height:190px"><span class="ico" data-icon="client"></span><span class="prsame"></span></div><div class="ilbl" data-var-text="rightLabel">Client</div></div>
+  <div class="icell"><div class="icon g" style="width:190px;height:190px"><span class="ico" data-icon="client" data-vars='{"data-icon":"rightIcon"}'></span><span class="prsame"></span></div><div class="ilbl" data-var-text="rightLabel">Client</div></div>
 </div>
 <div class="sub" data-anim="fi" data-at="2.6" data-var-text="caption">Icon. Line. Pulse.</div>

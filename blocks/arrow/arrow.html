@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"05 · ARROW · 3 PHASES"},{"id":"leftLabel","type":"string","label":"Left node label","default":"Comment"},{"id":"rightLabel","type":"string","label":"Right node label","default":"Client"},{"id":"caption","type":"string","label":"Sub caption","default":"Icon. Line. Pulse."}]'>
+<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"05 · ARROW · 3 PHASES"},{"id":"leftLabel","type":"string","label":"Left node label","default":"Comment"},{"id":"rightLabel","type":"string","label":"Right node label","default":"Client"},{"id":"leftIcon","type":"string","label":"Left icon name (icons.js)","default":"comment"},{"id":"rightIcon","type":"string","label":"Right icon name (icons.js)","default":"client"},{"id":"caption","type":"string","label":"Sub caption","default":"Icon. Line. Pulse."}]'>
 <head><meta charset="UTF-8"/></head>
 <body>
 <template>
@@ -848,14 +848,14 @@ section.clip:first-of-type .cam{opacity:1}
 <section id="arrow-sc" class="clip" data-start="0" data-duration="5" data-track-index="1"><div class="cam">
 <div class="kick" data-anim="kick" data-at=".1" data-var-text="kick">05 · ARROW · 3 PHASES</div>
 <div class="arrow" style="gap:104px">
-  <div class="icell"><div class="icon" style="width:190px;height:190px"><span class="ico" data-icon="comment"></span><span class="prsame"></span></div><div class="ilbl" data-var-text="leftLabel">Comment</div></div>
+  <div class="icell"><div class="icon" style="width:190px;height:190px"><span class="ico" data-icon="comment" data-vars='{"data-icon":"leftIcon"}'></span><span class="prsame"></span></div><div class="ilbl" data-var-text="leftLabel">Comment</div></div>
   <div style="position:relative">
     <svg class="arsvg" width="520" height="120" viewBox="0 0 520 120">
       <line class="arline" x1="14" y1="60" x2="440" y2="60" stroke="var(--blue)" stroke-width="11" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
     </svg>
     <span class="tdot" data-val="426"></span>
   </div>
-  <div class="icell"><div class="icon g" style="width:190px;height:190px"><span class="ico" data-icon="client"></span><span class="prsame"></span></div><div class="ilbl" data-var-text="rightLabel">Client</div></div>
+  <div class="icell"><div class="icon g" style="width:190px;height:190px"><span class="ico" data-icon="client" data-vars='{"data-icon":"rightIcon"}'></span><span class="prsame"></span></div><div class="ilbl" data-var-text="rightLabel">Client</div></div>
 </div>
 <div class="sub" data-anim="fi" data-at="2.6" data-var-text="caption">Icon. Line. Pulse.</div>
 </div></section>
@@ -1587,10 +1587,36 @@ section.clip:first-of-type .cam{opacity:1}
     });
   }
 
+  /* PER-INSTANCE ATTRIBUTES — the seamless bit for live videos.
+     data-var-text swaps an element's TEXT (HyperFrames built-in). There is no
+     built-in for arbitrary ATTRIBUTES, and the lens motion is attribute-driven
+     (data-path = where the glass travels, data-words = what swells inside it),
+     as is the icon set (data-icon / data-glyph). So a block element carries:
+         data-vars='{"data-path":"lensPath","data-words":"lensWords"}'
+     meaning: at build time, set data-path from variable lensPath, data-words
+     from lensWords — but only when the live video actually passes a value.
+     No value (the sampler) -> the baked-in default stays. Runs FIRST in _run,
+     before icons paint and before the anim walk reads the attributes. */
+  function applyVars(scope) {
+    var q = scope && scope.nodeType === 1 ? scope : document;
+    var hf = w.__hyperframes, vars;
+    if (!hf || typeof hf.getVariables !== "function") return;
+    try { vars = hf.getVariables() || {}; } catch (e) { return; }
+    q.querySelectorAll("[data-vars]").forEach(function (el) {
+      var map;
+      try { map = JSON.parse(el.getAttribute("data-vars")); } catch (e) { return; }
+      Object.keys(map).forEach(function (attr) {
+        var v = vars[map[attr]];
+        if (v !== undefined && v !== null && String(v) !== "") el.setAttribute(attr, String(v));
+      });
+    });
+  }
+
   w.ZG = {
     PULSE: PULSE,
     E: E,
     dur: dur,
+    applyVars: applyVars,
     cues: function () { return cues.slice().sort(function (a, b) { return a.t - b.t; }); },
     /* build(id) — the monolithic sampler / a whole document.
        buildIn(root, id) — one mounted archetype block, scoped to its own root.
@@ -1601,6 +1627,7 @@ section.clip:first-of-type .cam{opacity:1}
     _run: function (scope, id) {
       var q = scope && scope.nodeType === 1 ? scope : document;
       cues = [];
+      applyVars(scope);              /* per-instance attributes BEFORE anything reads them */
       if (w.ZGT) w.ZGT.run(scope);   /* v1.7: írásjel-kultúra a mérés ELŐTT */
       if (w.ZGI) w.ZGI.paint(scope); /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });

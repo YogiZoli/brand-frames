@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"14 · LENS · MAGNIFIES THE LETTERS"},{"id":"panelTitle","type":"string","label":"Panel title","default":"Lead record"},{"id":"k1","type":"string","label":"Field 1 key","default":"PRIMARY INTENT"},{"id":"v1","type":"string","label":"Field 1 value","default":"Enterprise scale"},{"id":"k2","type":"string","label":"Field 2 key","default":"TEMPERATURE"},{"id":"v2","type":"string","label":"Field 2 value","default":"Warm to hot"},{"id":"p1k","type":"string","label":"Bubble 1 key","default":"what it wants"},{"id":"p1v","type":"string","label":"Bubble 1 value","default":"A company-size rollout"},{"id":"p2k","type":"string","label":"Bubble 2 key","default":"how ready it is"},{"id":"p2v","type":"string","label":"Bubble 2 value","default":"Ready to talk this week"},{"id":"caption","type":"string","label":"Sub caption","default":"Never an empty glass."}]'>
+<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"14 · LENS · MAGNIFIES THE LETTERS"},{"id":"panelTitle","type":"string","label":"Panel title","default":"Lead record"},{"id":"k1","type":"string","label":"Field 1 key","default":"PRIMARY INTENT"},{"id":"v1","type":"string","label":"Field 1 value","default":"Enterprise scale"},{"id":"k2","type":"string","label":"Field 2 key","default":"TEMPERATURE"},{"id":"v2","type":"string","label":"Field 2 value","default":"Warm to hot"},{"id":"p1k","type":"string","label":"Bubble 1 key","default":"what it wants"},{"id":"p1v","type":"string","label":"Bubble 1 value","default":"A company-size rollout"},{"id":"p2k","type":"string","label":"Bubble 2 key","default":"how ready it is"},{"id":"p2v","type":"string","label":"Bubble 2 value","default":"Ready to talk this week"},{"id":"caption","type":"string","label":"Sub caption","default":"Never an empty glass."},{"id":"lensPath","type":"string","label":"Lens travel path (x,y;x,y in px)","default":"57,7;590,7"},{"id":"lensWords","type":"string","label":"Magnified words (pipe-separated)","default":"Enterprise|Warm"}]'>
 <head><meta charset="UTF-8"/></head>
 <body>
 <template>
@@ -856,7 +856,8 @@ section.clip:first-of-type .cam{opacity:1}
     </div>
   </div>
   <span class="lens" data-layout-allow-overlap data-anim="lens" data-at=".6" data-dur="4.8"
-        data-path="57,7;590,7" data-words="Enterprise|Warm">
+        data-path="57,7;590,7" data-words="Enterprise|Warm"
+        data-vars='{"data-path":"lensPath","data-words":"lensWords"}'>
     <span class="lenstxt" data-layout-allow-overlap>Enterprise</span></span>
   <div class="pop tint b" data-layout-allow-overlap style="left:40px;top:452px"
        data-anim="unfold" data-at="1.3" data-dur="1.7">
@@ -1595,10 +1596,36 @@ section.clip:first-of-type .cam{opacity:1}
     });
   }
 
+  /* PER-INSTANCE ATTRIBUTES — the seamless bit for live videos.
+     data-var-text swaps an element's TEXT (HyperFrames built-in). There is no
+     built-in for arbitrary ATTRIBUTES, and the lens motion is attribute-driven
+     (data-path = where the glass travels, data-words = what swells inside it),
+     as is the icon set (data-icon / data-glyph). So a block element carries:
+         data-vars='{"data-path":"lensPath","data-words":"lensWords"}'
+     meaning: at build time, set data-path from variable lensPath, data-words
+     from lensWords — but only when the live video actually passes a value.
+     No value (the sampler) -> the baked-in default stays. Runs FIRST in _run,
+     before icons paint and before the anim walk reads the attributes. */
+  function applyVars(scope) {
+    var q = scope && scope.nodeType === 1 ? scope : document;
+    var hf = w.__hyperframes, vars;
+    if (!hf || typeof hf.getVariables !== "function") return;
+    try { vars = hf.getVariables() || {}; } catch (e) { return; }
+    q.querySelectorAll("[data-vars]").forEach(function (el) {
+      var map;
+      try { map = JSON.parse(el.getAttribute("data-vars")); } catch (e) { return; }
+      Object.keys(map).forEach(function (attr) {
+        var v = vars[map[attr]];
+        if (v !== undefined && v !== null && String(v) !== "") el.setAttribute(attr, String(v));
+      });
+    });
+  }
+
   w.ZG = {
     PULSE: PULSE,
     E: E,
     dur: dur,
+    applyVars: applyVars,
     cues: function () { return cues.slice().sort(function (a, b) { return a.t - b.t; }); },
     /* build(id) — the monolithic sampler / a whole document.
        buildIn(root, id) — one mounted archetype block, scoped to its own root.
@@ -1609,6 +1636,7 @@ section.clip:first-of-type .cam{opacity:1}
     _run: function (scope, id) {
       var q = scope && scope.nodeType === 1 ? scope : document;
       cues = [];
+      applyVars(scope);              /* per-instance attributes BEFORE anything reads them */
       if (w.ZGT) w.ZGT.run(scope);   /* v1.7: írásjel-kultúra a mérés ELŐTT */
       if (w.ZGI) w.ZGI.paint(scope); /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });

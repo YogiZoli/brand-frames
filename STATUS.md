@@ -184,9 +184,11 @@ végigpróbáltam). Ez a mostantól érvényes néz.
 **JÓVÁHAGYVA (Zoltán, 2026-08-31): "jobb mint volt, eddigi legjobb."** Az új
 regressziós baseline: `sampler_blocks_2026-08-30_2343.mp4` (`regress.ps1 -Accept`
 lefutott, `baseline/<blokknev>_0/1/2.png` + `baseline.mp4`, 39 archetípus,
-3 fázisú). A `zg-frames` könyvtár mostantól a mountolt blokkokon áll. A
+3 fázisú; `regress.ps1 -Video sampler_blocks_2026-08-30_2343.mp4` = 39/39 same).
+A `zg-frames` könyvtár mostantól a mountolt blokkokon áll. A
 `sampler_2026-08-29_v6.mp4` baseline LEVÁLTVA. Monolit a git történetben:
-`git show 417ab8e:zg-frames/index.html`.
+`git show 417ab8e:zg-frames/index.html`. Drive tükör: `📺 YouTube & Content/zg-frames/`
+(`sampler_blocks_2026-08-30_2343.mp4` + `_sheet_blocks.jpg`).
 
 ---
 

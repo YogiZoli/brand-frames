@@ -6,11 +6,14 @@ $dest = Get-ChildItem "C:\Users\gdp\My Drive" -Directory |
 if (-not $dest) { Write-Host "Drive folder not found"; exit 1 }
 $out = Join-Path $dest.FullName "zg-frames"
 New-Item -ItemType Directory -Force -Path $out | Out-Null
-Get-ChildItem $src -Filter "sampler_v*.mp4" | ForEach-Object {
-  Copy-Item $_.FullName -Destination $out -Force
+foreach ($pat in "sampler_v*.mp4","sampler_blocks_*.mp4") {
+  Get-ChildItem $src -Filter $pat -File | ForEach-Object { Copy-Item $_.FullName -Destination $out -Force }
 }
 Get-ChildItem $src -Filter "_sheet1*.jpg" | ForEach-Object {
   Copy-Item $_.FullName -Destination $out -Force
+}
+if (Test-Path "$src\blocks\_sheet_blocks.jpg") {
+  Copy-Item "$src\blocks\_sheet_blocks.jpg" $out -Force
 }
 Get-ChildItem $src -Filter "_ring16.jpg","_skitch16.jpg","_lens16.jpg" -ErrorAction SilentlyContinue |
   ForEach-Object { Copy-Item $_.FullName -Destination $out -Force }

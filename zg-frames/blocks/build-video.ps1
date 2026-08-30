@@ -66,15 +66,49 @@ foreach ($sc in $plan.scenes) {
   }
 }
 
-# Every mounted instance needs a UNIQUE data-composition-id: the runtime keys
-# per-instance variables (and --css props) by it, and a repeated id makes them
-# collide and fall back to defaults. So each scene gets its own composition file
-# under compositions/, a byte copy of the generated block with only its id
-# swapped. blocks/<name>/<name>.html stays the single source; this is a stamp.
+# Each scene gets its own composition file: a copy of the generated block with
+# (a) a unique data-composition-id — a repeated id collides, and (b) the scene's
+# text/attributes BAKED IN at build time. No runtime variable system: HF's
+# per-instance vars only surface through --<id> css props, and it refuses those
+# for names like `sub`/`leftLabel`, so we substitute here instead. Author names
+# their vars whatever CATALOG.md says and it just works.
 $compDir = Join-Path $repo "compositions"
 if (Test-Path $compDir) { Get-ChildItem $compDir -Filter "s*.html" | Remove-Item -Force }
 New-Item -ItemType Directory -Force -Path $compDir | Out-Null
 $utf8 = New-Object System.Text.UTF8Encoding($false)
+
+function HtmlEnc([string]$s) { $s.Replace('&','&amp;').Replace('<','&lt;').Replace('>','&gt;') }
+function AttrEnc([string]$s) { $s.Replace('&','&amp;').Replace('"','&quot;') }
+
+function BakeVars([string]$html, $vars) {
+  if (-not $vars) { return $html }
+  foreach ($p in $vars.PSObject.Properties) {
+    $vid = $p.Name; $val = [string]$p.Value
+    # every wired element carries data-vars='{...}' mapping attr -> varId.
+    # find each, read its map, apply this var where it appears.
+    $html = [regex]::Replace($html, "(?<open><[a-z]+\b[^>]*\bdata-vars='(?<map>\{[^']*\})'[^>]*>)(?<inner>[^<]*)(?<tail></)", {
+      param($mm)
+      $map = $mm.Groups['map'].Value | ConvertFrom-Json
+      $open = $mm.Groups['open'].Value; $inner = $mm.Groups['inner'].Value
+      foreach ($k in $map.PSObject.Properties) {
+        if ($k.Value -ne $vid) { continue }
+        if ($k.Name -eq 'text') {
+          $inner = (HtmlEnc $val)
+        } else {
+          # attribute swap on the same tag (data-icon, data-path, data-words, data-val...)
+          $an = [regex]::Escape($k.Name)
+          if ($open -match "\s$an=""") { $open = [regex]::Replace($open, "(\s$an="")[^""]*("")", ('${1}' + (AttrEnc $val) + '${2}')) }
+          else { $open = $open -replace '>$', (" $($k.Name)=""$(AttrEnc $val)"">") }
+        }
+      }
+      $open + $inner + $mm.Groups['tail'].Value
+    })
+  }
+  # values are baked in now; strip data-vars so ZG.applyVars can't re-apply a
+  # (default) --css value over them at render time.
+  $html = [regex]::Replace($html, "\s+data-vars='[^']*'", "")
+  return $html
+}
 
 $slots = New-Object System.Text.StringBuilder
 $i = 0
@@ -84,16 +118,14 @@ foreach ($sc in $plan.scenes) {
   $sid = ("s{0:d3}-{1}" -f $i, $b)
   $blockHtml = Get-Content (Join-Path $PSScriptRoot "$b/$b.html") -Raw
   $inst = $blockHtml.Replace("data-composition-id=""$b""", "data-composition-id=""$sid""").Replace("""$b"")", """$sid"")")
+  $inst = BakeVars $inst $sc.vars
   [System.IO.File]::WriteAllText((Join-Path $compDir "$sid.html"), $inst, $utf8)
 
-  $vv = if ($sc.vars) { ($sc.vars | ConvertTo-Json -Compress -Depth 6) } else { "{}" }
-  $vv = $vv -replace "'", "&#39;"
   $secEnd = if ($sc.sectionEnd -or $known[$b].meta.sectionEnd) { " data-section-end" } else { "" }
   $hold = if ($sc.hold) { " data-hold=""$($sc.hold)""" } else { "" }
   $sent = if ($sc.sent) { $sc.sent } else { throw "scene $i ($b) has no 'sent' anchor" }
   [void]$slots.AppendLine(("  <div id=""$sid"" data-composition-id=""$sid"" data-composition-src=""compositions/$sid.html""" +
-    " data-sent=""$sent"" data-track-index=""1"" data-width=""1920"" data-height=""1080""$secEnd$hold" +
-    " data-variable-values='$vv'></div>"))
+    " data-sent=""$sent"" data-track-index=""1"" data-width=""1920"" data-height=""1080""$secEnd$hold></div>"))
 }
 
 $audioTag = ""

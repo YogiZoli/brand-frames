@@ -34,14 +34,13 @@ camClass, variables), utana a markup, pontosan az, ami a samplerben a
 
 Minden szoveg-level `data-vars='{"text":"<id>"}'`-t visz, minden attributum-
 csere `data-vars='{"<attr>":"<id>"}'`-t (pl. lens `data-path`/`data-words`,
-arrow `data-icon`). A hoszt slot ad ertekeket `data-variable-values`-szel;
-`ZG.applyVars()` a `--<id>` CSS custom propbol olvas (NEM a `getVariables()`-bol,
-az csak a defaultot adja mountkor). A deklaracio a `.src.html` `variables`
-tombjeben. Teljes lista: `CATALOG.md`.
+arrow `data-icon`). **A `build-video.ps1` build-idoben belesuti** a scene
+ertekeit a per-scene composition-fajlba (a `data-vars`-t utana leszedi), tehat
+barmilyen valtozonev mukodik, nincs HF runtime valtozo-rendszer a render-utban.
+A deklaracio a `.src.html` `variables` tombjeben; teljes lista `CATALOG.md`.
 
-**Foglalt valtozonevek** (a HF nem ad rajuk `--css` propot): `sub`, `leftLabel`,
-`rightLabel`, `leftIcon`, `rightIcon`. Helyettuk: `subcap`, `lnode`, `rnode`,
-`lico`, `rico`.
+(`ZG.applyVars()` a `motion.js`-ben megvan a Studio elo-nezethez: a `--<id>` CSS
+custom propbol olvas. A renderben nem szamit, mert a `build-video.ps1` mar besutott.)
 
 ## A teljes lanc (eles video)
 

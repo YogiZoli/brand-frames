@@ -201,12 +201,12 @@ szerkesztés nélkül. Most megvan.
 - `blocks/add-vars.ps1` — a szöveg-leveleket bedrótozza (`data-vars='{"text":"id"}'`),
   a deklarációkat a meta-fejlécbe. `blocks/_fixvars.ps1` — a beágyazott ikon/emphasis
   spanokat is (contact-record, funnel, branch, cycle, gauge, command, lead-card…).
-- `motion.js` `ZG.applyVars()` — a `--<id>` CSS custom propból olvas (NEM a
-  `getVariables()`-ből, az csak a mount-kori defaultot adja). Szöveg + tetszőleges
-  attribútum (lens `data-path`/`data-words`, arrow `data-icon`).
-- **Foglalt változónevek** (a HF nem ad rájuk `--css` propot): `sub`, `leftLabel`,
-  `rightLabel`, `leftIcon`, `rightIcon`. Átnevezve: `subcap`, `lnode`, `rnode`,
-  `lico`, `rico`.
+- **A `build-video.ps1` build-időben belesüti** a scene értékeit a per-scene
+  composition-fájlba (a `data-vars`-t utána leszedi). NINCS HF runtime változó-rendszer
+  a render-útban: a HF a `--<id>` CSS propot csak bizonyos neveknél adja meg
+  (`sub`, `leftLabel` stb. nem), a besütés ezt megkerüli. Bármilyen név működik.
+- `motion.js` `ZG.applyVars()` megvan a Studio elő-nézethez (a `--<id>` propból);
+  a renderben nem számít.
 
 **`blocks/build-video.ps1`** — a scene-lista (JSON: `{block, sent, vars}` per
 jelenet) to `../index.html` + `compositions/<sceneId>.html`. Minden mountolt

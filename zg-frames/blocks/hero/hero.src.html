@@ -1,14 +1,12 @@
 <!--zg
-{
-    "id":  "hero",
-    "duration":  4.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"hero", "duration":4.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"03 · HERO"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Letters rise. Rule draws."},
+    {"id":"line1","type":"string","label":"Line 1","default":"ONE SITTING"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">03 · HERO</div>
-<div class="title blue" data-anim="rise" data-at=".35">ONE SITTING</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>03 · HERO</div>
+<div class="title blue" data-anim="rise" data-at=".35" data-vars='{"text":"line1"}'>ONE SITTING</div>
 <div class="uln" data-anim="gx" data-at="1.3" data-dur=".7"></div>
-<div class="sub" data-anim="fi" data-at="1.9">Letters rise. Rule draws.</div>
+<div class="subcap" data-anim="fi" data-at="1.9" data-vars='{"text":"subcap"}'>Letters rise. Rule draws.</div>

@@ -1,16 +1,17 @@
 <!--zg
-{
-    "id":  "proportion-bars",
-    "duration":  4.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"proportion-bars", "duration":4.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"07 · PROPORTION BARS"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Width is the ratio."},
+    {"id":"bar1","type":"string","label":"Wide bar label","default":"NARRATION"},
+    {"id":"bar1r","type":"string","label":"Wide bar note","default":"leads"},
+    {"id":"bar2","type":"string","label":"Narrow bar label","default":"MUSIC"},
+    {"id":"bar2r","type":"string","label":"Narrow bar note","default":"quiet"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">07 · PROPORTION BARS</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>07 · PROPORTION BARS</div>
 <div class="funnel">
-  <div style="display:flex;justify-content:center"><div class="fbar" data-anim="bars" data-at=".4" style="width:100%;background:var(--blue)"><span class="fl">NARRATION</span><span class="fr">leads</span></div></div>
-  <div style="display:flex;justify-content:center"><div class="fbar" data-anim="bars" data-at=".8" style="width:42%;background:var(--green)"><span class="fl">MUSIC</span><span class="fr">quiet</span></div></div>
+  <div style="display:flex;justify-content:center"><div class="fbar" data-anim="bars" data-at=".4" style="width:100%;background:var(--blue)"><span class="fl" data-vars='{"text":"bar1"}'>NARRATION</span><span class="fr" data-vars='{"text":"bar1r"}'>leads</span></div></div>
+  <div style="display:flex;justify-content:center"><div class="fbar" data-anim="bars" data-at=".8" style="width:42%;background:var(--green)"><span class="fl" data-vars='{"text":"bar2"}'>MUSIC</span><span class="fr" data-vars='{"text":"bar2r"}'>quiet</span></div></div>
 </div>
-<div class="sub" data-anim="fi" data-at="1.9">Width is the ratio.</div>
+<div class="subcap" data-anim="fi" data-at="1.9" data-vars='{"text":"subcap"}'>Width is the ratio.</div>

@@ -489,8 +489,11 @@
     d = d || 1.8;
     if (after) tl.fromTo(after, { clipPath: "inset(0 100% 0 0)" },
       { clipPath: "inset(0 0% 0 0)", duration: d, ease: E.move }, at);
-    if (bar) tl.fromTo(bar, { left: "0%", opacity: 0 },
-      { left: "100%", opacity: 1, duration: d, ease: E.move }, at);
+    /* transform, not `left`: layout properties snap to device pixels and stutter
+       under seek-by-frame capture (lint: gsap_non_transform_motion). The bar is
+       positioned at left:0; x carries it across the 1440px card. */
+    if (bar) tl.fromTo(bar, { x: 0, opacity: 0 },
+      { x: 1440, opacity: 1, duration: d, ease: E.move }, at);
     if (bar) tl.to(bar, { opacity: 0, duration: .3 }, at + d);
   };
 
@@ -567,17 +570,29 @@
      from lensWords — but only when the live video actually passes a value.
      No value (the sampler) -> the baked-in default stays. Runs FIRST in _run,
      before icons paint and before the anim walk reads the attributes. */
+  /* Per-instance values reach a mounted sub-comp as CSS custom properties on its
+     root (--<varId>) — NOT via window.__hyperframes.getVariables(), which only
+     returns declared defaults at build time. So read the computed style. */
+  function cssVar(cs, id) {
+    if (!cs) return "";
+    var v = cs.getPropertyValue("--" + id);
+    return v == null ? "" : v.trim().replace(/^["']/, "").replace(/["']$/, "");
+  }
   function applyVars(scope) {
+    var root = scope && scope.nodeType === 1 ? scope : document.documentElement;
     var q = scope && scope.nodeType === 1 ? scope : document;
-    var hf = w.__hyperframes, vars;
-    if (!hf || typeof hf.getVariables !== "function") return;
-    try { vars = hf.getVariables() || {}; } catch (e) { return; }
+    var cs;
+    try { cs = getComputedStyle(root); } catch (e) { return; }
     q.querySelectorAll("[data-vars]").forEach(function (el) {
       var map;
       try { map = JSON.parse(el.getAttribute("data-vars")); } catch (e) { return; }
       Object.keys(map).forEach(function (attr) {
-        var v = vars[map[attr]];
-        if (v !== undefined && v !== null && String(v) !== "") el.setAttribute(attr, String(v));
+        var v = cssVar(cs, map[attr]);
+        if (v === "") return;
+        /* "text" is a pseudo-attr: set the element's text BEFORE any char-split
+           or word-split anim reads it. Everything else is a real attribute. */
+        if (attr === "text") el.textContent = v;
+        else el.setAttribute(attr, v);
       });
     });
   }
@@ -602,15 +617,19 @@
       if (w.ZGI) w.ZGI.paint(scope); /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });
       q.querySelectorAll("section.clip").forEach(function (sec) {
-        var s = n(sec.dataset.start, 0), d = n(sec.dataset.duration, 3), cam = sec.querySelector(".cam");
-        /* intro settle, then the slow push. The push is its OWN fromTo starting
-           AFTER the intro — two tweens on `scale` at the same position lazily
-           capture conflicting start values under seek, which is exactly what
-           made a mounted block drift bigger than the monolith. */
+        var s = n(sec.dataset.start, 0);
+        /* data-scene-dur = the authored motion length; data-duration is a long
+           clip window so a slot that outlives the motion holds, not blanks. */
+        var d = n(sec.dataset.sceneDur, n(sec.dataset.duration, 3));
+        var cam = sec.querySelector(".cam");
+        /* Every block is mounted; the slot's own [data-start, data-duration]
+           window owns show/hide, so a scene that outlives the block's authored
+           motion just holds its last frame instead of going blank. The cam only
+           enters and pushes; it does NOT fade itself out. intro settle first,
+           push after it (two scale tweens at the same position capture
+           conflicting starts under seek). */
         tl.fromTo(cam, { opacity: 0, y: 44, scale: .97 }, { opacity: 1, y: 0, scale: 1, duration: .5, ease: E.enter }, s);
         tl.fromTo(cam, { scale: 1 }, { scale: 1.03, duration: Math.max(.1, d - .5), ease: E.move }, s + .5);
-        tl.to(cam, { opacity: 0, y: -30, duration: .32, ease: E.exit }, s + Math.max(.34, d - .32));
-        tl.set(cam, { opacity: 0 }, s + d);
 
         /* jelenet-belépő hangja: minden jelenet kap egy halk koppanást */
         cue("scene", s + .12);

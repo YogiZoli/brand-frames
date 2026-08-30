@@ -1,21 +1,22 @@
 <!--zg
-{
-    "id":  "rail",
-    "duration":  5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"rail", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"06 · PROGRESS RAIL"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Step by step. Last one lands."},
+    {"id":"r1","type":"string","label":"Rail stop 1","default":"01 Script"},
+    {"id":"r2","type":"string","label":"Rail stop 2","default":"02 Voice"},
+    {"id":"r3","type":"string","label":"Rail stop 3","default":"03 Visuals"},
+    {"id":"r4","type":"string","label":"Rail stop 4","default":"04 Face"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">06 · PROGRESS RAIL</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>06 · PROGRESS RAIL</div>
 <div class="rail">
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">01 Script</span></div>
+  <div class="rstop"><span class="rdot"></span><span class="rlbl" data-vars='{"text":"r1"}'>01 Script</span></div>
   <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">02 Voice</span></div>
+  <div class="rstop"><span class="rdot"></span><span class="rlbl" data-vars='{"text":"r2"}'>02 Voice</span></div>
   <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">03 Visuals</span></div>
+  <div class="rstop"><span class="rdot"></span><span class="rlbl" data-vars='{"text":"r3"}'>03 Visuals</span></div>
   <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">04 Face</span></div>
+  <div class="rstop"><span class="rdot"></span><span class="rlbl" data-vars='{"text":"r4"}'>04 Face</span></div>
 </div>
-<div class="sub" data-anim="fi" data-at="1.8">Step by step. Last one lands.</div>
+<div class="subcap" data-anim="fi" data-at="1.8" data-vars='{"text":"subcap"}'>Step by step. Last one lands.</div>

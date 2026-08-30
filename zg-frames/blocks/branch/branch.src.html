@@ -1,22 +1,22 @@
 <!--zg
-{
-    "id":  "branch",
-    "duration":  5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"branch", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"30 \u0026middot; BRANCH \u0026middot; IT GOES ONE OF TWO WAYS"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Only the taken path stays bright."},
+    {"id":"root","type":"string","label":"Branch root","default":"A comment arrives"},
+    {"id":"win","type":"string","label":"Taken path","default":"Keyword matched, guide sent"},
+    {"id":"lose","type":"string","label":"Other path","default":"No keyword, simple reply"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">30 &middot; BRANCH &middot; IT GOES ONE OF TWO WAYS</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>30 &middot; BRANCH &middot; IT GOES ONE OF TWO WAYS</div>
 <div class="branch" data-anim="branchin" data-at=".35" data-dur="3.4">
   <svg viewBox="0 0 1440 420" width="1440" height="420">
     <path class="brstem" d="M470 210 H620" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
     <path class="brleg no" d="M620 210 C720 210, 740 320, 840 320" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
     <path class="brleg" d="M620 210 C720 210, 740 100, 840 100" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
   </svg>
-  <div class="brroot">A comment arrives</div>
-  <div class="brend win" style="left:860px;top:52px"><span class="skm green"><span class="ico" data-glyph="check"></span></span>Keyword matched &rarr; guide sent</div>
-  <div class="brend" style="left:860px;top:272px"><span class="skm"><span class="ico" data-glyph="dash"></span></span>No keyword &rarr; simple reply</div>
+  <div class="brroot" data-vars='{"text":"root"}'>A comment arrives</div>
+  <div class="brend win" style="left:860px;top:52px"><span class="skm green"><span class="ico" data-glyph="check"></span></span><span data-vars='{"text":"win"}'>Keyword matched &rarr; guide sent</span></div>
+  <div class="brend" style="left:860px;top:272px"><span class="skm"><span class="ico" data-glyph="dash"></span></span><span data-vars='{"text":"lose"}'>No keyword &rarr; simple reply</span></div>
 </div>
-<div class="sub" data-anim="fi" data-at="1.8">Only the taken path stays bright.</div>
+<div class="subcap" data-anim="fi" data-at="1.8" data-vars='{"text":"subcap"}'>Only the taken path stays bright.</div>

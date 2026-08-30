@@ -1,15 +1,13 @@
 <!--zg
-{
-    "id":  "short-scene",
-    "duration":  4,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"short-scene", "duration":4, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"25 · SHORT SCENE · SECOND SPEED"},
+    {"id":"line1","type":"string","label":"Line 1","default":"Under four seconds"},
+    {"id":"line2","type":"string","label":"Line 2","default":"NO THREE PHASES"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">25 · SHORT SCENE · SECOND SPEED</div>
-<div class="stmt" data-anim="reveal" data-at=".25"><div class="title navy sm">Under four seconds</div><div class="title blue">NO THREE PHASES</div></div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>25 · SHORT SCENE · SECOND SPEED</div>
+<div class="stmt" data-anim="reveal" data-at=".25"><div class="title navy sm" data-vars='{"text":"line1"}'>Under four seconds</div><div class="title blue" data-vars='{"text":"line2"}'>NO THREE PHASES</div></div>
 <div class="arrow" style="margin-top:8px;gap:104px">
   <div class="icell"><div class="icon" style="width:120px;height:120px"><span class="ico" data-icon="script"></span></div></div>
   <div style="position:relative"><svg class="arsvg" width="300" height="80" viewBox="0 0 300 80">

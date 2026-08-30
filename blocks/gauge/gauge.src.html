@@ -1,20 +1,18 @@
 <!--zg
-{
-    "id":  "gauge",
-    "duration":  5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"gauge", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"33 \u0026middot; GAUGE \u0026middot; HOW FAR ALONG"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Needle and number move together."},
+    {"id":"pct","type":"string","label":"Percent (0-100)","default":"72"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">33 &middot; GAUGE &middot; HOW FAR ALONG</div>
-<div class="gauge" data-anim="gauge" data-at=".5" data-dur="2.2" data-pct="72">
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>33 &middot; GAUGE &middot; HOW FAR ALONG</div>
+<div class="gauge" data-anim="gauge" data-at=".5" data-dur="2.2" data-pct="72" data-vars='{"data-pct":"pct"}'>
   <svg class="gaugesvg" viewBox="0 0 620 360" width="620" height="360">
     <path class="gaugetrack" d="M60 300 A250 250 0 0 1 560 300"/>
     <path class="gaugebar" d="M60 300 A250 250 0 0 1 560 300"/>
   </svg>
   <span class="gneedle"></span><span class="ghub"></span>
-  <div class="gnum" data-val="72" data-suffix="%">0</div>
+  <div class="gnum" data-val="72" data-suffix="%" data-vars='{"data-val":"pct"}'>0</div>
 </div>
-<div class="sub" data-anim="fi" data-at="2.2">Needle and number move together.</div>
+<div class="subcap" data-anim="fi" data-at="2.2" data-vars='{"text":"subcap"}'>Needle and number move together.</div>

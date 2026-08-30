@@ -1,16 +1,14 @@
 <!--zg
-{
-    "id":  "highlighter",
-    "duration":  4.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"highlighter", "duration":4.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"27 \u0026middot; HIGHLIGHTER"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Swipes in like a marker."},
+    {"id":"line1","type":"string","label":"Line 1","default":"Put your approvals"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">27 &middot; HIGHLIGHTER</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>27 &middot; HIGHLIGHTER</div>
 <div class="stmt" data-anim="reveal" data-at=".35">
-  <div class="title navy sm">Put your approvals</div>
+  <div class="title navy sm" data-vars='{"text":"line1"}'>Put your approvals</div>
   <div class="title navy sm">in front of the <span class="hl">slow step<span class="hlb" data-anim="highlight" data-at="1.4" data-dur=".8"><svg viewBox="0 0 400 60" preserveAspectRatio="none"><path d="M6 44 C60 34, 140 40, 210 33 C280 26, 340 32, 394 22 L392 54 C330 62, 260 55, 190 60 C120 64, 60 58, 8 62 Z"/></svg></span></span></div>
 </div>
-<div class="sub" data-anim="fi" data-at="1.7">Swipes in like a marker.</div>
+<div class="subcap" data-anim="fi" data-at="1.7" data-vars='{"text":"subcap"}'>Swipes in like a marker.</div>

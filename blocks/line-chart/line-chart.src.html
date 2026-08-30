@@ -1,14 +1,13 @@
 <!--zg
-{
-    "id":  "line-chart",
-    "duration":  5.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"line-chart", "duration":5.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"13 · LINE CHART"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Dots land with the line."},
+    {"id":"xStart","type":"string","label":"X axis start","default":"month 1"},
+    {"id":"xEnd","type":"string","label":"X axis end","default":"month 12"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">13 · LINE CHART</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>13 · LINE CHART</div>
 <div class="chart" data-anim="chart" data-at=".5" data-dur="3">
   <span data-anim="leaddot" data-at=".5" data-dur="3"></span>
   <svg width="1640" height="470" viewBox="0 0 1640 470">
@@ -25,8 +24,8 @@ zg-->
       <circle class="cdot" cx="1600" cy="60" r="13" fill="var(--blue)"/>
       <circle class="ctrav" cx="30" cy="420" r="22" opacity="0"/>
     </g>
-    <text class="cx" x="30" y="462">month 1</text>
-    <text class="cx" x="1440" y="462">month 12</text>
+    <text class="cx" x="30" y="462" data-vars='{"text":"xStart"}'>month 1</text>
+    <text class="cx" x="1440" y="462" data-vars='{"text":"xEnd"}'>month 12</text>
   </svg>
 </div>
-<div class="sub" data-anim="fi" data-at="2.7">Dots land with the line.</div>
+<div class="subcap" data-anim="fi" data-at="2.7" data-vars='{"text":"subcap"}'>Dots land with the line.</div>

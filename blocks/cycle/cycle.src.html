@@ -1,25 +1,28 @@
 <!--zg
-{
-    "id":  "cycle",
-    "duration":  5.5,
-    "camClass":  "cam dense",
-    "variables":  [
-
-                  ]
-}
+{ "id":"cycle", "duration":5.5, "camClass":"cam dense",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"32 \u0026middot; CYCLE \u0026middot; IT COMES BACK ROUND"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Once round. A loop is not a spinner."},
+    {"id":"centre","type":"string","label":"Centre label","default":"The flywheel"},
+    {"id":"centreSub","type":"string","label":"Centre sub","default":"no start, no end"},
+    {"id":"n1","type":"string","label":"Node 1","default":"Publish"},
+    {"id":"n2","type":"string","label":"Node 2","default":"Comment"},
+    {"id":"n3","type":"string","label":"Node 3","default":"Guide sent"},
+    {"id":"n4","type":"string","label":"Node 4","default":"Next topic"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">32 &middot; CYCLE &middot; IT COMES BACK ROUND</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>32 &middot; CYCLE &middot; IT COMES BACK ROUND</div>
 <div class="cyc" data-anim="cycle" data-at=".4" data-dur="2.6">
   <svg class="cycsvg" viewBox="0 0 520 520"><circle class="cyctrack" cx="260" cy="260" r="200"/>
     <circle class="cycpath" cx="260" cy="260" r="200"/></svg>
-  <div class="cyccentre"><span class="t">The flywheel</span><span class="s">no start, no end</span></div>
+  <div class="cyccentre"><span class="t" data-vars='{"text":"centre"}'>The flywheel</span><span class="s" data-vars='{"text":"centreSub"}'>no start, no end</span></div>
   <span class="cycnode" style="left:314px;top:-6px"><span class="ico" data-icon="visuals"></span></span>
-  <span class="cyclbl" style="left:470px;top:14px">Publish</span>
+  <span class="cyclbl" style="left:470px;top:14px" data-vars='{"text":"n1"}'>Publish</span>
   <span class="cycnode" style="left:514px;top:194px"><span class="ico" data-icon="comment"></span></span>
-  <span class="cyclbl" style="left:566px;top:436px">Comment</span>
+  <span class="cyclbl" style="left:566px;top:436px" data-vars='{"text":"n2"}'>Comment</span>
   <span class="cycnode g" style="left:314px;top:394px"><span class="ico" data-icon="mail"></span></span>
-  <span class="cyclbl" style="left:76px;top:436px">Guide sent</span>
+  <span class="cyclbl" style="left:76px;top:436px" data-vars='{"text":"n3"}'>Guide sent</span>
   <span class="cycnode" style="left:114px;top:194px"><span class="ico" data-icon="cycle"></span></span>
-  <span class="cyclbl" style="left:60px;top:14px">Next topic</span>
+  <span class="cyclbl" style="left:60px;top:14px" data-vars='{"text":"n4"}'>Next topic</span>
 </div>
-<div class="sub" data-anim="fi" data-at="1.5">Once round. A loop is not a spinner.</div>
+<div class="subcap" data-anim="fi" data-at="1.5" data-vars='{"text":"subcap"}'>Once round. A loop is not a spinner.</div>

@@ -1,7 +1,7 @@
 <!--zg
 { "id":"funnel", "duration":5, "camClass":"cam",
   "variables":[
-    {"id":"kick","type":"string","label":"Kicker","default":"31 &middot; FUNNEL &middot; MANY ARRIVE, FEW FINISH"},
+    {"id":"kick","type":"string","label":"Kicker","default":"31 \u0026middot; FUNNEL \u0026middot; MANY ARRIVE, FEW FINISH"},
     {"id":"s1l","type":"string","label":"Stage 1 label","default":"Watched the video"},
     {"id":"s1r","type":"string","label":"Stage 1 value","default":"100%"},
     {"id":"s2l","type":"string","label":"Stage 2 label","default":"Left a comment"},
@@ -13,11 +13,11 @@
     {"id":"caption","type":"string","label":"Sub caption","default":"The last stage is the one that pays."}
   ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1" data-var-text="kick">31 &middot; FUNNEL &middot; MANY ARRIVE, FEW FINISH</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>31 &middot; FUNNEL &middot; MANY ARRIVE, FEW FINISH</div>
 <div class="fnl" data-anim="funnelin" data-at=".4" data-dur="2.2">
-  <div class="fnst"><span class="fnl-l" data-var-text="s1l">Watched the video</span><span class="fnl-r" data-var-text="s1r">100%</span></div>
-  <div class="fnst"><span class="fnl-l" data-var-text="s2l">Left a comment</span><span class="fnl-r" data-var-text="s2r">18%</span></div>
-  <div class="fnst"><span class="fnl-l" data-var-text="s3l">Opened the guide</span><span class="fnl-r" data-var-text="s3r">11%</span></div>
-  <div class="fnst"><span class="fnl-l" data-var-text="s4l">On the list</span><span class="fnl-r" data-var-text="s4r">9%</span></div>
+  <div class="fnst"><span class="fnl-l" data-vars='{"text":"s1l"}'>Watched the video</span><span class="fnl-r" data-vars='{"text":"s1r"}'>100%</span></div>
+  <div class="fnst"><span class="fnl-l" data-vars='{"text":"s2l"}'>Left a comment</span><span class="fnl-r" data-vars='{"text":"s2r"}'>18%</span></div>
+  <div class="fnst"><span class="fnl-l" data-vars='{"text":"s3l"}'>Opened the guide</span><span class="fnl-r" data-vars='{"text":"s3r"}'>11%</span></div>
+  <div class="fnst"><span class="fnl-l" data-vars='{"text":"s4l"}'>On the list</span><span class="fnl-r" data-vars='{"text":"s4r"}'>9%</span></div>
 </div>
-<div class="sub" data-anim="fi" data-at="1" data-var-text="caption">The last stage is the one that pays.</div>
+<div class="subcap" data-anim="fi" data-at="1" data-vars='{"text":"caption"}'>The last stage is the one that pays.</div>

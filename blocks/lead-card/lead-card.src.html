@@ -1,27 +1,30 @@
 <!--zg
-{
-    "id":  "lead-card",
-    "duration":  5,
-    "camClass":  "cam dense",
-    "variables":  [
-
-                  ],
-    "sectionEnd":  true
-}
+{ "id":"lead-card", "duration":5, "camClass":"cam dense", "sectionEnd":true,
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"39 \u0026middot; LEAD CARD \u0026middot; ONE REAL PERSON"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Not a number. A person."},
+    {"id":"name","type":"string","label":"Person name","default":"Alex Rivers"},
+    {"id":"role","type":"string","label":"Person role","default":"Course creator, 4 months in"},
+    {"id":"tag1","type":"string","label":"Tag 1","default":"commented GUIDE"},
+    {"id":"tag2","type":"string","label":"Tag 2","default":"opened twice"},
+    {"id":"tag3","type":"string","label":"Tag 3","default":"replied"},
+    {"id":"score","type":"string","label":"Score number","default":"86"},
+    {"id":"scoreLabel","type":"string","label":"Score label","default":"ready"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">39 &middot; LEAD CARD &middot; ONE REAL PERSON</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>39 &middot; LEAD CARD &middot; ONE REAL PERSON</div>
 <div class="lead" data-anim="fi" data-at=".35" data-dur=".8">
   <span class="leadav"><span class="ico" data-icon="client"></span></span>
   <div class="leadmain">
-    <div class="leadn" data-anim="fi" data-at=".7">Alex Rivers</div>
-    <div class="leadr" data-anim="fi" data-at=".95">Course creator &middot; 4 months in</div>
+    <div class="leadn" data-anim="fi" data-at=".7" data-vars='{"text":"name"}'>Alex Rivers</div>
+    <div class="leadr" data-anim="fi" data-at=".95" data-vars='{"text":"role"}'>Course creator &middot; 4 months in</div>
     <div class="leadtags" data-anim="pops" data-at="1.4">
-      <span class="ltag">commented GUIDE</span>
-      <span class="ltag">opened twice</span>
-      <span class="ltag g">replied</span>
+      <span class="ltag" data-vars='{"text":"tag1"}'>commented GUIDE</span>
+      <span class="ltag" data-vars='{"text":"tag2"}'>opened twice</span>
+      <span class="ltag g" data-vars='{"text":"tag3"}'>replied</span>
     </div>
   </div>
-  <div class="leadscore"><div class="v" data-anim="count" data-at="1.9" data-dur="1.4" data-val="86">0</div>
-    <div class="k">ready</div></div>
+  <div class="leadscore"><div class="v" data-anim="count" data-at="1.9" data-dur="1.4" data-val="86" data-vars='{"data-val":"score"}'>0</div>
+    <div class="k" data-vars='{"text":"scoreLabel"}'>ready</div></div>
 </div>
-<div class="sub" data-anim="fi" data-at="2.2">Not a number. A person.</div>
+<div class="subcap" data-anim="fi" data-at="2.2" data-vars='{"text":"subcap"}'>Not a number. A person.</div>

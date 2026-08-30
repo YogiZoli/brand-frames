@@ -1,6 +1,6 @@
-<!doctype html>
-<html lang="en" data-resolution="landscape" data-composition-variables='[]'>
-<head><meta charset="UTF-8"/></head>
+<!DOCTYPE html>
+<html lang="en" data-resolution="landscape" data-composition-variables="[{&quot;id&quot;:&quot;kick&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Kicker&quot;,&quot;default&quot;:&quot;06 · PROGRESS RAIL&quot;},{&quot;id&quot;:&quot;subcap&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Sub caption&quot;,&quot;default&quot;:&quot;Step by step. Last one lands.&quot;},{&quot;id&quot;:&quot;r1&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Rail stop 1&quot;,&quot;default&quot;:&quot;01 Script&quot;},{&quot;id&quot;:&quot;r2&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Rail stop 2&quot;,&quot;default&quot;:&quot;02 Voice&quot;},{&quot;id&quot;:&quot;r3&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Rail stop 3&quot;,&quot;default&quot;:&quot;03 Visuals&quot;},{&quot;id&quot;:&quot;r4&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Rail stop 4&quot;,&quot;default&quot;:&quot;04 Face&quot;}]">
+<head><meta charset="UTF-8"></head>
 <body>
 <template>
 <style>
@@ -843,20 +843,20 @@ section.clip:first-of-type .cam{opacity:1}
 
 #root{position:absolute;inset:0;font-family:"Open Sans",system-ui,sans-serif}
 </style>
-<div id="root" data-composition-id="rail" data-width="1920" data-height="1080" data-start="0" data-duration="5">
-<div class="g1" data-layout-allow-overflow></div><div class="g2" data-layout-allow-overflow></div><div class="grid"></div>
-<section id="rail-sc" class="clip" data-start="0" data-duration="5" data-track-index="1"><div class="cam">
-<div class="kick" data-anim="kick" data-at=".1">06 · PROGRESS RAIL</div>
-<div class="rail">
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">01 Script</span></div>
-  <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">02 Voice</span></div>
-  <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">03 Visuals</span></div>
-  <span class="rseg"><span class="rfill"></span><span class="rbold"></span></span>
-  <div class="rstop"><span class="rdot"></span><span class="rlbl">04 Face</span></div>
+<div data-hf-id="hf-7adn" id="root" data-composition-id="rail" data-width="1920" data-height="1080" data-start="0" data-duration="600">
+<div data-hf-id="hf-4cit" class="g1" data-layout-allow-overflow=""></div><div data-hf-id="hf-nowm" class="g2" data-layout-allow-overflow=""></div><div data-hf-id="hf-kxq8" class="grid"></div>
+<section data-hf-id="hf-amnh" id="rail-sc" class="clip" data-start="0" data-duration="600" data-scene-dur="5" data-track-index="1"><div data-hf-id="hf-12x1" class="cam">
+<div data-hf-id="hf-n71e" class="kick" data-anim="kick" data-at=".1" data-vars="{&quot;text&quot;:&quot;kick&quot;}">06 · PROGRESS RAIL</div>
+<div data-hf-id="hf-qzq8" class="rail">
+  <div data-hf-id="hf-mnzu" class="rstop"><span data-hf-id="hf-3lwe" class="rdot"></span><span data-hf-id="hf-zd11" class="rlbl" data-vars="{&quot;text&quot;:&quot;r1&quot;}">01 Script</span></div>
+  <span data-hf-id="hf-t71w" class="rseg"><span data-hf-id="hf-ue42" class="rfill"></span><span data-hf-id="hf-tse8" class="rbold"></span></span>
+  <div data-hf-id="hf-c6n2" class="rstop"><span data-hf-id="hf-27pe" class="rdot"></span><span data-hf-id="hf-f7tq" class="rlbl" data-vars="{&quot;text&quot;:&quot;r2&quot;}">02 Voice</span></div>
+  <span data-hf-id="hf-pt70" class="rseg"><span data-hf-id="hf-81bq" class="rfill"></span><span data-hf-id="hf-n114" class="rbold"></span></span>
+  <div data-hf-id="hf-cky3" class="rstop"><span data-hf-id="hf-2m0f" class="rdot"></span><span data-hf-id="hf-hk2j" class="rlbl" data-vars="{&quot;text&quot;:&quot;r3&quot;}">03 Visuals</span></div>
+  <span data-hf-id="hf-om9x" class="rseg"><span data-hf-id="hf-8fmr" class="rfill"></span><span data-hf-id="hf-hs4x" class="rbold"></span></span>
+  <div data-hf-id="hf-cz94" class="rstop"><span data-hf-id="hf-30bg" class="rdot"></span><span data-hf-id="hf-ufdt" class="rlbl" data-vars="{&quot;text&quot;:&quot;r4&quot;}">04 Face</span></div>
 </div>
-<div class="sub" data-anim="fi" data-at="1.8">Step by step. Last one lands.</div>
+<div data-hf-id="hf-4ik0" class="subcap" data-anim="fi" data-at="1.8" data-vars="{&quot;text&quot;:&quot;subcap&quot;}">Step by step. Last one lands.</div>
 </div></section>
 </div>
 <script>
@@ -1518,8 +1518,11 @@ section.clip:first-of-type .cam{opacity:1}
     d = d || 1.8;
     if (after) tl.fromTo(after, { clipPath: "inset(0 100% 0 0)" },
       { clipPath: "inset(0 0% 0 0)", duration: d, ease: E.move }, at);
-    if (bar) tl.fromTo(bar, { left: "0%", opacity: 0 },
-      { left: "100%", opacity: 1, duration: d, ease: E.move }, at);
+    /* transform, not `left`: layout properties snap to device pixels and stutter
+       under seek-by-frame capture (lint: gsap_non_transform_motion). The bar is
+       positioned at left:0; x carries it across the 1440px card. */
+    if (bar) tl.fromTo(bar, { x: 0, opacity: 0 },
+      { x: 1440, opacity: 1, duration: d, ease: E.move }, at);
     if (bar) tl.to(bar, { opacity: 0, duration: .3 }, at + d);
   };
 
@@ -1596,17 +1599,29 @@ section.clip:first-of-type .cam{opacity:1}
      from lensWords — but only when the live video actually passes a value.
      No value (the sampler) -> the baked-in default stays. Runs FIRST in _run,
      before icons paint and before the anim walk reads the attributes. */
+  /* Per-instance values reach a mounted sub-comp as CSS custom properties on its
+     root (--<varId>) — NOT via window.__hyperframes.getVariables(), which only
+     returns declared defaults at build time. So read the computed style. */
+  function cssVar(cs, id) {
+    if (!cs) return "";
+    var v = cs.getPropertyValue("--" + id);
+    return v == null ? "" : v.trim().replace(/^["']/, "").replace(/["']$/, "");
+  }
   function applyVars(scope) {
+    var root = scope && scope.nodeType === 1 ? scope : document.documentElement;
     var q = scope && scope.nodeType === 1 ? scope : document;
-    var hf = w.__hyperframes, vars;
-    if (!hf || typeof hf.getVariables !== "function") return;
-    try { vars = hf.getVariables() || {}; } catch (e) { return; }
+    var cs;
+    try { cs = getComputedStyle(root); } catch (e) { return; }
     q.querySelectorAll("[data-vars]").forEach(function (el) {
       var map;
       try { map = JSON.parse(el.getAttribute("data-vars")); } catch (e) { return; }
       Object.keys(map).forEach(function (attr) {
-        var v = vars[map[attr]];
-        if (v !== undefined && v !== null && String(v) !== "") el.setAttribute(attr, String(v));
+        var v = cssVar(cs, map[attr]);
+        if (v === "") return;
+        /* "text" is a pseudo-attr: set the element's text BEFORE any char-split
+           or word-split anim reads it. Everything else is a real attribute. */
+        if (attr === "text") el.textContent = v;
+        else el.setAttribute(attr, v);
       });
     });
   }
@@ -1631,15 +1646,19 @@ section.clip:first-of-type .cam{opacity:1}
       if (w.ZGI) w.ZGI.paint(scope); /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });
       q.querySelectorAll("section.clip").forEach(function (sec) {
-        var s = n(sec.dataset.start, 0), d = n(sec.dataset.duration, 3), cam = sec.querySelector(".cam");
-        /* intro settle, then the slow push. The push is its OWN fromTo starting
-           AFTER the intro — two tweens on `scale` at the same position lazily
-           capture conflicting start values under seek, which is exactly what
-           made a mounted block drift bigger than the monolith. */
+        var s = n(sec.dataset.start, 0);
+        /* data-scene-dur = the authored motion length; data-duration is a long
+           clip window so a slot that outlives the motion holds, not blanks. */
+        var d = n(sec.dataset.sceneDur, n(sec.dataset.duration, 3));
+        var cam = sec.querySelector(".cam");
+        /* Every block is mounted; the slot's own [data-start, data-duration]
+           window owns show/hide, so a scene that outlives the block's authored
+           motion just holds its last frame instead of going blank. The cam only
+           enters and pushes; it does NOT fade itself out. intro settle first,
+           push after it (two scale tweens at the same position capture
+           conflicting starts under seek). */
         tl.fromTo(cam, { opacity: 0, y: 44, scale: .97 }, { opacity: 1, y: 0, scale: 1, duration: .5, ease: E.enter }, s);
         tl.fromTo(cam, { scale: 1 }, { scale: 1.03, duration: Math.max(.1, d - .5), ease: E.move }, s + .5);
-        tl.to(cam, { opacity: 0, y: -30, duration: .32, ease: E.exit }, s + Math.max(.34, d - .32));
-        tl.set(cam, { opacity: 0 }, s + d);
 
         /* jelenet-belépő hangja: minden jelenet kap egy halk koppanást */
         cue("scene", s + .12);
@@ -1734,7 +1753,12 @@ section.clip:first-of-type .cam{opacity:1}
 </script>
 <script>
 (function(){
-  var root = document.querySelector('[data-composition-id="rail"]');
+  /* THIS instance's root, not the first on the page — a live video mounts the
+     same archetype many times, and document.querySelector would give them all
+     instance 1's DOM. currentScript.closest walks up to our own subtree. */
+  var s = document.currentScript;
+  var root = (s && s.closest && s.closest('[data-composition-id="rail"]'))
+    || document.querySelector('[data-composition-id="rail"]');
   window.ZG.buildIn(root, "rail");
 })();
 </script>

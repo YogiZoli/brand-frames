@@ -1,14 +1,10 @@
 <!--zg
-{
-    "id":  "device-footage",
-    "duration":  6,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"device-footage", "duration":6, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"24 · FOOTAGE INSIDE HF"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">24 · FOOTAGE INSIDE HF</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>24 · FOOTAGE INSIDE HF</div>
 <div class="device"><span class="dbar"><span></span><span></span><span></span></span>
   <div class="dscreen">
     <div class="dstage" data-anim="dzoom" data-at="1.2" data-dur="2.6" data-scale="1.7" data-px="-220" data-py="-70">

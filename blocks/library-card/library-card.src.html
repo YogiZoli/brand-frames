@@ -1,14 +1,12 @@
 <!--zg
-{
-    "id":  "library-card",
-    "duration":  4,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"library-card", "duration":4, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"ZG-FRAMES"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Approve once. Every video inherits."},
+    {"id":"line1","type":"string","label":"Line 1","default":"ONE LIBRARY"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">ZG-FRAMES</div>
-<div class="title blue" data-anim="rise" data-at=".35">ONE LIBRARY</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>ZG-FRAMES</div>
+<div class="title blue" data-anim="rise" data-at=".35" data-vars='{"text":"line1"}'>ONE LIBRARY</div>
 <div class="uln" data-anim="gx" data-at="1.2" data-dur=".7"></div>
-<div class="sub" data-anim="fi" data-at="1.2">Approve once. Every video inherits.</div>
+<div class="subcap" data-anim="fi" data-at="1.2" data-vars='{"text":"subcap"}'>Approve once. Every video inherits.</div>

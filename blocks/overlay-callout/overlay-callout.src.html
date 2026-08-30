@@ -1,17 +1,15 @@
 <!--zg
-{
-    "id":  "overlay-callout",
-    "duration":  5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"overlay-callout", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"22 · OVERLAY · TITLE + CALLOUT"},
+    {"id":"callout","type":"string","label":"Callout","default":"54s per 30s of video"},
+    {"id":"headline","type":"string","label":"Overlay headline","default":"Move approval in front of execution"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">22 · OVERLAY · TITLE + CALLOUT</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>22 · OVERLAY · TITLE + CALLOUT</div>
 <div class="plate"><span class="plateTag">your phone footage — untouched</span>
   <div style="position:absolute;left:100px;top:120px;right:520px;text-align:left">
-    <div style="font-size:78px;font-weight:800;line-height:1.14" data-anim="fadewords" data-at=".5" data-dur="1.6">Move approval in front of execution</div>
+    <div style="font-size:78px;font-weight:800;line-height:1.14" data-anim="fadewords" data-at=".5" data-dur="1.6" data-vars='{"text":"headline"}'>Move approval in front of execution</div>
   </div>
-  <div class="callout" data-anim="pop" data-at="2.2" data-pulse="3" style="right:80px;bottom:150px">54s per 30s of video</div>
+  <div class="callout" data-anim="pop" data-at="2.2" data-pulse="3" style="right:80px;bottom:150px" data-vars='{"text":"callout"}'>54s per 30s of video</div>
 </div>

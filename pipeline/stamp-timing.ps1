@@ -58,9 +58,11 @@ if ($AudioEnd -le 0) { $AudioEnd = $maxEnd }
 
 # ---------- pull the scenes out of the composition, in document order ----------
 $src = Get-Content $Html -Raw
-$rxSection = [regex]'<section\b[^>]*\bclass="[^"]*\bclip\b[^"]*"[^>]*>'
+# a scene is either an inline monolith clip (<section class="clip">) or a
+# mounted archetype block slot (<div data-composition-src>). Both carry data-sent.
+$rxSection = [regex]'<section\b[^>]*\bclass="[^"]*\bclip\b[^"]*"[^>]*>|<div\b[^>]*\bdata-composition-src="[^"]*"[^>]*>'
 $mm = $rxSection.Matches($src)
-if ($mm.Count -eq 0) { throw "No <section class=""clip""> found in $Html." }
+if ($mm.Count -eq 0) { throw "No <section class=""clip""> or <div data-composition-src> found in $Html." }
 
 $scenes = @()
 foreach ($m in $mm) {

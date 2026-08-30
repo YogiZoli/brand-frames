@@ -1,18 +1,16 @@
 <!--zg
-{
-    "id":  "panel-list",
-    "duration":  5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"panel-list", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"11 · PANEL LIST"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Rows arrive one by one."},
+    {"id":"panelTitle","type":"string","label":"Panel title","default":"What the check catches"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">11 · PANEL LIST</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>11 · PANEL LIST</div>
 <div class="panel">
-  <div class="ptitle" data-anim="kick" data-at=".3">What the check catches</div>
+  <div class="ptitle" data-anim="kick" data-at=".3" data-vars='{"text":"panelTitle"}'>What the check catches</div>
   <div class="prow" data-anim="fi" data-at=".5"><span class="pflag"><span class="ico" data-glyph="bang"></span></span>Text running off the edge</div>
   <div class="prow" data-anim="fi" data-at="1.1"><span class="pflag"><span class="ico" data-glyph="bang"></span></span>Two blocks landing on each other</div>
   <div class="prow hot" data-anim="fi" data-at="1.8" data-pulse="2.6"><span class="pflag ok"><span class="ico" data-glyph="check"></span></span>Colours too close to read<span class="pbadge">PRIORITY</span></div>
 </div>
-<div class="sub" data-anim="fi" data-at="2.2">Rows arrive one by one.</div>
+<div class="subcap" data-anim="fi" data-at="2.2" data-vars='{"text":"subcap"}'>Rows arrive one by one.</div>

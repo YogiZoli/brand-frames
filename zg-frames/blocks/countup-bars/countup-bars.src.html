@@ -1,20 +1,23 @@
 <!--zg
-{
-    "id":  "countup-bars",
-    "duration":  5.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"countup-bars", "duration":5.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"12 · COUNT-UP BARS"},
+    {"id":"lbl1","type":"string","label":"Left bar label","default":"Video length"},
+    {"id":"lbl2","type":"string","label":"Right bar label","default":"Machine time"},
+    {"id":"badge","type":"string","label":"Badge on right bar","default":"measured"},
+    {"id":"v1","type":"string","label":"Left value","default":"30"},
+    {"id":"suf1","type":"string","label":"Left suffix","default":"s"},
+    {"id":"v2","type":"string","label":"Right value","default":"54"},
+    {"id":"suf2","type":"string","label":"Right suffix","default":"s"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">12 · COUNT-UP BARS</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>12 · COUNT-UP BARS</div>
 <div class="bars">
-  <div class="bcol"><div class="bnum" data-anim="count" data-at=".6" data-val="30" data-suffix="s" style="color:var(--blue)">0</div>
+  <div class="bcol"><div class="bnum" data-anim="count" data-at=".6" data-val="30" data-suffix="s" data-vars='{"data-val":"v1","data-suffix":"suf1"}' style="color:var(--blue)">0</div>
     <div class="bbar" data-anim="barsh" data-at=".6" data-dur="1.5" style="background:var(--blue);height:126px"></div>
-    <div class="blbl">Video length</div></div>
-  <div class="bcol"><div class="bnum" data-anim="count" data-at="1.6" data-val="54" data-suffix="s" style="color:var(--green-700)">0</div>
-    <div class="bwrap"><span class="bbadge ongreen" data-anim="pop" data-at="3.2" data-pulse="3.6">measured</span>
+    <div class="blbl" data-vars='{"text":"lbl1"}'>Video length</div></div>
+  <div class="bcol"><div class="bnum" data-anim="count" data-at="1.6" data-val="54" data-suffix="s" data-vars='{"data-val":"v2","data-suffix":"suf2"}' style="color:var(--green-700)">0</div>
+    <div class="bwrap"><span class="bbadge ongreen" data-anim="pop" data-at="3.2" data-pulse="3.6" data-vars='{"text":"badge"}'>measured</span>
     <div class="bbar" data-anim="barsh" data-at="1.6" data-dur="1.5" style="background:var(--green);height:227px"></div></div>
-    <div class="blbl">Machine time</div></div>
+    <div class="blbl" data-vars='{"text":"lbl2"}'>Machine time</div></div>
 </div>

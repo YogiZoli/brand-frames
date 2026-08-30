@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-resolution="landscape" data-composition-variables='[]'>
+<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"36 \u0026middot; BEFORE / AFTER"},{"id":"subcap","type":"string","label":"Sub caption","default":"One wipe carries the comparison."}]'>
 <head><meta charset="UTF-8"/></head>
 <body>
 <template>
@@ -843,10 +843,10 @@ section.clip:first-of-type .cam{opacity:1}
 
 #root{position:absolute;inset:0;font-family:"Open Sans",system-ui,sans-serif}
 </style>
-<div id="root" data-composition-id="before-after" data-width="1920" data-height="1080" data-start="0" data-duration="5">
+<div id="root" data-composition-id="before-after" data-width="1920" data-height="1080" data-start="0" data-duration="600">
 <div class="g1" data-layout-allow-overflow></div><div class="g2" data-layout-allow-overflow></div><div class="grid"></div>
-<section id="before-after-sc" class="clip" data-start="0" data-duration="5" data-track-index="1"><div class="cam dense">
-<div class="kick" data-anim="kick" data-at=".1">36 &middot; BEFORE / AFTER</div>
+<section id="before-after-sc" class="clip" data-start="0" data-duration="600" data-scene-dur="5" data-track-index="1"><div class="cam dense">
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>36 &middot; BEFORE / AFTER</div>
 <div class="ba" data-anim="wipe" data-at=".9" data-dur="2">
   <div class="bstate bbefore" data-layout-allow-overlap>
     <div class="bkey" data-layout-allow-overlap>before</div><div class="bval" data-layout-allow-overlap>40 minutes</div>
@@ -856,7 +856,7 @@ section.clip:first-of-type .cam{opacity:1}
     <div class="bnote">to fix the same word, in the scene table</div></div>
   <span class="bawipe" data-layout-allow-overlap></span>
 </div>
-<div class="sub" data-anim="fi" data-at="2.2">One wipe carries the comparison.</div>
+<div class="subcap" data-anim="fi" data-at="2.2" data-vars='{"text":"subcap"}'>One wipe carries the comparison.</div>
 </div></section>
 </div>
 <script>
@@ -1518,8 +1518,11 @@ section.clip:first-of-type .cam{opacity:1}
     d = d || 1.8;
     if (after) tl.fromTo(after, { clipPath: "inset(0 100% 0 0)" },
       { clipPath: "inset(0 0% 0 0)", duration: d, ease: E.move }, at);
-    if (bar) tl.fromTo(bar, { left: "0%", opacity: 0 },
-      { left: "100%", opacity: 1, duration: d, ease: E.move }, at);
+    /* transform, not `left`: layout properties snap to device pixels and stutter
+       under seek-by-frame capture (lint: gsap_non_transform_motion). The bar is
+       positioned at left:0; x carries it across the 1440px card. */
+    if (bar) tl.fromTo(bar, { x: 0, opacity: 0 },
+      { x: 1440, opacity: 1, duration: d, ease: E.move }, at);
     if (bar) tl.to(bar, { opacity: 0, duration: .3 }, at + d);
   };
 
@@ -1596,17 +1599,29 @@ section.clip:first-of-type .cam{opacity:1}
      from lensWords — but only when the live video actually passes a value.
      No value (the sampler) -> the baked-in default stays. Runs FIRST in _run,
      before icons paint and before the anim walk reads the attributes. */
+  /* Per-instance values reach a mounted sub-comp as CSS custom properties on its
+     root (--<varId>) — NOT via window.__hyperframes.getVariables(), which only
+     returns declared defaults at build time. So read the computed style. */
+  function cssVar(cs, id) {
+    if (!cs) return "";
+    var v = cs.getPropertyValue("--" + id);
+    return v == null ? "" : v.trim().replace(/^["']/, "").replace(/["']$/, "");
+  }
   function applyVars(scope) {
+    var root = scope && scope.nodeType === 1 ? scope : document.documentElement;
     var q = scope && scope.nodeType === 1 ? scope : document;
-    var hf = w.__hyperframes, vars;
-    if (!hf || typeof hf.getVariables !== "function") return;
-    try { vars = hf.getVariables() || {}; } catch (e) { return; }
+    var cs;
+    try { cs = getComputedStyle(root); } catch (e) { return; }
     q.querySelectorAll("[data-vars]").forEach(function (el) {
       var map;
       try { map = JSON.parse(el.getAttribute("data-vars")); } catch (e) { return; }
       Object.keys(map).forEach(function (attr) {
-        var v = vars[map[attr]];
-        if (v !== undefined && v !== null && String(v) !== "") el.setAttribute(attr, String(v));
+        var v = cssVar(cs, map[attr]);
+        if (v === "") return;
+        /* "text" is a pseudo-attr: set the element's text BEFORE any char-split
+           or word-split anim reads it. Everything else is a real attribute. */
+        if (attr === "text") el.textContent = v;
+        else el.setAttribute(attr, v);
       });
     });
   }
@@ -1631,15 +1646,19 @@ section.clip:first-of-type .cam{opacity:1}
       if (w.ZGI) w.ZGI.paint(scope); /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });
       q.querySelectorAll("section.clip").forEach(function (sec) {
-        var s = n(sec.dataset.start, 0), d = n(sec.dataset.duration, 3), cam = sec.querySelector(".cam");
-        /* intro settle, then the slow push. The push is its OWN fromTo starting
-           AFTER the intro — two tweens on `scale` at the same position lazily
-           capture conflicting start values under seek, which is exactly what
-           made a mounted block drift bigger than the monolith. */
+        var s = n(sec.dataset.start, 0);
+        /* data-scene-dur = the authored motion length; data-duration is a long
+           clip window so a slot that outlives the motion holds, not blanks. */
+        var d = n(sec.dataset.sceneDur, n(sec.dataset.duration, 3));
+        var cam = sec.querySelector(".cam");
+        /* Every block is mounted; the slot's own [data-start, data-duration]
+           window owns show/hide, so a scene that outlives the block's authored
+           motion just holds its last frame instead of going blank. The cam only
+           enters and pushes; it does NOT fade itself out. intro settle first,
+           push after it (two scale tweens at the same position capture
+           conflicting starts under seek). */
         tl.fromTo(cam, { opacity: 0, y: 44, scale: .97 }, { opacity: 1, y: 0, scale: 1, duration: .5, ease: E.enter }, s);
         tl.fromTo(cam, { scale: 1 }, { scale: 1.03, duration: Math.max(.1, d - .5), ease: E.move }, s + .5);
-        tl.to(cam, { opacity: 0, y: -30, duration: .32, ease: E.exit }, s + Math.max(.34, d - .32));
-        tl.set(cam, { opacity: 0 }, s + d);
 
         /* jelenet-belépő hangja: minden jelenet kap egy halk koppanást */
         cue("scene", s + .12);
@@ -1734,7 +1753,12 @@ section.clip:first-of-type .cam{opacity:1}
 </script>
 <script>
 (function(){
-  var root = document.querySelector('[data-composition-id="before-after"]');
+  /* THIS instance's root, not the first on the page — a live video mounts the
+     same archetype many times, and document.querySelector would give them all
+     instance 1's DOM. currentScript.closest walks up to our own subtree. */
+  var s = document.currentScript;
+  var root = (s && s.closest && s.closest('[data-composition-id="before-after"]'))
+    || document.querySelector('[data-composition-id="before-after"]');
   window.ZG.buildIn(root, "before-after");
 })();
 </script>

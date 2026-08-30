@@ -69,7 +69,7 @@ foreach ($d in $dirs) {
   $name = $d.Name
   $src  = Get-Content (Join-Path $d.FullName "$name.src.html") -Raw
 
-  $m = [regex]::Match($src, '(?s)<!--zg\s*(?<j>\{.*?\})\s*zg-->')
+  $m = [regex]::Match($src, '(?s)<!--zg\s*(?<j>.*?)\s*zg-->')
   if (-not $m.Success) { throw "$name.src.html: missing <!--zg { ... } zg--> meta header" }
   $meta = $m.Groups['j'].Value | ConvertFrom-Json
   $markup = $src.Substring($m.Index + $m.Length).Trim()
@@ -98,9 +98,9 @@ foreach ($d in $dirs) {
 $css
 #root{position:absolute;inset:0;font-family:"Open Sans",system-ui,sans-serif}
 </style>
-<div id="root" data-composition-id="$id" data-width="1920" data-height="1080" data-start="0" data-duration="$dur">
+<div id="root" data-composition-id="$id" data-width="1920" data-height="1080" data-start="0" data-duration="600">
 <div class="g1" data-layout-allow-overflow></div><div class="g2" data-layout-allow-overflow></div><div class="grid"></div>
-<section id="$id-sc" class="clip" data-start="0" data-duration="$dur" data-track-index="1"$secEnd><div class="$cam">
+<section id="$id-sc" class="clip" data-start="0" data-duration="600" data-scene-dur="$dur" data-track-index="1"$secEnd><div class="$cam">
 $markup
 </div></section>
 </div>
@@ -115,7 +115,12 @@ $motionJs
 </script>
 <script>
 (function(){
-  var root = document.querySelector('[data-composition-id="$id"]');
+  /* THIS instance's root, not the first on the page — a live video mounts the
+     same archetype many times, and document.querySelector would give them all
+     instance 1's DOM. currentScript.closest walks up to our own subtree. */
+  var s = document.currentScript;
+  var root = (s && s.closest && s.closest('[data-composition-id="$id"]'))
+    || document.querySelector('[data-composition-id="$id"]');
   window.ZG.buildIn(root, "$id");
 })();
 </script>

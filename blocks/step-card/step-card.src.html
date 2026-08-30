@@ -1,14 +1,12 @@
 <!--zg
-{
-    "id":  "step-card",
-    "duration":  4,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"step-card", "duration":4, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"04 · STEP CARD"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"A chapter marker."},
+    {"id":"line1","type":"string","label":"Line 1","default":"STEP THREE"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">04 · STEP CARD</div>
-<div class="title blue" data-anim="rise" data-at=".3">STEP THREE</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>04 · STEP CARD</div>
+<div class="title blue" data-anim="rise" data-at=".3" data-vars='{"text":"line1"}'>STEP THREE</div>
 <div class="uln" data-anim="gx" data-at="1.2" data-dur=".6"></div>
-<div class="sub" data-anim="fi" data-at="1.5">A chapter marker.</div>
+<div class="subcap" data-anim="fi" data-at="1.5" data-vars='{"text":"subcap"}'>A chapter marker.</div>

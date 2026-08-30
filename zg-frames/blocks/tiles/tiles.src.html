@@ -1,17 +1,17 @@
 <!--zg
-{
-    "id":  "tiles",
-    "duration":  4.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"tiles", "duration":4.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"10 · TILES · CIRCLE ICONS"},
+    {"id":"item1","type":"string","label":"Tile label 1","default":"Title"},
+    {"id":"item2","type":"string","label":"Tile label 2","default":"Description"},
+    {"id":"item3","type":"string","label":"Tile label 3","default":"Chapters"},
+    {"id":"item4","type":"string","label":"Tile label 4","default":"Languages"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">10 · TILES · CIRCLE ICONS</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>10 · TILES · CIRCLE ICONS</div>
 <div class="tiles" data-anim="pops" data-at=".4">
-  <div class="tile"><span class="tico"><span class="ico" data-icon="title"></span></span><span class="tl">Title</span></div>
-  <div class="tile"><span class="tico"><span class="ico" data-icon="caption"></span></span><span class="tl">Description</span></div>
-  <div class="tile"><span class="tico"><span class="ico" data-icon="script"></span></span><span class="tl">Chapters</span></div>
-  <div class="tile"><span class="tico g"><span class="ico" data-icon="globe"></span></span><span class="tl">Languages</span></div>
+  <div class="tile"><span class="tico"><span class="ico" data-icon="title"></span></span><span class="tl" data-vars='{"text":"item1"}'>Title</span></div>
+  <div class="tile"><span class="tico"><span class="ico" data-icon="caption"></span></span><span class="tl" data-vars='{"text":"item2"}'>Description</span></div>
+  <div class="tile"><span class="tico"><span class="ico" data-icon="script"></span></span><span class="tl" data-vars='{"text":"item3"}'>Chapters</span></div>
+  <div class="tile"><span class="tico g"><span class="ico" data-icon="globe"></span></span><span class="tl" data-vars='{"text":"item4"}'>Languages</span></div>
 </div>

@@ -1,0 +1,29 @@
+{
+  "title": "build-video chain test",
+  "audio": "assets/vo_bgm.mp3",
+  "scenes": [
+    { "block": "statement", "sent": "S1",
+      "vars": { "kick": "THE PROMISE", "line1": "of this", "line2": "VIDEO", "subcap": "One sitting, start to publish." } },
+    { "block": "arrow", "sent": "S2",
+      "vars": { "kick": "ONE SITTING", "lnode": "One idea", "rnode": "Published",
+                "lico": "spark", "rico": "visuals", "caption": "Not a draft. Not a rough cut." } },
+    { "block": "tiles", "sent": "S3",
+      "vars": { "kick": "IN THE UPLOAD", "item1": "Title", "item2": "Description", "item3": "Chapters", "item4": "25 languages" } },
+    { "block": "display-word", "sent": "S4",
+      "vars": { "kick": "BEFORE WE START", "word": "PRECISE", "subcap": "Let me be exact." } },
+    { "block": "hero", "sent": "S5",
+      "vars": { "kick": "THIS VIDEO", "line1": "ONE SITTING", "subcap": "Made the way I am describing." } },
+    { "block": "statement", "sent": "S6",
+      "vars": { "kick": "HOW", "line1": "Step by step", "line2": "IN THE REAL ORDER", "subcap": "The order it actually happens." } },
+    { "block": "short-scene", "sent": "S7",
+      "vars": { "kick": "THE WHOLE THING", "line1": "Four steps", "line2": "THAT IS ALL" } },
+    { "block": "rail", "sent": "S8",
+      "vars": { "kick": "THE FOUR STEPS", "r1": "01 Script", "r2": "02 Voice", "r3": "03 Visuals", "r4": "04 Face", "subcap": "Your face goes on top." } },
+    { "block": "split", "sent": "S12",
+      "vars": { "kick": "EVERY STEP", "item1": "Approve it", "item2": "Or change it", "word2": "THEN IT CONTINUES" } },
+    { "block": "question", "sent": "S16",
+      "vars": { "kick": "THE REAL QUESTION", "line1": "A machine already running, or you saying yes?" } },
+    { "block": "end-card", "sent": "S17", "sectionEnd": true,
+      "vars": { "line1": "You say", "line2": "PURPOSEFUL · PEACEFUL · PROFITABLE", "cta": "Comment GUIDE" } }
+  ]
+}

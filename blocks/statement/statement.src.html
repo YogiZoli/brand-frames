@@ -1,13 +1,12 @@
 <!--zg
-{
-    "id":  "statement",
-    "duration":  4.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"statement", "duration":4.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"01 · STATEMENT"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Navy sets up. Blue lands."},
+    {"id":"line1","type":"string","label":"Line 1","default":"The workhorse archetype"},
+    {"id":"line2","type":"string","label":"Line 2","default":"TWO LINES"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">01 · STATEMENT</div>
-<div class="stmt" data-anim="reveal" data-at=".35"><div class="title navy sm">The workhorse archetype</div><div class="title blue">TWO LINES</div></div>
-<div class="sub" data-anim="fi" data-at="1.5">Navy sets up. Blue lands.</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>01 · STATEMENT</div>
+<div class="stmt" data-anim="reveal" data-at=".35"><div class="title navy sm" data-vars='{"text":"line1"}'>The workhorse archetype</div><div class="title blue" data-vars='{"text":"line2"}'>TWO LINES</div></div>
+<div class="subcap" data-anim="fi" data-at="1.5" data-vars='{"text":"subcap"}'>Navy sets up. Blue lands.</div>

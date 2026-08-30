@@ -1,16 +1,15 @@
 <!--zg
-{
-    "id":  "overlay-lower-third",
-    "duration":  5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"overlay-lower-third", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"21 · OVERLAY · LOWER THIRD"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"Your footage never re-encodes."},
+    {"id":"name","type":"string","label":"Lower-third name","default":"Zoltan Gero"},
+    {"id":"role","type":"string","label":"Lower-third role","default":"AI agents \u0026middot; evergreen income"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">21 · OVERLAY · LOWER THIRD</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>21 · OVERLAY · LOWER THIRD</div>
 <div class="plate"><span class="plateTag">your phone footage — untouched</span>
   <div class="l3" data-anim="fi" data-at=".6" data-dur=".8" data-pulse="2.6">
-    <span class="l3bar"></span><div><div class="l3n">Zoltan Gero</div><div class="l3r">AI agents &middot; evergreen income</div></div></div>
+    <span class="l3bar"></span><div><div class="l3n" data-vars='{"text":"name"}'>Zoltan Gero</div><div class="l3r" data-vars='{"text":"role"}'>AI agents &middot; evergreen income</div></div></div>
 </div>
-<div class="sub" data-anim="fi" data-at="2.6">Your footage never re-encodes.</div>
+<div class="subcap" data-anim="fi" data-at="2.6" data-vars='{"text":"subcap"}'>Your footage never re-encodes.</div>

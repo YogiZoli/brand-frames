@@ -38,7 +38,7 @@ foreach ($name in $order) {
   $srcMeta = Join-Path $PSScriptRoot "$name/$name.src.html"
   $html    = Join-Path $PSScriptRoot "$name/$name.html"
   if (-not (Test-Path $html)) { throw "missing $html — run extract.ps1 then build.ps1" }
-  $m = [regex]::Match((Get-Content $srcMeta -Raw), '(?s)<!--zg\s*(?<j>\{.*?\})\s*zg-->')
+  $m = [regex]::Match((Get-Content $srcMeta -Raw), '(?s)<!--zg\s*(?<j>.*?)\s*zg-->')
   $meta = $m.Groups['j'].Value | ConvertFrom-Json
   $id = if ($meta.id) { $meta.id } else { $name }
   $dur = [double]$meta.duration

@@ -1,15 +1,13 @@
 <!--zg
-{
-    "id":  "overlay-quote",
-    "duration":  5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"overlay-quote", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"23 · OVERLAY · PULL QUOTE"},
+    {"id":"role","type":"string","label":"Lower-third role","default":"from the script"},
+    {"id":"quote","type":"string","label":"Pull quote","default":"The judgment is mine. What changed is when it arrives."}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">23 · OVERLAY · PULL QUOTE</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>23 · OVERLAY · PULL QUOTE</div>
 <div class="plate"><span class="plateTag">your phone footage — untouched</span>
-  <div class="quote" data-anim="fadewords" data-at=".5" data-dur="2">"The judgment is mine. What changed is <b>when it arrives</b>."</div>
-  <div class="l3" style="bottom:60px" data-anim="fi" data-at="2.8"><span class="l3bar"></span><div><div class="l3r">from the script</div></div></div>
+  <div class="quote" data-anim="fadewords" data-at=".5" data-dur="2" data-vars='{"text":"quote"}'>"The judgment is mine. What changed is when it arrives."</div>
+  <div class="l3" style="bottom:60px" data-anim="fi" data-at="2.8"><span class="l3bar"></span><div><div class="l3r" data-vars='{"text":"role"}'>from the script</div></div></div>
 </div>

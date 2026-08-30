@@ -1,14 +1,11 @@
 <!--zg
-{
-    "id":  "before-after",
-    "duration":  5,
-    "camClass":  "cam dense",
-    "variables":  [
-
-                  ]
-}
+{ "id":"before-after", "duration":5, "camClass":"cam dense",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"36 \u0026middot; BEFORE / AFTER"},
+    {"id":"subcap","type":"string","label":"Sub caption","default":"One wipe carries the comparison."}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">36 &middot; BEFORE / AFTER</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>36 &middot; BEFORE / AFTER</div>
 <div class="ba" data-anim="wipe" data-at=".9" data-dur="2">
   <div class="bstate bbefore" data-layout-allow-overlap>
     <div class="bkey" data-layout-allow-overlap>before</div><div class="bval" data-layout-allow-overlap>40 minutes</div>
@@ -18,4 +15,4 @@ zg-->
     <div class="bnote">to fix the same word, in the scene table</div></div>
   <span class="bawipe" data-layout-allow-overlap></span>
 </div>
-<div class="sub" data-anim="fi" data-at="2.2">One wipe carries the comparison.</div>
+<div class="subcap" data-anim="fi" data-at="2.2" data-vars='{"text":"subcap"}'>One wipe carries the comparison.</div>

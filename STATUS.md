@@ -4,7 +4,7 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-30 (mind a 39 archetípus mountolható blokk, sampler = mount host; Zoltán mozgás-jóváhagyása hátra) · **commit:** lásd `git log -1`
+**Frissítve:** 2026-08-31 (seamless éles-videó lánc kész: scene-lista to build-video to stamp-timing to render, tesztelve) · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
@@ -189,6 +189,54 @@ A `zg-frames` könyvtár mostantól a mountolt blokkokon áll. A
 `sampler_2026-08-29_v6.mp4` baseline LEVÁLTVA. Monolit a git történetben:
 `git show 417ab8e:zg-frames/index.html`. Drive tükör: `📺 YouTube & Content/zg-frames/`
 (`sampler_blocks_2026-08-30_2343.mp4` + `_sheet_blocks.jpg`).
+
+---
+
+## SEAMLESS ÉLES-VIDEÓ LÁNC (2026-08-31) — KÉSZ, TESZTELVE
+
+A blokk-refaktor után a hiányzó darab: scene-tábla to mountolt videó, kézi
+szerkesztés nélkül. Most megvan.
+
+**Minden blokk teljes szöveg + attribútum változó-felülettel:**
+- `blocks/add-vars.ps1` — a szöveg-leveleket bedrótozza (`data-vars='{"text":"id"}'`),
+  a deklarációkat a meta-fejlécbe. `blocks/_fixvars.ps1` — a beágyazott ikon/emphasis
+  spanokat is (contact-record, funnel, branch, cycle, gauge, command, lead-card…).
+- `motion.js` `ZG.applyVars()` — a `--<id>` CSS custom propból olvas (NEM a
+  `getVariables()`-ből, az csak a mount-kori defaultot adja). Szöveg + tetszőleges
+  attribútum (lens `data-path`/`data-words`, arrow `data-icon`).
+- **Foglalt változónevek** (a HF nem ad rájuk `--css` propot): `sub`, `leftLabel`,
+  `rightLabel`, `leftIcon`, `rightIcon`. Átnevezve: `subcap`, `lnode`, `rnode`,
+  `lico`, `rico`.
+
+**`blocks/build-video.ps1`** — a scene-lista (JSON: `{block, sent, vars}` per
+jelenet) to `../index.html` + `compositions/<sceneId>.html`. Minden mountolt
+instance EGYEDI `data-composition-id` (`s001-statement`): ismétlődő id-nél a
+per-instance változók összeakadnak és defaultra esnek. Ezért scene-enként egy
+byte-másolat blokk, csak az id cserélve, a `blocks/<name>/<name>.html` marad a forrás.
+
+**`data-scene-dur`** (motion.js + build.ps1) — a szerzői mozgás-hossz külön a
+`data-duration`-től (600 mp-es clip-ablak). Enélkül egy hosszú jelenet a blokk
+szerzői hossza után elsötétül; így tartja a végkockát.
+
+**`pipeline/stamp-timing.ps1`** — olvassa a mount-slot listát is (nemcsak a régi
+`<section class="clip">`-et), `data-sent` to `data-start`/`data-duration` a
+sentences.json-ból.
+
+**`blocks/catalog.ps1` to `blocks/CATALOG.md`** — minden archetípus + változói +
+hossz. Ezt olvassa Opus a scene-lista írásához (PIPELINE 4.).
+
+**`motion.js` egyéb:** cam-exit fade eltávolítva (a slot-életciklus vág), belépők
+`from` to `fromTo` (baseline-ben már), `A.wipe` `left` to `x` (lint:
+gsap_non_transform_motion). Mind transzparens a baseline-re: `regress` 39/39 same,
+`check` 58/58 WCAG AA.
+
+**Tesztelve:** 11 jelenetes scene-lista a meglévő `vo.srt`-ből, `build-video` to
+`stamp-timing` to `check` (PASS) to `snapshot`. Minden jelenet a saját szövegével,
+ikonjaival, lupe-szavaival renderel; az ismételt archetípusok (statement 2x)
+külön tartalommal; a hosszú jelenetek tartják a végkockát.
+
+**HÁTRA:** Zoltán 0-ról kipróbálja egy új videóval egy új chatben. Prompt a
+session válaszában.
 
 ---
 

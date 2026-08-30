@@ -32,49 +32,59 @@ camClass, variables), utana a markup, pontosan az, ami a samplerben a
 
 ## Valtozok
 
-`data-var-text="id"` a leveleleken, es a hoszt slot ad ertekeket:
-`data-variable-values='{"kick":"...","caption":"..."}'`. A deklaracio a
-`<name>.src.html` `variables` tombjeben. Reszletek: hyperframes-core
-`references/variables-and-media.md`.
+Minden szoveg-level `data-vars='{"text":"<id>"}'`-t visz, minden attributum-
+csere `data-vars='{"<attr>":"<id>"}'`-t (pl. lens `data-path`/`data-words`,
+arrow `data-icon`). A hoszt slot ad ertekeket `data-variable-values`-szel;
+`ZG.applyVars()` a `--<id>` CSS custom propbol olvas (NEM a `getVariables()`-bol,
+az csak a defaultot adja mountkor). A deklaracio a `.src.html` `variables`
+tombjeben. Teljes lista: `CATALOG.md`.
 
-Meg NEM valtozo: az attributumban elo mozgas-parameterek (a lens `data-path` /
-`data-words`, az ikonok `data-icon` neve). Ezek egyelore fixek a forrasban.
-Kovetkezo lepes: egy pici init-script, ami a `window.__hyperframes.getVariables()`
-ertekekbol tolti oket.
+**Foglalt valtozonevek** (a HF nem ad rajuk `--css` propot): `sub`, `leftLabel`,
+`rightLabel`, `leftIcon`, `rightIcon`. Helyettuk: `subcap`, `lnode`, `rnode`,
+`lico`, `rico`.
 
-## Hasznalat
+## A teljes lanc (eles video)
 
 ```
-cd C:/Users/gdp/HyperFrames/_frames/zg-frames/blocks
-powershell -NoProfile -ExecutionPolicy Bypass -File build.ps1            # mind
-powershell -NoProfile -ExecutionPolicy Bypass -File build.ps1 lens funnel # csak ezek
+sentences.ps1           # SRT -> sentences.json  (PIPELINE 3.)
+[Opus irja]             # scenes.json: block + sent-horgony + vars per jelenet  (PIPELINE 4., 3. kapu)
+build-video.ps1         # scenes.json -> ../index.html + compositions/<sceneId>.html  (PIPELINE 5.)
+stamp-timing.ps1        # data-start/data-duration a sentences.json-bol
+check -> snapshot -> render
+assemble-sampler.ps1    # ha kell a sampler vissza
 ```
 
-Ujra kell futtatni MINDEN `zg.css` / `motion.js` / `icons.js` / `type.js` /
-`<name>.src.html` valtoztatas utan. A build a `_frames/blocks/<name>/`
-promoted konyvtarba is tukroz (BLOCKS.md).
+Minden mountolt instance EGYEDI `data-composition-id`-t kap (`s001-<block>`):
+ismetlodo id eseten a per-instance valtozok utkoznek. `build-video.ps1` ezert
+scene-enkent egy byte-masolat blokkot ir `compositions/`-ba, csak az id-t cserelve.
 
-## A lanc
+A jelenet-hossz: `data-scene-dur` (a szerzoi mozgas-hossz) kulon a
+`data-duration`-tol (600 mp-es clip-ablak), igy egy hosszabb jelenet tartja a
+vegkocakat, nem villog ki. Anelkul a jelenet a blokk szerzoi hossza utan
+elsotetul.
+
+## Blokk-lanc (a konyvtar maga)
 
 ```
 extract.ps1        # egyszeri: a monolit <section>-jeibol <name>.src.html (mind 39, lefutott)
+add-vars.ps1       # szoveg-valtozo-felulet a levelekre (idempotens)
 make-fontface.ps1  # _fontface.css (Open Sans base64) — csak ha a fonts/ valtozik
 build.ps1          # <name>.src.html + kozos css/js -> <name>.html   (minden valtoztatas utan)
 assemble-sampler.ps1  # ../index.html = 39 mount slot
+catalog.ps1        # CATALOG.md (Opus ezt olvassa a scenes.json-hoz)
 ```
 
-## Statusz (2026-08-30)
+Ujra kell futtatni a `build.ps1`-t MINDEN `zg.css` / `motion.js` / `icons.js` /
+`type.js` / `.src.html` valtoztatas utan. Tukroz a `_frames/blocks/<name>/`-ba.
 
-Mind a 39 archetipus kinyerve, a sampler `index.html` mount host.
-`hyperframes check`: PASSED, 0/0, 58/58 WCAG AA.
+## Statusz (2026-08-31)
+
+Mind a 39 archetipus mountolt blokk, szoveg + attributum valtozo-felulettel.
+Sampler baseline: `sampler_blocks_2026-08-30_2343.mp4` (Zoltan jovahagyta),
+`regress` 39/39. `hyperframes check`: 0/0, 58/58 WCAG AA. Az eles-video lanc
+(build-video -> stamp-timing -> check -> snapshot) tesztelve, mukodik.
 
 **Ismert elteres:** a mountolt render kb. 3-4%-kal nagyobb kerettel jon, mint a
-monolit. Egyenletes mind a 39 jeleneten. Vegigprobalva: `#root`/slot CSS
-`transform`, `<template>` vs no-template, font, cam-animacio — egyik sem
-befolyasolja. A sub-komp kompozitalas sajatja. Egyszeri keret-dontes, nem
-regresszio. Reszletek: `_frames/STATUS.md`.
-
-**Meg NEM valtozo:** attributumban elo mozgas-parameterek (lens `data-path` /
-`data-words`, ikon `data-icon`). Kovetkezo: init-script a `getVariables()`-bol.
+regi monolit. Egyenletes, nem regresszio, elfogadott nez. Reszletek: STATUS.md.
 
 Monolit backup: `git show 417ab8e:zg-frames/index.html`.

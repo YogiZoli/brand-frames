@@ -1,15 +1,15 @@
 <!--zg
-{
-    "id":  "keyword-pill",
-    "duration":  4.5,
-    "camClass":  "cam",
-    "variables":  [
-
-                  ]
-}
+{ "id":"keyword-pill", "duration":4.5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"19 · KEYWORD PILL · ONE COMMENT, ONE ROUTE"},
+    {"id":"prompt","type":"string","label":"Pill prompt","default":"Comment the keyword"},
+    {"id":"opt1","type":"string","label":"Route 1","default":"Comment GUIDE below"},
+    {"id":"opt2","type":"string","label":"Route 2","default":"Comment COURSE below"},
+    {"id":"opt3","type":"string","label":"Route 3","default":"Comment TRIGGER below"}
+  ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1">19 · KEYWORD PILL · ONE COMMENT, ONE ROUTE</div>
-<div class="cpill" data-anim="pop" data-at=".35" data-pulse="2.2"><span class="cpic"></span>Comment the keyword</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>19 · KEYWORD PILL · ONE COMMENT, ONE ROUTE</div>
+<div class="cpill" data-anim="pop" data-at=".35" data-pulse="2.2" data-vars='{"text":"prompt"}'><span class="cpic"></span>Comment the keyword</div>
 <div class="kroute" data-layout-allow-overlap data-anim="kroute" data-at="1.5" data-dur="2.6">
   <svg class="krsvg" viewBox="0 0 1500 170" width="1500" height="170">
     <path class="krstem" d="M750 6 V60" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
@@ -19,8 +19,8 @@ zg-->
     <circle class="krdot" cx="750" cy="18" r="8"/>
   </svg>
   <div class="krrow">
-    <div class="krpill"><span class="kri"><span class="ico" data-icon="script"></span></span>Comment <i>GUIDE</i> below</div>
-    <div class="krpill"><span class="kri"><span class="ico" data-icon="visuals"></span></span>Comment <i>COURSE</i> below</div>
-    <div class="krpill"><span class="kri"><span class="ico" data-icon="tag"></span></span>Comment <i>TRIGGER</i> below</div>
+    <div class="krpill"><span class="kri"><span class="ico" data-icon="script"></span></span><span data-vars='{"text":"opt1"}'>Comment GUIDE below</span></div>
+    <div class="krpill"><span class="kri"><span class="ico" data-icon="visuals"></span></span><span data-vars='{"text":"opt2"}'>Comment COURSE below</span></div>
+    <div class="krpill"><span class="kri"><span class="ico" data-icon="tag"></span></span><span data-vars='{"text":"opt3"}'>Comment TRIGGER below</span></div>
   </div>
 </div>

@@ -134,12 +134,13 @@ Négy fejlesztés az éles videó előtt, mind 0 token (ffmpeg / szövegfeldolgo
   a csúszást. NEM a 3. kapu, csak triviális szűrő. A régi monoliton próbálva:
   141 jelenetből 119 tiszta, 22 jelölt (nagyrészt paraphrase/CTA, pár valódi).
 
-**A baseline NEM lett újra-elfogadva.** A `baseline/` a v6 egykockás marad
-(commit 0e25522). Zoltán futtassa: `regress.ps1 -Video sampler_2026-08-29_v6.mp4
--Accept`, ha kész a 3 fázisú baseline-re, és azt külön commitolja.
+**A baseline újra-elfogadva 3 fázisúra** (Zoltán, 2026-08-30, commit aae25d4).
+Ugyanaz a jóváhagyott v6 render, most `baseline/<id>_0/1/2.png` (25/55/85%),
+a `baseline.mp4` gitignore-olt referencia. `regress.ps1 -Video v6` = 39/39
+változatlan.
 
-`ai-video-workflow/SCENE-TABLE.md` szerkesztve (nem git repo, csak lemezen +
-Drive tükör).
+`ai-video-workflow/SCENE-TABLE.md` szerkesztve (nem git repo). Drive tükör:
+`📺 YouTube & Content/One Sitting Workflow/` (SCENE-TABLE.md + TIMING.md).
 
 ---
 

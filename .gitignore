@@ -16,3 +16,8 @@ pipeline/_sample/
 # Real block sources + generated html under zg-frames/blocks/<name>/ ARE tracked.
 zg-frames/blocks/_pilot/*
 !zg-frames/blocks/_pilot/index.html
+
+# blocks verify + pilot render output
+zg-frames/blocks/_verify/
+zg-frames/blocks/_verify_run.log
+zg-frames/blocks/*/snapshots/

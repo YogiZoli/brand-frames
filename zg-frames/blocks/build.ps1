@@ -72,6 +72,7 @@ foreach ($d in $dirs) {
   $id  = if ($meta.id) { $meta.id } else { $name }
   $dur = [double]$meta.duration
   $cam = if ($meta.camClass) { $meta.camClass } else { "cam" }
+  $secEnd = if ($meta.sectionEnd) { " data-section-end" } else { "" }
   $varsJson = if ($meta.variables) { ($meta.variables | ConvertTo-Json -Compress -Depth 6) } else { "[]" }
   if ($varsJson -notlike '`[*') { $varsJson = "[$varsJson]" }  # ConvertTo-Json drops the array wrapper for a single item
 
@@ -87,7 +88,7 @@ $css
 </style>
 <div id="root" data-composition-id="$id" data-width="1920" data-height="1080" data-start="0" data-duration="$dur">
 <div class="g1" data-layout-allow-overflow></div><div class="g2" data-layout-allow-overflow></div><div class="grid"></div>
-<section id="$id-sc" class="clip" data-start="0" data-duration="$dur" data-track-index="1"><div class="$cam">
+<section id="$id-sc" class="clip" data-start="0" data-duration="$dur" data-track-index="1"$secEnd><div class="$cam">
 $markup
 </div></section>
 </div>

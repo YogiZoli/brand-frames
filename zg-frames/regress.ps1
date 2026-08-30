@@ -63,16 +63,27 @@ if (-not (Test-Path $Video)) { throw "Render not found: $Video. Run _go.bat firs
 if (-not (Test-Path $Html))  { throw "Composition not found: $Html" }
 
 # ---------- 1. the scene table, read from the composition itself ----------
+# Two shapes: the old monolith (<section class="clip"> with a .kick label) and
+# the mount host (one <div data-composition-src> slot per archetype block).
 $src = Get-Content $Html -Raw
 $scenes = @()
-$rx = [regex]'(?s)<section id="(?<id>[^"]+)"[^>]*data-start="(?<s>[\d.]+)"[^>]*data-duration="(?<d>[\d.]+)".*?class="kick"[^>]*>(?<t>.*?)</div>'
-foreach ($m in $rx.Matches($src)) {
-  $title = $m.Groups['t'].Value -replace '&middot;','·' -replace '&[a-z]+;',' ' -replace '\s+',' '
+$rxSlot = [regex]'<div\s+id="s-[^"]*"\s+data-composition-id="(?<id>[^"]+)"\s+data-composition-src="[^"]*"\s+data-start="(?<s>[\d.]+)"\s+data-duration="(?<d>[\d.]+)"'
+foreach ($m in $rxSlot.Matches($src)) {
   $scenes += [pscustomobject]@{
-    Id    = $m.Groups['id'].Value
-    Start = [double]$m.Groups['s'].Value
-    Dur   = [double]$m.Groups['d'].Value
-    Title = $title.Trim()
+    Id = $m.Groups['id'].Value; Start = [double]$m.Groups['s'].Value
+    Dur = [double]$m.Groups['d'].Value; Title = $m.Groups['id'].Value
+  }
+}
+if ($scenes.Count -eq 0) {
+  $rx = [regex]'(?s)<section id="(?<id>[^"]+)"[^>]*data-start="(?<s>[\d.]+)"[^>]*data-duration="(?<d>[\d.]+)".*?class="kick"[^>]*>(?<t>.*?)</div>'
+  foreach ($m in $rx.Matches($src)) {
+    $title = $m.Groups['t'].Value -replace '&middot;','·' -replace '&[a-z]+;',' ' -replace '\s+',' '
+    $scenes += [pscustomobject]@{
+      Id    = $m.Groups['id'].Value
+      Start = [double]$m.Groups['s'].Value
+      Dur   = [double]$m.Groups['d'].Value
+      Title = $title.Trim()
+    }
   }
 }
 if ($scenes.Count -eq 0) { throw "No scenes parsed from $Html — has the markup shape changed?" }

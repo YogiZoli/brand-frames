@@ -555,12 +555,19 @@
     E: E,
     dur: dur,
     cues: function () { return cues.slice().sort(function (a, b) { return a.t - b.t; }); },
-    build: function (id) {
+    /* build(id) — the monolithic sampler / a whole document.
+       buildIn(root, id) — one mounted archetype block, scoped to its own root.
+       Both walk the same scene loop; only the DOM scope differs, so the motion
+       a block ships is byte-identical to the motion the sampler approved. */
+    build: function (id) { return this._run(null, id || "main"); },
+    buildIn: function (root, id) { return this._run(root || null, id || "main"); },
+    _run: function (scope, id) {
+      var q = scope && scope.nodeType === 1 ? scope : document;
       cues = [];
-      if (w.ZGT) w.ZGT.run();        /* v1.7: írásjel-kultúra a mérés ELŐTT */
-      if (w.ZGI) w.ZGI.paint();      /* v1.6: paint BEFORE measuring — geometry must be final */
+      if (w.ZGT) w.ZGT.run(scope);   /* v1.7: írásjel-kultúra a mérés ELŐTT */
+      if (w.ZGI) w.ZGI.paint(scope); /* v1.6: paint BEFORE measuring — geometry must be final */
       tl = gsap.timeline({ paused: true });
-      document.querySelectorAll("section.clip").forEach(function (sec) {
+      q.querySelectorAll("section.clip").forEach(function (sec) {
         var s = n(sec.dataset.start, 0), d = n(sec.dataset.duration, 3), cam = sec.querySelector(".cam");
         tl.fromTo(cam, { opacity: 0, y: 44, scale: .97 }, { opacity: 1, y: 0, scale: 1, duration: .5, ease: E.enter }, s);
         tl.to(cam, { scale: 1.03, duration: d, ease: E.move }, s);
@@ -607,7 +614,7 @@
               '<circle class="sigbar" cx="105" cy="105" r="96"/></svg>' +
               '<div class="sigface"><span class="ico" data-icon="check"></span></div>';
             (sec.querySelector(".cam") || sec).appendChild(w2);
-            if (w.ZGI) w.ZGI.paint();
+            if (w.ZGI) w.ZGI.paint(scope);
           }
           var st = s + Math.max(1.2, d - 2.2);
           A.signature(w2.querySelector(".sigbar"), st, 1.3);
@@ -646,7 +653,7 @@
           });
         }
       });
-      if (w.ZGI) w.ZGI.paint();
+      if (w.ZGI) w.ZGI.paint(scope);
       w.__timelines = w.__timelines || {};
       w.__timelines[id || "main"] = tl;
       /* a hangvezérlő tábla kikerül az ablakra, hogy ki lehessen olvasni */

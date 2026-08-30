@@ -48,12 +48,13 @@
   var SG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" ' +
            'stroke-linecap="round" stroke-linejoin="round">';
   w.ZGI = {
-    paint: function () {
-      document.querySelectorAll("[data-icon]").forEach(function (e) {
+    paint: function (scope) {
+      var q = scope && scope.nodeType === 1 ? scope : document;
+      q.querySelectorAll("[data-icon]").forEach(function (e) {
         var p = P[e.dataset.icon];
         if (p) e.innerHTML = S + p + "</svg>";
       });
-      document.querySelectorAll("[data-glyph]").forEach(function (e) {
+      q.querySelectorAll("[data-glyph]").forEach(function (e) {
         var p = G[e.dataset.glyph];
         if (p) e.innerHTML = SG + p + "</svg>";
       });

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1920, height=1080"/>
+<title>zg-frames blocks pilot — arrow / funnel / lens</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  body{margin:0;background:#0b0f14}
+  #root{position:relative;width:1920px;height:1080px;overflow:hidden}
+  [data-composition-id="pilot"] > div[data-composition-src]{position:absolute;inset:0}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="pilot" data-start="0" data-width="1920" data-height="1080" data-duration="22">
+
+  <div id="s-arrow" data-composition-id="arrow"  data-composition-src="arrow/arrow.html"
+       data-start="0"  data-duration="5" data-track-index="1" data-width="1920" data-height="1080"></div>
+
+  <div id="s-funnel" data-composition-id="funnel" data-composition-src="funnel/funnel.html"
+       data-start="5"  data-duration="5" data-track-index="1" data-width="1920" data-height="1080"></div>
+
+  <div id="s-lens1" data-composition-id="lens"   data-composition-src="lens/lens.html"
+       data-start="10" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
+
+  <!-- same lens block, live-video content passed per instance — proves the variable surface -->
+  <div id="s-lens2" data-composition-id="lens"   data-composition-src="lens/lens.html"
+       data-start="16" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"
+       data-variable-values='{"kick":"WHAT THE LEAD WANTS","panelTitle":"Alex Rivers","k1":"ASKED FOR","v1":"The full guide","k2":"WHEN","v2":"This week","p1k":"signal","p1v":"Commented GUIDE twice","p2k":"next step","p2v":"Send the walkthrough","caption":"Different words, same tested block."}'></div>
+
+</div>
+<script>
+  window.__timelines = window.__timelines || {};
+  window.__timelines["pilot"] = gsap.timeline({ paused: true });
+</script>
+</body>
+</html>

@@ -76,17 +76,19 @@
   w.ZGT = {
     /* értékekre is hívható, például data-val gépelt mezőkhöz */
     tidy: tidy,
-    run: function () {
+    run: function (scope) {
       var hu = (d.documentElement.getAttribute("lang") || "en").indexOf("hu") === 0;
-      walk(d.body, hu);
+      var root = scope && scope.nodeType === 1 ? scope : d.body;
+      var q = scope && scope.nodeType === 1 ? scope : d;
+      walk(root, hu);
       /* a gépelt mezők értéke attribútumban él, azt külön kell kezelni */
-      d.querySelectorAll("[data-val]").forEach(function (e) {
+      q.querySelectorAll("[data-val]").forEach(function (e) {
         if (e.closest(SKIP)) return;
         if (/^[\d.]+$/.test(e.dataset.val)) return;      /* tiszta szám: hagyd */
         e.dataset.val = tidy(e.dataset.val, hu);
       });
       /* a lupé szavai is szöveg */
-      d.querySelectorAll("[data-words]").forEach(function (e) {
+      q.querySelectorAll("[data-words]").forEach(function (e) {
         e.dataset.words = tidy(e.dataset.words, hu);
       });
     }

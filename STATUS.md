@@ -4,7 +4,7 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-30 (pipeline tooling kör: review lap 3 kocka + mondattábla-időzítés + kép/hang lint) · **commit:** lásd `git log -1`
+**Frissítve:** 2026-08-30 (archetípus blokkok pilot: arrow/funnel/lens mountolható sub-kompként) · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
@@ -141,6 +141,44 @@ változatlan.
 
 `ai-video-workflow/SCENE-TABLE.md` szerkesztve (nem git repo). Drive tükör:
 `📺 YouTube & Content/One Sitting Workflow/` (SCENE-TABLE.md + TIMING.md).
+
+---
+
+## ARCHETÍPUS BLOKKOK — PILOT KÉSZ (2026-08-30, Zoltán jóváhagyta a pilot-utat)
+
+Cél: minden archetípus markupjának EGY forrása legyen, ne kézi másolat minden
+videóban. Mechanizmus: HyperFrames registry blokkok, `data-composition-src`.
+
+**Kész ebben a körben (pilot, 3 archetípus):**
+- `zg-frames/blocks/build.ps1` — generátor. Beolvassa a `blocks/<name>/<name>.src.html`
+  kanoni markupot, köré-inlineolja a közös `zg.css` + `type.js` + `icons.js` +
+  `motion.js` fájlokat, kiad egy mountolható sub-kompot `blocks/<name>/<name>.html`.
+  Tükröz a `_frames/blocks/<name>/` promoted könyvtárba is (BLOCKS.md). 0 token.
+- `blocks/arrow/`, `blocks/funnel/`, `blocks/lens/` — a 3 pilot archetípus,
+  `.src.html` (forrás) + generált `.html`, `data-var-text` változó-felülettel.
+- `motion.js`: `ZG.build(id)` mellé `ZG.buildIn(root, id)` — mountolt blokkot a
+  saját root-jára szűkítve épít, a monolittal bájt-azonos mozgással. `icons.js`
+  `paint(scope)`, `type.js` `run(scope)` ugyanígy. A régi `ZG.build("main")` marad.
+- `zg.css`: `.ptitle` és `.reck` színe `--label` → `--muted` (`--label` #97A3B8
+  fehér lapon 2,55:1, bukta a WCAG AA-t; `--muted` #6A7688 = 4,7:1). Monoliton is javítás.
+- `blocks/_pilot/index.html` — teszt hoszt: mind a hármat mountolja, a `lens`-t
+  kétszer (egyszer saját `data-variable-values`-szel). `hyperframes check`:
+  **PASSED, 0 error, 0 warning, 31/31 WCAG AA**, 6 info (kick belépő ~12px transient,
+  lens szándékos takarás). A `_pilot/` fészkelt block+font másolatai gitignore-olva.
+
+**Bizonyított:** mount-kontrakt, motion.js scope, helyi Open Sans a sub-kompba,
+token-híd, per-instance változók (a 2. lens instance más szöveget mutat ugyanabból
+a tesztelt blokkból).
+
+**Még NEM változó:** attribútumban élő mozgás-paraméterek (lens `data-path` /
+`data-words`, ikon `data-icon` név). Egyelőre fixek. Következő: init-script a
+`getVariables()`-ből.
+
+**HÁTRA (következő session):** (1) a maradék 36 archetípus kinyerése + generálás;
+(2) a sampler `index.html` átírása 39 mount slotra; (3) `regress.ps1` scene-tábla
+parszere a slot-listára (ma `<section ... class="kick">`-et olvas); (4) új sampler
+render a blokkokból, Zoltán mozgás-jóváhagyása + `regress.ps1 -Accept` (PIPELINE
+3. kapu) = új baseline. Addig a `sampler_2026-08-29_v6.mp4` baseline ÉRVÉNYES.
 
 ---
 

@@ -1,0 +1,36 @@
+<!--zg
+{ "id":"lens", "duration":6, "camClass":"cam dense",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"LENS"},
+    {"id":"panelTitle","type":"string","label":"Panel title","default":"Lead record"},
+    {"id":"k1","type":"string","label":"Field 1 key","default":"PRIMARY INTENT"},
+    {"id":"v1","type":"string","label":"Field 1 value","default":"Enterprise scale"},
+    {"id":"k2","type":"string","label":"Field 2 key","default":"TEMPERATURE"},
+    {"id":"v2","type":"string","label":"Field 2 value","default":"Warm to hot"},
+    {"id":"p1k","type":"string","label":"Bubble 1 key","default":"what it wants"},
+    {"id":"p1v","type":"string","label":"Bubble 1 value","default":"A company-size rollout"},
+    {"id":"p2k","type":"string","label":"Bubble 2 key","default":"how ready it is"},
+    {"id":"p2v","type":"string","label":"Bubble 2 value","default":"Ready to talk this week"},
+    {"id":"caption","type":"string","label":"Sub caption","default":"Never an empty glass."}
+  ] }
+zg-->
+<div class="kick" data-anim="kick" data-at=".1" data-var-text="kick">LENS</div>
+<div class="lenswrap">
+  <div class="panel" data-layout-allow-overlap style="height:400px">
+    <div class="ptitle" data-var-text="panelTitle">Lead record</div>
+    <div style="display:flex;gap:168px;margin-top:40px">
+      <div><div class="reck" data-var-text="k1">PRIMARY INTENT</div><div style="font-size:50px;font-weight:800;margin-top:8px" data-var-text="v1">Enterprise scale</div></div>
+      <div><div class="reck" data-var-text="k2">TEMPERATURE</div><div style="font-size:50px;font-weight:800;margin-top:8px;color:var(--green)" data-var-text="v2">Warm to hot</div></div>
+    </div>
+  </div>
+  <span class="lens" data-layout-allow-overlap data-anim="lens" data-at=".6" data-dur="4.8"
+        data-path="57,7;590,7" data-words="Enterprise|Warm">
+    <span class="lenstxt" data-layout-allow-overlap>Enterprise</span></span>
+  <div class="pop tint b" data-layout-allow-overlap style="left:40px;top:452px"
+       data-anim="unfold" data-at="1.3" data-dur="1.7">
+    <div class="popk" data-var-text="p1k">what it wants</div><div class="popv" data-var-text="p1v">A company-size rollout</div></div>
+  <div class="pop tint g" data-layout-allow-overlap style="left:620px;top:452px"
+       data-anim="unfold" data-at="3.2">
+    <div class="popk" data-var-text="p2k">how ready it is</div><div class="popv" data-var-text="p2v">Ready to talk this week</div></div>
+</div>
+<div class="sub" data-anim="fi" data-at="3.3" data-var-text="caption">Never an empty glass.</div>

@@ -1,0 +1,23 @@
+<!--zg
+{ "id":"funnel", "duration":5, "camClass":"cam",
+  "variables":[
+    {"id":"kick","type":"string","label":"Kicker","default":"FUNNEL"},
+    {"id":"s1l","type":"string","label":"Stage 1 label","default":"Watched the video"},
+    {"id":"s1r","type":"string","label":"Stage 1 value","default":"100%"},
+    {"id":"s2l","type":"string","label":"Stage 2 label","default":"Left a comment"},
+    {"id":"s2r","type":"string","label":"Stage 2 value","default":"18%"},
+    {"id":"s3l","type":"string","label":"Stage 3 label","default":"Opened the guide"},
+    {"id":"s3r","type":"string","label":"Stage 3 value","default":"11%"},
+    {"id":"s4l","type":"string","label":"Stage 4 label","default":"On the list"},
+    {"id":"s4r","type":"string","label":"Stage 4 value","default":"9%"},
+    {"id":"caption","type":"string","label":"Sub caption","default":"The last stage is the one that pays."}
+  ] }
+zg-->
+<div class="kick" data-anim="kick" data-at=".1" data-var-text="kick">FUNNEL</div>
+<div class="fnl" data-anim="funnelin" data-at=".4" data-dur="2.2">
+  <div class="fnst"><span class="fnl-l" data-var-text="s1l">Watched the video</span><span class="fnl-r" data-var-text="s1r">100%</span></div>
+  <div class="fnst"><span class="fnl-l" data-var-text="s2l">Left a comment</span><span class="fnl-r" data-var-text="s2r">18%</span></div>
+  <div class="fnst"><span class="fnl-l" data-var-text="s3l">Opened the guide</span><span class="fnl-r" data-var-text="s3r">11%</span></div>
+  <div class="fnst"><span class="fnl-l" data-var-text="s4l">On the list</span><span class="fnl-r" data-var-text="s4r">9%</span></div>
+</div>
+<div class="sub" data-anim="fi" data-at="1" data-var-text="caption">The last stage is the one that pays.</div>

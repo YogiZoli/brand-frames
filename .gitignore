@@ -11,3 +11,8 @@ zg-frames/.hyperframes/
 # derived regression output
 zg-frames/_regress/
 pipeline/_sample/
+
+# blocks pilot: local test harness only (nested block + font copies, snapshots).
+# Real block sources + generated html under zg-frames/blocks/<name>/ ARE tracked.
+zg-frames/blocks/_pilot/*
+!zg-frames/blocks/_pilot/index.html

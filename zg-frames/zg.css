@@ -116,7 +116,7 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 .pop.tint .popv{color:var(--navy)}
 
 .panel{position:relative;width:1640px;background:var(--card);border-radius:26px;padding:40px 52px;text-align:left;box-shadow:var(--sh-panel)}
-.ptitle{font-size:32px;font-weight:800;letter-spacing:4px;color:var(--label);text-transform:uppercase;margin-bottom:8px}
+.ptitle{font-size:32px;font-weight:800;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
 .prow{display:flex;align-items:center;gap:24px;font-size:40px;font-weight:700;color:var(--navy);padding:24px 0;border-bottom:1px solid #eef2f7}
 .prow:last-child{border-bottom:0}
 .pflag{width:54px;height:54px;border-radius:50%;background:var(--red-bg);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;flex:none}
@@ -250,7 +250,7 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 .recrow:last-child{border-bottom:0}
 .reci{width:60px;height:60px;border-radius:50%;background:var(--blue-bg);color:var(--blue);
   display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;flex:none}
-.reck{font-size:32px;font-weight:800;letter-spacing:3px;color:var(--label);text-transform:uppercase}
+.reck{font-size:32px;font-weight:800;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
 .recv{font-size:40px;font-weight:700;color:var(--navy)}
 .recok{margin-left:auto;background:var(--green-bg);color:var(--green-dk);font-size:32px;font-weight:800;
   padding:10px 22px;border-radius:40px}

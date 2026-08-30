@@ -67,11 +67,15 @@ if (-not (Test-Path $Html))  { throw "Composition not found: $Html" }
 # the mount host (one <div data-composition-src> slot per archetype block).
 $src = Get-Content $Html -Raw
 $scenes = @()
-$rxSlot = [regex]'<div\s+id="s-[^"]*"\s+data-composition-id="(?<id>[^"]+)"\s+data-composition-src="[^"]*"\s+data-start="(?<s>[\d.]+)"\s+data-duration="(?<d>[\d.]+)"'
-foreach ($m in $rxSlot.Matches($src)) {
-  $scenes += [pscustomobject]@{
-    Id = $m.Groups['id'].Value; Start = [double]$m.Groups['s'].Value
-    Dur = [double]$m.Groups['d'].Value; Title = $m.Groups['id'].Value
+# mount host: any <div ...> carrying data-composition-src. Attribute order is not
+# fixed (the runtime injects data-hf-id), so match the tag then pull each attr.
+foreach ($m in [regex]::Matches($src, '<div\b[^>]*\bdata-composition-src="[^"]*"[^>]*>')) {
+  $tag = $m.Value
+  $id = [regex]::Match($tag, 'data-composition-id="([^"]+)"').Groups[1].Value
+  $st = [regex]::Match($tag, 'data-start="([\d.]+)"').Groups[1].Value
+  $du = [regex]::Match($tag, 'data-duration="([\d.]+)"').Groups[1].Value
+  if ($id -and $st -and $du) {
+    $scenes += [pscustomobject]@{ Id = $id; Start = [double]$st; Dur = [double]$du; Title = $id }
   }
 }
 if ($scenes.Count -eq 0) {

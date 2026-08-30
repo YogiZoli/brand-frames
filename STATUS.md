@@ -176,19 +176,17 @@ videóban. Mechanizmus: HyperFrames sub-kompozíciók, `data-composition-src`.
 monolit.** Egyenletes mind a 39 jeleneten, nem jelenet-hiba. A sub-komp
 kompozitálás sajátja: se `#root`/slot CSS `transform`, se a `<template>` vs
 no-template alak, se a font, se a cam-animáció nem befolyásolja (mindet
-végigpróbáltam). A `data-chart` referencia-blokk no-template alakjában a
-`check` nem tud mintát venni, tehát a `<template>` alak marad. Ez egy egyszeri
-keret-döntés Zoltánnak, nem regresszió: minden éles videó ugyanezt a keretet
-örökli konzisztensen.
+végigpróbáltam). Ez a mostantól érvényes néz.
 
 **Még NEM változó:** attribútumban élő mozgás-paraméterek (lens `data-path` /
 `data-words`, ikon `data-icon`). Következő: init-script a `getVariables()`-ből.
 
-**HÁTRA:** Zoltán megnézi a `sampler_blocks_*.mp4`-et, jóváhagyja a mozgást és a
-3-4%-os keretet (PIPELINE 3. kapu). Ha OK: `regress.ps1 -Video sampler_blocks_*.mp4
--Accept` = új, blokk-kulcsú baseline. Ha a keret zavaró: külön kör a gyökérokra.
-Addig a `sampler_2026-08-29_v6.mp4` baseline ÉRVÉNYES. A monolit a git
-történetben: `git show 417ab8e:zg-frames/index.html`.
+**JÓVÁHAGYVA (Zoltán, 2026-08-31): "jobb mint volt, eddigi legjobb."** Az új
+regressziós baseline: `sampler_blocks_2026-08-30_2343.mp4` (`regress.ps1 -Accept`
+lefutott, `baseline/<blokknev>_0/1/2.png` + `baseline.mp4`, 39 archetípus,
+3 fázisú). A `zg-frames` könyvtár mostantól a mountolt blokkokon áll. A
+`sampler_2026-08-29_v6.mp4` baseline LEVÁLTVA. Monolit a git történetben:
+`git show 417ab8e:zg-frames/index.html`.
 
 ---
 

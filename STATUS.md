@@ -4,7 +4,7 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-29 22:05 (zg-frames v6 JÓVÁHAGYVA + baseline, kánon-átállás kész) · **commit:** lásd `git log -1`
+**Frissítve:** 2026-08-30 (pipeline tooling kör: review lap 3 kocka + mondattábla-időzítés + kép/hang lint) · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
@@ -106,6 +106,40 @@ Minden éles videó erre a könyvtárra épülhet.
 A `frame-showcase.html` teljes újratördelése: fejlesztési tétel.
 
 VoxFlow: **nem nyúltunk hozzá** (Máté csatornája).
+
+---
+
+## PIPELINE TOOLING KÖR (2026-08-30, Zoltán jóváhagyta 3+4, 1+2 egyben)
+
+Négy fejlesztés az éles videó előtt, mind 0 token (ffmpeg / szövegfeldolgozás):
+
+- **3. Before/after review lap.** `regress.ps1`: minden CHANGED jelenethez 3x3
+  tábla (BASELINE / THIS RENDER / WHAT MOVED sor, 25/55/85% oszlop) +
+  `_move_<id>.mp4` (baseline a régi render mellett, szinkronban). Összefűzve
+  `review-sheet.png` + `review-motion.mp4`. A `-Accept` mostantól elrakja a
+  jóváhagyott rendert `baseline/baseline.mp4`-ként (a mozgás-oldalhoz).
+- **4. Jelenet-időzítés a mondattáblából.** Új: `pipeline/sentences.ps1`
+  (STT/SRT → `sentences.json` + `sentences.md` + `words.json`),
+  `pipeline/stamp-timing.ps1` (a jelenet `data-sent="S12"` / `S12-S15` /
+  `S20#1/3` horgonyt visz, a szkript tölti a `data-start`/`data-duration`-t),
+  `pipeline/TIMING.md` (a kánon). `PIPELINE.md` 3-4-5-6 sor + `SCENE-TABLE.md`
+  fejléc átvezetve. Egyetlen jelenet sem hordoz kézzel írt időzítést többé.
+- **1. Regresszió 3 kocka.** `regress.ps1` jelenetenként 3 kockát vág (25/55/85%),
+  mindhármat a baseline-hoz méri, a verdikt a legrosszabb. Elkapott egy mozgás-
+  regressziót amit a régi 78%-os egykockás teszt elnézett (zg32 CYCLE: 25%-nál
+  eltér, végén stimmel). A baseline formátuma `<id>_0/1/2.png`. Régi egykockás
+  baseline-nal visszaesik 78%-os összevetésre és `-Accept`-et kér.
+- **2. Kép kontra hang lint.** Új: `pipeline/image-audio-lint.ps1`. A jelenet
+  képernyő-szavait összeveti a jelenet időablakában elhangzott szavakkal, jelzi
+  a csúszást. NEM a 3. kapu, csak triviális szűrő. A régi monoliton próbálva:
+  141 jelenetből 119 tiszta, 22 jelölt (nagyrészt paraphrase/CTA, pár valódi).
+
+**A baseline NEM lett újra-elfogadva.** A `baseline/` a v6 egykockás marad
+(commit 0e25522). Zoltán futtassa: `regress.ps1 -Video sampler_2026-08-29_v6.mp4
+-Accept`, ha kész a 3 fázisú baseline-re, és azt külön commitolja.
+
+`ai-video-workflow/SCENE-TABLE.md` szerkesztve (nem git repo, csak lemezen +
+Drive tükör).
 
 ---
 

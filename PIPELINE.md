@@ -79,10 +79,10 @@ lokális út gyorsabb ÉS ingyen van.
 |---|---|---|---|
 | 1 | Kutatás + cím + **script** | Opus | ✅ **1. kapu** |
 | 2 | **VO + zene** (ElevenLabs · ducking · −14 LUFS) | szkript | ✅ **2. kapu** |
-| 3 | **Mondattábla** (SRT → mondathatárok + időpontok) | szkript | ❌ |
-| 4 | **Jelenet-tábla** (archetípus + max 6 szó / mondat) | Opus | ✅ **3. kapu** |
-| 5 | **Build** (tábla + registry → `index.html`) | Sonnet / szkript | ❌ |
-| 6 | **lint → check** | HyperFrames | ❌ (0 hiba a feltétel) |
+| 3 | **Mondattábla** (`pipeline\sentences.ps1`: STT/SRT → `sentences.json` + `.md`) | szkript | ❌ |
+| 4 | **Jelenet-tábla** (archetípus + max 6 szó / mondat + `data-sent` horgony) | Opus | ✅ **3. kapu** |
+| 5 | **Build** (tábla + registry → `index.html`), majd `pipeline\stamp-timing.ps1` a `data-start`/`data-duration`-t a mondattáblából tölti | Sonnet / szkript | ❌ |
+| 6 | **lint → check** (+ `pipeline\image-audio-lint.ps1`: kép kontra hang csúszás-szűrő, nem kapu) | HyperFrames | ❌ (0 hiba a feltétel) |
 | 7 | **Kontakt lap** (állókép jelenetenként) | HyperFrames | ✅ **4. kapu** |
 | 8 | **Render**, egyszer | HyperFrames | ❌ |
 | 9 | **Avatar composite** (natív alfa, arányos kicsinyítés + fix sarok, SEMMI maszk/torzítás) | ffmpeg | ✅ **5. kapu** |
@@ -93,6 +93,13 @@ A **mondattábla nem döntés, hanem mérés** — a zárt hangból olvassa ki a
 határokat. Ha hibás, a hang hibás, azt viszont a 2. kapu már jóváhagyta.
 A **build sablonbehelyettesítés** — ha hibás, a jelenet-tábla hibás, és a
 `check` amúgy is elkapja.
+
+**Jelenet-időzítés: a mondattáblából, nem kézzel.** Egyetlen jelenet sem
+hordoz kézzel írt `data-start` / `data-duration` számot. A jelenet a
+`data-sent="S12"` (vagy `S12-S15`, vagy `S20#1/3`) horgonyt viszi, és a
+`stamp-timing.ps1` tölti ki a számokat a `sentences.json`-ból: a kezdet a
+mondatból, a hossz mindig a következő horgonyból. Teljes leírás:
+`pipeline\TIMING.md`.
 
 ### A 4. lépés a legfontosabb újítás
 

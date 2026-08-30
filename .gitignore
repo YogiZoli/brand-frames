@@ -7,3 +7,7 @@ zg-frames/*.log
 zg-frames/snapshots/
 zg-frames/.thumbnails/
 zg-frames/.hyperframes/
+
+# derived regression output
+zg-frames/_regress/
+pipeline/_sample/

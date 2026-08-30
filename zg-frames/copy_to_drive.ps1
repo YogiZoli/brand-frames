@@ -17,6 +17,12 @@ Get-ChildItem $src -Filter "_ring16.jpg","_skitch16.jpg","_lens16.jpg" -ErrorAct
 if (Test-Path "$src\_regress\regress-report.md") {
   Copy-Item "$src\_regress\regress-report.md" "$out\regress-report.md" -Force
 }
+if (Test-Path "$src\_regress\review-sheet.png") {
+  Copy-Item "$src\_regress\review-sheet.png" "$out\regress-review-sheet.png" -Force
+}
+if (Test-Path "$src\_regress\review-motion.mp4") {
+  Copy-Item "$src\_regress\review-motion.mp4" "$out\regress-review-motion.mp4" -Force
+}
 Write-Host ""
 Write-Host "Fajlok"
 Write-Host "  Mappa (local):  $src"

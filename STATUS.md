@@ -274,13 +274,23 @@ teszt 39/39 "changed"-et adott (verzió-drift, nem tartalmi). **A baseline most
 elavult (0.8.22-vel más).** Zoltán döntése: vagy vissza a pinnelt régi verzióra
 és újratesztel, vagy `regress.ps1 -Accept` a 0.8.22-es sampleren.
 
-**AVATAR (9. lépés) — NEM KÉSZ.** Zoltán kérte (B mód, Segments: nyitás 0-6 mp,
-zárás 62,8-71,3 mp, kék pólós Eye Contact Correction, avatar_iii, átlátszó webm).
-A HeyGen MCP hívásokat (`create_asset_upload`, `create_video_from_avatar`) a
-Claude Code auto-mode classifier blokkolja, és a settings.json szerkesztését is.
-Zoltánnak kell engedélyeznie (interaktív `claude` terminál `/permissions`, vagy
-a `.claude/settings.local.json`-ba az MCP tool-nevek a `permissions.allow`-ba).
-Az avatar szegmens-hangok készen: `c2c/av_open.mp3` (6 mp), `c2c/av_close.mp3` (8,5 mp).
+**AVATAR (9. lépés) — KÉSZ, JÓVÁHAGYVA (Zoltán, 2026-09-01).**
+Végső videó: `c2c/c2c_v4_avatar_calm_2026-09-01.mp4` (72,3 mp, −14,4 LUFS).
+B mód, Segments: nyitás 0-6 mp, zárás 62,8-71,3 mp, közte tiszta. avatar_iii,
+átlátszó webm, natív VP9 alfa (semmi maszk / zöldháttér / colorkey).
+Look: `bfcee432248442539191df03f922f575` ("Zoltan Gero", nyugodt, nincs kéz a
+képben, direkt szemkontaktus). Az Eye Contact Correction lookok (`c26abf3b`
+fekete, `48a6d85f` kék) is mentek, de Zoltán szerint túl erősen gesztikulálnak.
+A HeyGen hívásokat Zoltán engedélyezte a claude.ai connector beállításokban.
+Kb. 10-12 kredit fogyott a próbálgatással (760-ból).
+
+**A HeyGen close-avatar buktató:** ha a hang-asset még `status: processing`,
+a generált avatar NÉMA lesz (nincs szájszinkron). Meg kell várni a `get_asset`
+`processing` → kész állapotot, és a hang tényleges hangerejét ellenőrizni
+(`volumedetect`), MIELŐTT a `create_video_from_avatar` fut.
+
+**PUBLIKÁLÁS: NEM TÖRTÉNT MEG.** A videó kész, de YouTube-ra nincs feltöltve.
+Külön lépés, külön kérésre.
 
 **STUDIO PREVIEW instabil:** a `hyperframes preview` háttérszerver ebben a
 környezetben lehal / a canvas endless loadingra megy. VLC (`file:///`) a

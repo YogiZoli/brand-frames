@@ -269,10 +269,27 @@ Zoltán): `zg-frames/renders/c2c_v2_2026-09-01.mp4`, 72,3 mp, 16 jelenet,
 **hyperframes PIN (2026-09-01):** `_frames/package.json` → `hyperframes@0.8.22`,
 `npm install` lefutott, `node_modules/` gitignore-olt. Az `npx hyperframes`
 mostantól a lokális pinnelt verziót hívja (ha a cwd `_frames` alatt van).
-Ok: a session közben az npx magától 0.8.20→0.8.22-re ugrott, és a regressziós
-teszt 39/39 "changed"-et adott (verzió-drift, nem tartalmi). **A baseline most
-elavult (0.8.22-vel más).** Zoltán döntése: vagy vissza a pinnelt régi verzióra
-és újratesztel, vagy `regress.ps1 -Accept` a 0.8.22-es sampleren.
+Ok: a session közben az npx magától 0.8.20→0.8.22-re ugrott.
+
+**ÚJ BASELINE (Zoltán, 2026-09-01): `sampler_2026-09-01.mp4`.** `regress.ps1 -Accept`
+lefutott, `baseline/<blokk>_0/1/2.png` (39 archetípus, 3 fázis) + APPROVED.txt
+frissítve. Ez a 0.8.22-es render, a mai könyvtári javításokkal. A régi
+`sampler_blocks_2026-08-30_2343.mp4` baseline LEVÁLTVA.
+
+**KÖNYVTÁRI JAVÍTÁSOK (2026-09-01, második kör, a `_feedback/2026-09-01`-ből):**
+- **`&middot;` / `&rarr;` entitások literálisan jelentek meg** a kickerekben
+  ("30 &MIDDOT BRANCH"). Ok: a HyperFrames a mountolt sub-kompnál a meta-fejléc
+  `default` értékét használja, és az entitást nyers szövegként rakja ki.
+  Mind a 15 érintett blokk `.src.html`-je (body + meta) valódi Unicode-ra
+  cserélve: `·` (U+00B7), `→` (U+2192), tipográfiai idézőjelek.
+- **branch csomópont-korongok átlátszóan renderelődtek.** A `.brend .skm` CSS
+  halott tokenekre hivatkozott (`--accent-600`, `--accent-700`, `--neutral-300`,
+  `--neutral-500` — ezeket az OKLCH-paletta törlésekor kivették). Vissza élő
+  kánon-tokenekre: nyertes ág `--green-500` korong fehér pipával, másik
+  `--navy-100` korong `--navy-700` kihúzással.
+- **tiles státusz-korongok: NINCS ilyen a könyvtárban.** A screenshotokon látott
+  zöld pipa / kék kérdőjel / piros kereszt a szemvédő szűrő torzítása a sima
+  kör-ikonokból.
 
 **AVATAR (9. lépés) — KÉSZ, JÓVÁHAGYVA (Zoltán, 2026-09-01).**
 Végső videó: `c2c/c2c_v4_avatar_calm_2026-09-01.mp4` (72,3 mp, −14,4 LUFS).

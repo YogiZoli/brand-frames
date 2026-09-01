@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"39 \u0026middot; LEAD CARD \u0026middot; ONE REAL PERSON"},{"id":"subcap","type":"string","label":"Sub caption","default":"Not a number. A person."},{"id":"name","type":"string","label":"Person name","default":"Alex Rivers"},{"id":"role","type":"string","label":"Person role","default":"Course creator, 4 months in"},{"id":"tag1","type":"string","label":"Tag 1","default":"commented GUIDE"},{"id":"tag2","type":"string","label":"Tag 2","default":"opened twice"},{"id":"tag3","type":"string","label":"Tag 3","default":"replied"},{"id":"score","type":"string","label":"Score number","default":"86"},{"id":"scoreLabel","type":"string","label":"Score label","default":"ready"}]'>
+<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"39 · LEAD CARD · ONE REAL PERSON"},{"id":"subcap","type":"string","label":"Sub caption","default":"Not a number. A person."},{"id":"name","type":"string","label":"Person name","default":"Alex Rivers"},{"id":"role","type":"string","label":"Person role","default":"Course creator, 4 months in"},{"id":"tag1","type":"string","label":"Tag 1","default":"commented GUIDE"},{"id":"tag2","type":"string","label":"Tag 2","default":"opened twice"},{"id":"tag3","type":"string","label":"Tag 3","default":"replied"},{"id":"score","type":"string","label":"Score number","default":"86"},{"id":"scoreLabel","type":"string","label":"Score label","default":"ready"}]'>
 <head><meta charset="UTF-8"/></head>
 <body>
 <template>
@@ -740,10 +740,12 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 
 /* BRANCH kimeneti jelolok: tomor korong, feher jel, magas kontraszt.
    Feedback 2026-08-29: "a router tetszik, de az ikonok nem jok." */
-.brend .skm{width:72px;height:72px;background:var(--card);color:var(--neutral-500);
-  box-shadow:inset 0 0 0 3px var(--neutral-300), var(--e-1)}
-.brend .skm.green{background:var(--accent-600);color:#fff;
-  box-shadow:inset 0 0 0 3px var(--accent-700), var(--e-1)}
+/* 2026-09-01: --accent-600/700 and --neutral-300/500 were removed with the OKLCH
+   palette, so these discs rendered transparent. Back on live canon tokens. */
+.brend .skm{width:72px;height:72px;background:var(--navy-100);color:var(--navy-700);
+  box-shadow:inset 0 0 0 3px var(--navy-500), var(--e-1)}
+.brend .skm.green{background:var(--green-500);color:#fff;
+  box-shadow:inset 0 0 0 3px var(--green-700), var(--e-1)}
 .brend .skm .ico svg{width:58%;height:58%;stroke-width:2.6}
 
 /* ARROW · 3 PHASES: a végigfutó jelölő NYÍLHEGY, nem pötty.
@@ -847,12 +849,12 @@ section.clip:first-of-type .cam{opacity:1}
 <div id="root" data-composition-id="lead-card" data-width="1920" data-height="1080" data-start="0" data-duration="600">
 <div class="g1" data-layout-allow-overflow></div><div class="g2" data-layout-allow-overflow></div><div class="grid"></div>
 <section id="lead-card-sc" class="clip" data-start="0" data-duration="600" data-scene-dur="5" data-track-index="1" data-section-end><div class="cam dense">
-<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>39 &middot; LEAD CARD &middot; ONE REAL PERSON</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>39 · LEAD CARD · ONE REAL PERSON</div>
 <div class="lead" data-anim="fi" data-at=".35" data-dur=".8">
   <span class="leadav"><span class="ico" data-icon="client"></span></span>
   <div class="leadmain">
     <div class="leadn" data-anim="fi" data-at=".7" data-vars='{"text":"name"}'>Alex Rivers</div>
-    <div class="leadr" data-anim="fi" data-at=".95" data-vars='{"text":"role"}'>Course creator &middot; 4 months in</div>
+    <div class="leadr" data-anim="fi" data-at=".95" data-vars='{"text":"role"}'>Course creator · 4 months in</div>
     <div class="leadtags" data-anim="pops" data-at="1.4">
       <span class="ltag" data-vars='{"text":"tag1"}'>commented GUIDE</span>
       <span class="ltag" data-vars='{"text":"tag2"}'>opened twice</span>

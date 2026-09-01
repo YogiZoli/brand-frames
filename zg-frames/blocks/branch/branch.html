@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"30 \u0026middot; BRANCH \u0026middot; IT GOES ONE OF TWO WAYS"},{"id":"subcap","type":"string","label":"Sub caption","default":"Only the taken path stays bright."},{"id":"root","type":"string","label":"Branch root","default":"A comment arrives"},{"id":"win","type":"string","label":"Taken path","default":"Keyword matched, guide sent"},{"id":"lose","type":"string","label":"Other path","default":"No keyword, simple reply"}]'>
+<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"30 · BRANCH · IT GOES ONE OF TWO WAYS"},{"id":"subcap","type":"string","label":"Sub caption","default":"Only the taken path stays bright."},{"id":"root","type":"string","label":"Branch root","default":"A comment arrives"},{"id":"win","type":"string","label":"Taken path","default":"Keyword matched, guide sent"},{"id":"lose","type":"string","label":"Other path","default":"No keyword, simple reply"}]'>
 <head><meta charset="UTF-8"/></head>
 <body>
 <template>
@@ -740,10 +740,12 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 
 /* BRANCH kimeneti jelolok: tomor korong, feher jel, magas kontraszt.
    Feedback 2026-08-29: "a router tetszik, de az ikonok nem jok." */
-.brend .skm{width:72px;height:72px;background:var(--card);color:var(--neutral-500);
-  box-shadow:inset 0 0 0 3px var(--neutral-300), var(--e-1)}
-.brend .skm.green{background:var(--accent-600);color:#fff;
-  box-shadow:inset 0 0 0 3px var(--accent-700), var(--e-1)}
+/* 2026-09-01: --accent-600/700 and --neutral-300/500 were removed with the OKLCH
+   palette, so these discs rendered transparent. Back on live canon tokens. */
+.brend .skm{width:72px;height:72px;background:var(--navy-100);color:var(--navy-700);
+  box-shadow:inset 0 0 0 3px var(--navy-500), var(--e-1)}
+.brend .skm.green{background:var(--green-500);color:#fff;
+  box-shadow:inset 0 0 0 3px var(--green-700), var(--e-1)}
 .brend .skm .ico svg{width:58%;height:58%;stroke-width:2.6}
 
 /* ARROW · 3 PHASES: a végigfutó jelölő NYÍLHEGY, nem pötty.
@@ -847,7 +849,7 @@ section.clip:first-of-type .cam{opacity:1}
 <div id="root" data-composition-id="branch" data-width="1920" data-height="1080" data-start="0" data-duration="600">
 <div class="g1" data-layout-allow-overflow></div><div class="g2" data-layout-allow-overflow></div><div class="grid"></div>
 <section id="branch-sc" class="clip" data-start="0" data-duration="600" data-scene-dur="5" data-track-index="1"><div class="cam">
-<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>30 &middot; BRANCH &middot; IT GOES ONE OF TWO WAYS</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>30 · BRANCH · IT GOES ONE OF TWO WAYS</div>
 <div class="branch" data-anim="branchin" data-at=".35" data-dur="3.4">
   <svg viewBox="0 0 1440 420" width="1440" height="420">
     <path class="brstem" d="M470 210 H620" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
@@ -855,8 +857,8 @@ section.clip:first-of-type .cam{opacity:1}
     <path class="brleg" d="M620 210 C720 210, 740 100, 840 100" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
   </svg>
   <div class="brroot" data-vars='{"text":"root"}'>A comment arrives</div>
-  <div class="brend win" style="left:860px;top:52px"><span class="skm green"><span class="ico" data-glyph="check"></span></span><span data-vars='{"text":"win"}'>Keyword matched &rarr; guide sent</span></div>
-  <div class="brend" style="left:860px;top:272px"><span class="skm"><span class="ico" data-glyph="dash"></span></span><span data-vars='{"text":"lose"}'>No keyword &rarr; simple reply</span></div>
+  <div class="brend win" style="left:860px;top:52px"><span class="skm green"><span class="ico" data-glyph="check"></span></span><span data-vars='{"text":"win"}'>Keyword matched → guide sent</span></div>
+  <div class="brend" style="left:860px;top:272px"><span class="skm"><span class="ico" data-glyph="dash"></span></span><span data-vars='{"text":"lose"}'>No keyword → simple reply</span></div>
 </div>
 <div class="subcap" data-anim="fi" data-at="1.8" data-vars='{"text":"subcap"}'>Only the taken path stays bright.</div>
 </div></section>

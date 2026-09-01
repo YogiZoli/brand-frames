@@ -1,19 +1,19 @@
 <!--zg
 { "id":"command", "duration":5.5, "camClass":"cam dense",
   "variables":[
-    {"id":"kick","type":"string","label":"Kicker","default":"38 \u0026middot; COMMAND"},
+    {"id":"kick","type":"string","label":"Kicker","default":"38 · COMMAND"},
     {"id":"subcap","type":"string","label":"Sub caption","default":"Exactly what you type."},
     {"id":"title","type":"string","label":"Terminal title","default":"terminal"},
     {"id":"cmd1","type":"string","label":"First command args","default":"check"},
     {"id":"out1","type":"string","label":"Output line","default":"0 errors, 0 warnings"}
   ] }
 zg-->
-<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>38 &middot; COMMAND</div>
+<div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>38 · COMMAND</div>
 <div class="cmd">
   <div class="cmdbar" data-anim="fi" data-at=".3"><i></i><i></i><i></i><span class="cmdttl" data-vars='{"text":"title"}'>terminal</span></div>
   <div class="cmdbody">
     <div class="cmdline" data-anim="fi" data-at=".7"><span class="cmdp">&gt;</span> <span class="cmdk">hyperframes</span> <span data-vars='{"text":"cmd1"}'>check</span></div>
-    <div class="cmdline cmdout" data-anim="fi" data-at="1.6" data-vars='{"text":"out1"}'>0 errors &middot; 0 warnings</div>
+    <div class="cmdline cmdout" data-anim="fi" data-at="1.6" data-vars='{"text":"out1"}'>0 errors · 0 warnings</div>
     <div class="cmdline" data-anim="fi" data-at="2.3" style="margin-top:16px"><span class="cmdp">&gt;</span> <span class="cmdk">hyperframes</span> render <span class="cmddim">-o</span> <span class="cmdstr">sampler.mp4</span></div>
   </div>
 </div>

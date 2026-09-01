@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"21 · OVERLAY · LOWER THIRD"},{"id":"subcap","type":"string","label":"Sub caption","default":"Your footage never re-encodes."},{"id":"name","type":"string","label":"Lower-third name","default":"Zoltan Gero"},{"id":"role","type":"string","label":"Lower-third role","default":"AI agents \u0026middot; evergreen income"}]'>
+<html lang="en" data-resolution="landscape" data-composition-variables='[{"id":"kick","type":"string","label":"Kicker","default":"21 · OVERLAY · LOWER THIRD"},{"id":"subcap","type":"string","label":"Sub caption","default":"Your footage never re-encodes."},{"id":"name","type":"string","label":"Lower-third name","default":"Zoltan Gero"},{"id":"role","type":"string","label":"Lower-third role","default":"AI agents · evergreen income"}]'>
 <head><meta charset="UTF-8"/></head>
 <body>
 <template>
@@ -740,10 +740,12 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 
 /* BRANCH kimeneti jelolok: tomor korong, feher jel, magas kontraszt.
    Feedback 2026-08-29: "a router tetszik, de az ikonok nem jok." */
-.brend .skm{width:72px;height:72px;background:var(--card);color:var(--neutral-500);
-  box-shadow:inset 0 0 0 3px var(--neutral-300), var(--e-1)}
-.brend .skm.green{background:var(--accent-600);color:#fff;
-  box-shadow:inset 0 0 0 3px var(--accent-700), var(--e-1)}
+/* 2026-09-01: --accent-600/700 and --neutral-300/500 were removed with the OKLCH
+   palette, so these discs rendered transparent. Back on live canon tokens. */
+.brend .skm{width:72px;height:72px;background:var(--navy-100);color:var(--navy-700);
+  box-shadow:inset 0 0 0 3px var(--navy-500), var(--e-1)}
+.brend .skm.green{background:var(--green-500);color:#fff;
+  box-shadow:inset 0 0 0 3px var(--green-700), var(--e-1)}
 .brend .skm .ico svg{width:58%;height:58%;stroke-width:2.6}
 
 /* ARROW · 3 PHASES: a végigfutó jelölő NYÍLHEGY, nem pötty.
@@ -850,7 +852,7 @@ section.clip:first-of-type .cam{opacity:1}
 <div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>21 · OVERLAY · LOWER THIRD</div>
 <div class="plate"><span class="plateTag">your phone footage — untouched</span>
   <div class="l3" data-anim="fi" data-at=".6" data-dur=".8" data-pulse="2.6">
-    <span class="l3bar"></span><div><div class="l3n" data-vars='{"text":"name"}'>Zoltan Gero</div><div class="l3r" data-vars='{"text":"role"}'>AI agents &middot; evergreen income</div></div></div>
+    <span class="l3bar"></span><div><div class="l3n" data-vars='{"text":"name"}'>Zoltan Gero</div><div class="l3r" data-vars='{"text":"role"}'>AI agents · evergreen income</div></div></div>
 </div>
 <div class="subcap" data-anim="fi" data-at="2.6" data-vars='{"text":"subcap"}'>Your footage never re-encodes.</div>
 </div></section>

@@ -44,6 +44,7 @@ body{font-family:"Open Sans",system-ui,sans-serif;background:var(--bg);font-synt
 
 .kick{font-size:50px;letter-spacing:9px;font-weight:800;color:var(--blue);text-transform:uppercase}
 .sub{font-size:50px;font-weight:600;color:var(--sub);max-width:1400px;line-height:1.25}
+.subcap{font-size:44px;font-weight:600;color:var(--sub);max-width:1300px;line-height:1.3;text-align:center}
 .title{font-size:122px;font-weight:800;line-height:1.24;letter-spacing:-2px;overflow:hidden;padding:0 8px;white-space:nowrap}
 .title.sm{font-size:78px}
 .navy{color:var(--navy)} .blue{color:var(--blue)} .grn{color:var(--green)}

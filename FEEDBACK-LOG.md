@@ -392,3 +392,37 @@ Zoltán másol-beilleszt, soha nem gépel útvonalat és soha nem kérdez rá.
 Minden válasz végén "Fájlok" blokk: abszolút Windows-útvonal, beilleszthető
 megnyitó parancs, és Drive URL, ha van. Egy sor egy beilleszthető dolog.
 Teljes szabály: `C:\Users\gdp\CLAUDE.md`.
+
+## 2026-09-01 — első éles videó (C2C / One Sitting), feedback a `_feedback/2026-09-01/`-ből
+
+A "One Idea In A Published Video Out" render kapcsán, mind KÖNYVTÁRI javítás
+(nem egy videóé). Screenshotok: `_feedback/2026-09-01/`.
+
+1. **`.subcap` (a "small text") túl kicsi minden érintett jeleneten.** Visszatérő.
+   Gyökérok: a `zg.css`-ben NEM volt `.subcap` szabály, az elem a body 16px-ét
+   örökölte, ami 1920px vásznon parányi. Érinti: arrow (caption), branch (subcap),
+   statement (subcap), display-word (subcap), rail (subcap), és minden más blokk,
+   ami `class="subcap"`-ot használ. JAVÍTVA: `.subcap{font-size:44px;...}` a
+   `zg.css`-be (a `.sub` mellé).
+
+2. **tiles: az ikonok nem passzolnak a tartalomhoz, és fölösleges státusz-korongok
+   (zöld pipa / kék kérdőjel / piros kereszt) jelennek meg a csempék jobb felső
+   sarkában.** A csempe-ikon fix, nem a felirat szerint való. Kérés: az ikonok a
+   tartalmat tükrözzék (Voice=mikrofon, Face=arc, stb.), a státusz-korongok
+   tűnjenek el. HÁTRA.
+
+3. **branch: a szétágazás túl azonnali, nem érződik "folyamatban lévő" útnak.**
+   Kérés: a választott ág (pl. "Approve it") pulzáljon, hogy oda vigye a szemet.
+   A csomópont-ikonok is töröttek (piros kereszt-marker jelenik meg ikon helyett).
+   HÁTRA.
+
+4. **display-word: a blur-be belépő animáció nem ér el az éles állapotig, mert a
+   jelenet túl rövid.** A "YES" / "PRECISE" végig homályos marad. Kérés: a deblur
+   érjen véget a jelenet vége ELŐTT (vagy gyorsabb deblur, vagy a mozgáshossz a
+   jelenet-hosszhoz igazítva). HÁTRA.
+
+5. **A blur effekt maga jó, meg kell tartani** (csak a fenti timing a baj).
+
+MEGJEGYZÉS a narancs háttérről: a `_feedback` screenshotokon a háttér narancs.
+A RENDERELT fájl helyes (cream, RGB 243,246,250, bt709). A narancs a VLC-oldali
+szín-effekt / hardveres dekódolás Zoltán gépén, NEM a fájl hibája.

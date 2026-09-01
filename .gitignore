@@ -27,3 +27,14 @@ zg-frames/hyperframes.lock.json
 zg-frames/blocks/_*.jpg
 zg-frames/blocks/_*.png
 compositions/
+
+zg-frames/*.mp3
+
+node_modules/
+package-lock.json
+zg-frames/*.bak
+zg-frames/_preview.pid
+zg-frames/renders/
+zg-frames/snapshots_final/
+zg-frames/.waveform-cache/
+zg-frames/_preview.log

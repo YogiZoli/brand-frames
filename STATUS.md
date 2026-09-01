@@ -240,6 +240,54 @@ session válaszában.
 
 ---
 
+## ELSŐ ÉLES VIDEÓ 0-RÓL — C2C / "One Idea In A Published Video Out" (2026-09-01)
+
+A seamless lánc végigfutott 0-ról, egy új chatben. Working dir:
+`ai-video-workflow/c2c/` (nem git repo). Végső jóváhagyott render (VLC-ben,
+Zoltán): `zg-frames/renders/c2c_v2_2026-09-01.mp4`, 72,3 mp, 16 jelenet,
+−14,4 LUFS.
+
+**A menet ami működött:**
+1. Script: a régi `vo.srt` nyitó íve, Zoltán a Drive doksiban átírta. Gate: Drive doc.
+2. VO: IGAZI ElevenLabs (`pipeline/tts2.ps1`, Z HU mic 06, speed 0.96) + BGM mix
+   (`bgm_v3.wav`, −38 dB, sidechain ducking, loudnorm −14). Két fájl, egy jóváhagyás.
+3. Mondattábla: `sentences.ps1 -Stt` a ElevenLabs Scribe STT-ből (23 mondat).
+4. Jelenet-lista: `c2c/scenes.json` (16 jelenet). Gate: Drive doc.
+5. build-video to stamp-timing to `check` PASSED (0 error, 15/15 WCAG AA).
+6. Kontakt lap (`snapshot`) + draft render. Gate: 2 link (VLC file:/// + Chrome Studio).
+7. Végső render jóváhagyva.
+
+**KÖNYVTÁRI JAVÍTÁSOK ebben a körben (mind a `FEEDBACK-LOG.md` 2026-09-01):**
+- `zg.css`: `.subcap` szabály HOZZÁADVA (16px örökölt → 44px). Ez volt a
+  visszatérő "small text" hiba, minden `subcap`-et használó blokkon.
+- `blocks/tiles`: per-csempe ikon-változók (`ico1..ico4`), a scene mondja meg.
+- `blocks/question`: a wired `.qline`-ból kivéve a `<em>` (a build-video BakeVars
+  regex nem tud beágyazott markupot kezelni → a szöveg nem sült be).
+- `motion.js` `blurword`: a deblur a jelenet vége ELŐTT éles (at+1.5, nem at+2.8).
+- `motion.js` `branchin`: lassabb útvonal-építés + a nyertes ág zöld pulzáló gyűrű.
+
+**hyperframes PIN (2026-09-01):** `_frames/package.json` → `hyperframes@0.8.22`,
+`npm install` lefutott, `node_modules/` gitignore-olt. Az `npx hyperframes`
+mostantól a lokális pinnelt verziót hívja (ha a cwd `_frames` alatt van).
+Ok: a session közben az npx magától 0.8.20→0.8.22-re ugrott, és a regressziós
+teszt 39/39 "changed"-et adott (verzió-drift, nem tartalmi). **A baseline most
+elavult (0.8.22-vel más).** Zoltán döntése: vagy vissza a pinnelt régi verzióra
+és újratesztel, vagy `regress.ps1 -Accept` a 0.8.22-es sampleren.
+
+**AVATAR (9. lépés) — NEM KÉSZ.** Zoltán kérte (B mód, Segments: nyitás 0-6 mp,
+zárás 62,8-71,3 mp, kék pólós Eye Contact Correction, avatar_iii, átlátszó webm).
+A HeyGen MCP hívásokat (`create_asset_upload`, `create_video_from_avatar`) a
+Claude Code auto-mode classifier blokkolja, és a settings.json szerkesztését is.
+Zoltánnak kell engedélyeznie (interaktív `claude` terminál `/permissions`, vagy
+a `.claude/settings.local.json`-ba az MCP tool-nevek a `permissions.allow`-ba).
+Az avatar szegmens-hangok készen: `c2c/av_open.mp3` (6 mp), `c2c/av_close.mp3` (8,5 mp).
+
+**STUDIO PREVIEW instabil:** a `hyperframes preview` háttérszerver ebben a
+környezetben lehal / a canvas endless loadingra megy. VLC (`file:///`) a
+megbízható út. Fejlesztési tétel.
+
+---
+
 **A régi állapot (elavult): `zg-frames v1.7` JÓVÁHAGYVA ÉS BASELINE (2026-08-18).**
 A v1.7 baseline-t a fenti paletta-csere felülírja. Új sampler kell, mielőtt bármelyik
 éles videó erre a könyvtárra épül.

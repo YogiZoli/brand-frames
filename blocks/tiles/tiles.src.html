@@ -5,13 +5,17 @@
     {"id":"item1","type":"string","label":"Tile label 1","default":"Title"},
     {"id":"item2","type":"string","label":"Tile label 2","default":"Description"},
     {"id":"item3","type":"string","label":"Tile label 3","default":"Chapters"},
-    {"id":"item4","type":"string","label":"Tile label 4","default":"Languages"}
+    {"id":"item4","type":"string","label":"Tile label 4","default":"Languages"},
+    {"id":"ico1","type":"string","label":"Tile 1 icon (icons.js)","default":"title"},
+    {"id":"ico2","type":"string","label":"Tile 2 icon (icons.js)","default":"caption"},
+    {"id":"ico3","type":"string","label":"Tile 3 icon (icons.js)","default":"script"},
+    {"id":"ico4","type":"string","label":"Tile 4 icon (icons.js)","default":"globe"}
   ] }
 zg-->
 <div class="kick" data-anim="kick" data-at=".1" data-vars='{"text":"kick"}'>10 · TILES · CIRCLE ICONS</div>
 <div class="tiles" data-anim="pops" data-at=".4">
-  <div class="tile"><span class="tico"><span class="ico" data-icon="title"></span></span><span class="tl" data-vars='{"text":"item1"}'>Title</span></div>
-  <div class="tile"><span class="tico"><span class="ico" data-icon="caption"></span></span><span class="tl" data-vars='{"text":"item2"}'>Description</span></div>
-  <div class="tile"><span class="tico"><span class="ico" data-icon="script"></span></span><span class="tl" data-vars='{"text":"item3"}'>Chapters</span></div>
-  <div class="tile"><span class="tico g"><span class="ico" data-icon="globe"></span></span><span class="tl" data-vars='{"text":"item4"}'>Languages</span></div>
+  <div class="tile"><span class="tico"><span class="ico" data-icon="title" data-vars='{"data-icon":"ico1"}'></span></span><span class="tl" data-vars='{"text":"item1"}'>Title</span></div>
+  <div class="tile"><span class="tico"><span class="ico" data-icon="caption" data-vars='{"data-icon":"ico2"}'></span></span><span class="tl" data-vars='{"text":"item2"}'>Description</span></div>
+  <div class="tile"><span class="tico"><span class="ico" data-icon="script" data-vars='{"data-icon":"ico3"}'></span></span><span class="tl" data-vars='{"text":"item3"}'>Chapters</span></div>
+  <div class="tile"><span class="tico g"><span class="ico" data-icon="globe" data-vars='{"data-icon":"ico4"}'></span></span><span class="tl" data-vars='{"text":"item4"}'>Languages</span></div>
 </div>

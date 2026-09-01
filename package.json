@@ -1,0 +1,8 @@
+{
+  "name": "brand-frames-toolchain",
+  "private": true,
+  "description": "Pins the hyperframes CLI so renders are reproducible and the regression baseline stays meaningful. Bumping this version is a deliberate step: change the number, re-render the sampler, re-accept the baseline, commit together.",
+  "dependencies": {
+    "hyperframes": "0.8.22"
+  }
+}

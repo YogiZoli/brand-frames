@@ -4,7 +4,7 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-09-24 (kép kontra hang lint mounted slotokon, a .ps1 párja törölve) · **commit:** lásd `git log -1`
+**Frissítve:** 2026-09-24 (csak Node: a nyolc portolt .ps1 törölve) · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
 
@@ -36,8 +36,18 @@ törölve, Zoltán döntése: ebből csak Node marad.
 
 A 9 PowerShell szkript `.mjs` párt kapott (`7997877`), a kimenetük bájtra
 azonos. A dokumentáció (PIPELINE, TIMING, GLOSSARY) mostantól a Node
-parancsokat mutatja. A `.ps1` fájlok tartalékként maradnak, a törlésükről
-Zoltán dönt.
+parancsokat mutatja. A nyolc portolt `.ps1` törölve (2026-09-24, Zoltán
+döntése: csak Node). Az alábbi régebbi bejegyzések még `.ps1` neveket
+említenek, ezek mind a `.mjs` párjukat jelentik (`--video`, `--accept` stílusú
+kapcsolókkal).
+
+**Még `.ps1`, port nélkül (Zoltán dönt: portoljuk vagy nyugdíjazzuk):**
+`zg-frames/blocks/`: `extract.ps1`, `make-fontface.ps1`, `add-vars.ps1`,
+`_fixvars.ps1`, `verify-vs-v6.ps1`. `zg-frames/`: `copy_to_drive.ps1`,
+`_audit.ps1`, `_ease.ps1`, `_ease2.ps1`, `_glyph.ps1`, `_status.ps1`,
+`_subs.ps1`, `_subtime.ps1`. Windows `.bat`: `_go.bat`, `_check.bat`,
+`_proof.bat`, `_base.bat` (a `_go.bat` már `node regress.mjs`-t hív, de
+még hívja a `copy_to_drive.ps1`-et).
 
 **Éles próba tiszta környezetben:** a C2C videó végigment a Node láncon egy
 friss klónból, üres felhasználói profillal, csak Node-dal a PATH-ban. A
@@ -60,7 +70,7 @@ TTS). Az appban ez a `runner/providers` része lesz, nem a kánoné.
 
 Ez az ÉRVÉNYES igazság. A teljes, végleges recept mostantól a **`PIPELINE.md`**
 „AVATAR COMPOSITE — a végleges recept" szekciójában él (a kánonban, mert az nem
-íródik felül), és a wrapper `pipeline\avatar_composite.ps1` futtatja.
+íródik felül), és a wrapper `pipeline/avatar-composite.mjs` futtatja (Node, a `.ps1` törölve).
 
 **Gyökérok megoldva:** a natív HeyGen webm alfa VÉGIG jó volt. A korábbi „100%
 opaque" mérés hibás módszerből jött: egykockás PNG-kinyerés (image2/png muxer)

@@ -1,14 +1,14 @@
 <#
   blocks/add-vars.ps1 — wire a text-variable surface into every block source.
 
-  For a live video, build-video.ps1 mounts a block and passes per-scene text via
+  For a live video, build-video.mjs mounts a block and passes per-scene text via
   data-variable-values. That needs each block to declare the variables and carry
   data-var-text on its text leaves. This does it once, mechanically, from a
   class -> variable-id map. Only clean leaf text elements are auto-wired;
   elements with nested spans are left for hand-wiring. Hand-authored variables
   already in a meta header (lens lensPath, arrow leftIcon) are preserved.
 
-  Idempotent (an element with data-var-text is skipped). Re-run, then build.ps1.
+  Idempotent (an element with data-var-text is skipped). Re-run, then build.mjs.
 #>
 $ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
@@ -98,4 +98,4 @@ foreach ($d in Get-ChildItem -Directory) {
   }
 }
 Write-Host ""
-Write-Host "$changed block source(s) updated. Now: build.ps1" -ForegroundColor Green
+Write-Host "$changed block source(s) updated. Now: build.mjs" -ForegroundColor Green

@@ -4,9 +4,33 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-08-31 (seamless éles-videó lánc kész: scene-lista to build-video to stamp-timing to render, tesztelve) · **commit:** lásd `git log -1`
+**Frissítve:** 2026-09-24 (a pipeline Node-on, tiszta környezetben tesztelve) · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
+
+---
+
+## A PIPELINE NODE-ON (2026-09-24, packaged-video-creator 0. fázis)
+
+A 9 PowerShell szkript `.mjs` párt kapott (`7997877`), a kimenetük bájtra
+azonos. A dokumentáció (PIPELINE, TIMING, GLOSSARY) mostantól a Node
+parancsokat mutatja. A `.ps1` fájlok tartalékként maradnak, a törlésükről
+Zoltán dönt.
+
+**Éles próba tiszta környezetben:** a C2C videó végigment a Node láncon egy
+friss klónból, üres felhasználói profillal, csak Node-dal a PATH-ban. A
+mondattábla bájtra egyezik a jóváhagyottal, `check` PASSED, render 72,27 mp,
+-14,4 LUFS, az avatar composite után a kép a jóváhagyott v4-hez mérve
+átlagosan 43,8 dB PSNR (szemre azonos). Részletek és mérések:
+`packaged-video-creator/docs/phase-0.md`.
+
+Ebben a körben a kánonban:
+- `package-lock.json` a repóba (friss klónnál eddig más alcsomag-verziók jöttek).
+- PIPELINE avatar hang: az `--audio` csak néma háttér-rendernél kell, különben
+  a `-shortest` levágja a végkártya kitartását.
+
+**Nincs portolva, a repón kívül él:** `HyperFrames/pipeline/tts*.ps1` (ElevenLabs
+TTS). Az appban ez a `runner/providers` része lesz, nem a kánoné.
 
 ---
 

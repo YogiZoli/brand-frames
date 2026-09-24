@@ -5,7 +5,7 @@
   Why data URIs: a mounted block's @font-face cannot survive CSS scoping, so the
   font must be declared on the MOUNT HOST. Rather than depend on the host's
   fonts/ path resolving, we embed the five weights once. ~0.8 MB, one file,
-  no path resolution anywhere. assemble-sampler.ps1 and the pilot host inline it.
+  no path resolution anywhere. assemble-sampler.mjs and the pilot host inline it.
 
   Re-run only if the ttf files under ../fonts/ change.
 #>

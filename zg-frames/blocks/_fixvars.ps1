@@ -1,6 +1,6 @@
 # _fixvars.ps1 — one-off: hand-wire the data-vars that add-vars.ps1's leaf-only
 # regex cannot reach (elements with nested icon/emphasis spans). Per-block
-# literal substitutions + variable declarations. Run once, then build.ps1.
+# literal substitutions + variable declarations. Run once, then build.mjs.
 Set-Location $PSScriptRoot
 
 # each entry: block, @( @{find=..; repl=..}, ... ), @( "id|label|default", ... )
@@ -197,4 +197,4 @@ foreach ($j in $JOBS) {
     Write-Host "fixed $($j.b)"
   }
 }
-Write-Host "`ndone. run build.ps1"
+Write-Host "`ndone. run build.mjs"

@@ -99,4 +99,4 @@ if ($changed.Count) {
 }
 Write-Host ""
 Write-Host "If every scene is same/noise: Zoltan re-approves motion, then" -ForegroundColor DarkGray
-Write-Host "  .\..\regress.ps1 -Video $([System.IO.Path]::GetFileName($newP)) -Accept   (writes the new block-keyed baseline)" -ForegroundColor DarkGray
+Write-Host "  node ../regress.mjs --video $([System.IO.Path]::GetFileName($newP)) --accept   (writes the new block-keyed baseline)" -ForegroundColor DarkGray

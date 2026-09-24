@@ -2,7 +2,7 @@
 
 Verzió: 1.1 · 2026-09-24 (Node: a szkriptek `.mjs`, Windowson és Macen ugyanúgy.
 A régi `-Stt` / `-OutDir` írásmód is működik, a kapcsolók kis-nagybetű
-függetlenek. A `.ps1` párok tartalékként megvannak.)
+függetlenek. A `.ps1` párok törölve (2026-09-24), csak Node marad.)
 
 ## A szabály
 

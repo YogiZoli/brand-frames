@@ -117,6 +117,10 @@ duration `4.5s` · camClass `cam`
 | `item2` | Tile label 2 | Description |
 | `item3` | Tile label 3 | Chapters |
 | `item4` | Tile label 4 | Languages |
+| `ico1` | Tile 1 icon (icons.js) | title |
+| `ico2` | Tile 2 icon (icons.js) | caption |
+| `ico3` | Tile 3 icon (icons.js) | script |
+| `ico4` | Tile 4 icon (icons.js) | globe |
 
 ## panel-list
 
@@ -247,8 +251,8 @@ duration `5s` · camClass `cam` · closes a section (signature ring)
 | variable | what it is | default |
 |---|---|---|
 | `kick` | Kicker | 20 · END CARD |
-| `line2` | Pill line | PURPOSEFUL &middot; PEACEFUL &middot; PROFITABLE |
-| `cta` | CTA button | Comment GUIDE &#8594; |
+| `line2` | Pill line | PURPOSEFUL · PEACEFUL · PROFITABLE |
+| `cta` | CTA button | Comment GUIDE → |
 | `line1` | Title line 1 | See you there |
 
 ## overlay-lower-third
@@ -260,7 +264,7 @@ duration `5s` · camClass `cam`
 | `kick` | Kicker | 21 · OVERLAY · LOWER THIRD |
 | `subcap` | Sub caption | Your footage never re-encodes. |
 | `name` | Lower-third name | Zoltan Gero |
-| `role` | Lower-third role | AI agents &middot; evergreen income |
+| `role` | Lower-third role | AI agents · evergreen income |
 
 ## overlay-callout
 
@@ -316,7 +320,7 @@ duration `4.5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 27 &middot; HIGHLIGHTER |
+| `kick` | Kicker | 27 · HIGHLIGHTER |
 | `subcap` | Sub caption | Swipes in like a marker. |
 | `line1` | Line 1 | Put your approvals |
 
@@ -326,7 +330,7 @@ duration `5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 28 &middot; SKITCH MARKERS |
+| `kick` | Kicker | 28 · SKITCH MARKERS |
 | `subcap` | Sub caption | Drawn glyphs. Never a font. |
 | `c1` | Marker 1 | wrong |
 | `c2` | Marker 2 | question |
@@ -340,7 +344,7 @@ duration `5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 29 &middot; SIGNATURE MOVE |
+| `kick` | Kicker | 29 · SIGNATURE MOVE |
 | `subcap` | Sub caption | The ring closes. The house gesture. |
 
 ## branch
@@ -349,7 +353,7 @@ duration `5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 30 &middot; BRANCH &middot; IT GOES ONE OF TWO WAYS |
+| `kick` | Kicker | 30 · BRANCH · IT GOES ONE OF TWO WAYS |
 | `subcap` | Sub caption | Only the taken path stays bright. |
 | `root` | Branch root | A comment arrives |
 | `win` | Taken path | Keyword matched, guide sent |
@@ -361,7 +365,7 @@ duration `5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 31 &middot; FUNNEL &middot; MANY ARRIVE, FEW FINISH |
+| `kick` | Kicker | 31 · FUNNEL · MANY ARRIVE, FEW FINISH |
 | `s1l` | Stage 1 label | Watched the video |
 | `s1r` | Stage 1 value | 100% |
 | `s2l` | Stage 2 label | Left a comment |
@@ -378,7 +382,7 @@ duration `5.5s` · camClass `cam dense`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 32 &middot; CYCLE &middot; IT COMES BACK ROUND |
+| `kick` | Kicker | 32 · CYCLE · IT COMES BACK ROUND |
 | `subcap` | Sub caption | Once round. A loop is not a spinner. |
 | `centre` | Centre label | The flywheel |
 | `centreSub` | Centre sub | no start, no end |
@@ -393,7 +397,7 @@ duration `5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 33 &middot; GAUGE &middot; HOW FAR ALONG |
+| `kick` | Kicker | 33 · GAUGE · HOW FAR ALONG |
 | `subcap` | Sub caption | Needle and number move together. |
 | `pct` | Percent (0-100) | 72 |
 
@@ -403,7 +407,7 @@ duration `6s` · camClass `cam dense`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 34 &middot; QUOTE |
+| `kick` | Kicker | 34 · QUOTE |
 | `author` | Author | Zoltan Gero |
 | `authorRole` | Author role | from the script |
 
@@ -413,7 +417,7 @@ duration `5.5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 35 &middot; QUESTION |
+| `kick` | Kicker | 35 · QUESTION |
 | `line1` | Question | What if approval came before the slow step? |
 
 ## before-after
@@ -422,7 +426,7 @@ duration `5s` · camClass `cam dense`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 36 &middot; BEFORE / AFTER |
+| `kick` | Kicker | 36 · BEFORE / AFTER |
 | `subcap` | Sub caption | One wipe carries the comparison. |
 
 ## grid
@@ -431,7 +435,7 @@ duration `5s` · camClass `cam`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 37 &middot; GRID &middot; THERE ARE MANY |
+| `kick` | Kicker | 37 · GRID · THERE ARE MANY |
 | `subcap` | Caption | Twenty-five languages, one upload. |
 
 ## command
@@ -440,7 +444,7 @@ duration `5.5s` · camClass `cam dense`
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 38 &middot; COMMAND |
+| `kick` | Kicker | 38 · COMMAND |
 | `subcap` | Sub caption | Exactly what you type. |
 | `title` | Terminal title | terminal |
 | `cmd1` | First command args | check |
@@ -452,7 +456,7 @@ duration `5s` · camClass `cam dense` · closes a section (signature ring)
 
 | variable | what it is | default |
 |---|---|---|
-| `kick` | Kicker | 39 &middot; LEAD CARD &middot; ONE REAL PERSON |
+| `kick` | Kicker | 39 · LEAD CARD · ONE REAL PERSON |
 | `subcap` | Sub caption | Not a number. A person. |
 | `name` | Person name | Alex Rivers |
 | `role` | Person role | Course creator, 4 months in |

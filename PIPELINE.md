@@ -3,6 +3,11 @@
 > **Ez az egyetlen érvényes leírás.** Ha bármely skill, Drive doksi, projekt-
 > utasítás vagy korábbi chat ettől eltérőt mond, **ez nyer**, és a másikat
 > javítani kell. Verzió: 2.0 · 2026-08-17
+>
+> **Node (2026-09-24):** a pipeline szkriptek Node-ban futnak (`.mjs`), Windowson
+> és Macen ugyanúgy: `node pipeline/<szkript>.mjs`. A régi `.ps1` párjuk
+> tartalékként a helyén marad, amíg Zoltán nem dönt a törlésükről. A kimenetük
+> bájtra azonos (parity teszt, `7997877`).
 
 ## A HATÁR — egyetlen mondat
 
@@ -79,10 +84,10 @@ lokális út gyorsabb ÉS ingyen van.
 |---|---|---|---|
 | 1 | Kutatás + cím + **script** | Opus | ✅ **1. kapu** |
 | 2 | **VO + zene** (ElevenLabs · ducking · −14 LUFS) | szkript | ✅ **2. kapu** |
-| 3 | **Mondattábla** (`pipeline\sentences.ps1`: STT/SRT → `sentences.json` + `.md`) | szkript | ❌ |
+| 3 | **Mondattábla** (`pipeline/sentences.mjs`: STT/SRT → `sentences.json` + `.md`) | szkript | ❌ |
 | 4 | **Jelenet-tábla** (archetípus + max 6 szó / mondat + `data-sent` horgony) | Opus | ✅ **3. kapu** |
-| 5 | **Build** (tábla + registry → `index.html`), majd `pipeline\stamp-timing.ps1` a `data-start`/`data-duration`-t a mondattáblából tölti | Sonnet / szkript | ❌ |
-| 6 | **lint → check** (+ `pipeline\image-audio-lint.ps1`: kép kontra hang csúszás-szűrő, nem kapu) | HyperFrames | ❌ (0 hiba a feltétel) |
+| 5 | **Build** (tábla + registry → `index.html`), majd `pipeline/stamp-timing.mjs` a `data-start`/`data-duration`-t a mondattáblából tölti | Sonnet / szkript | ❌ |
+| 6 | **lint → check** (+ `pipeline/image-audio-lint.mjs`: kép kontra hang csúszás-szűrő, nem kapu) | HyperFrames | ❌ (0 hiba a feltétel) |
 | 7 | **Kontakt lap** (állókép jelenetenként) | HyperFrames | ✅ **4. kapu** |
 | 8 | **Render**, egyszer | HyperFrames | ❌ |
 | 9 | **Avatar composite** (natív alfa, arányos kicsinyítés + fix sarok, SEMMI maszk/torzítás) | ffmpeg | ✅ **5. kapu** |
@@ -97,7 +102,7 @@ A **build sablonbehelyettesítés** — ha hibás, a jelenet-tábla hibás, és 
 **Jelenet-időzítés: a mondattáblából, nem kézzel.** Egyetlen jelenet sem
 hordoz kézzel írt `data-start` / `data-duration` számot. A jelenet a
 `data-sent="S12"` (vagy `S12-S15`, vagy `S20#1/3`) horgonyt viszi, és a
-`stamp-timing.ps1` tölti ki a számokat a `sentences.json`-ból: a kezdet a
+`stamp-timing.mjs` tölti ki a számokat a `sentences.json`-ból: a kezdet a
 mondatból, a hossz mindig a következő horgonyból. Teljes leírás:
 `pipeline\TIMING.md`.
 
@@ -229,7 +234,7 @@ PNG-kinyerés elveszti a VP9 alfa BlockAdditional adatát).
 átlátszó alfa), engine `avatar_iii`, resolution 720p. A III marad minden teljes
 videóhoz (III kb. 3,4 mp / 1 kredit; V kb. 1 mp / 1 kredit és ötszörös render).
 
-**A két üzemmód** (a wrapper `pipeline\avatar_composite.ps1` mindkettőt tudja):
+**A két üzemmód** (a wrapper `pipeline/avatar-composite.mjs` mindkettőt tudja):
 
 - **Segments (ALAP):** az avatar CSAK a megszólalás-szigetekre kerül (nyitás,
   záró CTA, 1-2 kulcspillanat), időbélyegenként egy rövid webm, `between`-nel a
@@ -270,14 +275,17 @@ Kulcsszabályok mindkét módban:
 
 ```
 ffmpeg -c:v libvpx-vp9 -i avatar.webm \
-  -vf format=yuva420p,alphaextract,signalstats,metadata=print -f null - 2>&1 | findstr YMIN
+  -vf format=yuva420p,alphaextract,signalstats,metadata=print -f null - 2>&1
 ```
+
+A kimenetben a `YMIN=` és `YMAX=` sorokat nézd. Egyszerűbb: a wrapper
+`--checkonly` kapcsolója csak ezt az ellenőrzést futtatja, composite nélkül.
 
 A `metadata=print` KELL, e nélkül a signalstats nem írja ki a `YMIN=`/`YMAX=`
 sorokat. Valódi alfa esetén a legkisebb YMIN=0 (van átlátszó háttér) és a
 legnagyobb YMAX=255 (van subject). Ha YMIN mindenütt 255 vagy YMAX mindenütt 0,
 a webm hibás, NE composite-olj vele. (A wrapper ezt automatikusan ellenőrzi.)
 
-**Hang:** a háttér-render általában néma, a VO+BGM külön sáv. A wrapper `-Audio
+**Hang:** a háttér-render általában néma, a VO+BGM külön sáv. A wrapper `--audio
 vo_bgm.mp3` paramétere teszi alá; enélkül a háttér hangját veszi (`0:a?`), vagy
-néma marad. Éles pipeline-ban add meg a `-Audio`-t a VO+BGM mp3-mal.
+néma marad. Éles pipeline-ban add meg az `--audio`-t a VO+BGM mp3-mal.

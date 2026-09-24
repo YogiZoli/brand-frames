@@ -103,7 +103,7 @@ run(() => {
 
   const src = readText(a.html);
   // drop scaffold text that is never spoken: labels, captions, plate tags
-  const dropScaffold = (s) => s.replace(/<(\w+)[^>]*class="[^"]*\b(kick|sub|plateTag|kicker|ilbl|blbl|plbl|cx)\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g, " ");
+  const dropScaffold = (s) => s.replace(/<(\w+)[^>]*class="[^"]*\b(kick|sub|subcap|plateTag|kicker|ilbl|blbl|plbl|cx)\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g, " ");
   const rxClip = /<section\b[^>]*\bclass="[^"]*\bclip\b[^"]*"[^>]*>([\s\S]*?)<\/section>/g;
   const clean = dropScaffold(src);
 

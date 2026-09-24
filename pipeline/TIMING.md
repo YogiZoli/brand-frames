@@ -1,25 +1,27 @@
 # Scene timing comes from the sentence table, never from a hand-typed number
 
-Verzió: 1.0 · 2026-08-30
+Verzió: 1.1 · 2026-09-24 (Node: a szkriptek `.mjs`, Windowson és Macen ugyanúgy.
+A régi `-Stt` / `-OutDir` írásmód is működik, a kapcsolók kis-nagybetű
+függetlenek. A `.ps1` párok tartalékként megvannak.)
 
 ## A szabály
 
 Egyetlen jelenet sem hordoz kézzel írt `data-start` / `data-duration` bűvös
 számot. A jelenet szerzője egyetlen dolgot ír be: **melyik mondaton ül a
 jelenet**, `data-sent` attribútumként. A `data-start` / `data-duration` a
-zárolt hangból származik, a `stamp-timing.ps1` tölti ki.
+zárolt hangból származik, a `stamp-timing.mjs` tölti ki.
 
 Ez a PIPELINE 3. és 5. lépését köti össze: a 3. lépés mondattáblája
-(`sentences.ps1`) mostantól tényleges bemenet a build-nek, nem csak a
+(`sentences.mjs`) mostantól tényleges bemenet a build-nek, nem csak a
 jóváhagyáshoz készült becslés.
 
 ## A két szkript
 
-### 1. `sentences.ps1` — a mondattábla
+### 1. `sentences.mjs`: a mondattábla
 
 ```
-powershell -File sentences.ps1 -Stt <ElevenLabs szó-json> -OutDir <mappa>
-powershell -File sentences.ps1 -Srt <vo.srt>              -OutDir <mappa>
+node pipeline/sentences.mjs --stt <ElevenLabs szó-json> --outdir <mappa>
+node pipeline/sentences.mjs --srt <vo.srt>              --outdir <mappa>
 ```
 
 - A **szó-szintű STT json** a jó forrás (`{ words:[{text,start,end,type}] }`).
@@ -33,12 +35,12 @@ powershell -File sentences.ps1 -Srt <vo.srt>              -OutDir <mappa>
   `Mr.` `vs.` stb.) sem.
 - 0 token, sima szövegfeldolgozás.
 
-### 2. `stamp-timing.ps1` — a jelenet-időzítés bezárása
+### 2. `stamp-timing.mjs`: a jelenet-időzítés bezárása
 
 ```
-powershell -File stamp-timing.ps1 -Html <index.html> -Sentences <sentences.json>
-powershell -File stamp-timing.ps1 -Html in.html -Sentences s.json -WhatIf   # csak mutasd
-powershell -File stamp-timing.ps1 -Html in.html -Sentences s.json -Strict   # warning = hiba
+node pipeline/stamp-timing.mjs --html <index.html> --sentences <sentences.json>
+node pipeline/stamp-timing.mjs --html in.html --sentences s.json --whatif   # csak mutasd
+node pipeline/stamp-timing.mjs --html in.html --sentences s.json --strict   # warning = hiba
 ```
 
 - Minden `<section class="clip">`-et dokumentum-sorrendben beolvas.
@@ -59,7 +61,7 @@ powershell -File stamp-timing.ps1 -Html in.html -Sentences s.json -Strict   # wa
 <section id="zg70c" class="clip" data-sent="S99#3/3" data-hold="0.4"><!-- ... --></section>
 ```
 
-`stamp-timing.ps1` után ugyanezekbe bekerül a `data-start` és a
+`stamp-timing.mjs` után ugyanezekbe bekerül a `data-start` és a
 `data-duration`, a `data-sent` marad. Újrafuttatható: a régi számokat cseréli.
 
 ## A `data-sent` nyelvtan
@@ -100,11 +102,11 @@ A jelenetek a szerző sorrendje szerint, hézag nélkül fekszenek fel.
 - egy mondatot egyetlen jelenet sem mutat (lefedetlen mondat)
 - a `#k/n` split-csoport hiányos
 
-## 3. `image-audio-lint.ps1` — a kép azt mutatja, amit a hang mond?
+## 3. `image-audio-lint.mjs`: a kép azt mutatja, amit a hang mond?
 
 ```
-powershell -File image-audio-lint.ps1 -Html <index.html> -Words <words.json>
-powershell -File image-audio-lint.ps1 -Html in.html -Words w.json -Strict   # flag = exit 1
+node pipeline/image-audio-lint.mjs --html <index.html> --words <words.json>
+node pipeline/image-audio-lint.mjs --html in.html --words w.json --strict   # flag = exit 1
 ```
 
 Olcsó, Opus előtti szűrő. Minden jelenet képernyőn lévő szavait összeveti a
@@ -113,8 +115,8 @@ szót mutat, amit a narráció ott nem mond. A triviális csúszásokat fogja: e
 mondatot csúszott jelenet, egy bennmaradt szó, egy szám ami nem stimmel
 ("25" a képen, mikor a hang még három mondatra van a "twenty-five"-tól).
 
-- Bemenet: a `stamp-timing.ps1`-fel már megcímkézett HTML (`data-start` kell) és
-  a `sentences.ps1` `words.json`-ja.
+- Bemenet: a `stamp-timing.mjs`-sel már megcímkézett HTML (`data-start` kell) és
+  a `sentences.mjs` `words.json`-ja.
 - `-Lead 1.0` / `-Lag 0.8`: a kép ennyivel megelőzheti vagy követheti a mondatot.
 - Kihagyja a scaffold szöveget (`.kick` címke, `.sub` felirat, `.plateTag`).
 - Lenient: pontos egyezés vagy közös 3 betűs tő ("publish" / "published"),
@@ -127,10 +129,10 @@ mondatot csúszott jelenet, egy bennmaradt szó, egy szám ami nem stimmel
 ```
 1  kutatás + cím + script            Opus     1. kapu
 2  VO + zene                          szkript  2. kapu   <- itt zárul a hang
-3  sentences.ps1  -> sentences.md + words.json           <- a mondattábla
+3  sentences.mjs  -> sentences.md + words.json           <- a mondattábla
 4  jelenet-tábla (archetípus + szó)   Opus     3. kapu   <- ide kerül a data-sent
 5  build -> index.html                Sonnet
-   stamp-timing.ps1                   szkript            <- data-start/duration bezár
-   image-audio-lint.ps1               szkript            <- csúszás-szűrő, vissza a 4-re
+   stamp-timing.mjs                   szkript            <- data-start/duration bezár
+   image-audio-lint.mjs               szkript            <- csúszás-szűrő, vissza a 4-re
 6  lint -> check                      HyperFrames
 ```

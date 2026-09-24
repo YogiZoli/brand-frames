@@ -31,7 +31,6 @@ compositions/
 zg-frames/*.mp3
 
 node_modules/
-package-lock.json
 zg-frames/*.bak
 zg-frames/_preview.pid
 zg-frames/renders/

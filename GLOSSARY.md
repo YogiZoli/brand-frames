@@ -124,7 +124,8 @@ megfogtunk.
 ## Regressziós szkript
 
 **A program, ami ezt automatikusan lefuttatja.** A fájl:
-`C:\Users\gdp\HyperFrames\_frames\zg-frames\regress.ps1`
+`C:/Users/gdp/HyperFrames/_frames/zg-frames/regress.mjs` (futtatás:
+`node regress.mjs`; a régi `regress.ps1` tartalékként megvan)
 
 Mit csinál, lépésről lépésre:
 

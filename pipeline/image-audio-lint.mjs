@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // image-audio-lint.mjs: does the picture show a word the narration does not say?
-// Node port of image-audio-lint.ps1.
+// Node only: the old image-audio-lint.ps1 was removed on 2026-09-24.
 //
 // A cheap pre-Opus filter. For every scene it compares the on-screen words with
 // the words actually spoken in that scene's time window, and flags a word that
@@ -8,6 +8,14 @@
 // leftover, "25" on screen while the voice is three sentences from "twenty-five".
 //
 // It is NOT the 3rd gate. A clean run means "no obvious slip", not "approved".
+//
+// Two scene shapes, in document order:
+//   - inline clip   <section class="clip" data-start data-duration>: the words
+//                   come from the section itself (unchanged since the port).
+//   - mounted slot  <div data-composition-src="compositions/x.html" data-start
+//                   data-duration>: what build-video.mjs writes since 2026-08-31.
+//                   Timing from the slot div, words from the <section class="clip">
+//                   inside the referenced file (path relative to the index.html).
 //
 // INPUT
 //   --html  <index.html>   scenes already stamped (run stamp-timing.mjs first)
@@ -20,6 +28,7 @@
 //   node image-audio-lint.mjs --html index.html --words _sample/words.json
 
 import fs from "node:fs";
+import path from "node:path";
 import { parseArgs, n1, readText, color, run } from "./lib.mjs";
 
 const STOP = new Set(`the a an of to in on for and or but with is are was were be been being it its this that these those
@@ -89,15 +98,38 @@ run(() => {
 
   const src = readText(a.html);
   // drop scaffold text that is never spoken: labels, captions, plate tags
-  const clean = src.replace(/<(\w+)[^>]*class="[^"]*\b(kick|sub|plateTag|kicker|ilbl|blbl|plbl|cx)\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g, " ");
-  const mm = [...clean.matchAll(/<section\b[^>]*\bclass="[^"]*\bclip\b[^"]*"[^>]*>([\s\S]*?)<\/section>/g)];
-  if (mm.length === 0) throw new Error(`No <section class="clip"> found in ${a.html}.`);
+  const dropScaffold = (s) => s.replace(/<(\w+)[^>]*class="[^"]*\b(kick|sub|plateTag|kicker|ilbl|blbl|plbl|cx)\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g, " ");
+  const rxClip = /<section\b[^>]*\bclass="[^"]*\bclip\b[^"]*"[^>]*>([\s\S]*?)<\/section>/g;
+  const clean = dropScaffold(src);
 
-  let flagged = 0, cleanScenes = 0, unstamped = 0;
-  console.log(color.cyan(`=== image vs audio  (${mm.length} scenes) ===`));
+  // inline clips: the section carries its own words
+  const scenes = [...clean.matchAll(rxClip)].map((m) => ({
+    at: m.index, open: /<section\b[^>]*>/.exec(m[0])[0], inner: () => m[1],
+  }));
+  // mounted slots: the words live in the referenced composition file
+  const baseDir = path.dirname(path.resolve(a.html));
+  for (const m of clean.matchAll(/<div\b[^>]*\bdata-composition-src="([^"]+)"[^>]*>/g)) {
+    scenes.push({ at: m.index, open: m[0], inner: () => slotText(path.resolve(baseDir, m[1])) });
+  }
+  scenes.sort((x, y) => x.at - y.at);
+  if (scenes.length === 0) throw new Error(`No <section class="clip"> or <div data-composition-src> found in ${a.html}.`);
 
-  for (const m of mm) {
-    const open = /<section\b[^>]*>/.exec(m[0])[0];
+  // the composition's own <section class="clip"> blocks, scripts and styles
+  // removed first (motion.js has a <section class="clip"> in a comment)
+  function slotText(file) {
+    if (!fs.existsSync(file)) return null;
+    const comp = dropScaffold(readText(file)
+      .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style\b[\s\S]*?<\/style>/gi, " "));
+    const secs = [...comp.matchAll(rxClip)].map((m) => m[1]);
+    return secs.length > 0 ? secs.join(" ") : comp.replace(/<head\b[\s\S]*?<\/head>/i, " ");
+  }
+
+  let flagged = 0, cleanScenes = 0, unstamped = 0, missing = 0;
+  console.log(color.cyan(`=== image vs audio  (${scenes.length} scenes) ===`));
+
+  for (const sc of scenes) {
+    const open = sc.open;
     const id = /id="([^"]+)"/i.exec(open)?.[1] ?? "?";
     const stM = /data-start="([\d.]+)"/i.exec(open);
     const duM = /data-duration="([\d.]+)"/i.exec(open);
@@ -108,7 +140,13 @@ run(() => {
     }
     const st = Number(stM[1]), du = Number(duM[1]);
 
-    const inner = m[1].replace(/<[^>]+>/g, " ");
+    const body = sc.inner();
+    if (body === null) {
+      console.log(color.yellow(`  ${id}  composition file not found: ${/data-composition-src="([^"]+)"/.exec(open)[1]}`));
+      missing++;
+      continue;
+    }
+    const inner = body.replace(/<[^>]+>/g, " ");
     const screen = [...new Set(tokenize(inner))];
     if (screen.length === 0) { cleanScenes++; continue; }
 
@@ -128,7 +166,7 @@ run(() => {
   }
 
   console.log("");
-  console.log(`clean: ${cleanScenes}   flagged: ${flagged}   unstamped: ${unstamped}`);
+  console.log(`clean: ${cleanScenes}   flagged: ${flagged}   unstamped: ${unstamped}` + (missing > 0 ? `   missing: ${missing}` : ""));
   console.log("This is a slip filter, not the 3rd gate. A clean run is not approval.");
-  if (a.strict && (flagged > 0 || unstamped > 0)) return 1;
+  if (a.strict && (flagged > 0 || unstamped > 0 || missing > 0)) return 1;
 });

@@ -117,8 +117,19 @@ mondatot csúszott jelenet, egy bennmaradt szó, egy szám ami nem stimmel
 
 - Bemenet: a `stamp-timing.mjs`-sel már megcímkézett HTML (`data-start` kell) és
   a `sentences.mjs` `words.json`-ja.
-- `-Lead 1.0` / `-Lag 0.8`: a kép ennyivel megelőzheti vagy követheti a mondatot.
-- Kihagyja a scaffold szöveget (`.kick` címke, `.sub` felirat, `.plateTag`).
+- Kétféle jelenetet ismer, dokumentum-sorrendben:
+  - **inline** `<section class="clip">`: a szöveg magából a sectionből jön.
+  - **mounted slot** `<div data-composition-src="compositions/x.html">` (ezt írja a
+    `build-video.mjs` 2026-08-31 óta): az idő a slot div-ről, a képernyő-szöveg a
+    hivatkozott kompozíció-fájl `<section class="clip">` részéből (útvonal az
+    `index.html`-hez képest). Ha a fájl hiányzik, `missing`-ként jelzi, és
+    `--strict` alatt ez is hiba.
+- Csak Node. A régi `image-audio-lint.ps1` 2026-09-24-én törölve: az csak inline
+  jelenetet ismert, mounted indexen hibával megállt. Inline jeleneten a `.mjs`
+  kimenete bájtra ugyanaz, mint a törlés előtt.
+- `--lead 1.0` / `--lag 0.8`: a kép ennyivel megelőzheti vagy követheti a mondatot.
+- Kihagyja a scaffold szöveget (`.kick` címke, `.sub` felirat, `.plateTag`). A
+  `.subcap` felirat NEM scaffold, azt ellenőrzi.
 - Lenient: pontos egyezés vagy közös 3 betűs tő ("publish" / "published"),
   számok szó-alakra fejtve, sorszám a tőszámra ("second" -> "two").
 - **NEM a 3. kapu.** Nem dönti el, jó-e az archetípus vagy jó-e a kép. Csak

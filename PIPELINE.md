@@ -8,6 +8,13 @@
 > és Macen ugyanúgy: `node pipeline/<szkript>.mjs`. A régi `.ps1` párjuk
 > tartalékként a helyén marad, amíg Zoltán nem dönt a törlésükről. A kimenetük
 > bájtra azonos (parity teszt, `7997877`).
+>
+> **Kivétel, szándékos eltérés (2026-09-24):** az `image-audio-lint` csak Node.
+> A `.ps1` párja törölve (Zoltán döntése: nincs fagyasztott PowerShell tartalék),
+> mert csak a régi inline `<section class="clip">` jeleneteket ismerte, és az
+> éles lánc mounted slotjain (`build-video.mjs`, 2026-08-31 óta) hibával megállt.
+> A `.mjs` inline jeleneten változatlanul ugyanazt adja, mounted sloton pedig
+> a hivatkozott kompozíció-fájlból olvassa a szöveget. Részletek: `pipeline/TIMING.md`.
 
 ## A HATÁR — egyetlen mondat
 

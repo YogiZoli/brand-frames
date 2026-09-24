@@ -1,7 +1,7 @@
 // lib.mjs: shared helpers for the Node pipeline scripts.
 //
 // The .mjs scripts replace the PowerShell ones (sentences.ps1, stamp-timing.ps1,
-// image-audio-lint.ps1, avatar_composite.ps1) so the pipeline runs the same on
+// avatar_composite.ps1; image-audio-lint.ps1 is gone) so the pipeline runs the same on
 // Windows and macOS. Two PowerShell behaviours are reproduced on purpose, so the
 // output matches the .ps1 byte for byte where it matters:
 //   - [math]::Round(x, n) rounds half to even ("banker's rounding").

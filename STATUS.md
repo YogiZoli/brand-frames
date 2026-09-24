@@ -4,9 +4,31 @@
 > Egy darab van belőle, és felülíródik — nem szaporodik, mint a handoverek.
 > A napló a `git log`, nem ez a fájl.
 
-**Frissítve:** 2026-09-24 (a pipeline Node-on, tiszta környezetben tesztelve) · **commit:** lásd `git log -1`
+**Frissítve:** 2026-09-24 (kép kontra hang lint mounted slotokon, a .ps1 párja törölve) · **commit:** lásd `git log -1`
 **Elévülés-ellenőrzés:** ha `git log -1` dátuma KÉSŐBBI, mint a fenti, akkor ez a
 fájl elavult — **mondd ki, ne menj tovább.** Minden session a végén frissíti.
+
+---
+
+## KÉP KONTRA HANG LINT MOUNTED SLOTOKON (2026-09-24)
+
+Az `image-audio-lint.mjs` eddig csak inline `<section class="clip">` jelenetet
+ismert, ezért az éles lánc indexén (`build-video.mjs` mounted slotjai,
+2026-08-31 óta) hibával megállt, és semmit nem ellenőrzött. Most a slot div-ről
+veszi az időt, a hivatkozott kompozíció-fájlból a szöveget. Inline jeleneten a
+kimenet bájtra a régi (7 inline indexen összevetve). Az `image-audio-lint.ps1`
+törölve, Zoltán döntése: ebből csak Node marad.
+
+**C2C próba** (`pvc-e2e`, 16 jelenet): 5 tiszta, 11 jelzett.
+- `s006-rail`: valószínű valódi csúszás. A sín már az S7-S8 alatt kiírja a
+  Script / Voice / Visuals / Face lépéseket, a hang csak az S9-ben mondja őket.
+- `s003-tiles` "five": hamis riasztás. Az STT a "twenty-five"-ot egy szóként adja,
+  a lint a kötőjelet eldobja ("twentyfive"), így a "25" második fele nem talál.
+  Külön javítandó, a lint illesztési szabályához ebben a körben nem nyúltunk.
+- A többi 9 (`s001`, `s004`, `s005`, `s008`, `s010`, `s011`, `s012`, `s013`,
+  `s016`): szándékos átfogalmazás, főleg a `.subcap` feliratsor ("It waits for
+  you.", "Start to finish."). A `.subcap` nincs a scaffold kivételek között.
+  Zoltán dönti el, hogy ez kivétel legyen-e.
 
 ---
 

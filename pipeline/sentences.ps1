@@ -141,7 +141,7 @@ $utf8 = New-Object System.Text.UTF8Encoding($false)
 $jsonPath = Join-Path $OutDir "sentences.json"
 [System.IO.File]::WriteAllText($jsonPath, (($rows | ConvertTo-Json -Depth 4) + "`n"), $utf8)
 
-# a flat word list too, for image-audio-lint.ps1 (needs per-word times)
+# a flat word list too, for image-audio-lint.mjs (needs per-word times)
 $wjson = $words | ForEach-Object { [pscustomobject]@{ text=$_.text; start=[math]::Round([double]$_.start,3); end=[math]::Round([double]$_.end,3) } }
 $wordsPath = Join-Path $OutDir "words.json"
 [System.IO.File]::WriteAllText($wordsPath, (($wjson | ConvertTo-Json -Depth 3) + "`n"), $utf8)

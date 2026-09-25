@@ -94,11 +94,16 @@ run(() => {
 
   let wl = JSON.parse(readText(a.words));
   if (!Array.isArray(wl)) wl = [wl];
-  wl = wl.map((w) => ({ text: String(w.text).toLowerCase().replace(/[^a-z0-9']/gi, ""), start: Number(w.start), end: Number(w.end) }));
+  // "twenty-five" is two spoken words: split on hyphens, each part keeps the word timing
+  wl = wl.flatMap((w) => {
+    const parts = String(w.text).toLowerCase().replace(/-/g, " ").split(/\s+/).map((p) => p.replace(/[^a-z0-9']/g, ""));
+    const kept = parts.filter(Boolean);
+    return (kept.length ? kept : [""]).map((text) => ({ text, start: Number(w.start), end: Number(w.end) }));
+  });
 
   const src = readText(a.html);
   // drop scaffold text that is never spoken: labels, captions, plate tags
-  const dropScaffold = (s) => s.replace(/<(\w+)[^>]*class="[^"]*\b(kick|sub|plateTag|kicker|ilbl|blbl|plbl|cx)\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g, " ");
+  const dropScaffold = (s) => s.replace(/<(\w+)[^>]*class="[^"]*\b(kick|sub|subcap|plateTag|kicker|ilbl|blbl|plbl|cx)\b[^"]*"[^>]*>[\s\S]*?<\/\1>/g, " ");
   const rxClip = /<section\b[^>]*\bclass="[^"]*\bclip\b[^"]*"[^>]*>([\s\S]*?)<\/section>/g;
   const clean = dropScaffold(src);
 

@@ -128,8 +128,8 @@ mondatot csúszott jelenet, egy bennmaradt szó, egy szám ami nem stimmel
   jelenetet ismert, mounted indexen hibával megállt. Inline jeleneten a `.mjs`
   kimenete bájtra ugyanaz, mint a törlés előtt.
 - `--lead 1.0` / `--lag 0.8`: a kép ennyivel megelőzheti vagy követheti a mondatot.
-- Kihagyja a scaffold szöveget (`.kick` címke, `.sub` felirat, `.plateTag`). A
-  `.subcap` felirat NEM scaffold, azt ellenőrzi.
+- Kihagyja a scaffold szöveget (`.kick` címke, `.sub` felirat, `.subcap` felirat,
+  `.plateTag`). A `.subcap` parafrázis, nem szó szerinti idézet, ezért nem ellenőrzi.
 - Lenient: pontos egyezés vagy közös 3 betűs tő ("publish" / "published"),
   számok szó-alakra fejtve, sorszám a tőszámra ("second" -> "two").
 - **NEM a 3. kapu.** Nem dönti el, jó-e az archetípus vagy jó-e a kép. Csak

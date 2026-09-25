@@ -125,7 +125,7 @@ megfogtunk.
 
 **A program, ami ezt automatikusan lefuttatja.** A fájl:
 `C:/Users/gdp/HyperFrames/_frames/zg-frames/regress.mjs` (futtatás:
-`node regress.mjs`; a régi `regress.ps1` tartalékként megvan)
+`node regress.mjs`; a régi `regress.ps1` 2026-09-24-én törölve)
 
 Mit csinál, lépésről lépésre:
 

@@ -5,12 +5,14 @@
 > javítani kell. Verzió: 2.0 · 2026-08-17
 >
 > **Node (2026-09-24):** a pipeline szkriptek Node-ban futnak (`.mjs`), Windowson
-> és Macen ugyanúgy: `node pipeline/<szkript>.mjs`. A régi `.ps1` párjuk
-> tartalékként a helyén marad, amíg Zoltán nem dönt a törlésükről. A kimenetük
-> bájtra azonos (parity teszt, `7997877`).
+> és Macen ugyanúgy: `node pipeline/<szkript>.mjs`. **Csak Node van, nincs
+> PowerShell tartalék** (Zoltán döntése, 2026-09-24). A nyolc portolt `.ps1`
+> (sentences, stamp-timing, avatar_composite, blocks/build, catalog,
+> assemble-sampler, build-video, regress) törölve. A `.mjs` kimenete bájtra
+> azonos volt a régivel (parity teszt, `7997877`). Új szkript csak `.mjs`
+> lehet. A régi `.ps1` a git történetben megvan.
 >
-> **Kivétel, szándékos eltérés (2026-09-24):** az `image-audio-lint` csak Node.
-> A `.ps1` párja törölve (Zoltán döntése: nincs fagyasztott PowerShell tartalék),
+> **Az `image-audio-lint` külön eset:** a `.ps1` párja már korábban törölve,
 > mert csak a régi inline `<section class="clip">` jeleneteket ismerte, és az
 > éles lánc mounted slotjain (`build-video.mjs`, 2026-08-31 óta) hibával megállt.
 > A `.mjs` inline jeleneten változatlanul ugyanazt adja, mounted sloton pedig

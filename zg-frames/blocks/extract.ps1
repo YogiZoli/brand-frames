@@ -10,7 +10,7 @@
   are added per archetype later, when a live video needs them.
 
   Run once. After this, blocks/<name>/<name>.src.html is the source of truth and
-  ../index.html is regenerated as a mount host by assemble-sampler.ps1.
+  ../index.html is regenerated as a mount host by assemble-sampler.mjs.
 
   USAGE
     .\extract.ps1              # write every missing block source
@@ -70,4 +70,4 @@ foreach ($m in $rx.Matches($src)) {
 Write-Host ("{0} block source(s):" -f $done.Count) -ForegroundColor Green
 $done | ForEach-Object { Write-Host "  $_" }
 Write-Host ""
-Write-Host "Next: build.ps1  then  assemble-sampler.ps1" -ForegroundColor DarkGray
+Write-Host "Next: build.mjs  then  assemble-sampler.mjs" -ForegroundColor DarkGray

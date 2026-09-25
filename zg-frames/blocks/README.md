@@ -14,7 +14,7 @@ bemasol, ugyanaz, mint amit teszteltunk: a samplernek sajat masolata van minden
 archetipusbol. Ez a mappa megszunteti a masolatot.
 
 Minden archetipus kanoni markupja EGY helyen el: `blocks/<name>/<name>.src.html`.
-A `build.ps1` korbe-inlineolja a kozos `zg.css` + `type.js` + `icons.js` +
+A `build.mjs` korbe-inlineolja a kozos `zg.css` + `type.js` + `icons.js` +
 `motion.js` fajlokat, es kiad egy HyperFrames sub-kompoziciot:
 `blocks/<name>/<name>.html`. Ezt mountolja a sampler ES minden eles video a
 `data-composition-src`-n keresztul. Ugyanaz a bajt mindenhol.
@@ -34,27 +34,27 @@ camClass, variables), utana a markup, pontosan az, ami a samplerben a
 
 Minden szoveg-level `data-vars='{"text":"<id>"}'`-t visz, minden attributum-
 csere `data-vars='{"<attr>":"<id>"}'`-t (pl. lens `data-path`/`data-words`,
-arrow `data-icon`). **A `build-video.ps1` build-idoben belesuti** a scene
+arrow `data-icon`). **A `build-video.mjs` build-idoben belesuti** a scene
 ertekeit a per-scene composition-fajlba (a `data-vars`-t utana leszedi), tehat
 barmilyen valtozonev mukodik, nincs HF runtime valtozo-rendszer a render-utban.
 A deklaracio a `.src.html` `variables` tombjeben; teljes lista `CATALOG.md`.
 
 (`ZG.applyVars()` a `motion.js`-ben megvan a Studio elo-nezethez: a `--<id>` CSS
-custom propbol olvas. A renderben nem szamit, mert a `build-video.ps1` mar besutott.)
+custom propbol olvas. A renderben nem szamit, mert a `build-video.mjs` mar besutott.)
 
 ## A teljes lanc (eles video)
 
 ```
-sentences.ps1           # SRT -> sentences.json  (PIPELINE 3.)
+sentences.mjs           # SRT -> sentences.json  (PIPELINE 3.)
 [Opus irja]             # scenes.json: block + sent-horgony + vars per jelenet  (PIPELINE 4., 3. kapu)
-build-video.ps1         # scenes.json -> ../index.html + compositions/<sceneId>.html  (PIPELINE 5.)
-stamp-timing.ps1        # data-start/data-duration a sentences.json-bol
+build-video.mjs         # scenes.json -> ../index.html + compositions/<sceneId>.html  (PIPELINE 5.)
+stamp-timing.mjs        # data-start/data-duration a sentences.json-bol
 check -> snapshot -> render
-assemble-sampler.ps1    # ha kell a sampler vissza
+assemble-sampler.mjs    # ha kell a sampler vissza
 ```
 
 Minden mountolt instance EGYEDI `data-composition-id`-t kap (`s001-<block>`):
-ismetlodo id eseten a per-instance valtozok utkoznek. `build-video.ps1` ezert
+ismetlodo id eseten a per-instance valtozok utkoznek. `build-video.mjs` ezert
 scene-enkent egy byte-masolat blokkot ir `compositions/`-ba, csak az id-t cserelve.
 
 A jelenet-hossz: `data-scene-dur` (a szerzoi mozgas-hossz) kulon a
@@ -68,12 +68,12 @@ elsotetul.
 extract.ps1        # egyszeri: a monolit <section>-jeibol <name>.src.html (mind 39, lefutott)
 add-vars.ps1       # szoveg-valtozo-felulet a levelekre (idempotens)
 make-fontface.ps1  # _fontface.css (Open Sans base64) — csak ha a fonts/ valtozik
-build.ps1          # <name>.src.html + kozos css/js -> <name>.html   (minden valtoztatas utan)
-assemble-sampler.ps1  # ../index.html = 39 mount slot
-catalog.ps1        # CATALOG.md (Opus ezt olvassa a scenes.json-hoz)
+build.mjs          # <name>.src.html + kozos css/js -> <name>.html   (minden valtoztatas utan)
+assemble-sampler.mjs  # ../index.html = 39 mount slot
+catalog.mjs        # CATALOG.md (Opus ezt olvassa a scenes.json-hoz)
 ```
 
-Ujra kell futtatni a `build.ps1`-t MINDEN `zg.css` / `motion.js` / `icons.js` /
+Ujra kell futtatni a `build.mjs`-t MINDEN `zg.css` / `motion.js` / `icons.js` /
 `type.js` / `.src.html` valtoztatas utan. Tukroz a `_frames/blocks/<name>/`-ba.
 
 ## Statusz (2026-08-31)

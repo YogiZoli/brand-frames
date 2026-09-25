@@ -62,13 +62,13 @@ Ezek nincsenek a `projects/design-system/tokens.css`-ben, mert csak videon ertel
   rendszer tulajdonosa szinvak" logikat vitte. Ez nem kanon. Kikerult a `zg.css`-bol es
   a `DESIGN-FOUNDATION.md`-bol. A szemantikus par (vilagos pozitiv mezo / tomor negativ
   mezo + alak + szo) mint egyszeru gyakorlat marad, ideologia nelkul.
-- A `regress.ps1` deuteranopia-szimulacios passza tovabbra is fut, de mar nem "kotelezo
+- A `regress.mjs` deuteranopia-szimulacios passza tovabbra is fut, de mar nem "kotelezo
   itelet" reszekent. Kesobb dontheto, hogy marad-e.
 
 ## Nyitott, a kovetkezo korre
 
 - `DESIGN.md`, `SCALE.md`, `GLOSSARY.md`, `README.md`, `BLOCKS.md`, `frame-showcase.html`:
   a paletta-emlitesek atvezetese a kanonra.
-- Uj sampler render + Zoltan jovahagyas + uj `regress.ps1` baseline. **Csak a teljes
+- Uj sampler render + Zoltan jovahagyas + uj `regress.mjs` baseline. **Csak a teljes
   kor vegen**, ahogy Zoltan kerte.
 - VoxFlow: **nem nyulunk hozza** (Mate csatornaja).

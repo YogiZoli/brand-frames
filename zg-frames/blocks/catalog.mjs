@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// blocks/catalog.mjs: generate blocks/CATALOG.md. Node port of catalog.mjs.
+// blocks/catalog.mjs: generate blocks/CATALOG.md. Originally ported from catalog.ps1 (deleted).
 //
 // The reference Opus reads when writing a live video's scene list: every
 // archetype, its duration, and every variable it accepts (id, label, default).

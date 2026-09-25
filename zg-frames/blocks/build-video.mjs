@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // blocks/build-video.mjs: a scene list becomes the live video's index.html.
-// Node port of build-video.mjs. PIPELINE step 5.
+// Originally ported from build-video.ps1 (deleted). PIPELINE step 5.
 //
 // Opus writes the scene list (step 4, the 3rd gate) as JSON:
 //   {

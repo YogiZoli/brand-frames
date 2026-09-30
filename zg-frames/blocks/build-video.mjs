@@ -21,9 +21,18 @@
 // Writes zg-frames/index.html IN PLACE (the project root, so blocks/ and fonts/
 // resolve). After this, stamp-timing fills data-start/data-duration from the audio.
 //
+// --outdir <dir>  writes index.html + compositions/ (+ hyperframes.json) into
+//                 <dir> instead, so several videos can be built side by side
+//                 from one library (the IdeaToVideo app: one folder per project).
+//                 The built blocks are self-contained, nothing else is needed.
+//                 "audio" in the scene list is then relative to <dir>.
+// --gsap <file>   use this local gsap.min.js (copied next to index.html) instead
+//                 of the CDN, so check and render work offline. Same version.
+//
 // USAGE
 //   node build-video.mjs --scenes ../../ai-video-workflow/scenes.json
 //   node build-video.mjs --scenes scenes.json --out ../video-preview.html
+//   node build-video.mjs --scenes scenes.json --outdir ../../my-video/build --gsap ../../node_modules/gsap/dist/gsap.min.js
 
 import fs from "node:fs";
 import path from "node:path";
@@ -40,6 +49,10 @@ if (!scenesArg) {
   process.exit(1);
 }
 const outRel = opt("out") ?? "../index.html";
+const outDir = opt("outdir") ? path.resolve(opt("outdir")) : null;
+const gsapArg = opt("gsap") ? path.resolve(opt("gsap")) : null;
+if (gsapArg && !fs.existsSync(gsapArg)) throw new Error(`--gsap file not found: ${gsapArg}`);
+const root = outDir ?? REPO;
 
 const scenesPath = path.resolve(scenesArg);
 const plan = JSON.parse(read(scenesPath));
@@ -73,7 +86,7 @@ for (const sc of scenes) {
 // text/attributes BAKED IN at build time. No runtime variable system: HF's
 // per-instance vars only surface through --<id> css props, and it refuses those
 // for names like `sub`/`leftLabel`, so we substitute here instead.
-const compDir = path.join(REPO, "compositions");
+const compDir = path.join(root, "compositions");
 if (fs.existsSync(compDir)) {
   for (const f of fs.readdirSync(compDir)) if (/^s.*\.html$/i.test(f)) fs.rmSync(path.join(compDir, f), { force: true });
 }
@@ -140,7 +153,7 @@ const doc = `<!doctype html>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=1920, height=1080"/>
 <title>${title}</title>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script src="${gsapArg ? "gsap.min.js" : "https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"}"></script>
 <style>
 ${fontFace}
   body{margin:0;background:#0b0f14;font-family:"Open Sans",system-ui,sans-serif}
@@ -162,7 +175,11 @@ ${audioTag}
 </body>
 </html>`;
 
-const outPath = path.join(BLOCKS, outRel);
+const outPath = outDir ? path.join(outDir, "index.html") : path.join(BLOCKS, outRel);
 write(outPath, doc);
+if (gsapArg) fs.copyFileSync(gsapArg, path.join(path.dirname(outPath), "gsap.min.js"));
+if (outDir && !fs.existsSync(path.join(outDir, "hyperframes.json"))) {
+  fs.copyFileSync(path.join(REPO, "hyperframes.json"), path.join(outDir, "hyperframes.json"));
+}
 console.log(`\x1b[32mwrote ${outPath}  (${scenes.length} scenes)\x1b[0m`);
 console.log("\x1b[90mnext: node ../../pipeline/stamp-timing.mjs --html index.html --sentences <sentences.json>\x1b[0m");

@@ -3,6 +3,7 @@
   "private": true,
   "description": "Pins the hyperframes CLI so renders are reproducible and the regression baseline stays meaningful. Bumping this version is a deliberate step: change the number, re-render the sampler, re-accept the baseline, commit together.",
   "dependencies": {
+    "gsap": "3.14.2",
     "hyperframes": "0.8.22"
   }
 }

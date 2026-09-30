@@ -263,8 +263,8 @@ duration `5s` · camClass `cam`
 |---|---|---|
 | `kick` | Kicker | 21 · OVERLAY · LOWER THIRD |
 | `subcap` | Sub caption | Your footage never re-encodes. |
-| `name` | Lower-third name | Zoltan Gero |
-| `role` | Lower-third role | AI agents · evergreen income |
+| `name` | Lower-third name | Your Name |
+| `role` | Lower-third role | Your role or channel |
 
 ## overlay-callout
 
@@ -408,7 +408,7 @@ duration `6s` · camClass `cam dense`
 | variable | what it is | default |
 |---|---|---|
 | `kick` | Kicker | 34 · QUOTE |
-| `author` | Author | Zoltan Gero |
+| `author` | Author | Author Name |
 | `authorRole` | Author role | from the script |
 
 ## question
